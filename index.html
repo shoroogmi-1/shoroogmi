@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>موقعي الشخصي</title>
+  <meta name="description" content="موقع شخصي: نبذة عني، خدماتي، أعمالي، وطرق التواصل.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#home" class="logo">شروق<span>.</span></a>
+      <button class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+      <nav class="nav-links">
+        <a href="#about">عني</a>
+        <a href="#services">خدماتي</a>
+        <a href="#projects">أعمالي</a>
+        <a href="#contact">تواصل</a>
+        <button class="theme-toggle" aria-label="تبديل الوضع الليلي">🌙</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow">مرحباً بك 👋</p>
+          <h1>أصمّم وأبني تجارب رقمية <span class="accent">بسيطة وجميلة</span></h1>
+          <p class="lead">هذا موقعي الشخصي، أشارك فيه نبذة عني وأبرز أعمالي والخدمات التي أقدّمها.</p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">شاهد أعمالي</a>
+            <a href="#contact" class="btn btn-ghost">تواصل معي</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="blob"></div>
+          <div class="avatar">ش</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container about">
+        <h2 class="section-title">عني</h2>
+        <p>أنا شغوفة بالتقنية والتصميم، أحب تحويل الأفكار إلى منتجات واضحة وسهلة الاستخدام. أؤمن بأن التفاصيل الصغيرة تصنع الفرق، وأسعى دائماً للتعلّم وتطوير مهاراتي.</p>
+        <ul class="stats">
+          <li><strong data-count="20">0</strong><span>مشروع منجز</span></li>
+          <li><strong data-count="3">0</strong><span>سنوات خبرة</span></li>
+          <li><strong data-count="15">0</strong><span>عميل سعيد</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="services" class="section alt">
+      <div class="container">
+        <h2 class="section-title">خدماتي</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="icon">🎨</div>
+            <h3>تصميم واجهات</h3>
+            <p>تصاميم عصرية ومتجاوبة تركّز على تجربة المستخدم.</p>
+          </article>
+          <article class="card">
+            <div class="icon">💻</div>
+            <h3>تطوير مواقع</h3>
+            <p>مواقع سريعة ونظيفة الكود تعمل على جميع الأجهزة.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🚀</div>
+            <h3>تحسين الأداء</h3>
+            <p>رفع سرعة موقعك وتحسين ظهوره في محركات البحث.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title">أعمالي</h2>
+        <div class="filters" role="tablist">
+          <button class="filter active" data-filter="all">الكل</button>
+          <button class="filter" data-filter="web">مواقع</button>
+          <button class="filter" data-filter="design">تصميم</button>
+        </div>
+        <div class="projects">
+          <article class="project" data-cat="web">
+            <div class="thumb t1"></div>
+            <h3>متجر إلكتروني</h3>
+            <p>متجر متكامل لبيع المنتجات اليدوية.</p>
+          </article>
+          <article class="project" data-cat="design">
+            <div class="thumb t2"></div>
+            <h3>هوية بصرية</h3>
+            <p>شعار وألوان وخطوط لعلامة تجارية ناشئة.</p>
+          </article>
+          <article class="project" data-cat="web">
+            <div class="thumb t3"></div>
+            <h3>مدونة شخصية</h3>
+            <p>مدونة خفيفة تدعم العربية بالكامل.</p>
+          </article>
+          <article class="project" data-cat="design">
+            <div class="thumb t4"></div>
+            <h3>تطبيق جوال</h3>
+            <p>تصميم واجهات تطبيق لتنظيم المهام.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section alt">
+      <div class="container contact">
+        <h2 class="section-title">تواصل معي</h2>
+        <p>لديك فكرة أو مشروع؟ يسعدني سماعك.</p>
+        <form class="contact-form" novalidate>
+          <label>الاسم
+            <input type="text" name="name" required>
+          </label>
+          <label>البريد الإلكتروني
+            <input type="email" name="email" required>
+          </label>
+          <label>رسالتك
+            <textarea name="message" rows="5" required></textarea>
+          </label>
+          <button type="submit" class="btn btn-primary">إرسال</button>
+          <p class="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> شروق. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
