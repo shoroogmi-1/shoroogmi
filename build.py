@@ -139,6 +139,10 @@ def read_time(blocks):
     return f"{ar(n)} {'دقائق' if n <= 10 else 'دقيقة'}"
 
 
+# أسماء حقول الترويسة بالعربية (والإنجليزية مقبولة أيضاً)
+FIELDS = {"العنوان": "title", "التاريخ": "date", "التصنيف": "tag", "الملخص": "excerpt"}
+
+
 def load_article(path):
     """ترويسة (مفتاح: قيمة) ثم سطر فارغ ثم النص.
     في النص: سطر يبدأ بـ ## عنوان فرعي، وسطر يبدأ بـ > اقتباس، والباقي فقرات."""
@@ -147,10 +151,11 @@ def load_article(path):
     meta = {}
     for line in head.splitlines():
         key, _, value = line.partition(":")
-        meta[key.strip()] = value.strip()
-    for key in ("title", "date", "tag", "excerpt"):
+        key = key.strip()
+        meta[FIELDS.get(key, key)] = value.strip()
+    for ar_key, key in FIELDS.items():
         if not meta.get(key):
-            raise SystemExit(f"{path}: الحقل '{key}' مفقود في الترويسة")
+            raise SystemExit(f"{path}: الحقل «{ar_key}» مفقود في الترويسة")
     blocks = []
     for para in re.split(r"\n\s*\n", body.strip()):
         para = " ".join(line.strip() for line in para.splitlines())
