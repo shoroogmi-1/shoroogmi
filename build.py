@@ -43,7 +43,7 @@ def page(path, key, title, body, desc):
       <button class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
       <nav class="nav-links" aria-label="القائمة الرئيسية">
         <a href="{p}index.html"{act("home")}>الرئيسية</a>
-        <a href="{p}sira.html"{act("sira")}>سيرة</a>
+        <a href="{p}sira.html"{act("sira")}>جواز السفر</a>
         <div class="has-sub">
           <a href="{p}blog/index.html"{act("blog")}>مدونة <span class="caret" aria-hidden="true">▾</span></a>
           <div class="sub">
@@ -66,7 +66,7 @@ def page(path, key, title, body, desc):
     <div class="container footer-inner">
       <p class="footer-name">شروق المحمادي</p>
       <nav class="footer-links" aria-label="روابط التذييل">
-        <a href="{p}sira.html">سيرة</a>
+        <a href="{p}sira.html">جواز السفر</a>
         <a href="{p}blog/articles.html">المقالات</a>
         <a href="{p}blog/zawiya-36.html">الزاوية ٣٦</a>
         <a href="{p}books.html">كتب</a>
@@ -225,7 +225,7 @@ home = f"""    <section class="hero">
       <div class="container">
         <h2 class="section-title">تصفّح الموقع</h2>
         <div class="tiles">
-          <a class="tile" href="sira.html"><span class="tile-icon">🌤️</span><h3>سيرة</h3><p>من أنا، وما الذي أعمل عليه، ومحطات رحلتي.</p></a>
+          <a class="tile" href="sira.html"><span class="tile-icon">🛂</span><h3>جواز السفر</h3><p>من أنا، وما الذي أعمل عليه، ومحطات رحلتي.</p></a>
           <a class="tile" href="blog/articles.html"><span class="tile-icon">✍️</span><h3>المقالات</h3><p>نصوص أطول في التأمل والقراءة والكتابة.</p></a>
           <a class="tile" href="blog/zawiya-36.html"><span class="tile-icon">🌙</span><h3>الزاوية ٣٦</h3><p>خواطر قصيرة وملاحظات سريعة من يومي.</p></a>
           <a class="tile" href="books.html"><span class="tile-icon">📚</span><h3>كتب</h3><p>ما قرأت وما أقرأ الآن وما ينتظر على الرف.</p></a>
@@ -267,7 +267,7 @@ home = f"""    <section class="hero">
     </section>
 """
 page("index.html", "home", "شروق المحمادي", home,
-     "الموقع الشخصي لشروق المحمادي: سيرة، مدونة، كتب، وتواصل.")
+     "الموقع الشخصي لشروق المحمادي: جواز السفر، مدونة، كتب، وتواصل.")
 
 # ---------- Sira ----------
 TIMELINE = [
@@ -276,7 +276,7 @@ TIMELINE = [
     ("٢٠٢٢", "التخرج من الجامعة", "اكتب هنا تخصصك والجامعة التي تخرجت منها."),
     ("٢٠١٨", "أول كتاب أحببته حقاً", "اللحظة التي تحولت فيها القراءة من واجب إلى شغف."),
 ]
-sira = page_head("سيرة", "مرحباً، أنا شروق",
+sira = page_head("جواز السفر", "مرحباً، أنا شروق",
                  "أحب الضوء والكلمات والبدايات الجديدة. هنا شيء من قصتي.") + f"""
     <section class="section">
       <div class="container bio">
@@ -301,7 +301,7 @@ sira = page_head("سيرة", "مرحباً، أنا شروق",
       </div>
     </section>
 """
-page("sira.html", "sira", "سيرة · شروق المحمادي", sira, "سيرة شروق المحمادي ومحطات رحلتها.")
+page("sira.html", "sira", "جواز السفر · شروق المحمادي", sira, "سيرة شروق المحمادي ومحطات رحلتها.")
 
 # ---------- Blog hub ----------
 blog = page_head("مدونة", "المدونة", "مساحتان للكتابة: مقالات مطوّلة، وزاوية للخواطر القصيرة.") + f"""
