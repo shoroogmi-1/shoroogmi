@@ -216,7 +216,7 @@ home = f"""    <section class="hero">
         <p class="lead">أيها القارئ: لنتفق! المقعد الأيمن مرة لي ومرة لك، وذلك طوال رحلتنا في سياحة العقول والأفكار والتجارب. طيب كابتن؟</p>
         <div class="hero-actions">
           <a href="blog/index.html" class="btn btn-primary">سجل الرحلات</a>
-          <a href="sira.html" class="btn btn-ghost">تعرّف عليّ</a>
+          <a href="sira.html" class="btn btn-ghost">جواز السفر</a>
         </div>
       </div>
     </section>
@@ -262,7 +262,7 @@ home = f"""    <section class="hero">
       <div class="container cta-inner">
         <h2>لديك فكرة أو سؤال؟</h2>
         <p>يسعدني أن أسمع منك دائماً.</p>
-        <a href="contact.html" class="btn btn-primary">تواصل معنا</a>
+        <a href="contact.html" class="btn btn-primary">برج المراقبة</a>
       </div>
     </section>
 """
@@ -272,7 +272,7 @@ page("index.html", "home", "شروق المحمادي", home,
 # ---------- Sira ----------
 TIMELINE = [
     ("٢٠٢٦", "إطلاق هذا الموقع", "مساحة شخصية تجمع الكتابة والقراءة في مكان واحد."),
-    ("٢٠٢٤", "بداية الكتابة بانتظام", "تحدّي الكتابة الأسبوعية الذي تحوّل لاحقاً إلى المدونة."),
+    ("٢٠٢٤", "بداية الكتابة بانتظام", "تحدّي الكتابة الأسبوعية الذي تحوّل لاحقاً إلى سجل الرحلات."),
     ("٢٠٢٢", "التخرج من الجامعة", "اكتب هنا تخصصك والجامعة التي تخرجت منها."),
     ("٢٠١٨", "أول كتاب أحببته حقاً", "اللحظة التي تحولت فيها القراءة من واجب إلى شغف."),
 ]
@@ -301,10 +301,10 @@ sira = page_head("جواز السفر", "مرحباً، أنا شروق",
       </div>
     </section>
 """
-page("sira.html", "sira", "جواز السفر · شروق المحمادي", sira, "سيرة شروق المحمادي ومحطات رحلتها.")
+page("sira.html", "sira", "جواز السفر · شروق المحمادي", sira, "جواز سفر شروق المحمادي ومحطات رحلتها.")
 
 # ---------- Blog hub ----------
-blog = page_head("سجل الرحلات", "سجل الرحلات", "مساحتان للكتابة: مقالات مطوّلة، وزاوية للخواطر القصيرة.") + f"""
+blog = page_head("سجل الرحلات", "سجل الرحلات", "مساحتان للكتابة: رحلات طويلة، وزاوية للخواطر القصيرة.") + f"""
     <section class="section">
       <div class="container">
         <div class="blog-split">
@@ -312,7 +312,7 @@ blog = page_head("سجل الرحلات", "سجل الرحلات", "مساحتا
             <span class="door-icon">✍️</span>
             <h2>رحلات طويلة</h2>
             <p>نصوص أطول أتعمّق فيها في فكرة أو تجربة أو كتاب.</p>
-            <span class="count">{ar(len(ARTICLES))} مقالات</span>
+            <span class="count">{ar(len(ARTICLES))} رحلات</span>
           </a>
           <a class="blog-door night" href="zawiya-36.html">
             <span class="door-icon">🌙</span>
@@ -348,7 +348,7 @@ blog = page_head("سجل الرحلات", "سجل الرحلات", "مساحتا
       </div>
     </section>
 """
-page("blog/index.html", "blog", "سجل الرحلات · شروق المحمادي", blog, "مدونة شروق المحمادي: المقالات والزاوية ٣٦.")
+page("blog/index.html", "blog", "سجل الرحلات · شروق المحمادي", blog, "سجل رحلات شروق المحمادي: رحلات طويلة والزاوية ٣٦.")
 
 crumbs_tpl = '        <nav class="crumbs" aria-label="مسار التنقل"><a href="index.html">سجل الرحلات</a> / <span>{}</span></nav>\n'
 
@@ -368,11 +368,11 @@ articles = page_head("سجل الرحلات", "رحلات طويلة", "نصوص
         <div class="posts" data-filterable>
 {chr(10).join(article_card(a) for a in ARTICLES)}
         </div>
-        <p class="empty" hidden>لا توجد مقالات مطابقة.</p>
+        <p class="empty" hidden>لا توجد رحلات مطابقة.</p>
       </div>
     </section>
 """
-page("blog/articles.html", "blog-articles", "رحلات طويلة · شروق المحمادي", articles, "مقالات شروق المحمادي.")
+page("blog/articles.html", "blog-articles", "رحلات طويلة · شروق المحمادي", articles, "رحلات شروق المحمادي الطويلة.")
 
 # ---------- Zawiya 36 ----------
 zawiya = page_head("سجل الرحلات", "الزاوية ٣٦", "زاوية صغيرة للخواطر القصيرة والأسئلة والملاحظات العابرة.",
@@ -418,7 +418,7 @@ books = page_head("حقيبة السفر", "الكتب التي ترافقني",
       </div>
     </section>
 """
-page("books.html", "books", "حقيبة السفر · شروق المحمادي", books, "رفوف كتب شروق المحمادي.")
+page("books.html", "books", "حقيبة السفر · شروق المحمادي", books, "حقيبة سفر شروق المحمادي: الكتب التي ترافقها.")
 
 # ---------- Contact ----------
 contact = page_head("برج المراقبة", "يسعدني سماعك", "لأي سؤال أو اقتراح أو تعاون، اكتب لي وسأرد عليك قريباً.") + """
@@ -457,7 +457,7 @@ contact = page_head("برج المراقبة", "يسعدني سماعك", "لأ�
       </div>
     </section>
 """
-page("contact.html", "contact", "برج المراقبة · شروق المحمادي", contact, "تواصل مع شروق المحمادي.")
+page("contact.html", "contact", "برج المراقبة · شروق المحمادي", contact, "برج المراقبة: تواصل مع شروق المحمادي.")
 
 # ---------- Article pages ----------
 def render_block(kind, text):
@@ -479,9 +479,9 @@ for i, a in enumerate(ARTICLES):
     older = ARTICLES[i + 1] if i + 1 < len(ARTICLES) else None
     nav = ""
     if older:
-        nav += f'<a class="pn prev" href="{SLUGS[i + 1]}.html"><span>المقال السابق</span>{older[1]}</a>'
+        nav += f'<a class="pn prev" href="{SLUGS[i + 1]}.html"><span>الرحلة السابقة</span>{older[1]}</a>'
     if newer:
-        nav += f'<a class="pn next" href="{SLUGS[i - 1]}.html"><span>المقال التالي</span>{newer[1]}</a>'
+        nav += f'<a class="pn next" href="{SLUGS[i - 1]}.html"><span>الرحلة التالية</span>{newer[1]}</a>'
     related = [r for r in ARTICLES if r[0] == tag and r is not a][:2]
     body = f"""    <section class="page-hero article-hero">
       <div class="clouds" aria-hidden="true"><span class="cloud c1"></span><span class="cloud c2"></span></div>
@@ -498,7 +498,7 @@ for i, a in enumerate(ARTICLES):
         <p class="excerpt">{excerpt}</p>
 {chr(10).join(render_block(k, t) for k, t in BODIES[slug])}
         <p class="signature">— شروق المحمادي</p>
-        <nav class="post-nav" aria-label="تنقل بين المقالات">{nav}</nav>
+        <nav class="post-nav" aria-label="تنقل بين الرحلات">{nav}</nav>
       </div>
     </article>
 """
@@ -506,7 +506,7 @@ for i, a in enumerate(ARTICLES):
         body += f"""
     <section class="section alt">
       <div class="container">
-        <h2 class="section-title">مقالات أخرى في «{tag}»</h2>
+        <h2 class="section-title">رحلات أخرى في «{tag}»</h2>
         <div class="posts">
 {chr(10).join(article_card(r, "../") for r in related)}
         </div>
