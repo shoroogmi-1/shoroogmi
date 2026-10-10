@@ -150,6 +150,120 @@ if (map) {
   if (document.fonts) document.fonts.ready.then(drawRoute);
 }
 
+// Counters (visitors, reads, likes) are stored in the free Abacus counter service
+const COUNTER_API = "https://abacus.jasoncameron.dev";
+const COUNTER_NS = "shoroogmi";
+const arNum = new Intl.NumberFormat("ar-EG");
+
+async function counter(action, key) {
+  try {
+    const res = await fetch(`${COUNTER_API}/${action}/${COUNTER_NS}/${key}`);
+    if (res.status === 404) return 0;
+    if (!res.ok) return null;
+    return (await res.json()).value ?? 0;
+  } catch (e) {
+    return null;
+  }
+}
+
+function showCount(selector, value) {
+  document.querySelectorAll(selector).forEach((el) => (el.textContent = value === null ? "—" : arNum.format(value)));
+}
+
+function store(key, value) {
+  try {
+    if (value === undefined) return localStorage.getItem(key);
+    localStorage.setItem(key, value);
+    return value;
+  } catch (e) {
+    return null;
+  }
+}
+
+// Visitors: a browser counts once as a visitor, and once more as a returning reader
+// the first time it comes back on a later day.
+async function trackVisit() {
+  const today = new Date().toISOString().slice(0, 10);
+  let canStore = false;
+  try { localStorage.setItem("sm-test", "1"); canStore = true; } catch (e) {}
+  if (!canStore) return {};
+  const first = store("sm-first-visit");
+  if (!first) {
+    store("sm-first-visit", today);
+    return { visitors: await counter("hit", "visitors") };
+  }
+  if (first !== today && !store("sm-returning")) {
+    store("sm-returning", "1");
+    return { returning: await counter("hit", "returning") };
+  }
+  return {};
+}
+
+trackVisit().then(async (fresh) => {
+  if (!document.querySelector("[data-stat]")) return;
+  const visitors = fresh.visitors ?? (await counter("get", "visitors"));
+  const returning = fresh.returning ?? (await counter("get", "returning"));
+  showCount('[data-stat="visitors"]', visitors);
+  showCount('[data-stat="returning"]', returning);
+});
+
+// Article: completed reads and likes
+const post = document.querySelector("#post[data-slug]");
+if (post) {
+  const slug = post.dataset.slug;
+  const readKey = `reads-${slug}`;
+  const likeKey = `likes-${slug}`;
+  const likeBtn = post.querySelector(".like-btn");
+
+  counter("get", readKey).then((v) => showCount(".read-count", v));
+  counter("get", likeKey).then((v) => showCount(".like-count", v));
+
+  // A read counts once per browser, when the reader reaches the end of the article
+  // after spending at least 40% of its reading time (and never less than 15 seconds).
+  const started = Date.now();
+  const minMs = Math.max(15000, Number(post.dataset.minutes) * 60000 * 0.4);
+  let endSeen = false;
+  let timer = null;
+  function tryCountRead() {
+    if (!endSeen || store(`sm-read-${slug}`)) return;
+    const wait = minMs - (Date.now() - started);
+    if (wait > 0) {
+      clearTimeout(timer);
+      timer = setTimeout(tryCountRead, wait);
+      return;
+    }
+    store(`sm-read-${slug}`, "1");
+    counter("hit", readKey).then((v) => v !== null && showCount(".read-count", v));
+  }
+  if ("IntersectionObserver" in window) {
+    const end = post.querySelector(".signature");
+    new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        endSeen = true;
+        tryCountRead();
+      }
+    }).observe(end);
+  }
+
+  // Likes: one per browser, no sign-in needed
+  function markLiked() {
+    likeBtn.classList.add("liked");
+    likeBtn.setAttribute("aria-pressed", "true");
+    likeBtn.querySelector(".heart").textContent = "❤️";
+  }
+  if (store(`sm-liked-${slug}`)) markLiked();
+  likeBtn.addEventListener("click", async () => {
+    likeBtn.classList.remove("pop");
+    void likeBtn.offsetWidth;
+    likeBtn.classList.add("pop");
+    if (store(`sm-liked-${slug}`)) return;
+    markLiked();
+    store(`sm-liked-${slug}`, "1");
+    const v = await counter("hit", likeKey);
+    if (v !== null) showCount(".like-count", v);
+  });
+}
+
 // Contact form: opens the visitor's email app with the message ready to send
 const form = document.querySelector(".contact-form");
 if (form) {

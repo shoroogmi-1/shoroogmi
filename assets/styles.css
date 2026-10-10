@@ -242,6 +242,36 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .pn span { font-weight: 500; font-size: 0.9rem; color: var(--muted); }
 .pn.next { grid-column: 2; text-align: end; }
 
+/* Article stats */
+.post-meta { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.post-meta li {
+  background: color-mix(in srgb, var(--card) 85%, transparent); border: 1px solid var(--border);
+  border-radius: 999px; padding: 3px 14px; font-size: 0.95rem;
+}
+.engage {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 28px;
+  padding: 18px 20px; border-radius: var(--radius); background: var(--bg-alt); border: 1px solid var(--border);
+  font-family: var(--font-sans);
+}
+.like-btn {
+  font-family: inherit; font-size: 1.05rem; font-weight: 700; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 999px;
+  background: var(--card); color: var(--ink); border: 2px solid var(--border); border-bottom-width: 4px;
+  transition: transform 0.15s, background 0.2s, border-color 0.2s;
+}
+.like-btn:hover { border-color: #f28b9a; }
+.like-btn.liked { background: #ffe3e8; border-color: #f28b9a; color: #16324f; }
+.like-btn.pop .heart { animation: pop 0.45s ease; }
+@keyframes pop { 40% { transform: scale(1.6); } }
+.like-btn .heart { display: inline-block; font-size: 1.25rem; }
+.reads-note { margin: 0; font-size: 1rem; }
+.reads-note small { display: block; color: var(--muted); font-size: 0.85rem; }
+.site-stats { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.site-stats li {
+  background: color-mix(in srgb, var(--card) 80%, transparent); border: 2px solid var(--border); border-bottom-width: 4px;
+  border-radius: 14px; padding: 6px 16px; font-size: 0.95rem;
+}
+
 /* Zawiya notes */
 .notes { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 .note-card {
@@ -489,7 +519,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
   .sun { top: 40px; left: 50%; width: 110px; height: 110px; transform: translateX(-50%); }
   .hero-inner { text-align: center; margin-inline: auto; }
   .hero .lead { margin-inline: auto; }
-  .hero-actions { justify-content: center; }
+  .hero-actions, .site-stats { justify-content: center; }
   .verse blockquote { flex-direction: column; align-items: center; font-size: 1.125rem; }
 
   .blog-split, .contact { grid-template-columns: 1fr; }
