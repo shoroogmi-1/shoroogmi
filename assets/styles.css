@@ -486,6 +486,14 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .book-info h3 { font-size: 1.375rem; }
 .author { color: var(--accent-text); font-weight: 700; }
 .book-info p:last-child { color: var(--muted); }
+.mine-list { grid-template-columns: 1fr; max-width: 760px; }
+.book.mine { flex-direction: row; }
+.book.mine .cover { flex: 0 0 220px; height: auto; min-height: 300px; font-size: 1.9rem; }
+.book.mine .book-info { justify-content: center; gap: 8px; padding: 28px; }
+.book.mine h3 { font-size: 1.75rem; }
+.book.mine .subtitle { color: var(--ink); font-size: 1.1rem; line-height: 1.7; }
+.book.mine .author { color: var(--accent-text); }
+.book-link { align-self: flex-start; margin-top: 10px; }
 
 /* Contact */
 .contact { display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px; align-items: start; }
@@ -559,6 +567,8 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
   .blog-split, .contact { grid-template-columns: 1fr; }
   .search { min-width: 0; width: 100%; }
   .post-nav { grid-template-columns: 1fr; }
+  .book.mine { flex-direction: column; }
+  .book.mine .cover { flex-basis: auto; min-height: 240px; }
   .pn.next { grid-column: auto; }
 }
 
