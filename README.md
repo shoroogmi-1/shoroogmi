@@ -81,8 +81,8 @@ python3 build.py
 ## التعليقات
 
 صندوق «تعليقات المسافرين» في آخر كل مقال يحفظ التعليقات في [Supabase](https://supabase.com).
-يبقى مخفيًا حتى تُكتب قيمتا `COMMENTS_URL` و`COMMENTS_KEY` في أعلى قسم التعليقات في `assets/script.js`.
+الربط بقيمتي `COMMENTS_URL` و`COMMENTS_KEY` في أعلى قسم التعليقات في `assets/script.js` (المفتاح العام فقط، وليس مفتاح service_role).
 
 - أوامر إنشاء الجدول في `supabase/comments.sql`.
-- الزائر يكتب أي اسم (ولو مستعارًا) وتعليقه، بدون بريد أو تسجيل.
+- الزائر يكتب اسمه وتعليقه، بدون بريد أو تسجيل.
 - لحذف تعليق: Supabase ← Table Editor ← `comments` ← حددي الصف ← Delete.
