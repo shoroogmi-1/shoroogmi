@@ -210,8 +210,7 @@ home = f"""    <section class="hero">
       </div>
       <div class="container hero-inner">
         <figure class="verse">
-          <blockquote><span>وما التأنيثُ لاسمِ الشمسِ عيبٌ</span><span>ولا التذكيرُ فخرٌ للهلالِ</span></blockquote>
-          <figcaption>المتنبي</figcaption>
+          <blockquote><span>كلُّ شمسٍ لم تكُنْها ظلامُ</span></blockquote>
         </figure>
         <h1>شروق المحمادي</h1>
         <p class="lead">أكتب عن الأفكار التي تُشرق في يومي، وأشارك ما أقرأ وما أتعلّم. هنا تجد سيرتي ومدونتي ورفوف كتبي.</p>
