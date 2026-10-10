@@ -213,7 +213,7 @@ home = f"""    <section class="hero">
           <blockquote><span>كلُّ شمسٍ لم تكُنْها ظلامُ</span></blockquote>
         </figure>
         <h1>شروق المحمادي</h1>
-        <p class="lead">أكتب عن الأفكار التي تُشرق في يومي، وأشارك ما أقرأ وما أتعلّم. هنا تجد سيرتي ومدونتي ورفوف كتبي.</p>
+        <p class="lead">أيها القارئ: لنتفق! المقعد الأيمن مرة لي ومرة لك، وذلك طوال رحلتنا في سياحة العقول والأفكار والتجارب. طيب كابتن؟</p>
         <div class="hero-actions">
           <a href="blog/index.html" class="btn btn-primary">اقرأ المدونة</a>
           <a href="sira.html" class="btn btn-ghost">تعرّف عليّ</a>
