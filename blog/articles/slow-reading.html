@@ -40,12 +40,23 @@
         <nav class="crumbs" aria-label="مسار التنقل"><a href="../index.html">سجل الرحلات</a> / <a href="../articles.html">رحلات طويلة</a></nav>
         <span class="tag">قراءة</span>
         <h1>ما تعلمته من القراءة البطيئة</h1>
-        <p class="meta">٢٨ أغسطس ٢٠٢٦ · دقيقة قراءة</p>
+        <ul class="post-meta">
+          <li>📅 ٢٨ أغسطس ٢٠٢٦</li>
+          <li>⏱️ دقيقة قراءة</li>
+          <li>📖 <b class="read-count">…</b> قراءة مكتملة</li>
+          <li>❤️ <b class="like-count">…</b></li>
+        </ul>
       </div>
     </section>
 
-    <article class="section">
+    <article class="section" id="post" data-slug="slow-reading" data-minutes="0.57">
       <div class="container narrow prose">
+        <div class="listen" hidden>
+          <button class="listen-btn" type="button"><span class="listen-icon" aria-hidden="true">🎧</span> <span class="listen-label">استمع للمقال</span></button>
+          <button class="listen-stop" type="button" hidden>⏹ إيقاف</button>
+          <button class="listen-rate" type="button" hidden>السرعة ١×</button>
+          <span class="listen-status" role="status"></span>
+        </div>
         <p class="excerpt">تجربة شهر كامل مع كتاب واحد، وما الذي يتغير حين نقرأ لنفهم لا لننهي.</p>
         <p>قررت ذات شهر أن أقرأ كتاباً واحداً فقط، ببطء متعمد. لا سباق، ولا هدف عددي، ولا قائمة أشطب منها. فقط أنا والكتاب، وصفحات قليلة كل يوم.</p>
         <h2>ما الذي تغيّر</h2>
@@ -55,6 +66,22 @@
         <p>خصصت دفتراً للهوامش: اقتباس، سؤال، اعتراض، أو ذكرى استدعتها صفحة ما. في نهاية الشهر كان الدفتر أثمن من الكتاب نفسه، لأنه صار حواراً بيني وبين الكاتب.</p>
         <p>لن أقرأ كل الكتب بهذه الطريقة، لكنني تعلّمت أن بعض الكتب تستحق أن نمنحها وقتاً أطول من المعتاد.</p>
         <p class="signature">— شروق المحمادي</p>
+        <div class="engage">
+          <button class="like-btn" type="button" aria-pressed="false"><span class="heart" aria-hidden="true">🤍</span> أعجبتني <b class="like-count">…</b></button>
+          <p class="reads-note">📖 <b class="read-count">…</b> قراءة مكتملة <small>(تُحسب حين يصل القارئ إلى آخر المقال بعد وقت كافٍ للقراءة)</small></p>
+        </div>
+        <section class="comments" hidden aria-labelledby="comments-title">
+          <h2 id="comments-title">💬 تعليقات المسافرين</h2>
+          <form class="comment-form" novalidate>
+            <input name="name" type="text" maxlength="40" placeholder="اسمك" aria-label="الاسم" autocomplete="nickname">
+            <textarea name="body" rows="3" maxlength="1000" placeholder="اكتب تعليقك…" aria-label="التعليق"></textarea>
+            <input name="website" class="hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit" class="btn btn-primary">أرسل التعليق</button>
+            <p class="comment-status" role="status"></p>
+          </form>
+          <ol class="comment-list"></ol>
+          <p class="no-comments" hidden>لا تعليقات بعد… كن أول من يعلّق ✈️</p>
+        </section>
         <nav class="post-nav" aria-label="تنقل بين الرحلات"><a class="pn prev" href="one-page-habit.html"><span>الرحلة السابقة</span>عادة الصفحة الواحدة</a><a class="pn next" href="when-the-idea-rises.html"><span>الرحلة التالية</span>حين تشرق الفكرة</a></nav>
       </div>
     </article>

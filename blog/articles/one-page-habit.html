@@ -40,12 +40,23 @@
         <nav class="crumbs" aria-label="مسار التنقل"><a href="../index.html">سجل الرحلات</a> / <a href="../articles.html">رحلات طويلة</a></nav>
         <span class="tag">كتابة</span>
         <h1>عادة الصفحة الواحدة</h1>
-        <p class="meta">١٠ أغسطس ٢٠٢٦ · دقيقة قراءة</p>
+        <ul class="post-meta">
+          <li>📅 ١٠ أغسطس ٢٠٢٦</li>
+          <li>⏱️ دقيقة قراءة</li>
+          <li>📖 <b class="read-count">…</b> قراءة مكتملة</li>
+          <li>❤️ <b class="like-count">…</b></li>
+        </ul>
       </div>
     </section>
 
-    <article class="section">
+    <article class="section" id="post" data-slug="one-page-habit" data-minutes="0.46">
       <div class="container narrow prose">
+        <div class="listen" hidden>
+          <button class="listen-btn" type="button"><span class="listen-icon" aria-hidden="true">🎧</span> <span class="listen-label">استمع للمقال</span></button>
+          <button class="listen-stop" type="button" hidden>⏹ إيقاف</button>
+          <button class="listen-rate" type="button" hidden>السرعة ١×</button>
+          <span class="listen-status" role="status"></span>
+        </div>
         <p class="excerpt">كيف ساعدتني صفحة واحدة يومياً على تجاوز رهبة البداية والكتابة بانتظام.</p>
         <p>أصعب ما في الكتابة هو أن نبدأ. الصفحة البيضاء تبدو أحياناً كجدار عالٍ. لذلك قررت أن أصغّر الجدار: صفحة واحدة فقط كل يوم، لا أكثر.</p>
         <h2>لماذا صفحة واحدة؟</h2>
@@ -54,6 +65,22 @@
         <h2>قواعدي البسيطة</h2>
         <p>أكتب في الوقت نفسه تقريباً كل يوم. لا أعدّل أثناء الكتابة. ولا أحكم على الصفحة في اليوم نفسه. بعض الصفحات جيدة، وأكثرها عادي، وهذا تماماً ما يجب أن يحدث.</p>
         <p class="signature">— شروق المحمادي</p>
+        <div class="engage">
+          <button class="like-btn" type="button" aria-pressed="false"><span class="heart" aria-hidden="true">🤍</span> أعجبتني <b class="like-count">…</b></button>
+          <p class="reads-note">📖 <b class="read-count">…</b> قراءة مكتملة <small>(تُحسب حين يصل القارئ إلى آخر المقال بعد وقت كافٍ للقراءة)</small></p>
+        </div>
+        <section class="comments" hidden aria-labelledby="comments-title">
+          <h2 id="comments-title">💬 تعليقات المسافرين</h2>
+          <form class="comment-form" novalidate>
+            <input name="name" type="text" maxlength="40" placeholder="اسمك" aria-label="الاسم" autocomplete="nickname">
+            <textarea name="body" rows="3" maxlength="1000" placeholder="اكتب تعليقك…" aria-label="التعليق"></textarea>
+            <input name="website" class="hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit" class="btn btn-primary">أرسل التعليق</button>
+            <p class="comment-status" role="status"></p>
+          </form>
+          <ol class="comment-list"></ol>
+          <p class="no-comments" hidden>لا تعليقات بعد… كن أول من يعلّق ✈️</p>
+        </section>
         <nav class="post-nav" aria-label="تنقل بين الرحلات"><a class="pn prev" href="sky-from-my-window.html"><span>الرحلة السابقة</span>السماء كما أراها من نافذتي</a><a class="pn next" href="slow-reading.html"><span>الرحلة التالية</span>ما تعلمته من القراءة البطيئة</a></nav>
       </div>
     </article>

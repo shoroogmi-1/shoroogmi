@@ -141,6 +141,13 @@ def read_time(blocks):
 
 # أسماء حقول الترويسة بالعربية (والإنجليزية مقبولة أيضاً)
 FIELDS = {"العنوان": "title", "التاريخ": "date", "التصنيف": "tag", "الملخص": "excerpt"}
+OPTIONAL_FIELDS = {"الوقت": "time"}  # وقت النشر بنظام ٢٤ ساعة، مثل 21:30
+
+
+def ar_time(hhmm):
+    h, m = (int(x) for x in hhmm.split(":"))
+    suffix = "ص" if h < 12 else "م"
+    return f"{ar(h % 12 or 12)}:{ar(f'{m:02d}')} {suffix}"
 
 
 def load_article(path):
@@ -152,10 +159,12 @@ def load_article(path):
     for line in head.splitlines():
         key, _, value = line.partition(":")
         key = key.strip()
-        meta[FIELDS.get(key, key)] = value.strip()
+        meta[FIELDS.get(key) or OPTIONAL_FIELDS.get(key, key)] = value.strip()
     for ar_key, key in FIELDS.items():
         if not meta.get(key):
             raise SystemExit(f"{path}: الحقل «{ar_key}» مفقود في الترويسة")
+    if meta.get("time") and not re.fullmatch(r"\d{1,2}:\d{2}", meta["time"]):
+        raise SystemExit(f"{path}: اكتبي الوقت بهذا الشكل 21:30")
     blocks = []
     for para in re.split(r"\n\s*\n", body.strip()):
         para = " ".join(line.strip() for line in para.splitlines())
@@ -175,6 +184,8 @@ _loaded = sorted((load_article(f) for f in glob.glob(os.path.join(ROOT, "content
 ARTICLES = [(m["tag"], m["title"], ar_date(m["date"]), read_time(b), m["excerpt"]) for m, _, b in _loaded]
 SLUGS = [slug for _, slug, _ in _loaded]
 BODIES = {slug: b for _, slug, b in _loaded}
+TIMES = {slug: ar_time(m["time"]) for m, slug, _ in _loaded if m.get("time")}
+MINUTES = {slug: sum(len(t.split()) for _, t in b) / 200 for _, slug, b in _loaded}
 
 
 def slug_of(a):
@@ -218,6 +229,10 @@ home = f"""    <section class="hero">
           <a href="blog/index.html" class="btn btn-primary">سجل الرحلات</a>
           <a href="sira.html" class="btn btn-ghost">جواز السفر</a>
         </div>
+        <ul class="site-stats" aria-label="إحصاءات الموقع">
+          <li>🧳 زوار الموقع: <b data-stat="visitors">…</b></li>
+          <li>🔁 قرّاء دائمون: <b data-stat="returning">…</b></li>
+        </ul>
       </div>
     </section>
 
@@ -526,15 +541,42 @@ for i, a in enumerate(ARTICLES):
         <nav class="crumbs" aria-label="مسار التنقل"><a href="../index.html">سجل الرحلات</a> / <a href="../articles.html">رحلات طويلة</a></nav>
         <span class="tag">{tag}</span>
         <h1>{title}</h1>
-        <p class="meta">{date} · {read} قراءة</p>
+        <ul class="post-meta">
+          <li>📅 {date}</li>{f"{chr(10)}          <li>🕘 {TIMES[slug]}</li>" if slug in TIMES else ""}
+          <li>⏱️ {read} قراءة</li>
+          <li>📖 <b class="read-count">…</b> قراءة مكتملة</li>
+          <li>❤️ <b class="like-count">…</b></li>
+        </ul>
       </div>
     </section>
 
-    <article class="section">
+    <article class="section" id="post" data-slug="{slug}" data-minutes="{MINUTES[slug]:.2f}">
       <div class="container narrow prose">
+        <div class="listen" hidden>
+          <button class="listen-btn" type="button"><span class="listen-icon" aria-hidden="true">🎧</span> <span class="listen-label">استمع للمقال</span></button>
+          <button class="listen-stop" type="button" hidden>⏹ إيقاف</button>
+          <button class="listen-rate" type="button" hidden>السرعة ١×</button>
+          <span class="listen-status" role="status"></span>
+        </div>
         <p class="excerpt">{excerpt}</p>
 {chr(10).join(render_block(k, t) for k, t in BODIES[slug])}
         <p class="signature">— شروق المحمادي</p>
+        <div class="engage">
+          <button class="like-btn" type="button" aria-pressed="false"><span class="heart" aria-hidden="true">🤍</span> أعجبتني <b class="like-count">…</b></button>
+          <p class="reads-note">📖 <b class="read-count">…</b> قراءة مكتملة <small>(تُحسب حين يصل القارئ إلى آخر المقال بعد وقت كافٍ للقراءة)</small></p>
+        </div>
+        <section class="comments" hidden aria-labelledby="comments-title">
+          <h2 id="comments-title">💬 تعليقات المسافرين</h2>
+          <form class="comment-form" novalidate>
+            <input name="name" type="text" maxlength="40" placeholder="اسمك" aria-label="الاسم" autocomplete="nickname">
+            <textarea name="body" rows="3" maxlength="1000" placeholder="اكتب تعليقك…" aria-label="التعليق"></textarea>
+            <input name="website" class="hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button type="submit" class="btn btn-primary">أرسل التعليق</button>
+            <p class="comment-status" role="status"></p>
+          </form>
+          <ol class="comment-list"></ol>
+          <p class="no-comments" hidden>لا تعليقات بعد… كن أول من يعلّق ✈️</p>
+        </section>
         <nav class="post-nav" aria-label="تنقل بين الرحلات">{nav}</nav>
       </div>
     </article>
