@@ -57,7 +57,7 @@ if (grid) {
 
 // Reveal on scroll
 const revealEls = document.querySelectorAll(
-  ".section-title, .tile, .post-card, .note-card, .book, .blog-door, .quote, .timeline li, .bio, .contact"
+  ".section-title, .tile, .post-card, .note-card, .book, .blog-door, .quote, .stop-card, .hud, .contact"
 );
 if ("IntersectionObserver" in window) {
   const observer = new IntersectionObserver(
@@ -73,6 +73,81 @@ if ("IntersectionObserver" in window) {
     el.classList.add("reveal");
     observer.observe(el);
   });
+}
+
+// Passport map: draw the route between stations and fly the plane along it while scrolling
+const map = document.querySelector(".map");
+if (map) {
+  const svg = map.querySelector(".route");
+  const line = map.querySelector(".route-line");
+  const done = map.querySelector(".route-done");
+  const plane = map.querySelector(".plane");
+  const list = map.querySelector(".stations");
+  let length = 0;
+
+  function centerOf(node) {
+    return {
+      x: list.offsetLeft + node.offsetLeft + node.offsetWidth / 2,
+      y: list.offsetTop + node.offsetTop + node.offsetHeight / 2,
+    };
+  }
+
+  function drawRoute() {
+    const pts = [...map.querySelectorAll(".node")].map(centerOf);
+    if (!pts.length) return;
+    const end = map.querySelector(".map-end");
+    pts.unshift({ x: pts[0].x, y: 0 });
+    pts.push({ x: map.clientWidth / 2, y: end.offsetTop });
+    let d = `M ${pts[0].x} ${pts[0].y}`;
+    for (let i = 1; i < pts.length; i++) {
+      const a = pts[i - 1], b = pts[i], k = (b.y - a.y) / 2;
+      d += ` C ${a.x} ${a.y + k}, ${b.x} ${b.y - k}, ${b.x} ${b.y}`;
+    }
+    svg.setAttribute("viewBox", `0 0 ${map.clientWidth} ${map.clientHeight}`);
+    line.setAttribute("d", d);
+    done.setAttribute("d", d);
+    length = done.getTotalLength();
+    done.style.strokeDasharray = length;
+    flyPlane();
+  }
+
+  function flyPlane() {
+    if (!length) return;
+    const rect = map.getBoundingClientRect();
+    const progress = Math.min(1, Math.max(0, (innerHeight * 0.55 - rect.top) / rect.height));
+    const at = progress * length;
+    const p = done.getPointAtLength(at);
+    const q = done.getPointAtLength(Math.min(length, at + 2));
+    const angle = progress >= 1 ? 90 : (Math.atan2(q.y - p.y, q.x - p.x) * 180) / Math.PI;
+    // the ✈️ emoji points up-right (-45°), so turn it to follow the route
+    plane.style.transform =
+      `translate(${p.x - plane.offsetWidth / 2}px, ${p.y - plane.offsetHeight / 2}px) rotate(${angle + 45}deg)`;
+    done.style.strokeDashoffset = length - at;
+  }
+
+  // a small burst of stars when a station is pressed
+  map.querySelectorAll(".node").forEach((node) =>
+    node.addEventListener("click", () => {
+      const c = centerOf(node);
+      ["⭐", "✨", "🎉", "⭐", "✨", "💫", "🎈", "⭐"].forEach((e, i) => {
+        const s = document.createElement("span");
+        s.className = "burst";
+        s.textContent = e;
+        const a = (i / 8) * 2 * Math.PI;
+        s.style.left = `${c.x}px`;
+        s.style.top = `${c.y}px`;
+        s.style.setProperty("--dx", `${Math.cos(a) * 80}px`);
+        s.style.setProperty("--dy", `${Math.sin(a) * 80}px`);
+        s.addEventListener("animationend", () => s.remove());
+        map.appendChild(s);
+      });
+    })
+  );
+
+  drawRoute();
+  addEventListener("resize", drawRoute);
+  addEventListener("scroll", flyPlane, { passive: true });
+  if (document.fonts) document.fonts.ready.then(drawRoute);
 }
 
 // Contact form: opens the visitor's email app with the message ready to send

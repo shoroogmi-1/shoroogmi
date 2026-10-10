@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>جواز السفر · شروق المحمادي</title>
-  <meta name="description" content="جواز سفر شروق المحمادي ومحطات رحلتها.">
+  <meta name="description" content="جواز سفر شروق المحمادي: خريطة رحلتها من ١٩٩٩.">
   <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,34 +38,104 @@
       <div class="clouds" aria-hidden="true"><span class="cloud c1"></span><span class="cloud c2"></span></div>
       <div class="container">
         <p class="eyebrow">جواز السفر</p>
-        <h1>مرحباً، أنا شروق</h1>
-        <p class="lead">أحب الضوء والكلمات والبدايات الجديدة. هنا شيء من قصتي.</p>
+        <h1>خريطة رحلتي</h1>
+        <p class="lead">اربط حزامك يا كابتن؛ الرحلة تبدأ من ١٩٩٩ وتمرّ بإحدى عشرة محطة. اضغط على أي محطة 😉</p>
       </div>
     </section>
 
-    <section class="section">
-      <div class="container bio">
-        <div class="bio-photo" aria-hidden="true"><span>ش</span></div>
-        <div class="bio-text">
-          <h2>نبذة</h2>
-          <p>أنا شروق المحمادي، أؤمن بأن لكل يوم شروقه الخاص. أكتب لأفهم العالم من حولي، وأقرأ لأرى بعيون الآخرين. أهتم بالتأمل والكتابة والقراءة، وأحاول أن أحوّل ما أتعلمه إلى كلمات قد تفيد غيري.</p>
-          <p>هذه النبذة مثال مؤقت؛ استبدليها بقصتك الحقيقية: عملك، اهتماماتك، وما الذي يحركك.</p>
-          <ul class="chips">
-            <li>الكتابة</li><li>القراءة</li><li>التأمل</li><li>التعلّم المستمر</li><li>السماء 🌤️</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt">
+    <section class="section quest">
       <div class="container">
-        <h2 class="section-title">محطات</h2>
-        <ol class="timeline">
-          <li><span class="year-badge">٢٠٢٦</span><div><h3>إطلاق هذا الموقع</h3><p>مساحة شخصية تجمع الكتابة والقراءة في مكان واحد.</p></div></li>
-          <li><span class="year-badge">٢٠٢٤</span><div><h3>بداية الكتابة بانتظام</h3><p>تحدّي الكتابة الأسبوعية الذي تحوّل لاحقاً إلى سجل الرحلات.</p></div></li>
-          <li><span class="year-badge">٢٠٢٢</span><div><h3>التخرج من الجامعة</h3><p>اكتب هنا تخصصك والجامعة التي تخرجت منها.</p></div></li>
-          <li><span class="year-badge">٢٠١٨</span><div><h3>أول كتاب أحببته حقاً</h3><p>اللحظة التي تحولت فيها القراءة من واجب إلى شغف.</p></div></li>
-        </ol>
+        <ul class="hud" aria-label="لوحة اللعبة">
+          <li>🛂 المسافرة: <b>شروق المحمادي</b></li>
+          <li>🗺️ المحطات: <b>١١</b></li>
+          <li>⛽ الوقود: <b>قهوة ☕</b></li>
+        </ul>
+        <div class="map">
+          <div class="map-floor" aria-hidden="true"></div>
+          <div class="decor" aria-hidden="true"><span>🏝️</span><span>☁️</span><span>🎈</span><span>🌴</span><span>☁️</span><span>🐪</span><span>⛰️</span><span>🎈</span></div>
+          <svg class="route" aria-hidden="true"><path class="route-line"/><path class="route-done"/></svg>
+          <span class="plane" aria-hidden="true">✈️</span>
+          <ol class="stations">
+          <li class="station start">
+            <button class="node" type="button" aria-label="المحطة ١"><span class="num">١</span><span class="icon">🐪</span></button>
+            <article class="stop-card">
+              <p><b>١٩٩٩</b> - السعودية</p>
+              <span class="badge" aria-hidden="true">👶</span>
+            </article>
+          </li>
+          <li class="station">
+            <button class="node" type="button" aria-label="المحطة ٢"><span class="num">٢</span><span class="icon">📕</span></button>
+            <article class="stop-card">
+              <p><b>«نكت ونكت»</b> أول كتاب سخيف قرأته وأنا في الابتدائية، وقد بكيت بعدها كثيرًا.</p>
+              <span class="badge" aria-hidden="true">😭😭</span>
+            </article>
+          </li>
+          <li class="station">
+            <button class="node" type="button" aria-label="المحطة ٣"><span class="num">٣</span><span class="icon">🎓</span></button>
+            <article class="stop-card">
+              <p><b>بكالوريوس علاقات عامة، إعلام واتصال</b> - جامعة أم القرى، الكلية الجامعية بالجموم، مكة المكرمة، ٢٠٢٠.</p>
+              <span class="badge" aria-hidden="true">🎉</span>
+            </article>
+          </li>
+          <li class="station fail">
+            <button class="node" type="button" aria-label="المحطة ٤"><span class="num">٤</span><span class="icon">🚗</span></button>
+            <article class="stop-card">
+              <p><b>رسبت في مادة الرياضيات</b> في الابتدائية، وألقيت الشهادة في سلة المهملات، وطلبت من أسرتي ضاحكة متبجحة: <b>سيارة ريموت</b> هدية تلقاء جهودي السنوية.</p>
+              <span class="badge" aria-hidden="true">💀🎮</span>
+            </article>
+          </li>
+          <li class="station">
+            <button class="node" type="button" aria-label="المحطة ٥"><span class="num">٥</span><span class="icon">🧳</span></button>
+            <article class="stop-card">
+              <p><b>ماجستير إعلام سياحي</b>، جامعة الملك خالد، أبها، ٢٠٢٤.</p>
+              <span class="badge" aria-hidden="true">🎓✈️</span>
+            </article>
+          </li>
+          <li class="station">
+            <button class="node" type="button" aria-label="المحطة ٦"><span class="num">٦</span><span class="icon">🧠</span></button>
+            <article class="stop-card">
+              <p>قرأت <b>«سيكولوجية الجماهير»</b> ٣ مرات! وذلك فقط لأفهم معنى الطبقات الاجتماعية والعِرق الذي لم أفهمه إلا في ٢٠٢٦.</p>
+              <span class="badge" aria-hidden="true">🔁🔁🔁</span>
+            </article>
+          </li>
+          <li class="station award">
+            <button class="node" type="button" aria-label="المحطة ٧"><span class="num">٧</span><span class="icon">🏆</span></button>
+            <article class="stop-card">
+              <p><b>جائزة أدب العزلة</b></p>
+              <span class="badge" aria-hidden="true">🥇</span>
+            </article>
+          </li>
+          <li class="station">
+            <button class="node" type="button" aria-label="المحطة ٨"><span class="num">٨</span><span class="icon">🗑️</span></button>
+            <article class="stop-card">
+              <p>رميت أول كتاب في سلة المهملات <b>«قانون الجذب»</b>، ثم توالت الكتب الساقطة بعدها. إنه لإنجاز أن تفرّق بين الجهل والعلم! وتضع كلًّا منهما في مكانه الصحيح.</p>
+              <span class="badge" aria-hidden="true">⚔️🗑️</span>
+            </article>
+          </li>
+          <li class="station">
+            <button class="node" type="button" aria-label="المحطة ٩"><span class="num">٩</span><span class="icon">🔬</span></button>
+            <article class="stop-card">
+              <p>نشرت <b>ستة بحوث علمية</b>.</p>
+              <span class="badge" aria-hidden="true">📜📜📜</span>
+            </article>
+          </li>
+          <li class="station">
+            <button class="node" type="button" aria-label="المحطة ١٠"><span class="num">١٠</span><span class="icon">📘</span></button>
+            <article class="stop-card">
+              <p><b>«Positive Thinking»</b> أول كتاب إنجليزي قرأته.</p>
+              <span class="badge" aria-hidden="true">🇬🇧</span>
+            </article>
+          </li>
+          <li class="station final">
+            <button class="node" type="button" aria-label="المحطة ١١"><span class="num">١١</span><span class="icon">📖</span></button>
+            <article class="stop-card">
+              <p><b>حفظت القرآن</b>: وهذا هو الإنجاز الحقيقي الذي أستشعر طعمه ونكهته بين شهادات لا نكهة لها.</p>
+              <span class="badge" aria-hidden="true">✨</span>
+            </article>
+          </li>
+          </ol>
+          <p class="map-end">🏁 نهاية الخريطة… حتى الآن. التحديث القادم قريبًا 😉</p>
+        </div>
       </div>
     </section>
 
