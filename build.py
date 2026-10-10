@@ -552,6 +552,12 @@ for i, a in enumerate(ARTICLES):
 
     <article class="section" id="post" data-slug="{slug}" data-minutes="{MINUTES[slug]:.2f}">
       <div class="container narrow prose">
+        <div class="listen" hidden>
+          <button class="listen-btn" type="button"><span class="listen-icon" aria-hidden="true">🎧</span> <span class="listen-label">استمع للمقال</span></button>
+          <button class="listen-stop" type="button" hidden>⏹ إيقاف</button>
+          <button class="listen-rate" type="button" hidden>السرعة ١×</button>
+          <span class="listen-status" role="status"></span>
+        </div>
         <p class="excerpt">{excerpt}</p>
 {chr(10).join(render_block(k, t) for k, t in BODIES[slug])}
         <p class="signature">— شروق المحمادي</p>

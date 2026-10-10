@@ -264,6 +264,105 @@ if (post) {
   });
 }
 
+// Listen: read the article aloud with the browser's built-in Arabic voice
+const listen = document.querySelector(".listen");
+if (listen && "speechSynthesis" in window) {
+  const synth = window.speechSynthesis;
+  const playBtn = listen.querySelector(".listen-btn");
+  const label = listen.querySelector(".listen-label");
+  const icon = listen.querySelector(".listen-icon");
+  const stopBtn = listen.querySelector(".listen-stop");
+  const rateBtn = listen.querySelector(".listen-rate");
+  const status = listen.querySelector(".listen-status");
+  const rates = [1, 1.25, 1.5, 0.8];
+  let rateIndex = 0;
+  let queue = [];
+  let index = 0;
+  let state = "idle"; // idle | playing | paused
+
+  synth.cancel(); // stop anything left over from a previous page
+  listen.hidden = false;
+
+  function arabicVoice() {
+    const voices = synth.getVoices();
+    return voices.find((v) => /^ar[-_]SA/i.test(v.lang)) || voices.find((v) => /^ar/i.test(v.lang)) || null;
+  }
+
+  // Short sentences keep long paragraphs from being cut off in some browsers
+  function buildQueue() {
+    const blocks = [document.querySelector(".article-hero h1"),
+      ...listen.parentElement.querySelectorAll(":scope > .excerpt, :scope > p:not(.signature), :scope > h2, :scope > blockquote p")];
+    const items = [];
+    blocks.filter(Boolean).forEach((el) => {
+      el.textContent.split(/(?<=[.!؟?؛])\s+/).map((t) => t.trim()).filter(Boolean)
+        .forEach((text) => items.push({ el, text }));
+    });
+    return items;
+  }
+
+  function clearHighlight() {
+    document.querySelectorAll(".speaking").forEach((el) => el.classList.remove("speaking"));
+  }
+
+  function setUi() {
+    icon.textContent = state === "playing" ? "⏸" : "🎧";
+    label.textContent = state === "playing" ? "إيقاف مؤقت" : state === "paused" ? "متابعة الاستماع" : "استمع للمقال";
+    stopBtn.hidden = rateBtn.hidden = state === "idle";
+    playBtn.classList.toggle("active", state !== "idle");
+  }
+
+  function speakNext() {
+    if (state !== "playing") return;
+    if (index >= queue.length) return stop();
+    const { el, text } = queue[index];
+    clearHighlight();
+    el.classList.add("speaking");
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = "ar-SA";
+    const voice = arabicVoice();
+    if (voice) u.voice = voice;
+    u.rate = rates[rateIndex];
+    u.onend = () => { if (state === "playing") { index++; speakNext(); } };
+    u.onerror = (e) => {
+      if (e.error === "interrupted" || e.error === "canceled") return;
+      stop();
+      status.textContent = "تعذّرت القراءة الصوتية على هذا الجهاز.";
+    };
+    synth.speak(u);
+  }
+
+  function stop() {
+    state = "idle";
+    synth.cancel();
+    clearHighlight();
+    index = 0;
+    setUi();
+  }
+
+  playBtn.addEventListener("click", () => {
+    if (state === "playing") {
+      state = "paused";
+      synth.cancel(); // pause by stopping, then resume from the same sentence
+    } else {
+      if (state === "idle") {
+        queue = buildQueue();
+        index = 0;
+        status.textContent = arabicVoice() || !synth.getVoices().length ? "" : "قد لا يحتوي جهازك على صوت عربي.";
+      }
+      state = "playing";
+      speakNext();
+    }
+    setUi();
+  });
+  stopBtn.addEventListener("click", stop);
+  rateBtn.addEventListener("click", () => {
+    rateIndex = (rateIndex + 1) % rates.length;
+    rateBtn.textContent = `السرعة ${arNum.format(rates[rateIndex])}×`;
+    if (state === "playing") { synth.cancel(); speakNext(); }
+  });
+  addEventListener("pagehide", () => synth.cancel());
+}
+
 // Contact form: opens the visitor's email app with the message ready to send
 const form = document.querySelector(".contact-form");
 if (form) {

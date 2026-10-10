@@ -272,6 +272,18 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
   border-radius: 14px; padding: 6px 16px; font-size: 0.95rem;
 }
 
+/* Listen (text to speech) */
+.listen { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 1.6em; font-family: var(--font-sans); }
+.listen-btn, .listen-stop, .listen-rate {
+  font-family: inherit; font-size: 1rem; font-weight: 700; cursor: pointer; color: var(--ink);
+  display: inline-flex; align-items: center; gap: 8px; padding: 9px 20px; border-radius: 999px;
+  background: var(--card); border: 2px solid var(--border); border-bottom-width: 4px;
+}
+.listen-btn { background: var(--sun); border-color: #d99a12; color: #16324f; }
+.listen-btn.active { background: var(--card); border-color: var(--sun); color: var(--ink); }
+.listen-status { font-size: 0.9rem; color: var(--muted); }
+.prose .speaking { background: color-mix(in srgb, var(--sun) 28%, transparent); border-radius: 8px; box-shadow: 0 0 0 6px color-mix(in srgb, var(--sun) 28%, transparent); }
+
 /* Zawiya notes */
 .notes { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 .note-card {
