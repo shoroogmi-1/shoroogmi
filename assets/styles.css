@@ -1,9 +1,9 @@
 /* ===== Sun & sky palette ===== */
 :root {
-  /* خطوط ثمانية تُستخدم إن كانت مثبّتة على الجهاز، وإلا فأقرب بديل مجاني */
-  --font-sans: "thmanyah Sans", "Thmanyah Sans", "IBM Plex Sans Arabic", system-ui, sans-serif;
-  --font-display: "thmanyah Serif Display", "Thmanyah Serif Display", "Noto Naskh Arabic", serif;
-  --font-serif: "thmanyah Serif Text", "Thmanyah Serif Text", "Noto Naskh Arabic", serif;
+  /* خط واحد للموقع كله: GE SS Two إن كان مثبّتاً على الجهاز، وإلا Readex Pro الأقرب له */
+  --font-sans: "GE SS Two", "Readex Pro", system-ui, sans-serif;
+  --font-display: var(--font-sans);
+  --font-serif: var(--font-sans);
   --bg: #f5fbfe;
   --bg-alt: #e6f5fc;
   --sky-top: #9fd8f2;
@@ -58,6 +58,7 @@ html { scroll-behavior: smooth; }
 body {
   font-family: var(--font-sans);
   font-size: 1.0625rem;
+  font-weight: 400;
   background: var(--bg);
   color: var(--ink);
   line-height: 1.75;
@@ -75,7 +76,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
   border-bottom: 1px solid var(--border);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 70px; }
-.logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 1.9rem; font-weight: 800; line-height: 1.2; }
+.logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; line-height: 1.2; }
 .logo-sun {
   width: 22px; height: 22px; border-radius: 50%;
   background: radial-gradient(circle, var(--sun-soft), var(--sun));
@@ -153,8 +154,8 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 @keyframes spin { to { transform: rotate(360deg); } }
 .hero-inner { position: relative; max-width: 640px; margin-inline-start: max(16px, (100% - 1100px) / 2); }
 .eyebrow { color: var(--accent-text); font-weight: 700; margin-bottom: 6px; }
-.hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.75rem, 7vw, 4.5rem); line-height: 1.25; }
-.lead { color: var(--muted); font-size: 1.25rem; line-height: 1.7; margin: 14px 0 30px; max-width: 580px; }
+.hero h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.75rem, 7vw, 4.5rem); line-height: 1.35; margin-bottom: 18px; }
+.lead { color: var(--muted); font-size: 1.1875rem; font-weight: 300; line-height: 1.7; margin: 14px 0 30px; max-width: 580px; }
 .hero .lead { color: var(--ink); opacity: 0.85; }
 .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
 
@@ -196,7 +197,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 /* Posts */
 .posts { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 .post-card { padding: 24px; display: flex; flex-direction: column; gap: 6px; }
-.post-card h3 { font-size: 1.5rem; line-height: 1.45; }
+.post-card h3 { font-size: 1.375rem; line-height: 1.5; }
 .post-card p { color: var(--muted); }
 .post-card .meta, .note-card .meta { margin-top: auto; font-size: 0.9375rem; color: var(--muted); }
 .tag, .status {
@@ -216,7 +217,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .narrow { width: min(760px, 100% - 32px); }
 .article-hero .tag { display: inline-block; margin-bottom: 8px; }
 .article-hero .meta { color: var(--muted); margin-top: 6px; }
-.prose { font-family: var(--font-serif); font-size: 1.25rem; line-height: 1.9; }
+.prose { font-family: var(--font-serif); font-size: 1.1875rem; font-weight: 300; line-height: 1.95; }
 .prose p { margin-bottom: 1.2em; }
 .prose h2 { font-family: var(--font-sans); font-size: 1.625rem; margin: 1.6em 0 0.5em; }
 .prose .excerpt { font-family: var(--font-sans); font-size: 1.375rem; line-height: 1.7; color: var(--muted); border-bottom: 1px solid var(--border); padding-bottom: 1em; margin-bottom: 1.6em; }
@@ -225,7 +226,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
   border-inline-start: 5px solid var(--sun);
   background: color-mix(in srgb, var(--sun) 16%, var(--card));
 }
-.prose blockquote p { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; line-height: 1.7; }
+.prose blockquote p { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 1.375rem; line-height: 1.75; }
 .signature { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; color: var(--accent-text); margin-top: 2em; }
 .post-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
 .pn {
@@ -246,14 +247,14 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .note-num { color: var(--accent-text); font-weight: 800; font-size: 0.95rem; }
 .note-card h3 { font-size: 1.375rem; }
 .note-card p { color: var(--muted); }
-.note-card p:not(.meta) { color: var(--ink); font-family: var(--font-serif); font-size: 1.125rem; line-height: 1.85; }
+.note-card p:not(.meta) { color: var(--ink); font-family: var(--font-serif); font-size: 1.0625rem; line-height: 1.85; }
 
 /* Quote */
 .quote {
   background: linear-gradient(135deg, color-mix(in srgb, var(--sun) 22%, var(--card)), var(--card));
   border: 1px solid var(--border); border-radius: var(--radius); padding: 36px;
 }
-.quote p { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 3vw, 1.875rem); line-height: 1.6; }
+.quote p { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.3rem, 3vw, 1.625rem); line-height: 1.7; }
 .quote cite { display: block; margin-top: 10px; color: var(--muted); font-style: normal; }
 
 /* CTA */
@@ -270,7 +271,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 }
 .bio-photo span {
   width: 70%; aspect-ratio: 1; border-radius: 50%; background: var(--card); display: grid; place-items: center;
-  font-family: var(--font-display); font-size: 4rem; font-weight: 800; color: var(--accent-text);
+  font-family: var(--font-display); font-size: 4rem; font-weight: 700; color: var(--accent-text);
 }
 .bio-text h2 { font-size: 1.75rem; margin-bottom: 8px; }
 .bio-text p { color: var(--muted); font-size: 1.125rem; line-height: 1.8; margin-bottom: 12px; }
@@ -323,7 +324,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .book { overflow: hidden; display: flex; flex-direction: column; }
 .cover {
   height: 200px; display: grid; place-items: center; padding: 20px; text-align: center;
-  font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; line-height: 1.4; color: #16324f;
+  font-family: var(--font-display); font-size: 1.45rem; font-weight: 700; line-height: 1.5; color: #16324f;
   position: relative;
 }
 .cover::after { content: ""; position: absolute; inset-block: 0; inset-inline-start: 14px; width: 4px; background: rgba(22, 50, 79, 0.15); }
@@ -361,7 +362,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 /* Footer */
 .site-footer { padding: 36px 0; border-top: 1px solid var(--border); background: var(--bg-alt); }
 .footer-inner { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
-.footer-name { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; }
+.footer-name { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; }
 .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; color: var(--muted); }
 .footer-links a:hover { color: var(--accent-text); }
 .copy { color: var(--muted); font-size: 0.9rem; }
@@ -388,9 +389,9 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
     border: none; background: none; padding: 0 20px 0 0; min-width: 0;
   }
   .theme-toggle { align-self: flex-start; margin: 8px 12px 0; }
-  .logo { font-size: 1.5rem; }
-  .post-card h3 { font-size: 1.3125rem; }
-  .prose { font-size: 1.1875rem; }
+  .logo { font-size: 1.3rem; }
+  .post-card h3 { font-size: 1.25rem; }
+  .prose { font-size: 1.125rem; }
 
   .hero { padding: 200px 0 70px; }
   .sun { top: 40px; left: 50%; width: 110px; height: 110px; transform: translateX(-50%); }
