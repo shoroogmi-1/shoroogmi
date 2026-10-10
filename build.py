@@ -429,7 +429,7 @@ CONTACTS = [
     ("📷", "انستغرام", "@shoroogmi", "https://www.instagram.com/shoroogmi"),
     ("💬", "واتساب", "shoroogmi", None, "مفتاح الواتس: 6006"),
     ("📢", "قناة واتساب", "تابع القناة", "https://whatsapp.com/channel/0029Vb6mYujKmCPUKLgBbW23"),
-    ("📰", "سبستاك", "shoroogmi", "https://shoroogmi.substack.com"),
+    ("📰", "سبستاك", "@shoroogmi", "https://substack.com/@shoroogmi"),
     ("📘", "فيسبوك", "صفحتي على فيسبوك", "https://www.facebook.com/share/1HsZnfQwpn/?mibextid=wwXIfr"),
 ]
 
