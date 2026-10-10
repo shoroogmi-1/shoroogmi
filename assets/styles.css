@@ -486,6 +486,22 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .book-info h3 { font-size: 1.375rem; }
 .author { color: var(--accent-text); font-weight: 700; }
 .book-info p:last-child { color: var(--muted); }
+.mine-list { grid-template-columns: 1fr; max-width: 820px; }
+.book.mine:hover { transform: none; }
+.covers { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; padding: 22px 22px 0; }
+.covers img {
+  width: 100%; height: auto; display: block; border-radius: 10px;
+  box-shadow: 0 14px 30px rgba(22, 50, 79, 0.25); transition: transform 0.3s;
+}
+.covers img:hover { transform: translateY(-6px) rotate(-1deg); }
+.book.mine .book-info { gap: 6px; padding: 22px 26px 28px; }
+.book.mine h3 { font-size: 1.75rem; }
+.book.mine .subtitle { color: var(--ink); font-size: 1.1rem; line-height: 1.7; }
+.book.mine .author { color: var(--accent-text); }
+.book-desc { margin-top: 10px; padding-top: 14px; border-top: 1px solid var(--border); }
+.book.mine .book-desc p { color: var(--ink); font-size: 1.1rem; line-height: 1.95; margin-bottom: 0.9em; }
+.book.mine .book-desc p:last-child { margin-bottom: 0; }
+.book-link { align-self: stretch; text-align: center; margin-top: 18px; font-size: 1.2rem; padding: 14px 28px; border-bottom-width: 5px; border-bottom-color: #d99a12; }
 
 /* Contact */
 .contact { display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px; align-items: start; }
@@ -559,6 +575,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
   .blog-split, .contact { grid-template-columns: 1fr; }
   .search { min-width: 0; width: 100%; }
   .post-nav { grid-template-columns: 1fr; }
+  .covers { gap: 10px; padding: 14px 14px 0; }
   .pn.next { grid-column: auto; }
 }
 

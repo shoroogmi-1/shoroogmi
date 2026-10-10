@@ -243,7 +243,7 @@ home = f"""    <section class="hero">
           <a class="tile" href="sira.html"><span class="tile-icon">🛂</span><h3>جواز السفر</h3><p>من أنا، وما الذي أعمل عليه، ومحطات رحلتي.</p></a>
           <a class="tile" href="blog/articles.html"><span class="tile-icon">✍️</span><h3>رحلات طويلة</h3><p>نصوص أطول في التأمل والقراءة والكتابة.</p></a>
           <a class="tile" href="blog/zawiya-36.html"><span class="tile-icon">🌙</span><h3>الزاوية ٣٦</h3><p>خواطر قصيرة وملاحظات سريعة من يومي.</p></a>
-          <a class="tile" href="books.html"><span class="tile-icon">📚</span><h3>أمتعة السفر</h3><p>ما قرأت وما أقرأ الآن وما ينتظر على الرف.</p></a>
+          <a class="tile" href="books.html"><span class="tile-icon">📚</span><h3>أمتعة السفر</h3><p>كتبي.</p></a>
         </div>
       </div>
     </section>
@@ -421,37 +421,47 @@ zawiya = page_head("سجل الرحلات", "الزاوية ٣٦", "زاوية �
 page("blog/zawiya-36.html", "blog-zawiya", "الزاوية ٣٦ · شروق المحمادي", zawiya, "الزاوية ٣٦: خواطر قصيرة من شروق المحمادي.")
 
 # ---------- Books ----------
+# كتبي: (العنوان، العنوان الفرعي، الناشر، السنة، الرابط، صورة الغلاف الأمامي، صورة الغلاف الخلفي، فقرات الوصف)
+# الصور في assets/books/
 BOOKS = [
-    ("الأيام", "طه حسين", "قرأته", "سيرة تُقرأ كأنها رواية، وتعلّم معنى الإصرار.", "b1"),
-    ("ثلاثية غرناطة", "رضوى عاشور", "قرأته", "حكاية مدينة وذاكرة، بلغة دافئة لا تُنسى.", "b2"),
-    ("موسم الهجرة إلى الشمال", "الطيب صالح", "أقرأه الآن", "رحلة بين عالمين، وأسئلة عن الهوية.", "b3"),
-    ("رجال في الشمس", "غسان كنفاني", "قرأته", "قصيرة ومؤلمة، وتبقى معك طويلاً.", "b4"),
-    ("مئة عام من العزلة", "غابرييل غارسيا ماركيز", "في القائمة", "ملحمة عائلة وقرية بين الواقع والسحر.", "b5"),
-    ("الخيميائي", "باولو كويلو", "في القائمة", "عن الأحلام والطريق إليها.", "b6"),
+    ("يا بشرى هذا غلام", "تأملات في حسن الظن بالله واليقين والبشرى", "جمعية أدباء الأحساء", "٢٠٢٦",
+     "https://elitepublishsa.com/products/%D9%8A%D8%A7%D8%A8%D8%B4%D8%B1%D9%89-%D9%87%D8%B0%D8%A7-%D8%BA%D9%84%D8%A7%D9%85-%D8%B4%D8%B1%D9%88%D9%82-%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D8%AF%D9%8A",
+     "ya-bushra-front.jpg", "ya-bushra-back.jpg", [
+         "لا أعرف كتابًا كتبته من قلبي مخلوطًا بدمي مثل (يا بشرى هذا غلام: تأملات في حسن الظن بالله واليقين والبشرى)، وأعتقد أن هذه المعاني الثلاثة ركائز إيمانية هامة لتعميق علاقتنا مع ربٍّ رحيمٍ ودود، وليست مزاجًا متفائلًا طارئًا.",
+         "نشرت الكتاب إلكترونيًا، وقد لاقى استحسانًا وانتشارًا لم أتوقعه، ورأيت أثر كلماته بفضل الله فيمن حولي، وقد طبعناه الآن في نسخة ورقية جديدة، مُرتّبةٍ مفهرسةٍ مُدقّقةٍ، وأضفنا إليه مقالاتٍ جديدة، وجدتها مُرضية تليق بقارئي الكريم.",
+     ]),
 ]
-statuses = ["قرأته", "أقرأه الآن", "في القائمة"]
-books = page_head("أمتعة السفر", "الكتب التي ترافقني", "ما قرأت، وما أقرأ الآن، وما ينتظر دوره على الرف.") + f"""
+
+
+def book_card(t, sub, pub, year, url, front, back, desc):
+    link = (f'\n              <a class="btn btn-primary book-link" href="{url}" target="_blank" rel="noopener">🛒 زيارة المتجر</a>'
+            if url else "")
+    return f"""          <article class="book mine">
+            <div class="covers">
+              <a href="assets/books/{front}" target="_blank" rel="noopener"><img src="assets/books/{front}" alt="الغلاف الأمامي لكتاب {t}" width="900" height="1253" loading="lazy"></a>
+              <a href="assets/books/{back}" target="_blank" rel="noopener"><img src="assets/books/{back}" alt="الغلاف الخلفي لكتاب {t}" width="900" height="1253" loading="lazy"></a>
+            </div>
+            <div class="book-info">
+              <h3>{t}</h3>
+              <p class="subtitle">{sub}</p>
+              <p class="author">{pub} · {year}</p>
+              <div class="book-desc">
+{chr(10).join(f"                <p>{d}</p>" for d in desc)}
+              </div>{link}
+            </div>
+          </article>"""
+
+
+books = page_head("أمتعة السفر", "كتبي", "") + f"""
     <section class="section">
       <div class="container">
-        <div class="filters">
-          <button class="filter active" data-filter="all">الكل</button>
-{chr(10).join(f'          <button class="filter" data-filter="{s}">{s}</button>' for s in statuses)}
-        </div>
-        <div class="books" data-filterable>
-{chr(10).join(f'''          <article class="book" data-tag="{s}">
-            <div class="cover {c}"><span>{t}</span></div>
-            <div class="book-info">
-              <span class="status">{s}</span>
-              <h3>{t}</h3>
-              <p class="author">{a}</p>
-              <p>{n}</p>
-            </div>
-          </article>''' for t, a, s, n, c in BOOKS)}
+        <div class="books mine-list">
+{chr(10).join(book_card(*bk) for bk in BOOKS)}
         </div>
       </div>
     </section>
 """
-page("books.html", "books", "أمتعة السفر · شروق المحمادي", books, "أمتعة سفر شروق المحمادي: الكتب التي ترافقها.")
+page("books.html", "books", "أمتعة السفر · شروق المحمادي", books, "كتب شروق المحمادي.")
 
 # ---------- Contact ----------
 EMAIL = "shoroogmi1@gmail.com"
