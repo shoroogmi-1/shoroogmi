@@ -363,6 +363,84 @@ if (listen && "speechSynthesis" in window) {
   addEventListener("pagehide", () => synth.cancel());
 }
 
+// Comments: stored in Supabase. The section stays hidden until both values are filled in.
+const COMMENTS_URL = ""; // e.g. https://xxxx.supabase.co
+const COMMENTS_KEY = ""; // the project's public "anon" key
+const commentsBox = document.querySelector(".comments");
+if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
+  const slug = post.dataset.slug;
+  const api = `${COMMENTS_URL}/rest/v1/comments`;
+  const headers = { apikey: COMMENTS_KEY, Authorization: `Bearer ${COMMENTS_KEY}`, "Content-Type": "application/json" };
+  const list = commentsBox.querySelector(".comment-list");
+  const empty = commentsBox.querySelector(".no-comments");
+  const cForm = commentsBox.querySelector(".comment-form");
+  const cStatus = commentsBox.querySelector(".comment-status");
+  const when = new Intl.DateTimeFormat("ar-EG", { day: "numeric", month: "long", year: "numeric", hour: "numeric", minute: "2-digit" });
+
+  function addComment(c) {
+    const li = document.createElement("li");
+    const head = document.createElement("p");
+    const name = document.createElement("b");
+    name.textContent = c.name;
+    const time = document.createElement("time");
+    time.dateTime = c.created_at;
+    time.textContent = when.format(new Date(c.created_at));
+    head.append(name, " · ", time);
+    const body = document.createElement("p");
+    body.textContent = c.body;
+    li.append(head, body);
+    list.appendChild(li);
+    empty.hidden = true;
+  }
+
+  commentsBox.hidden = false;
+  fetch(`${api}?slug=eq.${encodeURIComponent(slug)}&select=name,body,created_at&order=created_at.asc`, { headers })
+    .then((r) => (r.ok ? r.json() : Promise.reject()))
+    .then((rows) => { rows.forEach(addComment); empty.hidden = rows.length > 0; })
+    .catch(() => { empty.hidden = false; empty.textContent = "تعذّر تحميل التعليقات الآن."; });
+
+  cForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(cForm);
+    const name = data.get("name").trim();
+    const body = data.get("body").trim();
+    cStatus.className = "comment-status";
+    if (data.get("website")) return; // a bot filled the hidden field
+    if (!name || !body) {
+      cStatus.textContent = "اكتب اسمك وتعليقك.";
+      cStatus.classList.add("error");
+      return;
+    }
+    const last = Number(store("sm-last-comment") || 0);
+    if (Date.now() - last < 30000) {
+      cStatus.textContent = "تمهّل قليلًا قبل التعليق مرة أخرى ☕";
+      cStatus.classList.add("error");
+      return;
+    }
+    const button = cForm.querySelector("button");
+    button.disabled = true;
+    try {
+      const res = await fetch(api, {
+        method: "POST",
+        headers: { ...headers, Prefer: "return=representation" },
+        body: JSON.stringify({ slug, name, body }),
+      });
+      if (!res.ok) throw new Error();
+      const [saved] = await res.json();
+      addComment(saved || { name, body, created_at: new Date().toISOString() });
+      store("sm-last-comment", String(Date.now()));
+      cForm.reset();
+      cStatus.textContent = "وصل تعليقك إلى البرج ✈️";
+      cStatus.classList.add("success");
+    } catch (err) {
+      cStatus.textContent = "لم يُرسل التعليق، حاول مرة أخرى.";
+      cStatus.classList.add("error");
+    } finally {
+      button.disabled = false;
+    }
+  });
+}
+
 // Contact form: opens the visitor's email app with the message ready to send
 const form = document.querySelector(".contact-form");
 if (form) {

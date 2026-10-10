@@ -284,6 +284,28 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .listen-status { font-size: 0.9rem; color: var(--muted); }
 .prose .speaking { background: color-mix(in srgb, var(--sun) 28%, transparent); border-radius: 8px; box-shadow: 0 0 0 6px color-mix(in srgb, var(--sun) 28%, transparent); }
 
+/* Comments */
+.comments { margin-top: 40px; font-family: var(--font-sans); font-size: 1rem; line-height: 1.8; }
+.comments h2 { margin: 0 0 14px; }
+.comment-form { display: grid; gap: 10px; padding: 18px; border-radius: var(--radius); background: var(--bg-alt); border: 1px solid var(--border); }
+.comment-form input, .comment-form textarea {
+  font-family: inherit; font-size: 1rem; padding: 10px 14px; border-radius: 12px;
+  border: 1px solid var(--border); background: var(--card); color: var(--ink); resize: vertical;
+}
+.comment-form input:focus-visible, .comment-form textarea:focus-visible { outline: 2px solid var(--sun); outline-offset: 1px; }
+.comment-form .btn { justify-self: start; }
+.comment-form .hp { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.comments .comment-status { min-height: 1.6em; margin: 0; font-weight: 500; }
+.comment-status.error { color: #d64545; }
+.comment-status.success { color: #2f9a63; }
+.comment-list { list-style: none; display: grid; gap: 12px; margin-top: 18px; }
+.comment-list li { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 12px 16px; }
+.comments .comment-list li p { margin: 0; }
+.comment-list li p:first-child { font-size: 0.9rem; color: var(--muted); }
+.comment-list li b { color: var(--accent-text); }
+.comment-list li p + p { white-space: pre-line; overflow-wrap: anywhere; }
+.comments .no-comments { color: var(--muted); margin: 14px 0 0; }
+
 /* Zawiya notes */
 .notes { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 .note-card {
