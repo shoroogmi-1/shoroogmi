@@ -75,7 +75,7 @@ if ("IntersectionObserver" in window) {
   });
 }
 
-// Contact form (client-side validation only)
+// Contact form: opens the visitor's email app with the message ready to send
 const form = document.querySelector(".contact-form");
 if (form) {
   const statusEl = form.querySelector(".form-status");
@@ -83,23 +83,21 @@ if (form) {
     e.preventDefault();
     const data = new FormData(form);
     const name = data.get("name").trim();
-    const email = data.get("email").trim();
+    const topic = data.get("topic");
     const message = data.get("message").trim();
 
     statusEl.className = "form-status";
-    if (!name || !email || !message) {
-      statusEl.textContent = "يرجى تعبئة جميع الحقول.";
+    if (!name || !message) {
+      statusEl.textContent = "يرجى كتابة اسمك ورسالتك.";
       statusEl.classList.add("error");
       return;
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      statusEl.textContent = "يرجى إدخال بريد إلكتروني صحيح.";
-      statusEl.classList.add("error");
-      return;
-    }
-    statusEl.textContent = `شكراً ${name}! وصلت رسالتك وسأرد عليك قريباً.`;
+    const subject = `${topic} من ${name}`;
+    const body = `${message}\n\n— ${name}`;
+    window.location.href =
+      `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    statusEl.textContent = "فتحنا لك تطبيق البريد والرسالة جاهزة، اضغط «إرسال» هناك.";
     statusEl.classList.add("success");
-    form.reset();
   });
 }
 

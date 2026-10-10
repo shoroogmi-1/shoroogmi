@@ -216,7 +216,7 @@ home = f"""    <section class="hero">
         <p class="lead">أيها القارئ: لنتفق! المقعد الأيمن مرة لي ومرة لك، وذلك طوال رحلتنا في سياحة العقول والأفكار والتجارب. طيب كابتن؟</p>
         <div class="hero-actions">
           <a href="blog/index.html" class="btn btn-primary">سجل الرحلات</a>
-          <a href="sira.html" class="btn btn-ghost">تعرّف عليّ</a>
+          <a href="sira.html" class="btn btn-ghost">جواز السفر</a>
         </div>
       </div>
     </section>
@@ -262,7 +262,7 @@ home = f"""    <section class="hero">
       <div class="container cta-inner">
         <h2>لديك فكرة أو سؤال؟</h2>
         <p>يسعدني أن أسمع منك دائماً.</p>
-        <a href="contact.html" class="btn btn-primary">تواصل معنا</a>
+        <a href="contact.html" class="btn btn-primary">برج المراقبة</a>
       </div>
     </section>
 """
@@ -272,7 +272,7 @@ page("index.html", "home", "شروق المحمادي", home,
 # ---------- Sira ----------
 TIMELINE = [
     ("٢٠٢٦", "إطلاق هذا الموقع", "مساحة شخصية تجمع الكتابة والقراءة في مكان واحد."),
-    ("٢٠٢٤", "بداية الكتابة بانتظام", "تحدّي الكتابة الأسبوعية الذي تحوّل لاحقاً إلى المدونة."),
+    ("٢٠٢٤", "بداية الكتابة بانتظام", "تحدّي الكتابة الأسبوعية الذي تحوّل لاحقاً إلى سجل الرحلات."),
     ("٢٠٢٢", "التخرج من الجامعة", "اكتب هنا تخصصك والجامعة التي تخرجت منها."),
     ("٢٠١٨", "أول كتاب أحببته حقاً", "اللحظة التي تحولت فيها القراءة من واجب إلى شغف."),
 ]
@@ -301,10 +301,10 @@ sira = page_head("جواز السفر", "مرحباً، أنا شروق",
       </div>
     </section>
 """
-page("sira.html", "sira", "جواز السفر · شروق المحمادي", sira, "سيرة شروق المحمادي ومحطات رحلتها.")
+page("sira.html", "sira", "جواز السفر · شروق المحمادي", sira, "جواز سفر شروق المحمادي ومحطات رحلتها.")
 
 # ---------- Blog hub ----------
-blog = page_head("سجل الرحلات", "سجل الرحلات", "مساحتان للكتابة: مقالات مطوّلة، وزاوية للخواطر القصيرة.") + f"""
+blog = page_head("سجل الرحلات", "سجل الرحلات", "مساحتان للكتابة: رحلات طويلة، وزاوية للخواطر القصيرة.") + f"""
     <section class="section">
       <div class="container">
         <div class="blog-split">
@@ -312,7 +312,7 @@ blog = page_head("سجل الرحلات", "سجل الرحلات", "مساحتا
             <span class="door-icon">✍️</span>
             <h2>رحلات طويلة</h2>
             <p>نصوص أطول أتعمّق فيها في فكرة أو تجربة أو كتاب.</p>
-            <span class="count">{ar(len(ARTICLES))} مقالات</span>
+            <span class="count">{ar(len(ARTICLES))} رحلات</span>
           </a>
           <a class="blog-door night" href="zawiya-36.html">
             <span class="door-icon">🌙</span>
@@ -348,7 +348,7 @@ blog = page_head("سجل الرحلات", "سجل الرحلات", "مساحتا
       </div>
     </section>
 """
-page("blog/index.html", "blog", "سجل الرحلات · شروق المحمادي", blog, "مدونة شروق المحمادي: المقالات والزاوية ٣٦.")
+page("blog/index.html", "blog", "سجل الرحلات · شروق المحمادي", blog, "سجل رحلات شروق المحمادي: رحلات طويلة والزاوية ٣٦.")
 
 crumbs_tpl = '        <nav class="crumbs" aria-label="مسار التنقل"><a href="index.html">سجل الرحلات</a> / <span>{}</span></nav>\n'
 
@@ -368,11 +368,11 @@ articles = page_head("سجل الرحلات", "رحلات طويلة", "نصوص
         <div class="posts" data-filterable>
 {chr(10).join(article_card(a) for a in ARTICLES)}
         </div>
-        <p class="empty" hidden>لا توجد مقالات مطابقة.</p>
+        <p class="empty" hidden>لا توجد رحلات مطابقة.</p>
       </div>
     </section>
 """
-page("blog/articles.html", "blog-articles", "رحلات طويلة · شروق المحمادي", articles, "مقالات شروق المحمادي.")
+page("blog/articles.html", "blog-articles", "رحلات طويلة · شروق المحمادي", articles, "رحلات شروق المحمادي الطويلة.")
 
 # ---------- Zawiya 36 ----------
 zawiya = page_head("سجل الرحلات", "الزاوية ٣٦", "زاوية صغيرة للخواطر القصيرة والأسئلة والملاحظات العابرة.",
@@ -418,46 +418,65 @@ books = page_head("حقيبة السفر", "الكتب التي ترافقني",
       </div>
     </section>
 """
-page("books.html", "books", "حقيبة السفر · شروق المحمادي", books, "رفوف كتب شروق المحمادي.")
+page("books.html", "books", "حقيبة السفر · شروق المحمادي", books, "حقيبة سفر شروق المحمادي: الكتب التي ترافقها.")
 
 # ---------- Contact ----------
-contact = page_head("برج المراقبة", "يسعدني سماعك", "لأي سؤال أو اقتراح أو تعاون، اكتب لي وسأرد عليك قريباً.") + """
+EMAIL = "shoroogmi1@gmail.com"
+CONTACTS = [
+    # (أيقونة، المنصة، النص الظاهر، الرابط أو None، ملاحظة اختيارية)
+    ("✉️", "البريد", EMAIL, f"mailto:{EMAIL}"),
+    ("𝕏", "إكس", "@shoroogmi", "https://x.com/shoroogmi"),
+    ("📷", "انستغرام", "@shoroogmi", "https://www.instagram.com/shoroogmi"),
+    ("💬", "واتساب", "shoroogmi", None, "مفتاح الواتس: 6006"),
+    ("📢", "قناة واتساب", "تابع القناة", "https://whatsapp.com/channel/0029Vb6mYujKmCPUKLgBbW23"),
+    ("📰", "سبستاك", "shoroogmi", "https://shoroogmi.substack.com"),
+    ("📘", "فيسبوك", "صفحتي على فيسبوك", "https://www.facebook.com/share/1HsZnfQwpn/?mibextid=wwXIfr"),
+]
+
+
+def contact_item(icon, label, text, url, note=""):
+    if url:
+        ext = "" if url.startswith("mailto:") else ' target="_blank" rel="noopener"'
+        value = f'<a href="{url}"{ext} dir="ltr">{text}</a>' if text.isascii() else f'<a href="{url}"{ext}>{text}</a>'
+    else:
+        value = f'<span class="handle">{text}</span>'
+    if note:
+        value += f'<small>{note}</small>'
+    return f"""            <li><span class="ci" aria-hidden="true">{icon}</span><div><strong>{label}</strong>{value}</div></li>"""
+
+
+contact = page_head("برج المراقبة", "تعيسًا أو سعيدًا كلِّم برج المراقبة",
+                    "أي سؤال، وأي اقتراح، وحتى تعاون؛ موجودة وبرد لك.") + f"""
     <section class="section">
       <div class="container contact">
-        <form class="contact-form" novalidate>
+        <form class="contact-form" data-email="{EMAIL}" novalidate>
           <label>الاسم
             <input type="text" name="name" required autocomplete="name">
           </label>
-          <label>البريد الإلكتروني
-            <input type="email" name="email" required autocomplete="email">
-          </label>
           <label>الموضوع
             <select name="topic">
-              <option>سؤال عام</option>
-              <option>تعليق على مقال</option>
-              <option>اقتراح كتاب</option>
+              <option>سؤال</option>
+              <option>اقتراح</option>
               <option>تعاون</option>
+              <option>تعليق على رحلة</option>
             </select>
           </label>
           <label>رسالتك
             <textarea name="message" rows="6" required></textarea>
           </label>
-          <button type="submit" class="btn btn-primary">إرسال</button>
+          <button type="submit" class="btn btn-primary">أرسل إلى البرج</button>
           <p class="form-status" role="status"></p>
         </form>
         <aside class="contact-side">
-          <h2>طرق أخرى</h2>
+          <h2>ترددات البرج</h2>
           <ul>
-            <li><span>✉️</span><a href="mailto:hello@example.com">hello@example.com</a></li>
-            <li><span>𝕏</span><a href="#">@username</a></li>
-            <li><span>📷</span><a href="#">انستقرام</a></li>
+{chr(10).join(contact_item(*c) for c in CONTACTS)}
           </ul>
-          <p class="hint">استبدلي هذه الروابط بحساباتك الحقيقية.</p>
         </aside>
       </div>
     </section>
 """
-page("contact.html", "contact", "برج المراقبة · شروق المحمادي", contact, "تواصل مع شروق المحمادي.")
+page("contact.html", "contact", "برج المراقبة · شروق المحمادي", contact, "برج المراقبة: تواصل مع شروق المحمادي.")
 
 # ---------- Article pages ----------
 def render_block(kind, text):
@@ -479,9 +498,9 @@ for i, a in enumerate(ARTICLES):
     older = ARTICLES[i + 1] if i + 1 < len(ARTICLES) else None
     nav = ""
     if older:
-        nav += f'<a class="pn prev" href="{SLUGS[i + 1]}.html"><span>المقال السابق</span>{older[1]}</a>'
+        nav += f'<a class="pn prev" href="{SLUGS[i + 1]}.html"><span>الرحلة السابقة</span>{older[1]}</a>'
     if newer:
-        nav += f'<a class="pn next" href="{SLUGS[i - 1]}.html"><span>المقال التالي</span>{newer[1]}</a>'
+        nav += f'<a class="pn next" href="{SLUGS[i - 1]}.html"><span>الرحلة التالية</span>{newer[1]}</a>'
     related = [r for r in ARTICLES if r[0] == tag and r is not a][:2]
     body = f"""    <section class="page-hero article-hero">
       <div class="clouds" aria-hidden="true"><span class="cloud c1"></span><span class="cloud c2"></span></div>
@@ -498,7 +517,7 @@ for i, a in enumerate(ARTICLES):
         <p class="excerpt">{excerpt}</p>
 {chr(10).join(render_block(k, t) for k, t in BODIES[slug])}
         <p class="signature">— شروق المحمادي</p>
-        <nav class="post-nav" aria-label="تنقل بين المقالات">{nav}</nav>
+        <nav class="post-nav" aria-label="تنقل بين الرحلات">{nav}</nav>
       </div>
     </article>
 """
@@ -506,7 +525,7 @@ for i, a in enumerate(ARTICLES):
         body += f"""
     <section class="section alt">
       <div class="container">
-        <h2 class="section-title">مقالات أخرى في «{tag}»</h2>
+        <h2 class="section-title">رحلات أخرى في «{tag}»</h2>
         <div class="posts">
 {chr(10).join(article_card(r, "../") for r in related)}
         </div>
