@@ -340,20 +340,19 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
   display: flex; flex-direction: column; gap: 4px;
 }
 .station:nth-child(even) .stop-card { rotate: 1deg; }
-.stop-card .level { font-size: 0.85rem; font-weight: 700; color: var(--accent-text); }
-.stop-card h3 { font-size: 1.35rem; }
-.stop-card p { color: var(--muted); line-height: 1.8; }
+.stop-card p { font-size: 1.125rem; line-height: 1.85; }
+.stop-card b { font-weight: 700; color: var(--accent-text); }
 .stop-card .badge {
-  align-self: flex-start; margin-top: 6px; font-size: 0.85rem; font-weight: 700;
-  padding: 3px 12px; border-radius: 999px; background: var(--bg-alt); border: 1px solid var(--border);
+  align-self: flex-start; margin-top: 6px; font-size: 1.15rem;
+  padding: 2px 12px; border-radius: 999px; background: var(--bg-alt); border: 1px solid var(--border);
 }
 
 /* special stations */
 .station.start .node { background: radial-gradient(circle at 35% 30%, #fff 0 8%, #c9ecfb 30%, #7fcbed 75%); box-shadow: 0 10px 0 #4fa6cf, 0 20px 22px rgba(22, 50, 79, 0.28); }
 .station.fail .node { background: radial-gradient(circle at 35% 30%, #fff 0 8%, #ffc2b8 30%, #f2735e 75%); box-shadow: 0 10px 0 #c24a37, 0 20px 22px rgba(22, 50, 79, 0.28); }
 .station.fail .stop-card { border-color: #f2a294; }
-.station.fail .badge { background: #2b1b1b; color: #ff8a75; border-color: #2b1b1b; font-family: ui-monospace, monospace; letter-spacing: 0.5px; }
-.station.award .badge, .station.final .badge { background: var(--sun); color: #16324f; border-color: var(--sun); }
+.station.fail .badge { background: #2b1b1b; border-color: #2b1b1b; }
+.station.award .badge, .station.final .badge { background: var(--sun); border-color: var(--sun); }
 .station.final .node {
   width: 120px; height: 120px;
   box-shadow: 0 10px 0 #d99a12, 0 0 0 8px color-mix(in srgb, var(--sun) 35%, transparent), 0 0 50px 10px color-mix(in srgb, var(--sun) 60%, transparent);
@@ -363,7 +362,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
   border-color: var(--sun);
   background: linear-gradient(160deg, color-mix(in srgb, var(--sun) 22%, var(--card)), var(--card) 70%);
 }
-.station.final h3 { font-size: 1.6rem; }
+.station.final p { font-size: 1.25rem; }
 
 .map-end { position: relative; z-index: 2; text-align: center; margin-top: 40px; font-weight: 700; }
 
@@ -511,7 +510,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
   .node .num { min-width: 28px; height: 28px; font-size: 0.85rem; }
   .station.final .node { width: 84px; height: 84px; }
   .station.final .node .icon { font-size: 2.4rem; }
-  .stop-card h3 { font-size: 1.2rem; }
+  .stop-card p { font-size: 1.0625rem; }
   .plane { font-size: 2rem; }
 }
 
