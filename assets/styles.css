@@ -76,14 +76,14 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
   border-bottom: 1px solid var(--border);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 70px; }
-.logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; line-height: 1.2; }
+.logo { white-space: nowrap; display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; line-height: 1.2; }
 .logo-sun {
   width: 22px; height: 22px; border-radius: 50%;
   background: radial-gradient(circle, var(--sun-soft), var(--sun));
   box-shadow: 0 0 0 4px color-mix(in srgb, var(--sun) 30%, transparent);
 }
 .nav-links { display: flex; align-items: center; gap: 6px; font-size: 1.125rem; font-weight: 500; }
-.nav-links a { padding: 8px 16px; border-radius: 10px; transition: background 0.2s; }
+.nav-links a { padding: 8px 16px; border-radius: 10px; white-space: nowrap; transition: background 0.2s; }
 .nav-links a:hover { background: var(--bg-alt); }
 .nav-links a.active { background: var(--bg-alt); font-weight: 700; }
 .caret { font-size: 0.75em; }
@@ -376,7 +376,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .reveal.visible { opacity: 1; transform: none; }
 
 /* ===== Mobile ===== */
-@media (max-width: 860px) {
+@media (max-width: 1080px) {
   .menu-toggle { display: block; }
   .nav-links {
     position: absolute; top: 70px; inset-inline: 0; flex-direction: column; align-items: stretch; gap: 4px;
