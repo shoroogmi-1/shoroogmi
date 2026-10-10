@@ -421,38 +421,57 @@ books = page_head("حقيبة السفر", "الكتب التي ترافقني",
 page("books.html", "books", "حقيبة السفر · شروق المحمادي", books, "حقيبة سفر شروق المحمادي: الكتب التي ترافقها.")
 
 # ---------- Contact ----------
-contact = page_head("برج المراقبة", "يسعدني سماعك", "لأي سؤال أو اقتراح أو تعاون، اكتب لي وسأرد عليك قريباً.") + """
+EMAIL = "shoroogmi1@gmail.com"
+CONTACTS = [
+    # (أيقونة، المنصة، النص الظاهر، الرابط أو None، ملاحظة اختيارية)
+    ("✉️", "البريد", EMAIL, f"mailto:{EMAIL}"),
+    ("𝕏", "إكس", "@shoroogmi", "https://x.com/shoroogmi"),
+    ("📷", "انستغرام", "@shoroogmi", "https://www.instagram.com/shoroogmi"),
+    ("💬", "واتساب", "shoroogmi", None, "مفتاح الواتس: 6006"),
+    ("📢", "قناة واتساب", "تابع القناة", "https://whatsapp.com/channel/0029Vb6mYujKmCPUKLgBbW23"),
+    ("📰", "سبستاك", "shoroogmi", "https://shoroogmi.substack.com"),
+    ("📘", "فيسبوك", "صفحتي على فيسبوك", "https://www.facebook.com/share/1HsZnfQwpn/?mibextid=wwXIfr"),
+]
+
+
+def contact_item(icon, label, text, url, note=""):
+    if url:
+        ext = "" if url.startswith("mailto:") else ' target="_blank" rel="noopener"'
+        value = f'<a href="{url}"{ext} dir="ltr">{text}</a>' if text.isascii() else f'<a href="{url}"{ext}>{text}</a>'
+    else:
+        value = f'<span class="handle">{text}</span>'
+    if note:
+        value += f'<small>{note}</small>'
+    return f"""            <li><span class="ci" aria-hidden="true">{icon}</span><div><strong>{label}</strong>{value}</div></li>"""
+
+
+contact = page_head("برج المراقبة", "تعيسًا أو سعيدًا كلِّم برج المراقبة",
+                    "أي سؤال، وأي اقتراح، وحتى تعاون؛ موجودة وبرد لك.") + f"""
     <section class="section">
       <div class="container contact">
-        <form class="contact-form" novalidate>
+        <form class="contact-form" data-email="{EMAIL}" novalidate>
           <label>الاسم
             <input type="text" name="name" required autocomplete="name">
           </label>
-          <label>البريد الإلكتروني
-            <input type="email" name="email" required autocomplete="email">
-          </label>
           <label>الموضوع
             <select name="topic">
-              <option>سؤال عام</option>
-              <option>تعليق على مقال</option>
-              <option>اقتراح كتاب</option>
+              <option>سؤال</option>
+              <option>اقتراح</option>
               <option>تعاون</option>
+              <option>تعليق على رحلة</option>
             </select>
           </label>
           <label>رسالتك
             <textarea name="message" rows="6" required></textarea>
           </label>
-          <button type="submit" class="btn btn-primary">إرسال</button>
+          <button type="submit" class="btn btn-primary">أرسل إلى البرج</button>
           <p class="form-status" role="status"></p>
         </form>
         <aside class="contact-side">
-          <h2>طرق أخرى</h2>
+          <h2>ترددات البرج</h2>
           <ul>
-            <li><span>✉️</span><a href="mailto:hello@example.com">hello@example.com</a></li>
-            <li><span>𝕏</span><a href="#">@username</a></li>
-            <li><span>📷</span><a href="#">انستقرام</a></li>
+{chr(10).join(contact_item(*c) for c in CONTACTS)}
           </ul>
-          <p class="hint">استبدلي هذه الروابط بحساباتك الحقيقية.</p>
         </aside>
       </div>
     </section>
