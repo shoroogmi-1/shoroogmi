@@ -433,7 +433,7 @@ BOOKS = [
 
 
 def book_card(t, sub, pub, year, url, front, back, desc):
-    link = (f'\n              <a class="btn btn-primary book-link" href="{url}" target="_blank" rel="noopener">احصل على الكتاب</a>'
+    link = (f'\n              <a class="btn btn-primary book-link" href="{url}" target="_blank" rel="noopener">🛒 زيارة المتجر</a>'
             if url else "")
     return f"""          <article class="book mine">
             <div class="covers">

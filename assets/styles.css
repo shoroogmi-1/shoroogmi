@@ -501,7 +501,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .book-desc { margin-top: 10px; padding-top: 14px; border-top: 1px solid var(--border); }
 .book.mine .book-desc p { color: var(--ink); font-size: 1.1rem; line-height: 1.95; margin-bottom: 0.9em; }
 .book.mine .book-desc p:last-child { margin-bottom: 0; }
-.book-link { align-self: flex-start; margin-top: 10px; }
+.book-link { align-self: stretch; text-align: center; margin-top: 18px; font-size: 1.2rem; padding: 14px 28px; border-bottom-width: 5px; border-bottom-color: #d99a12; }
 
 /* Contact */
 .contact { display: grid; grid-template-columns: 1.6fr 1fr; gap: 40px; align-items: start; }
