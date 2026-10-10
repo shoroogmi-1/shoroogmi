@@ -267,6 +267,11 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .cta p { margin: 4px 0 22px; opacity: 0.85; }
 
 /* ===== Sira: passport game map ===== */
+.tagline {
+  display: block; width: max-content; max-width: calc(100vw - 32px); margin-bottom: 10px; padding: 6px 18px; border-radius: 14px;
+  font-size: clamp(1.15rem, 3vw, 1.5rem); font-weight: 700; color: #16324f;
+  background: var(--sun); border-bottom: 5px solid #d99a12; rotate: -1deg;
+}
 .quest { overflow: hidden; }
 .hud { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 28px; }
 .hud li {
