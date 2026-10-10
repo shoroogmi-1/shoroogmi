@@ -190,19 +190,19 @@ async function trackVisit() {
   const first = store("sm-first-visit");
   if (!first) {
     store("sm-first-visit", today);
-    return { visitors: await counter("hit", "visitors") };
+    return { visitors: await counter("hit", "site-visitors") };
   }
   if (first !== today && !store("sm-returning")) {
     store("sm-returning", "1");
-    return { returning: await counter("hit", "returning") };
+    return { returning: await counter("hit", "site-returning") };
   }
   return {};
 }
 
 trackVisit().then(async (fresh) => {
   if (!document.querySelector("[data-stat]")) return;
-  const visitors = fresh.visitors ?? (await counter("get", "visitors"));
-  const returning = fresh.returning ?? (await counter("get", "returning"));
+  const visitors = fresh.visitors ?? (await counter("get", "site-visitors"));
+  const returning = fresh.returning ?? (await counter("get", "site-returning"));
   showCount('[data-stat="visitors"]', visitors);
   showCount('[data-stat="returning"]', returning);
 });
