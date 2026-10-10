@@ -421,17 +421,22 @@ zawiya = page_head("سجل الرحلات", "الزاوية ٣٦", "زاوية �
 page("blog/zawiya-36.html", "blog-zawiya", "الزاوية ٣٦ · شروق المحمادي", zawiya, "الزاوية ٣٦: خواطر قصيرة من شروق المحمادي.")
 
 # ---------- Books ----------
-# كتبي: (العنوان، العنوان الفرعي، الناشر، السنة، الرابط، لون الغلاف b1–b6)
+# كتبي: (العنوان، العنوان الفرعي، الناشر، السنة، الرابط، صورة الغلاف الأمامي، صورة الغلاف الخلفي)
+# الصور في assets/books/
 BOOKS = [
-    ("يا بشرى هذا غلام", "تأملات في حسن الظن بالله واليقين والبشرى", "جمعية أدباء الأحساء", "٢٠٢٦", "", "b1"),
+    ("يا بشرى هذا غلام", "تأملات في حسن الظن بالله واليقين والبشرى", "جمعية أدباء الأحساء", "٢٠٢٦", "",
+     "ya-bushra-front.jpg", "ya-bushra-back.jpg"),
 ]
 
 
-def book_card(t, sub, pub, year, url, c):
+def book_card(t, sub, pub, year, url, front, back):
     link = (f'\n              <a class="btn btn-primary book-link" href="{url}" target="_blank" rel="noopener">احصل على الكتاب</a>'
             if url else "")
     return f"""          <article class="book mine">
-            <div class="cover {c}"><span>{t}</span></div>
+            <div class="covers">
+              <a href="assets/books/{front}" target="_blank" rel="noopener"><img src="assets/books/{front}" alt="الغلاف الأمامي لكتاب {t}" width="900" height="1253" loading="lazy"></a>
+              <a href="assets/books/{back}" target="_blank" rel="noopener"><img src="assets/books/{back}" alt="الغلاف الخلفي لكتاب {t}" width="900" height="1253" loading="lazy"></a>
+            </div>
             <div class="book-info">
               <h3>{t}</h3>
               <p class="subtitle">{sub}</p>
