@@ -297,9 +297,9 @@ def station_item(i, s):
           </li>"""
 
 
-sira = page_head("جواز السفر", "خريطة رحلتي",
-                 '<strong class="tagline">✍️ كاتبة إعلانات وسيناريو ومحتوى لخمس عشرة جهة</strong>'
-                 "اربط حزامك يا كابتن؛ الرحلة تبدأ من ١٩٩٩ وتمرّ بإحدى عشرة محطة. اضغط على أي محطة 😉") + f"""
+sira = page_head("جواز السفر", "هبوط وصعود",
+                 '<strong class="tagline">✍️ كاتبة إعلانات وسيناريو لما يزيد عن خمس عشرة جهة</strong>'
+                 "مرتفعات شديدة، وهبوط قوي، تمالك قلبك حتى لا يسقط. اضغط على أي محطة 😉") + f"""
     <section class="section quest">
       <div class="container">
         <ul class="hud" aria-label="لوحة اللعبة">
