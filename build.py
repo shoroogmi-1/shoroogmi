@@ -42,17 +42,17 @@ def page(path, key, title, body, desc):
       <a href="{p}index.html" class="logo"><span class="logo-sun" aria-hidden="true"></span>شروق المحمادي</a>
       <button class="menu-toggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
       <nav class="nav-links" aria-label="القائمة الرئيسية">
-        <a href="{p}index.html"{act("home")}>الرئيسية</a>
+        <a href="{p}index.html"{act("home")}>صالة المغادرة</a>
         <a href="{p}sira.html"{act("sira")}>جواز السفر</a>
         <div class="has-sub">
-          <a href="{p}blog/index.html"{act("blog")}>مدونة <span class="caret" aria-hidden="true">▾</span></a>
+          <a href="{p}blog/index.html"{act("blog")}>سجل الرحلات <span class="caret" aria-hidden="true">▾</span></a>
           <div class="sub">
-            <a href="{p}blog/articles.html"{sub("blog-articles")}>المقالات</a>
+            <a href="{p}blog/articles.html"{sub("blog-articles")}>رحلات طويلة</a>
             <a href="{p}blog/zawiya-36.html"{sub("blog-zawiya")}>الزاوية ٣٦</a>
           </div>
         </div>
-        <a href="{p}books.html"{act("books")}>كتب</a>
-        <a href="{p}contact.html"{act("contact")}>تواصل معنا</a>
+        <a href="{p}books.html"{act("books")}>حقيبة السفر</a>
+        <a href="{p}contact.html"{act("contact")}>برج المراقبة</a>
         <button class="theme-toggle" aria-label="تبديل الوضع الليلي">🌙</button>
       </nav>
     </div>
@@ -67,10 +67,10 @@ def page(path, key, title, body, desc):
       <p class="footer-name">شروق المحمادي</p>
       <nav class="footer-links" aria-label="روابط التذييل">
         <a href="{p}sira.html">جواز السفر</a>
-        <a href="{p}blog/articles.html">المقالات</a>
+        <a href="{p}blog/articles.html">رحلات طويلة</a>
         <a href="{p}blog/zawiya-36.html">الزاوية ٣٦</a>
-        <a href="{p}books.html">كتب</a>
-        <a href="{p}contact.html">تواصل معنا</a>
+        <a href="{p}books.html">حقيبة السفر</a>
+        <a href="{p}contact.html">برج المراقبة</a>
       </nav>
       <p class="copy">© <span class="year"></span> جميع الحقوق محفوظة</p>
     </div>
@@ -215,7 +215,7 @@ home = f"""    <section class="hero">
         <h1>شروق المحمادي</h1>
         <p class="lead">أيها القارئ: لنتفق! المقعد الأيمن مرة لي ومرة لك، وذلك طوال رحلتنا في سياحة العقول والأفكار والتجارب. طيب كابتن؟</p>
         <div class="hero-actions">
-          <a href="blog/index.html" class="btn btn-primary">اقرأ المدونة</a>
+          <a href="blog/index.html" class="btn btn-primary">سجل الرحلات</a>
           <a href="sira.html" class="btn btn-ghost">تعرّف عليّ</a>
         </div>
       </div>
@@ -226,9 +226,9 @@ home = f"""    <section class="hero">
         <h2 class="section-title">تصفّح الموقع</h2>
         <div class="tiles">
           <a class="tile" href="sira.html"><span class="tile-icon">🛂</span><h3>جواز السفر</h3><p>من أنا، وما الذي أعمل عليه، ومحطات رحلتي.</p></a>
-          <a class="tile" href="blog/articles.html"><span class="tile-icon">✍️</span><h3>المقالات</h3><p>نصوص أطول في التأمل والقراءة والكتابة.</p></a>
+          <a class="tile" href="blog/articles.html"><span class="tile-icon">✍️</span><h3>رحلات طويلة</h3><p>نصوص أطول في التأمل والقراءة والكتابة.</p></a>
           <a class="tile" href="blog/zawiya-36.html"><span class="tile-icon">🌙</span><h3>الزاوية ٣٦</h3><p>خواطر قصيرة وملاحظات سريعة من يومي.</p></a>
-          <a class="tile" href="books.html"><span class="tile-icon">📚</span><h3>كتب</h3><p>ما قرأت وما أقرأ الآن وما ينتظر على الرف.</p></a>
+          <a class="tile" href="books.html"><span class="tile-icon">📚</span><h3>حقيبة السفر</h3><p>ما قرأت وما أقرأ الآن وما ينتظر على الرف.</p></a>
         </div>
       </div>
     </section>
@@ -236,8 +236,8 @@ home = f"""    <section class="hero">
     <section class="section alt">
       <div class="container">
         <div class="section-head">
-          <h2 class="section-title">أحدث المقالات</h2>
-          <a class="more" href="blog/articles.html">كل المقالات ←</a>
+          <h2 class="section-title">أحدث الرحلات الطويلة</h2>
+          <a class="more" href="blog/articles.html">كل الرحلات ←</a>
         </div>
         <div class="posts">
 {chr(10).join(article_card(a, "blog/") for a in ARTICLES[:3])}
@@ -267,7 +267,7 @@ home = f"""    <section class="hero">
     </section>
 """
 page("index.html", "home", "شروق المحمادي", home,
-     "الموقع الشخصي لشروق المحمادي: جواز السفر، مدونة، كتب، وتواصل.")
+     "الموقع الشخصي لشروق المحمادي: جواز السفر، سجل الرحلات، حقيبة السفر، وبرج المراقبة.")
 
 # ---------- Sira ----------
 TIMELINE = [
@@ -304,13 +304,13 @@ sira = page_head("جواز السفر", "مرحباً، أنا شروق",
 page("sira.html", "sira", "جواز السفر · شروق المحمادي", sira, "سيرة شروق المحمادي ومحطات رحلتها.")
 
 # ---------- Blog hub ----------
-blog = page_head("مدونة", "المدونة", "مساحتان للكتابة: مقالات مطوّلة، وزاوية للخواطر القصيرة.") + f"""
+blog = page_head("سجل الرحلات", "سجل الرحلات", "مساحتان للكتابة: مقالات مطوّلة، وزاوية للخواطر القصيرة.") + f"""
     <section class="section">
       <div class="container">
         <div class="blog-split">
           <a class="blog-door" href="articles.html">
             <span class="door-icon">✍️</span>
-            <h2>المقالات</h2>
+            <h2>رحلات طويلة</h2>
             <p>نصوص أطول أتعمّق فيها في فكرة أو تجربة أو كتاب.</p>
             <span class="count">{ar(len(ARTICLES))} مقالات</span>
           </a>
@@ -327,8 +327,8 @@ blog = page_head("مدونة", "المدونة", "مساحتان للكتابة:
     <section class="section alt">
       <div class="container">
         <div class="section-head">
-          <h2 class="section-title">أحدث المقالات</h2>
-          <a class="more" href="articles.html">كل المقالات ←</a>
+          <h2 class="section-title">أحدث الرحلات الطويلة</h2>
+          <a class="more" href="articles.html">كل الرحلات ←</a>
         </div>
         <div class="posts">
 {chr(10).join(article_card(a) for a in ARTICLES[:3])}
@@ -348,14 +348,14 @@ blog = page_head("مدونة", "المدونة", "مساحتان للكتابة:
       </div>
     </section>
 """
-page("blog/index.html", "blog", "المدونة · شروق المحمادي", blog, "مدونة شروق المحمادي: المقالات والزاوية ٣٦.")
+page("blog/index.html", "blog", "سجل الرحلات · شروق المحمادي", blog, "مدونة شروق المحمادي: المقالات والزاوية ٣٦.")
 
-crumbs_tpl = '        <nav class="crumbs" aria-label="مسار التنقل"><a href="index.html">المدونة</a> / <span>{}</span></nav>\n'
+crumbs_tpl = '        <nav class="crumbs" aria-label="مسار التنقل"><a href="index.html">سجل الرحلات</a> / <span>{}</span></nav>\n'
 
 # ---------- Articles ----------
 tags = sorted({a[0] for a in ARTICLES})
-articles = page_head("المدونة", "المقالات", "نصوص في التأمل والقراءة والكتابة.",
-                     crumbs_tpl.format("المقالات")) + f"""
+articles = page_head("سجل الرحلات", "رحلات طويلة", "نصوص في التأمل والقراءة والكتابة.",
+                     crumbs_tpl.format("رحلات طويلة")) + f"""
     <section class="section">
       <div class="container">
         <div class="toolbar">
@@ -363,7 +363,7 @@ articles = page_head("المدونة", "المقالات", "نصوص في الت
             <button class="filter active" data-filter="all">الكل</button>
 {chr(10).join(f'            <button class="filter" data-filter="{t}">{t}</button>' for t in tags)}
           </div>
-          <input class="search" type="search" placeholder="ابحث في المقالات…" aria-label="ابحث في المقالات">
+          <input class="search" type="search" placeholder="ابحث في الرحلات…" aria-label="ابحث في الرحلات الطويلة">
         </div>
         <div class="posts" data-filterable>
 {chr(10).join(article_card(a) for a in ARTICLES)}
@@ -372,10 +372,10 @@ articles = page_head("المدونة", "المقالات", "نصوص في الت
       </div>
     </section>
 """
-page("blog/articles.html", "blog-articles", "المقالات · شروق المحمادي", articles, "مقالات شروق المحمادي.")
+page("blog/articles.html", "blog-articles", "رحلات طويلة · شروق المحمادي", articles, "مقالات شروق المحمادي.")
 
 # ---------- Zawiya 36 ----------
-zawiya = page_head("المدونة", "الزاوية ٣٦", "زاوية صغيرة للخواطر القصيرة والأسئلة والملاحظات العابرة.",
+zawiya = page_head("سجل الرحلات", "الزاوية ٣٦", "زاوية صغيرة للخواطر القصيرة والأسئلة والملاحظات العابرة.",
                    crumbs_tpl.format("الزاوية ٣٦")) + f"""
     <section class="section">
       <div class="container">
@@ -397,7 +397,7 @@ BOOKS = [
     ("الخيميائي", "باولو كويلو", "في القائمة", "عن الأحلام والطريق إليها.", "b6"),
 ]
 statuses = ["قرأته", "أقرأه الآن", "في القائمة"]
-books = page_head("كتب", "رفوف الكتب", "ما قرأت، وما أقرأ الآن، وما ينتظر دوره على الرف.") + f"""
+books = page_head("حقيبة السفر", "الكتب التي ترافقني", "ما قرأت، وما أقرأ الآن، وما ينتظر دوره على الرف.") + f"""
     <section class="section">
       <div class="container">
         <div class="filters">
@@ -418,10 +418,10 @@ books = page_head("كتب", "رفوف الكتب", "ما قرأت، وما أق�
       </div>
     </section>
 """
-page("books.html", "books", "كتب · شروق المحمادي", books, "رفوف كتب شروق المحمادي.")
+page("books.html", "books", "حقيبة السفر · شروق المحمادي", books, "رفوف كتب شروق المحمادي.")
 
 # ---------- Contact ----------
-contact = page_head("تواصل معنا", "يسعدني سماعك", "لأي سؤال أو اقتراح أو تعاون، اكتب لي وسأرد عليك قريباً.") + """
+contact = page_head("برج المراقبة", "يسعدني سماعك", "لأي سؤال أو اقتراح أو تعاون، اكتب لي وسأرد عليك قريباً.") + """
     <section class="section">
       <div class="container contact">
         <form class="contact-form" novalidate>
@@ -457,7 +457,7 @@ contact = page_head("تواصل معنا", "يسعدني سماعك", "لأي س
       </div>
     </section>
 """
-page("contact.html", "contact", "تواصل معنا · شروق المحمادي", contact, "تواصل مع شروق المحمادي.")
+page("contact.html", "contact", "برج المراقبة · شروق المحمادي", contact, "تواصل مع شروق المحمادي.")
 
 # ---------- Article pages ----------
 def render_block(kind, text):
@@ -486,7 +486,7 @@ for i, a in enumerate(ARTICLES):
     body = f"""    <section class="page-hero article-hero">
       <div class="clouds" aria-hidden="true"><span class="cloud c1"></span><span class="cloud c2"></span></div>
       <div class="container narrow">
-        <nav class="crumbs" aria-label="مسار التنقل"><a href="../index.html">المدونة</a> / <a href="../articles.html">المقالات</a></nav>
+        <nav class="crumbs" aria-label="مسار التنقل"><a href="../index.html">سجل الرحلات</a> / <a href="../articles.html">رحلات طويلة</a></nav>
         <span class="tag">{tag}</span>
         <h1>{title}</h1>
         <p class="meta">{date} · {read} قراءة</p>
