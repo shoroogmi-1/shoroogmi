@@ -421,15 +421,18 @@ zawiya = page_head("سجل الرحلات", "الزاوية ٣٦", "زاوية �
 page("blog/zawiya-36.html", "blog-zawiya", "الزاوية ٣٦ · شروق المحمادي", zawiya, "الزاوية ٣٦: خواطر قصيرة من شروق المحمادي.")
 
 # ---------- Books ----------
-# كتبي: (العنوان، العنوان الفرعي، الناشر، السنة، الرابط، صورة الغلاف الأمامي، صورة الغلاف الخلفي)
+# كتبي: (العنوان، العنوان الفرعي، الناشر، السنة، الرابط، صورة الغلاف الأمامي، صورة الغلاف الخلفي، فقرات الوصف)
 # الصور في assets/books/
 BOOKS = [
     ("يا بشرى هذا غلام", "تأملات في حسن الظن بالله واليقين والبشرى", "جمعية أدباء الأحساء", "٢٠٢٦", "",
-     "ya-bushra-front.jpg", "ya-bushra-back.jpg"),
+     "ya-bushra-front.jpg", "ya-bushra-back.jpg", [
+         "لا أعرف كتابًا كتبته من قلبي مخلوطًا بدمي مثل (يا بشرى هذا غلام: تأملات في حسن الظن بالله واليقين والبشرى)، وأعتقد أن هذه المعاني الثلاثة ركائز إيمانية هامة لتعميق علاقتنا مع ربٍّ رحيمٍ ودود، وليست مزاجًا متفائلًا طارئًا.",
+         "نشرت الكتاب إلكترونيًا، وقد لاقى استحسانًا وانتشارًا لم أتوقعه، ورأيت أثر كلماته بفضل الله فيمن حولي، وقد طبعناه الآن في نسخة ورقية جديدة، مُرتّبةٍ مفهرسةٍ مُدقّقةٍ، وأضفنا إليه مقالاتٍ جديدة، وجدتها مُرضية تليق بقارئي الكريم.",
+     ]),
 ]
 
 
-def book_card(t, sub, pub, year, url, front, back):
+def book_card(t, sub, pub, year, url, front, back, desc):
     link = (f'\n              <a class="btn btn-primary book-link" href="{url}" target="_blank" rel="noopener">احصل على الكتاب</a>'
             if url else "")
     return f"""          <article class="book mine">
@@ -440,7 +443,10 @@ def book_card(t, sub, pub, year, url, front, back):
             <div class="book-info">
               <h3>{t}</h3>
               <p class="subtitle">{sub}</p>
-              <p class="author">{pub} · {year}</p>{link}
+              <p class="author">{pub} · {year}</p>
+              <div class="book-desc">
+{chr(10).join(f"                <p>{d}</p>" for d in desc)}
+              </div>{link}
             </div>
           </article>"""
 

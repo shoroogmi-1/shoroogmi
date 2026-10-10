@@ -498,6 +498,9 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .book.mine h3 { font-size: 1.75rem; }
 .book.mine .subtitle { color: var(--ink); font-size: 1.1rem; line-height: 1.7; }
 .book.mine .author { color: var(--accent-text); }
+.book-desc { margin-top: 10px; padding-top: 14px; border-top: 1px solid var(--border); }
+.book.mine .book-desc p { color: var(--ink); font-size: 1.1rem; line-height: 1.95; margin-bottom: 0.9em; }
+.book.mine .book-desc p:last-child { margin-bottom: 0; }
 .book-link { align-self: flex-start; margin-top: 10px; }
 
 /* Contact */
