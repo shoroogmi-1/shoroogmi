@@ -51,7 +51,7 @@ def page(path, key, title, body, desc):
             <a href="{p}blog/zawiya-36.html"{sub("blog-zawiya")}>الزاوية ٣٦</a>
           </div>
         </div>
-        <a href="{p}books.html"{act("books")}>حقيبة السفر</a>
+        <a href="{p}books.html"{act("books")}>أمتعة السفر</a>
         <a href="{p}contact.html"{act("contact")}>برج المراقبة</a>
         <button class="theme-toggle" aria-label="تبديل الوضع الليلي">🌙</button>
       </nav>
@@ -69,7 +69,7 @@ def page(path, key, title, body, desc):
         <a href="{p}sira.html">جواز السفر</a>
         <a href="{p}blog/articles.html">رحلات طويلة</a>
         <a href="{p}blog/zawiya-36.html">الزاوية ٣٦</a>
-        <a href="{p}books.html">حقيبة السفر</a>
+        <a href="{p}books.html">أمتعة السفر</a>
         <a href="{p}contact.html">برج المراقبة</a>
       </nav>
       <p class="copy">© <span class="year"></span> جميع الحقوق محفوظة</p>
@@ -228,7 +228,7 @@ home = f"""    <section class="hero">
           <a class="tile" href="sira.html"><span class="tile-icon">🛂</span><h3>جواز السفر</h3><p>من أنا، وما الذي أعمل عليه، ومحطات رحلتي.</p></a>
           <a class="tile" href="blog/articles.html"><span class="tile-icon">✍️</span><h3>رحلات طويلة</h3><p>نصوص أطول في التأمل والقراءة والكتابة.</p></a>
           <a class="tile" href="blog/zawiya-36.html"><span class="tile-icon">🌙</span><h3>الزاوية ٣٦</h3><p>خواطر قصيرة وملاحظات سريعة من يومي.</p></a>
-          <a class="tile" href="books.html"><span class="tile-icon">📚</span><h3>حقيبة السفر</h3><p>ما قرأت وما أقرأ الآن وما ينتظر على الرف.</p></a>
+          <a class="tile" href="books.html"><span class="tile-icon">📚</span><h3>أمتعة السفر</h3><p>ما قرأت وما أقرأ الآن وما ينتظر على الرف.</p></a>
         </div>
       </div>
     </section>
@@ -267,7 +267,7 @@ home = f"""    <section class="hero">
     </section>
 """
 page("index.html", "home", "شروق المحمادي", home,
-     "الموقع الشخصي لشروق المحمادي: جواز السفر، سجل الرحلات، حقيبة السفر، وبرج المراقبة.")
+     "الموقع الشخصي لشروق المحمادي: جواز السفر، سجل الرحلات، أمتعة السفر، وبرج المراقبة.")
 
 # ---------- Sira ----------
 TIMELINE = [
@@ -397,7 +397,7 @@ BOOKS = [
     ("الخيميائي", "باولو كويلو", "في القائمة", "عن الأحلام والطريق إليها.", "b6"),
 ]
 statuses = ["قرأته", "أقرأه الآن", "في القائمة"]
-books = page_head("حقيبة السفر", "الكتب التي ترافقني", "ما قرأت، وما أقرأ الآن، وما ينتظر دوره على الرف.") + f"""
+books = page_head("أمتعة السفر", "الكتب التي ترافقني", "ما قرأت، وما أقرأ الآن، وما ينتظر دوره على الرف.") + f"""
     <section class="section">
       <div class="container">
         <div class="filters">
@@ -418,7 +418,7 @@ books = page_head("حقيبة السفر", "الكتب التي ترافقني",
       </div>
     </section>
 """
-page("books.html", "books", "حقيبة السفر · شروق المحمادي", books, "حقيبة سفر شروق المحمادي: الكتب التي ترافقها.")
+page("books.html", "books", "أمتعة السفر · شروق المحمادي", books, "أمتعة سفر شروق المحمادي: الكتب التي ترافقها.")
 
 # ---------- Contact ----------
 EMAIL = "shoroogmi1@gmail.com"
