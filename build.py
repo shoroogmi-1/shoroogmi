@@ -298,6 +298,7 @@ def station_item(i, s):
 
 
 sira = page_head("جواز السفر", "خريطة رحلتي",
+                 '<strong class="tagline">✍️ كاتبة إعلانات وسيناريو ومحتوى لخمس عشرة جهة</strong>'
                  "اربط حزامك يا كابتن؛ الرحلة تبدأ من ١٩٩٩ وتمرّ بإحدى عشرة محطة. اضغط على أي محطة 😉") + f"""
     <section class="section quest">
       <div class="container">
