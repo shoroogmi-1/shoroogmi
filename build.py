@@ -298,7 +298,7 @@ def station_item(i, s):
 
 
 sira = page_head("جواز السفر", "هبوط وصعود",
-                 '<strong class="tagline">✍️ كاتبة إعلانات وسيناريو ومحتوى لما يزيد عن عشرين جهة</strong>'
+                 '<strong class="tagline">✍️ كاتبة إعلانات وسيناريو لما يزيد عن عشرين جهة</strong>'
                  "مرتفعات شديدة، وهبوط قوي، تمالك قلبك حتى لا يسقط.") + f"""
     <section class="section quest">
       <div class="container">
