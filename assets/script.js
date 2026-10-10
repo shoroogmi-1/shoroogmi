@@ -364,8 +364,8 @@ if (listen && "speechSynthesis" in window) {
 }
 
 // Comments: stored in Supabase. The section stays hidden until both values are filled in.
-const COMMENTS_URL = ""; // e.g. https://xxxx.supabase.co
-const COMMENTS_KEY = ""; // the project's public "anon" key
+const COMMENTS_URL = "https://fownwnktsvpzfyyndgtt.supabase.co";
+const COMMENTS_KEY = "sb_publishable_xfQjqLqa091AzMM30SRp6g_llc9fjPx"; // public key, safe to publish
 const commentsBox = document.querySelector(".comments");
 if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
   const slug = post.dataset.slug;
