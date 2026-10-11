@@ -3,7 +3,7 @@
 التشغيل:  python3 build.py
 
 - المقالات: ملف لكل مقال في content/articles/، وترجمته الإنجليزية بالاسم نفسه في content/en/articles/ (انظري README.md).
-- الزاوية ٣٦ والكتب ومحطات جواز السفر والتواصل: قوائم داخل هذا الملف (ابحثي عن ZAWIYA و BOOKS و STATIONS و CONTACTS).
+- الزاوية ٣٦ والكتب ومحطات جواز سفر والتواصل: قوائم داخل هذا الملف (ابحثي عن ZAWIYA و BOOKS و STATIONS و CONTACTS).
   النص الذي يختلف بين اللغتين يُكتب زوجًا: ("النص العربي", "English text").
 - بعد أي تعديل شغّلي الأمر أعلاه لتحديث ملفات HTML.
 """
@@ -61,7 +61,7 @@ def page(lang, path, key, title, body, desc, alt=None):
       <button class="menu-toggle" aria-label="{t("فتح القائمة", "Open menu")}" aria-expanded="false">☰</button>
       <nav class="nav-links" aria-label="{t("القائمة الرئيسية", "Main menu")}">
         <a href="{h}index.html"{act("home")}>{t("إقلاع الإشعاع", "Radiant Takeoff")}</a>
-        <a href="{h}sira.html"{act("sira")}>{t("جواز السفر", "Passport")}</a>
+        <a href="{h}sira.html"{act("sira")}>{t("جواز سفر", "Passport")}</a>
         <div class="has-sub">
           <a href="{h}blog/index.html"{act("blog")}>{t("سجل الرحلات", "Travel Log")} <span class="caret" aria-hidden="true">▾</span></a>
           <div class="sub">
@@ -85,7 +85,7 @@ def page(lang, path, key, title, body, desc, alt=None):
     <div class="container footer-inner">
       <p class="footer-name">{t("شروق المحمادي", "Shoroog Almehmadi")}</p>
       <nav class="footer-links" aria-label="{t("روابط التذييل", "Footer links")}">
-        <a href="{h}sira.html">{t("جواز السفر", "Passport")}</a>
+        <a href="{h}sira.html">{t("جواز سفر", "Passport")}</a>
         <a href="{h}blog/articles.html">{t("رحلات طويلة", "Long Journeys")}</a>
         <a href="{h}blog/zawiya-36.html">{t("الزاوية ٣٦", "Corner 36")}</a>
         <a href="{h}books.html">{t("أمتعة السفر", "Luggage")}</a>
@@ -269,7 +269,7 @@ def tags_html(tags, indent):
     return f'{indent}<div class="tags">{spans}</div>' if len(tags) > 1 else indent + spans
 
 
-# محطات جواز السفر بالترتيب: (أيقونة، النص — يقبل <b> للتأكيد، إيموجي الشارة، نوع خاص اختياري)
+# محطات جواز سفر بالترتيب: (أيقونة، النص — يقبل <b> للتأكيد، إيموجي الشارة، نوع خاص اختياري)
 STATIONS = [
     ("🐪", ("<b>١٩٩٩</b> - السعودية", "<b>1999</b> - Saudi Arabia"), "👶", "start"),
     ("📕", ("<b>«نكت ونكت»</b> أول كتاب سخيف قرأته وأنا في الابتدائية.",
@@ -393,11 +393,12 @@ def build(lang):
                            "Dear reader, let's make a deal! The right seat is mine one time and yours the next, all through our journey touring minds, ideas and experiences. Okay, Captain?")}</p>
         <div class="hero-actions">
           <a href="blog/index.html" class="btn btn-primary">{t("سجل الرحلات", "Travel Log")}</a>
-          <a href="sira.html" class="btn btn-ghost">{t("جواز السفر", "Passport")}</a>
+          <a href="sira.html" class="btn btn-ghost">{t("جواز سفر", "Passport")}</a>
         </div>
         <ul class="site-stats" aria-label="{t("إحصاءات الموقع", "Site stats")}">
           <li>🧳 {t("زوار الموقع", "Site visitors")}: <b data-stat="visitors">…</b></li>
           <li>🔁 {t("قرّاء دائمون", "Regular readers")}: <b data-stat="returning">…</b></li>
+          <li><a href="blog/articles.html">✍️ {t("عدد المقالات", "Articles")}: <b>{num(len(ALL_ARTICLES))}</b></a></li>
         </ul>
       </div>
     </section>
@@ -406,7 +407,7 @@ def build(lang):
       <div class="container">
         <h2 class="section-title">{t("إقلاع الإشعاع", "Radiant Takeoff")}</h2>
         <div class="tiles">
-          <a class="tile" href="sira.html"><span class="tile-icon">🛂</span><h3>{t("جواز السفر", "Passport")}</h3><p>{t("هُوية الكاتبة، وسيرة مختصرة، وماذا تعمل.", "The writer's identity, a short biography, and what she does.")}</p></a>
+          <a class="tile" href="sira.html"><span class="tile-icon">🛂</span><h3>{t("جواز سفر", "Passport")}</h3><p>{t("هُوية الكاتبة، وسيرة مختصرة، وماذا تعمل.", "The writer's identity, a short biography, and what she does.")}</p></a>
           <a class="tile" href="blog/index.html"><span class="tile-icon">✍️</span><h3>{t("سجل الرحلات", "Travel Log")}</h3><p>{t("المقالات والزاوية ٣٦.", "The articles and Corner 36.")}</p></a>
           <a class="tile" href="books.html"><span class="tile-icon">📚</span><h3>{t("أمتعة السفر", "Luggage")}</h3><p>{t("كتب تسليك في الرحلة.", "Books to keep you company on the journey.")}</p></a>
         </div>
@@ -437,7 +438,7 @@ def build(lang):
     </section>
 """
     page(lang, "index.html", "home", me, home,
-         t("الموقع الشخصي لشروق المحمادي: جواز السفر، سجل الرحلات، أمتعة السفر، وبرج المراقبة.",
+         t("الموقع الشخصي لشروق المحمادي: جواز سفر، سجل الرحلات، أمتعة السفر، وبرج المراقبة.",
            "The personal website of Shoroog Almehmadi: Passport, Travel Log, Luggage, and Control Tower."))
 
     # ---------- Sira ----------
@@ -451,7 +452,7 @@ def build(lang):
             </article>
           </li>"""
 
-    sira = page_head(t("جواز السفر", "Passport"), t("هبوط وصعود", "Landings and Takeoffs"),
+    sira = page_head(t("جواز سفر", "Passport"), t("هبوط وصعود", "Landings and Takeoffs"),
                      t("مرتفعات شديدة، وهبوط قوي، تمالك قلبك حتى لا يسقط.",
                        "Steep climbs and hard drops: hold on to your heart so it doesn't fall.")) + f"""
     <section class="section quest">
@@ -474,7 +475,7 @@ def build(lang):
       </div>
     </section>
 """
-    page(lang, "sira.html", "sira", f"{t('جواز السفر', 'Passport')} · {me}", sira,
+    page(lang, "sira.html", "sira", f"{t('جواز سفر', 'Passport')} · {me}", sira,
          t("جواز سفر شروق المحمادي: خريطة رحلتها من ١٩٩٩.", "Shoroog Almehmadi's passport: the map of her journey since 1999."))
 
     # ---------- Blog hub ----------
