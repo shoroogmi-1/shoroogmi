@@ -411,7 +411,7 @@ def build(lang):
         <h2 class="section-title">{t("مُشعشعة", "Radiant")}</h2>
         <div class="tiles">
           <a class="tile" href="sira.html"><span class="tile-icon">🛂</span><h3>{t("جواز سفر", "Passport")}</h3><p>{t("هُوية الكاتبة، وسيرة مختصرة، وماذا تعمل.", "The writer's identity, a short biography, and what she does.")}</p></a>
-          <a class="tile" href="blog/index.html"><span class="tile-icon">✍️</span><h3>{t("سجل الرحلات", "Travel Log")}</h3><p>{t("المقالات والزاوية ٣٦.", "The articles and Corner 36.")}</p></a>
+          <a class="tile" href="blog/index.html"><span class="tile-icon">✍️</span><h3>{t("سجل الرحلات", "Travel Log")}</h3><p>{t("مقالات والزاوية ٣٦", "Articles and Corner 36")}</p></a>
           <a class="tile" href="books.html"><span class="tile-icon">📚</span><h3>{t("أمتعة السفر", "Luggage")}</h3><p>{t("كتب تسليك في الرحلة.", "Books to keep you company on the journey.")}</p></a>
         </div>
       </div>
@@ -483,22 +483,21 @@ def build(lang):
 
     # ---------- Blog hub ----------
     blog = page_head(t("سجل الرحلات", "Travel Log"), t("سجل الرحلات", "Travel Log"),
-                     t("مساحتان للكتابة: رحلات طويلة، وزاوية للخواطر القصيرة.",
-                       "Two spaces for writing: long journeys, and a corner for short reflections.")) + f"""
+                     t("مقالات والزاوية ٣٦", "Articles and Corner 36")) + f"""
     <section class="section">
       <div class="container">
         <div class="blog-split">
           <a class="blog-door" href="articles.html">
             <span class="door-icon">✍️</span>
             <h2>{t("رحلات طويلة", "Long Journeys")}</h2>
-            <p>{t("نصوص أطول أتعمّق فيها في فكرة أو تجربة أو كتاب.", "Longer pieces where I go deep into an idea, an experience or a book.")}</p>
+            <p>{t("مقالات وتأملات بين الثقيلة والخفيفة.", "Essays and reflections, from the weighty to the light.")}</p>
             <span class="count">{num(len(ARTICLES))} {t("رحلات", "journeys")}</span>
           </a>
           <a class="blog-door night" href="zawiya-36.html">
             <span class="door-icon">🌙</span>
             <h2>{t("الزاوية ٣٦", "Corner 36")}</h2>
-            <p>{t("خواطر قصيرة، أسئلة، وملاحظات عابرة من يومي.", "Short reflections, questions and passing notes from my day.")}</p>
-            <span class="count">{num(len(ZAWIYA) + len(ZAWIYA_ARTICLES))} {t("خواطر", "notes")}</span>
+            <p>{t("مقالات حديثة نترجمها ونحوّرها بطريقتنا!", "Recent articles we translate and reshape our own way!")}</p>
+            <span class="count">{num(len(ZAWIYA) + len(ZAWIYA_ARTICLES))} {t("مقالات", "articles")}</span>
           </a>
         </div>
       </div>
@@ -508,7 +507,7 @@ def build(lang):
     <section class="section">
       <div class="container">
         <div class="section-head">
-          <h2 class="section-title">{t("أحدث الخواطر", "Latest Notes")}</h2>
+          <h2 class="section-title">{t("أحدث مقالات الزاوية", "Latest from the Corner")}</h2>
           <a class="more" href="zawiya-36.html">{t("الزاوية ٣٦", "Corner 36")} {fwd}</a>
         </div>
         <div class="posts">
@@ -550,8 +549,8 @@ def build(lang):
 
     # ---------- Zawiya 36 ----------
     zawiya = page_head(t("سجل الرحلات", "Travel Log"), t("الزاوية ٣٦", "Corner 36"),
-                       t("زاوية صغيرة للخواطر القصيرة والأسئلة والملاحظات العابرة.",
-                         "A small corner for short reflections, questions and passing notes."),
+                       t("مقالات حديثة نترجمها ونحوّرها بطريقتنا!",
+                         "Recent articles we translate and reshape our own way!"),
                        crumbs_tpl.format(t("الزاوية ٣٦", "Corner 36"))) + f"""
     <section class="section">
       <div class="container">{f"""
@@ -565,7 +564,7 @@ def build(lang):
     </section>
 """
     page(lang, "blog/zawiya-36.html", "blog-zawiya", f"{t('الزاوية ٣٦', 'Corner 36')} · {me}", zawiya,
-         t("الزاوية ٣٦: خواطر قصيرة من شروق المحمادي.", "Corner 36: short reflections by Shoroog Almehmadi."))
+         t("الزاوية ٣٦: مقالات حديثة تترجمها شروق المحمادي وتحوّرها بطريقتها.", "Corner 36: recent articles translated and reshaped by Shoroog Almehmadi."))
 
     # ---------- Books ----------
     a_root = "../" * out_path(lang, "books.html").count("/")
