@@ -50,6 +50,6 @@ The looming danger of AI pursues the beginner worker if he uses it excessively, 
 
 “Ignoring the use of AI entirely is a mistake, and delegating to it entirely is also a mistake; the best is to use it responsibly. As for when to use it and when not to, that ultimately depends on the type of task and your good judgment of it. If we delegate many tasks to AI and are then asked about them, the “comprehension gap” appears, and you know only the surface of the tasks: ‘Ah, the reality is that I don’t yet know enough about this matter as I should.’ But in other tasks you can use AI, and the effect of the comprehension gap is relatively lower because you are aware of it”
 
-![The designed edition of the article (1)](hal-yunqis-adh-dhaka-1.jpg)
-![The designed edition of the article (2)](hal-yunqis-adh-dhaka-2.jpg)
-![The designed edition of the article (3)](hal-yunqis-adh-dhaka-3.jpg)
+![Graphic article 1](hal-yunqis-adh-dhaka-1.jpg)
+![Graphic article 2](hal-yunqis-adh-dhaka-2.jpg)
+![Graphic article 3](hal-yunqis-adh-dhaka-3.jpg)
