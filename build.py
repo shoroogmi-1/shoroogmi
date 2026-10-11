@@ -57,7 +57,7 @@ def page(lang, path, key, title, body, desc, alt=None):
 <body>
   <header class="site-header">
     <div class="container nav">
-      <a href="{h}index.html" class="logo"><span class="logo-sun" aria-hidden="true"></span>{t("شروق المحمادي", "Shorouq Al-Mahmadi")}</a>
+      <a href="{h}index.html" class="logo"><span class="logo-sun" aria-hidden="true"></span>{t("شروق المحمادي", "Shoroog Almehmadi")}</a>
       <button class="menu-toggle" aria-label="{t("فتح القائمة", "Open menu")}" aria-expanded="false">☰</button>
       <nav class="nav-links" aria-label="{t("القائمة الرئيسية", "Main menu")}">
         <a href="{h}index.html"{act("home")}>{t("صالة المغادرة", "Departure Lounge")}</a>
@@ -83,7 +83,7 @@ def page(lang, path, key, title, body, desc, alt=None):
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p class="footer-name">{t("شروق المحمادي", "Shorouq Al-Mahmadi")}</p>
+      <p class="footer-name">{t("شروق المحمادي", "Shoroog Almehmadi")}</p>
       <nav class="footer-links" aria-label="{t("روابط التذييل", "Footer links")}">
         <a href="{h}sira.html">{t("جواز السفر", "Passport")}</a>
         <a href="{h}blog/articles.html">{t("رحلات طويلة", "Long Journeys")}</a>
@@ -336,7 +336,7 @@ def build(lang):
     num = ar if lang == "ar" else str
     fwd = t("←", "→")
     q1, q2 = t("«", "“"), t("»", "”")
-    me = t("شروق المحمادي", "Shorouq Al-Mahmadi")
+    me = t("شروق المحمادي", "Shoroog Almehmadi")
 
     ARTICLES = articles_for(lang)
     SLUGS = [a["slug"] for a in ARTICLES]
@@ -434,7 +434,7 @@ def build(lang):
 """
     page(lang, "index.html", "home", me, home,
          t("الموقع الشخصي لشروق المحمادي: جواز السفر، سجل الرحلات، أمتعة السفر، وبرج المراقبة.",
-           "The personal website of Shorouq Al-Mahmadi: Passport, Travel Log, Luggage, and Control Tower."))
+           "The personal website of Shoroog Almehmadi: Passport, Travel Log, Luggage, and Control Tower."))
 
     # ---------- Sira ----------
     def station_item(i, s):
@@ -471,7 +471,7 @@ def build(lang):
     </section>
 """
     page(lang, "sira.html", "sira", f"{t('جواز السفر', 'Passport')} · {me}", sira,
-         t("جواز سفر شروق المحمادي: خريطة رحلتها من ١٩٩٩.", "Shorouq Al-Mahmadi's passport: the map of her journey since 1999."))
+         t("جواز سفر شروق المحمادي: خريطة رحلتها من ١٩٩٩.", "Shoroog Almehmadi's passport: the map of her journey since 1999."))
 
     # ---------- Blog hub ----------
     blog = page_head(t("سجل الرحلات", "Travel Log"), t("سجل الرحلات", "Travel Log"),
@@ -510,7 +510,7 @@ def build(lang):
     </section>
 """
     page(lang, "blog/index.html", "blog", f"{t('سجل الرحلات', 'Travel Log')} · {me}", blog,
-         t("سجل رحلات شروق المحمادي: رحلات طويلة والزاوية ٣٦.", "Shorouq Al-Mahmadi's travel log: Long Journeys and Corner 36."))
+         t("سجل رحلات شروق المحمادي: رحلات طويلة والزاوية ٣٦.", "Shoroog Almehmadi's travel log: Long Journeys and Corner 36."))
 
     crumbs_tpl = (f'        <nav class="crumbs" aria-label="{t("مسار التنقل", "Breadcrumb")}"><a href="index.html">'
                   f'{t("سجل الرحلات", "Travel Log")}</a> / <span>{{}}</span></nav>\n')
@@ -538,7 +538,7 @@ def build(lang):
     </section>
 """
     page(lang, "blog/articles.html", "blog-articles", f"{t('رحلات طويلة', 'Long Journeys')} · {me}", articles,
-         t("رحلات شروق المحمادي الطويلة.", "Shorouq Al-Mahmadi's long journeys."))
+         t("رحلات شروق المحمادي الطويلة.", "Shoroog Almehmadi's long journeys."))
 
     # ---------- Zawiya 36 ----------
     zawiya = page_head(t("سجل الرحلات", "Travel Log"), t("الزاوية ٣٦", "Corner 36"),
@@ -554,7 +554,7 @@ def build(lang):
     </section>
 """
     page(lang, "blog/zawiya-36.html", "blog-zawiya", f"{t('الزاوية ٣٦', 'Corner 36')} · {me}", zawiya,
-         t("الزاوية ٣٦: خواطر قصيرة من شروق المحمادي.", "Corner 36: short reflections by Shorouq Al-Mahmadi."))
+         t("الزاوية ٣٦: خواطر قصيرة من شروق المحمادي.", "Corner 36: short reflections by Shoroog Almehmadi."))
 
     # ---------- Books ----------
     a_root = "../" * out_path(lang, "books.html").count("/")
@@ -589,7 +589,7 @@ def build(lang):
     </section>
 """
     page(lang, "books.html", "books", f"{t('أمتعة السفر', 'Luggage')} · {me}", books,
-         t("كتب شروق المحمادي.", "Books by Shorouq Al-Mahmadi."))
+         t("كتب شروق المحمادي.", "Books by Shoroog Almehmadi."))
 
     # ---------- Contact ----------
     def contact_item(icon, label, text, url, note=""):
@@ -635,7 +635,7 @@ def build(lang):
     </section>
 """
     page(lang, "contact.html", "contact", f"{t('برج المراقبة', 'Control Tower')} · {me}", contact,
-         t("برج المراقبة: تواصل مع شروق المحمادي.", "Control Tower: get in touch with Shorouq Al-Mahmadi."))
+         t("برج المراقبة: تواصل مع شروق المحمادي.", "Control Tower: get in touch with Shoroog Almehmadi."))
 
     # ---------- Article pages ----------
     def render_block(kind, text):
