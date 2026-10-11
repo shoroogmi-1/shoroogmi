@@ -644,3 +644,11 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .audio-rate { font: inherit; font-weight: 700; font-size: 0.95rem; padding: 8px 16px; border-radius: 999px; cursor: pointer;
   background: transparent; color: var(--ink); border: 2px solid var(--border); }
 .audio-rate:hover { border-color: var(--sun); }
+/* صور المقال: صورة واحدة أو معرض صور */
+.post-figure { margin: 28px auto; text-align: center; }
+.post-figure img { display: block; max-width: 100%; max-height: 520px; width: auto; height: auto; margin: 0 auto;
+  border-radius: 14px; border: 2px solid var(--border); box-shadow: 0 10px 24px rgba(22, 50, 79, 0.18); }
+.post-figure figcaption { margin-top: 10px; font-size: 0.9rem; color: var(--muted); }
+.post-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; margin: 28px 0; }
+.post-gallery .post-figure { margin: 0; }
+.post-gallery .post-figure img { width: 100%; max-height: 360px; object-fit: cover; }
