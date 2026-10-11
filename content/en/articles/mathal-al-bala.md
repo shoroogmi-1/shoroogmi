@@ -1,10 +1,10 @@
 Title: The Likeness of Affliction
-Excerpt: Imagine with me that there is a rope tied tight around your chest, by wisdom.
+Excerpt: Imagine with me a rope drawn tight around your chest, and drawn with wisdom.
 
-Imagine with me that there is a rope tied tight around your chest, by wisdom.
+Imagine with me a rope drawn tight around your chest, and drawn with wisdom.
 
-And you are standing firm in your place, while it tightens, and your chest grows tighter and tighter, and then, before long, it snaps!
+You hold your ground, and it tightens; your chest grows narrower, and narrower still, and then, all at once, it snaps!
 
-This is the likeness of affliction: it presses hard on you until your chest is constricted by it, and when it sees endurance and patience from you, it snaps (Indeed, We found him patient), We found him, in every trial, patient and seeking the reward.
+Such is affliction. It tightens around you until your chest is straitened by it, but the moment it sees fortitude and patience in you, it snaps. (Indeed, We found him patient): We found him, in every trial, patient and seeking his reward from Allah.
 
-But if you falter and thrash right and left in panic and resentment, the rope loosens around you, and then, before long, it returns as tight as ever; it has not snapped, and you have not broken free of it.
+But if you buckle, twisting right and left in panic and resentment, the rope slackens around you, only to draw tight again before long; it never snaps, and you never slip free.

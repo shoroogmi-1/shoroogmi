@@ -1,54 +1,54 @@
 Title: The Story of William James Sidis
-Excerpt: And now, folks, let's talk!
+Excerpt: Now then, friends, let's talk!
 
-And now, folks, let's talk!
+Now then, friends, let's talk!
 
-Come on in!
+Come, sit over here!
 
-Let me tell you a story, then tell you something that matters to you.
+Let me tell you a story, and then tell you something that matters to you.
 
-And if you skip the story, no worries, but what you've missed, you've missed!
+If you'd rather skip the story, that's fine; but what you miss, you miss!
 
-William James Sidis (1898-1944) is the most amazing of geniuses, his IQ ranging between 250 and 300. He read the New York Times at 18 months old, and taught himself Latin without help from his parents at the age of two,
+William James Sidis (1898-1944) was the most astonishing of prodigies, with an IQ estimated at somewhere between 250 and 300. He was reading the *New York Times* at eighteen months, and at two he taught himself Latin, with no help from his parents,
 
-and he learned Greek at three,
+at three he learned Greek,
 
-and learned to type in English and French at four, and published a paper on anatomy when he was five,
+at four he learned to type in English and French, and at five he wrote a paper on anatomy,
 
-he graduated from high school at eight,
+at eight he finished high school,
 
-he nearly entered Harvard at an early age, except that Harvard decided he wouldn't be admitted until he had matured socially; he entered it at 11,
+he very nearly entered Harvard as a small child, but Harvard decided not to admit him until he had matured socially; he finally went in at eleven,
 
-at 16 he became a professor with honors,
+at sixteen he became a professor with honors,
 
-he predicted black holes before one of the astronomers of his time,
+he predicted black holes ahead of the astronomers of his day,
 
-and the boy had barely come of age when he already had forty tongues!
+and the boy had barely come of age before he could speak forty languages!
 
-Then what happened to the man of swift achievements and lofty talents?
+And then what became of this boy of dazzling feats and towering gifts?
 
-He withdrew from society completely; he couldn't bear being hounded by the press and media, and he suffered nervous breakdowns.
+He withdrew from society entirely. He could not bear being hounded by the press, and he suffered nervous breakdowns.
 
-I think you've understood what I'm getting at with this story, young man!?
+I think you see what I am driving at with this story, young man!?
 
-Yes, well done!
+Yes, exactly!
 
-You may have brilliant mental abilities and rack up achievement after achievement, but if you don't work at building psychological, social and faith skills in your relationship with Allah, then with yourself and with society, then intelligence can collapse at any moment, and swift successes become a source of pain and failure.
+You may have a brilliant mind and pile up one achievement after another; but if you do not work at building the inner skills, the psychological, the social, and the spiritual, in your relationship with Allah, then with yourself and with others, your intelligence can crumble at any moment, and quick success can turn into a source of pain and failure.
 
-Because these skills are what give you the wisdom to live life and preserve your success and intelligence, and because success without them is, at any moment, at risk of collapse.
+For these skills are what give you the wisdom to live your life, and what keep your success and your intelligence intact; without them, success is always one moment away from collapse.
 
-I also want you to know -early in life and before it's too late- that gaining wisdom at an early age comes before specialization and achieving academic accomplishments and professional successes! That you live life wisely (by seeking out the arts of deepening your relationship with Allah the Mighty and Majestic, and psychological and social skills).
+I want you to know this too, early in life, before it is too late: gaining wisdom while you are young matters more than specializing, more than scholarly achievement or professional success! Live your life with wisdom (by seeking out the art of deepening your bond with Allah, the Mighty and Majestic, and by building your psychological and social skills).
 
-As for fine specialization and excelling in the sciences, it matters, but don't make it sacred!
+As for narrow specialization and mastery of the sciences: yes, they matter, but do not make them sacred!
 
-Wisdom always comes first, and if you hurry to attain it, and at an early age, that is a great achievement
+Wisdom always comes first, and if you hurry to reach it while you are still young, that is a great achievement
 
-yes, an invisible, intangible achievement, but it is the foundation you stand on.
+an achievement no one sees, an inner one, yes, but it is the ground you stand on.
 
-If you achieve living with success and wisdom, then enjoy your success after that!
+If you manage to live with wisdom and true success, then by all means, enjoy every success that follows!
 
-I forgot to tell you the rest of the story!
+I forgot to tell you how the story ends!
 
-William resigned from the university at the age of twenty, and withdrew from all intellectual activities and hobbies,
+William left the university at twenty and walked away from every intellectual pursuit and pastime,
 
-and in 1924 a journalist found him working in a modest office for low pay on (Wall Street), and he answered the journalist's questions: that he no longer wanted to work at anything that was a burden to him, and he stayed that way, in a lowly, ordinary job, isolated from science and mathematics, until death visited him at the age of forty after suffering a brain hemorrhage.
+and in 1924 a journalist found him working in a humble office on (Wall Street) for meager pay. When the journalist questioned him, he answered that he no longer wanted to do any work that weighed on him. And so he stayed, in a lowly, ordinary job, cut off from science and mathematics, until death came for him at forty, after a brain hemorrhage.

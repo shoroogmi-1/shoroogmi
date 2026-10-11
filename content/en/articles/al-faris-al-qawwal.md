@@ -1,45 +1,45 @@
-Title: And You Are the Knight Who Says, “Patience!”
-Excerpt: And you are the knight who says, “Patience!” … when speech and neighing have died away
-Quote: So the leader in times of crisis gives people good news of relief and good, makes them patient and is patient along with them, and does not postpone it to the end.
+Title: And You, the Horseman Who Cries “Patience!”
+Excerpt: And you, the horseman who cries “Patience!” … when speech and neighing alike have died away
+Quote: So the leader, in times of crisis, brings people good tidings of relief and of good, steadies them in patience and holds patient alongside them, and does not leave it until the end.
 
-And you are the knight who says, “Patience!” … when speech and neighing have died away
+And you, the horseman who cries “Patience!” … when speech and neighing alike have died away
 
-“He says: you are the one who makes the army patient, saying to them: be patient, patient in the bite of war, when the calamity has grown great and the fighting has intensified, so that a man is unable to speak and a horse unable to neigh” (al-Wahidi)
+“He says: you are the one who steadies the army in patience, telling them: patience, patience under the bite of war, when the ordeal has grown immense and the fighting fierce, so that a man can no longer speak, nor a horse neigh” (al-Wahidi)
 
-In setbacks, and when hardships strike, silence prevails, and keeping things in grows.
+In reverses, when hardships descend, silence takes over and people hold more and more inside.
 
-You see them postponing their moments of bursting into laughter or tears until the end of the battle..
+You see them putting off the moment they burst into laughter or tears until the battle is over..
 
-Everyone postpones the victory,
+Everyone puts off victory,
 
-Except the master, the leader, for he speaks good news and urges patience in the eye of the storm, amid the dust!
+Except the master, the leader: he speaks good tidings and calls for patience in the eye of the storm, in the thick of the dust!
 
-He does not postpone it to the end; rather, right away, now, he says: Rejoice, good is coming.
+He does not leave it until the end; right away, now, he says: Rejoice, good is coming.
 
-And this is not an easy task,
+And that is no easy task,
 
-He is betting!
+He is staking everything!
 
-He is challenging!
+He is defying!
 
-On victory, and on the hard circumstances.
+Wagering on victory, against the harshest odds.
 
 Ah, Abu al-Tayyib!
 
-Your words have reminded me of the sayings of the Messenger of Allah ﷺ which history has immortalized, as he made the believers patient in the midst of battles:
+Your words have reminded me of the sayings of the Messenger of Allah ﷺ that history has made immortal, as he steadied the believers in the midst of battle:
 
-The Battle of Uhud: { When you were fleeing up and not turning back for anyone, while the Messenger was calling you from behind you; so He repaid you with distress upon distress, so that you would not grieve over what escaped you or what befell you; and Allah is All-Aware of what you do }[Surah Al Imran: 153]
+The Battle of Uhud: { [Remember] when you [fled and] climbed [the mountain] without looking aside at anyone while the Messenger was calling you from behind. So Allah repaid you with distress upon distress so you would not grieve for that which had escaped you [of victory and spoils of war] or [for] that which had befallen you [of injury and death]. And Allah is [fully] Acquainted with what you do }[Surah Al Imran: 153]
 
-Remember when you were turning your backs, fleeing across the land, (and not turning back: not looking back for anyone)
+Remember when you were turning your backs and fleeing across the land, (without looking aside: not turning to look at anyone)
 
 Notice! Look closely!
 
-They do not look back for anyone: they are in a state of silence and keeping things in; among them were those preoccupied with thinking how to save themselves, as the army had broken and defeat had begun to seep through the ranks, and scattering and dispersal had begun.
+They do not turn to look at anyone: they have fallen silent, holding everything in. Some are consumed with working out how to save themselves, for the army has broken, defeat has begun to seep through the ranks, and the scattering and dispersal have begun.
 
-And the Messenger ﷺ, the master, the leader, did not lose his patience or his composure; he called them from behind their backs (calling you from behind you): “To me, servants of Allah! To me, servants of Allah!”
+And the Messenger ﷺ, the master, the leader, did not lose his patience or his composure. He called to them from behind their backs (calling you from behind): “To me, servants of Allah! To me, servants of Allah!”
 
 And at Hunayn, when some of the believers turned and fled, the Messenger of Allah ﷺ called out among them:
 
-“I am the Prophet, no lie; I am the son of Abd al-Muttalib.”
+“I am the Prophet, and there is no lie about it; I am the son of ʿAbdul Muttalib.”
 
-So the leader in times of crisis gives people good news of relief and good, makes them patient and is patient along with them, and does not postpone it to the end.
+So the leader, in times of crisis, brings people good tidings of relief and of good, steadies them in patience and holds patient alongside them, and does not leave it until the end.

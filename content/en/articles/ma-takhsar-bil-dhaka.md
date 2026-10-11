@@ -1,18 +1,18 @@
-Title: What Do You Lose When You Use Artificial Intelligence for Understanding and Learning?
-Excerpt: You lose your mind's ability to analyze, decode, understand, and solve problems
+Title: What Do You Lose When You Let AI Do Your Understanding and Learning?
+Excerpt: You lose your mind's power to analyze, to decode, to understand, and to solve problems
 
-You lose your mind's ability to analyze, decode, understand, and solve problems
+You lose your mind's power to analyze, to decode, to understand, and to solve problems
 
-Instead of putting your mind to work on complex sentences and trying to imagine and understand, you turn to artificial intelligence; yes, it gives you understanding, quickly and accurately
+Instead of wrestling with a knotty sentence, straining to picture it and grasp it, you run to AI. Yes, it hands you the understanding, quickly and precisely
 
-You feel like a fast learner, quick to understand
+You feel like a quick learner, sharp and perceptive
 
-Except that in exchange for this you've lost your ability to imagine, analyze, and understand,
+But the price you paid was your own ability to imagine, to analyze, to understand,
 
-And as you know, a child who depends on his parents a lot ends up weak in personality and mind, so what about an adult if he depends on algorithms for everything?
+And as you know, a child who leans too much on his parents grows up weak in character and in mind. So what of a grown adult who leans on algorithms for everything?
 
-He is pampered, but weak in conscience, and drained of mental strength.
+He is pampered, yes, but his inner life is frail and his mind has gone slack.
 
-I am for artificial intelligence and using it and running experiments and applications on it, but set limits for it and regulate your use of it; not everything should be asked of it, or else it will rob you of your mind.
+I am all for AI: for using it, experimenting with it, building on it. But draw lines around it and ration your use. Not everything is for asking it, or it will steal your mind away.
 
-And not everything should be requested of it. Isn't that how life has taught us, that it doesn't give us everything?
+And not everything is for demanding of it. Isn't that what life itself has taught us: that it never gives us everything?

@@ -5,22 +5,22 @@ Put the world behind your back
 
 and say: Allah is the Greatest!
 
-And recite the Quran standing
+Stand and recite the Quran
 
-by night, when the stars shine brightest
+by night, when the stars shine clearest
 
-And proclaim it in the depth of darkness
+And sing it out in the depth of darkness,
 
-a light, that your cause may come to light
+a light, that your cause may yet come to light
 
-All who are upon the earth, of jinn and men, hear it
+All upon the earth, jinn and men, can hear it,
 
-so recite it aloud, aloud
+so raise your voice with it, raise it high
 
-Rise like your two forefathers, Abraham and Muhammad
+Rise like your forefathers, Abraham and Muhammad,
 
-that most radiant of caravans
+that caravan of radiant faces
 
-You read not a single letter of it
+Not a single letter of it do you read
 
-but you are granted by it a triumphant victory
+but it brings you triumph crowned with victory

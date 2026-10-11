@@ -1,18 +1,18 @@
 Title: Heavenly Standing
-Excerpt: Think about striving to attain prestige and a high, praiseworthy reputation among the people of heaven!
+Excerpt: Imagine setting your heart on standing, on a lofty and praiseworthy name, among the dwellers of heaven!
 
-Think about striving to attain prestige and a high, praiseworthy reputation among the people of heaven!
+Imagine setting your heart on standing, on a lofty and praiseworthy name, among the dwellers of heaven!
 
-Seek prestige!
+Seek distinction!
 
-Prestige with Allah the Exalted
+Distinction in the sight of Allah the Exalted
 
-(And he was, in the sight of Allah, distinguished)
+(And he, in the sight of Allah, was distinguished)
 
-*wajīhan* (“distinguished”): one whose supplication is heard, not forsaken, nor disappointed in his hope and his word.
+*wajīhan* (“distinguished”): one whose prayer is heard, who is never forsaken, whose hope is never dashed and whose word never falls to the ground.
 
-Have you seen the methods of fame, building social standing, and the ways of endearing oneself to people?
+Have you seen all the arts of fame, of building a social standing, of winning people's affection?
 
-If you invested them in heaven, it would be better for you! Than in people whom nothing about you pleases.
+Had you invested them in heaven, it would have been far better for you! Better than spending them on people whom nothing about you will ever please.
 
-"Al-Khalil ibn Ahmad used to say: O Allah, make me, in Your sight, among the highest of Your creation, and make me, in my own eyes, among the lowliest of Your creation, and in the eyes of people, among the middle of Your creation"(Ibn Kathir)
+"Al-Khalil ibn Ahmad used to say: O Allah, make me in Your sight among the highest of Your creation, in my own eyes among the lowliest of Your creation, and in the eyes of people among the middling of Your creation" (Ibn Kathir)

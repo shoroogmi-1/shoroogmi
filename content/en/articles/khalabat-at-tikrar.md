@@ -1,116 +1,116 @@
 Title: The Enchantment of Repetition
-Excerpt: If there were a way to prove the truth of the Quran and the soundness of every vowel and letter in it, it would be repetition!
+Excerpt: If there were one way to prove the truth of the Quran, and the soundness of every vowel and every letter in it, that way would be repetition!
 
-If there were a way to prove the truth of the Quran and the soundness of every vowel and letter in it, it would be repetition!
+If there were one way to prove the truth of the Quran, and the soundness of every vowel and every letter in it, that way would be repetition!
 
 Why?
 
-Because when speech is repeated, we discover whether the speaker is lying or telling the truth; this is how we discover the contradictions in what he says
+Because when words are repeated, we can tell a lying speaker from a truthful one; this is how his contradictions come to light
 
-When (A) says: I was in Riyadh on Saturday
+Say (A) tells us: I was in Riyadh on Saturday
 
-Then says to someone else: I was at home on Saturday.
+Then tells someone else: I was at home on Saturday.
 
-The repeated sentences with a single meaning, "I was… on Saturday," gave us a clear contradiction between Riyadh and home, so we understood from it that he is lying to us.
+The repeated sentence, with its single meaning, "I was… on Saturday," has handed us a glaring contradiction between Riyadh and home, and from it we understand that he is lying to us.
 
-Yes, perhaps he forgot his first lie, which is why it is said: if one day you decide to lie, be someone with a strong memory;)
+Yes, perhaps he simply forgot his first lie; which is why they say: if one day you decide to lie, you had better have a good memory;)
 
-And the liar forgets his lies; because the human being's memory is feeble, whether he likes it or not, and the days and the change of times expose him.
+And the liar does forget his lies, for human memory is frail whether he likes it or not, and the passing days and changing times give him away.
 
-And if this Quranic repetition were from a human being, we would find in it contradictions almost beyond counting; because it is human nature to forget one's past contradictory sentence (A) in favor of one's present contradictory sentence (B)
+Had this Quranic repetition come from a human being, we would have found in it contradictions almost beyond counting; for it is human nature to forget one's earlier contradictory sentence (A) while uttering the later one (B)
 
-(Had it been from anyone other than Allah, they would surely have found much inconsistency in it (82) (An-Nisa)
+(If it had been from [any] other than Allah, they would have found within it much contradiction (82) (An-Nisa)
 
-And the cause of these inconsistencies is repetitions!
+And it is repetition that brings such contradictions to light!
 
-Otherwise, how do we know that a questionnaire in scientific research is false? From the repetition of answers!
+How else do we know that a questionnaire in a research study has been answered falsely? From the repeated answers!
 
-I mean, if every question in the questionnaire were completely different in its idea, the truthful would not become clear to us from the liar, but a single question must be repeated in more than one wording so the researcher knows the truthful from the liar:
+I mean: if every question in a questionnaire carried a completely different idea, we could never tell the truthful respondent from the liar. One and the same question has to be repeated in more than one wording, so the researcher can tell the truthful from the liar:
 
-For example, questions three and sixteen of a questionnaire measuring overconsumption:
+Take, for instance, questions three and sixteen of a questionnaire measuring overconsumption:
 
-3- On the weekend I never spend my money
+3- On weekends I never spend my money
 
-16- On Saturday my children and I go out to a restaurant.
+16- On Saturdays my children and I go out to a restaurant.
 
-You find that the two questions carry a single meaning, so if he answered both with "agree," it would become clear to us that he is lying; and therefore a corrupt questionnaire, thrown in the trash.
+The two questions, you see, carry one and the same meaning; if someone answers "agree" to both, it is clear he is lying, and so the questionnaire is spoiled and goes straight into the bin.
 
-And now let us return to repetition in the Quran. We have given evidence that Allah the Exalted made repetition and the resembling verses deliberately and with wisdom, not in vain; to prove that it is sent down from Allah, and nothing reveals to the human mind that it is from Allah like repetition.
+Now let us return to repetition in the Quran. We have given evidence that Allah the Exalted placed repetition and the resembling verses there deliberately and with wisdom, not in vain: to prove that it is sent down from Allah. And nothing reveals to the human mind that it is from Allah the way repetition does.
 
-And if the Quran were all topics completely distinct from one another -without repetition, that is- its truthfulness would not have become clear to us, and it would be like any other man-made book!
+Had the Quran been made up entirely of topics wholly distinct from one another (with no repetition, that is), its truthfulness would never have become clear to us, and it would be like any other man-made book!
 
-Because books composed by humans are the ones in which, in every chapter, the author puts a new idea before us, and varies his styles throughout the book.
+For it is in books composed by humans that every chapter brings us a new idea, and the author varies his styles throughout.
 
-Yes, there are human books that repeat some ideas and phrasings; for example, a cookbook, you find it repeating the phrase (an amount of 3/4 cup of water) and using it in different contexts but with the same meaning!
+True, some human books repeat certain ideas and phrases. A cookbook, for example, will repeat the phrase (3/4 cup of water) in different contexts, but always with the same meaning!
 
-As for the Quran, it is completely different! Even its repetition gives us two things: 1- a unified meaning 2- an additional meaning to the unified meaning.
+The Quran is altogether different! Even its repetition gives us two things: 1- a shared meaning 2- a further meaning added to the shared one.
 
-Let us give an example of the resembling verses:
+Let us take an example of the resembling verses:
 
-The description of Yusuf (peace be upon him): (And when he reached his full strength, We gave him judgment and knowledge; and thus do We reward those who do good (22) (Yusuf)
+Of Yusuf (peace be upon him): (And when Joseph reached maturity, We gave him judgment and knowledge. And thus We reward the doers of good (22) (Yusuf)
 
-The description of Musa (peace be upon him): (And when he reached his full strength and became mature, We gave him judgment and knowledge; and thus do We reward those who do good (14) (Al-Qasas)
+Of Musa (peace be upon him): (And when he attained his full strength and was [mentally] mature, We bestowed upon him judgement and knowledge. And thus do We reward the doers of good (14) (Al-Qasas)
 
-Both share a single meaning: (We gave him judgment and knowledge )which is: prophethood, for both are prophets.
+Both share a single meaning: (*ātaynāhu ḥukman wa-ʿilmā*, We gave him judgment and knowledge), which is prophethood, for both were prophets.
 
-Except that the difference is "(and became mature) *wa-stawā* is to express the strength of the body in Musa (peace be upon him), whereas Yusuf (peace be upon him) was beautiful" - Dr. Fadil al-Samarrai
+The difference, however, is that "(*wa-stawā*, and was mature) expresses Musa's bodily strength (peace be upon him), whereas Yusuf (peace be upon him) was beautiful" - Dr. Fadil al-Samarrai
 
-And this distinction between the meanings of the repetitions is not grasped by a Frenchman or an Englishman -with apologies- but by someone skilled in Arabic, a gifted one, to uncover the fine linguistic differences, or at least someone who has studied its basics.
+And such distinctions between the meanings of repeated phrases are lost on a Frenchman or an Englishman (with apologies); it takes someone skilled in Arabic, gifted in it, to uncover such fine linguistic differences, or at the very least someone who has learned its rudiments.
 
-So no one who is not learned in Arabic, whatever his academic rank, should have any right to object to the Quran's repetition until he goes deep into Arabic and masters it, then let us hear his opinion again!
+So no one unlearned in Arabic, whatever his academic standing, has any right to object to the Quran's repetitions until he has gone deep into Arabic and mastered it; then let us hear his opinion again!
 
-For rising through the stages of reflection is reached only by one who has mastered Arabic, understood its secrets, and tasted its eloquence and its literature.
+For the heights of reflection are reached only by one who has mastered Arabic, grasped its secrets, and tasted its eloquence and its literature.
 
-Repetition exists in nature! Like the petals of a flower being equal in their sides and their number, in a regular way.
+Repetition is everywhere in nature! Think of the petals of a flower, matching in shape and number, in perfect regularity.
 
-This system of harmonious repetition of the single element is the source of beauty first. Imagine if one flower had a single petal and the second flower three petals! Like deformed teeth, one broken, the second pulled out, the third left down to a quarter, and the fourth down to a third! How ugly the sight, how the eye recoils from it.
+This orderly, harmonious repetition of a single element is, first of all, the source of beauty. Imagine one flower with a single petal and the next with three! Like mangled teeth: one broken, the next pulled out, a third worn down to a quarter, a fourth to a third! How ugly the sight, how the eye recoils from it.
 
-But when there are five petals on every flower, this is what captivates us and we say: Allah! How beautiful it is!
+But when every flower has five petals, that is what captivates us, and we exclaim: Allah! How beautiful!
 
-And likewise repetition is the cause of benefit, for when flowers and petals are repeated, bees can benefit from them, so there are job opportunities for everyone! Isn't that so?
+Repetition is also the source of benefit: because flowers and petals repeat, the bees can benefit from them, so there is work for everyone! Isn't that so?
 
-And if they were irregular, conflicts and grinding battles would break out, honey production would drop as a result, they would starve, and the healing of the sick would be delayed.
+Were they irregular, there would be fights and grinding battles, honey production would fall, the bees would starve, and the sick would be slower to heal.
 
-And likewise repetition in the Quran is one of the causes of healing: the repetition of certain verses in more than one place is one of the causes of healing, such as the verses of provision, the verses of affection, the verses of tranquility, the verses on magic, and others.
+In the same way, repetition in the Quran is one of the sources of healing: certain verses recur in more than one place, and this recurrence is itself a means of healing, such as the verses of provision, the verses of affection, the verses of tranquility, the verses on magic, and others.
 
-So when the whole Quran passes over your tongue and your heart, from Al-Fatiha to An-Nas, and you complete it; this is the most complete healing and more beneficial for provision and blessing than limiting yourself to one surah, which is why you must be keen to complete it every time -at least once a month-.
+So when the whole Quran passes over your tongue and through your heart, from al-Fatiha to an-Nas, and you complete it, that is the fullest healing, and brings more provision and blessing than confining yourself to a single surah. That is why you should be keen to complete it each time (at least once a month).
 
-And there is nothing wrong with repeating a particular surah such as Al-Baqarah every day, and be keen on completing as well, like completing every two weeks and reading Al-Baqarah every day. Good!
+There is no harm in repeating one particular surah, such as al-Baqarah, every day; but be keen to complete the whole as well, say, a full reading every two weeks and al-Baqarah every day. Wonderful!
 
-And this is what gave the Quran beauty and absolute order, so that jinn and humans cannot produce its like! Because of the splendor of the repetition and the enchantment of the pattern.
+This is what has given the Quran its beauty and its absolute order, so that jinn and humans together cannot produce its like! It comes from the splendor of its repetition and the enchantment of its weave.
 
-It rains through density!
+It is density that brings the rain!
 
-For a single cloud on its own does nothing; clouds must be repeated, and then it rains.
+A single cloud on its own does nothing; only when clouds gather, one upon another, does the rain fall.
 
-And that is why there is no (a cloud) in the Quran! Rather it always comes in plural forms (the heavy clouds) (clouds) because *saḥāb* (“clouds”) is the plural of *saḥābah* (“a cloud”).
+That is why the singular (*saḥābah*, a cloud) never appears in the Quran! It always comes in the plural (the heavy clouds) (*saḥāban*), for *saḥāb* (“clouds”) is the plural of *saḥābah* (“a cloud”).
 
-And likewise these resembling verses and repetitions are what make the Quran heavy, for the Quran, as is well known, is heavy (Indeed, We will cast upon you a weighty word (5)
+Likewise, it is these resembling verses and repetitions that make the Quran heavy; and the Quran, as is well known, is heavy (Indeed, We will cast upon you a heavy word (5)
 
-And this heaviness is the reason the heart comes alive through the Quran!
+And this very heaviness is what brings the heart to life through the Quran!
 
-Like dead land that only grows through heavy clouds and dense rain.
+Like dead land that will not bloom except under heavy clouds and dense rain.
 
-So what makes the Quran heavy is the repetition and the resembling verses, and they are the reason it is the rain by which Allah gives life to hearts after their death, and the heart turns into spring 🌿
+What makes the Quran heavy, then, is its repetition and its resembling verses, and they are why it is the rain by which Allah revives hearts after their death, and the heart turns to springtime 🌿
 
-And if it were empty of repetition, there would be no difference between the state of the heart before reading and after! It would be dead without repetition.
+Were it empty of repetition, there would be no difference between the heart before reading and after! Without repetition, it would stay dead.
 
-And whoever kept company with the weighty word in this world will be among the lightest of people in the Hereafter in reckoning and standing, (Indeed, these love the fleeting life and leave behind them a heavy Day (27) (Al-Insan)
+And whoever kept company with the heavy word in this world will be among the lightest of people in the Hereafter, in reckoning and in standing (Indeed, these [disbelievers] love the immediate and leave behind them a grave Day (*yawman thaqīlā*) (27) (Al-Insan)
 
-Imagine if the natural world had elements distinct from one another, or say: if our world were empty of repetition .. how would you imagine it?
+Imagine a natural world whose elements were all distinct from one another; or say: a world with no repetition at all .. how do you picture it?
 
-I imagine it monotonous, boring, ugly, shallow, with nothing in it worth reflecting on and putting the mind to work!
+I picture it monotonous, dull, ugly, shallow, with nothing in it worth pondering or putting the mind to work on!
 
-Were it not for repetition, reflecting on the Quran would not be possible; it would become impossible! (Do they not reflect upon the Quran? Had it been from anyone other than Allah, they would surely have found much inconsistency in it (82) (An-Nisa)
+Were it not for repetition, reflecting on the Quran would not be possible; it would be impossible! (Then do they not reflect upon the Qur'an? If it had been from [any] other than Allah, they would have found within it much contradiction (82) (An-Nisa)
 
-For repetition is what prompts the question in you: what is the difference between the verses of Musa and Pharaoh in Al-A'raf and Ash-Shu'ara? Why did the sentences differ?
+It is repetition that stirs the question in you: what is the difference between the verses about Musa and Pharaoh in al-A'raf and in ash-Shu'ara? Why are the sentences different?
 
-Which makes you dive and go deep into the meanings, the assumptions, and the possibilities!
+And so you dive deeper and deeper into meanings, suppositions and possibilities!
 
-Why was (then) added here, and there the *fā'* (“so”) was added?
+Why is (*thumma*, then) added here, and the *fā'* (“so”) added there?
 
-And why in this verse was the *fā'* added, and there without the *fā'*, even though it is the same story?
+And why does this verse have the *fā'* while that one does without it, when it is the very same story?
 
-This is what makes the Quran an enjoyable and continuing journey of thought and reflection as human beings grow. If they reflected on all of it, they would not be done with its wonders that never run out, and it would give them of its sciences and the secrets of Arabic,, if they took it seriously and with strength, and they had a knowledge mission called: the mission of reflection for the whole of life and the journey.
+This is what makes the Quran a delightful journey of thought and reflection that goes on as human beings grow. If they reflected on all of it, they would never reach the end of its inexhaustible wonders, and it would pour out to them its sciences and the secrets of Arabic,, if only they took hold of it earnestly and firmly, and made it a lifelong quest of the mind called: the quest of reflection, for all of life and all of the journey.
 
-So I cannot imagine the life of a knowledgeable and cultured person without reflecting on the Quran being at the top of his knowledge priorities! This is for the believer, and the deep believer who understands this meaning.
+So I cannot imagine the life of a learned, cultured person without reflection on the Quran at the very top of their pursuit of knowledge! This is for the believer, and for the deep believer who grasps this meaning.

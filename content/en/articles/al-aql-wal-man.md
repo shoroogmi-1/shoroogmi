@@ -1,10 +1,10 @@
-Title: Reason Is Not in the Abundance of Books
-Excerpt: The frontal lobe responsible for logic and rational decisions; neuroscience research has found that it expands the more a person increases his control over his emotions and feelings, so it expands through will and choice, just as it expands and grows the more useful information we add to it.
+Title: Reason Does Not Come From Many Books
+Excerpt: The frontal lobe, the seat of logic and rational decision-making: neuroscience has found that it grows the more a person masters his emotions and feelings. It expands through will and choice, just as it expands and grows each time we feed it something useful.
 
-The frontal lobe responsible for logic and rational decisions; neuroscience research has found that it expands the more a person increases his control over his emotions and feelings, so it expands through will and choice, just as it expands and grows the more useful information we add to it.
+The frontal lobe, the seat of logic and rational decision-making: neuroscience has found that it grows the more a person masters his emotions and feelings. It expands through will and choice, just as it expands and grows each time we feed it something useful.
 
-Reason is not in the abundance of books; rather, reason is that you hold yourself back from its desires and whims. And the meaning of *ʿaql* (reason) in the language is: restraint. So the one who has reason is the one who held himself back from his whims.
+Reason does not come from many books; reason is holding your soul back from its cravings and its whims. In the Arabic language, *ʿaql* (reason) means restraint. The person of reason, then, is the one who has held his soul back from its desires.
 
-Go, if you like, and learn logic and statistics and programming and every complex science, finish it until you tear it apart; a part of reason will still be missing in you until you learn the Quran and the Sunnah and strive to refine yourself and purify it of whisperings and stray thoughts until you become whole, and submit to Allah, Lord of the worlds.
+Go, if you like, and learn logic, statistics, programming, every intricate science; master each one until you have worn it threadbare. A part of your reason will still be missing until you learn the Quran and the Sunnah, and labor to refine your soul and cleanse it of whisperings and stray thoughts until it is whole and undivided, surrendered to Allah, Lord of the worlds.
 
-And among the names of the Quran is: *al-Muḥkam*, and it comes from *ḥukm*, that one governs himself; so the Quran is the best aid for a person in learning will, restraint, discipline and self-control, after the success granted by Allah the Exalted.
+Among the names of the Quran is *al-Muḥkam*, from *ḥukm*, the governing of oneself. And so the Quran is the finest help a person can have, after the grace of Allah the Exalted, in learning will, restraint, discipline, and mastery of the self.

@@ -1,52 +1,52 @@
 Title: Why Do People Restore Their Accounts After Deleting Them?
-Excerpt: The research question is no longer why people delete their social accounts, but why they try to restore them 100 days after deleting them ?
+Excerpt: The research question is no longer why people delete their social media accounts, but why they try to get them back 100 days after deleting them ?
 
-The research question is no longer why people delete their social accounts, but why they try to restore them 100 days after deleting them ?
+The research question is no longer why people delete their social media accounts, but why they try to get them back 100 days after deleting them ?
 
-The account-deletion revolution sparked by the publication of Lanier's latest book, "Ten Arguments for Deleting Your Social Media Accounts Right Now," which quickly topped bestseller lists internationally.
+The account-deletion revolution was sparked by Lanier's latest book, "Ten Arguments for Deleting Your Social Media Accounts Right Now," which quickly shot to the top of bestseller lists around the world.
 
-The book was published right around 2018, and the campaigns to delete Facebook started from there until 2019.
+The book came out in 2018, and from there the delete-Facebook campaigns ran on into 2019.
 
-What the researchers found was funny!
+What the researchers found was hilarious!
 
-Because those who deleted Facebook migrated to Instagram 🌚.
+Because the people who deleted Facebook simply moved over to Instagram 🌚.
 
-(This is like someone who boycotts Starbucks coffee and has a croissant for breakfast;))
+(It's like boycotting Starbucks coffee and having a croissant for breakfast;))
 
-And media studies found that most of these account deleters and restorers are from the young Gen Z millennial generation; the explanation is that they grew up with the iPad and digital things and find it hard to part with them. This is different from deletion by older people, 50–65, who, if they delete them, don't come back much.
+Media studies also found that most of these serial deleters and restorers are young Gen Z-ers and millennials; the explanation is that they grew up with the iPad and all things digital, and find it hard to let go. Older people, aged 50–65, are different: when they delete, they rarely come back.
 
-Driven by nostalgia, and a soulful longing for those platforms.
+Driven by nostalgia, and a deep spiritual longing for those platforms.
 
-In one experiment, researchers paid $100 to whoever deactivated Facebook, and the result was astonishing: 95% went back and restored it 100 days after deleting it. -There are studies that say: users regret deleting their account after 30 days, which is the same period social apps allow for recovering an account, after 32 days, and I suggest extending it to three menstrual cycles, like the ruling for a divorced woman ;))
+In one experiment, researchers paid $100 to anyone who would deactivate Facebook. The result was astonishing: 95% went back and restored it 100 days after deleting it. — Some studies say users regret deleting their account after 30 days, the very window social apps give you to recover it, 32 days; and I propose extending it to three menstrual periods, like the ruling for a divorced woman ;))
 
 During the Facebook crisis, the question people searched for most on Google was: How do I delete my Facebook account?
 
-And after the 2019 period, once the crisis and the massive deletion campaigns
+And after 2019, once the crisis and the massive deletion
 
-had calmed down, the top questions on Google were:
+campaigns had died down, the top questions on Google became:
 
-How do I restore my account? How do I report my deleted Facebook account?
+How do I get my account back? How do I report my deleted Facebook account?
 
-And one social researcher believes that these platforms have formed a large share of our identity; they have become part of how we define the ego, and they are hard to leave.
+One social researcher argues that these platforms have come to make up a large share of our identity; they have become part of how we define our very selves, and they are hard to leave.
 
-Yes, life is no longer what it was.
+Yes, life is not what it used to be.
 
-And I now see opponents of artificial intelligence attacking it fiercely, and I realized that most of them are over 40–50 years old!
+And now I see people who oppose artificial intelligence attacking it ferociously, and I've noticed that most of them are over 40 or 50!
 
-And I made my peace with them and forgave them for this reason: excuse them, they're old.
+So I made my peace with them, and forgave them, for exactly that reason: go easy on them, they're getting on in years.
 
-Thank God, young people are not affected by their critical opinions and their sharp rejection
+Thank God, the young aren't swayed by their critical opinions and their fierce rejection
 
-And the research world moves on with you or without you, fast, thanks to these technologies; humanity has never seen a generation learn as fast as this generation of young people,
+And the world of research moves on, with you or without you, and fast, thanks to these technologies; humanity has never seen a generation learn as quickly as this generation of young people,
 
-So do you want us, just for your sake, Your Honor, to become slow at research and learning because you have philosophical problems with artificial intelligence!?
+So you want us, just to please Your Highness, to slow down in our research and learning because you have philosophical issues with artificial intelligence!?
 
-And I found someone criticizing a piece of research done with artificial intelligence,
+And I came across someone criticizing a piece of research done with artificial intelligence,
 
-And you, the critic, come here: what have you contributed?!
+Come here, you critic: what have you ever contributed?!
 
-And he criticizes the professional designer who uses it
+And criticizing the professional designer who uses it
 
-Come here, what have you designed?!!
+Come here, you: what have you ever designed?!!
 
 Unbelievable!

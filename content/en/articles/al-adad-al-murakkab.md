@@ -1,18 +1,18 @@
 Title: The Complex Number
-Excerpt: The complex number a+bi is made up of two parts:
+Excerpt: The complex number a+bi is made of two parts:
 
-The complex number a+bi is made up of two parts:
+The complex number a+bi is made of two parts:
 
 The real part (a), and the imaginary part with its coefficient, bi
 
-A complex number needs the complex conjugate, which has the opposite sign; all this to help it get rid of the imaginary part and keep the real part: a-bi
+A complex number needs its complex conjugate, the same number with the opposite sign, and all of this so that it can shed its imaginary part and keep only the real: a-bi
 
-This tremendous reflection crossed my mind ✨
+And then this breathtaking thought struck me ✨
 
-And we, in life, need a companion who differs from us in intellectual, cultural, and scholarly orientation, to help us remove and delete the imagined and illusory parts of ourselves
+We too, in life, need a companion who runs counter to us, intellectually, culturally, and in what we know, to help us strip away and erase the imagined, illusory parts of ourselves
 
-The more complex numbers you get to know, conjugates with signs opposite to yours, the wider your view of life becomes, and you reach moments of wonder! Your brain gets adjusted, you take plenty of knocks to the head, and your research method and way of thinking change.
+The more complex numbers you meet, the more conjugates whose sign is the opposite of yours, the wider your view of life grows, and the more moments of wonder you reach! Your brain gets rewired, you take quite a few knocks to the head, and your way of researching and your way of thinking are transformed.
 
-Likewise, different cultural discussions have a great effect on changing your thinking.
+Conversations across different cultures, too, have a great power to change the way you think.
 
-But if you keep the same social circle (the same specialty, philosophies, age, and interests..), you are doing nothing but adding more copies of yourself! So I don’t know how you will grow and change?!
+But if you stay within the same social circle (the same field, the same philosophies, the same age, the same interests..), all you are doing is adding more copies of yourself! So how, I wonder, will you ever grow and change?!

@@ -3,32 +3,32 @@ Excerpt: Bend, O streams
 
 Bend, O streams
 
-And trace upon the earth a straight line
+And draw upon the earth a straight line,
 
-For leaning teaches the mountains uprightness
+For bending teaches the mountains to stand upright.
 
-Bend, O streams
+Bend, O streams,
 
-Pour out your water along the paths of light
+Spread your water along the paths of light;
 
-Shine for the lion and the dervish
+Shine for the lion and the dervish,
 
-And gleam for the sultan and the donkeys
+Glimmer for the sultan and the donkeys.
 
-All drink from you
+Everyone drinks from you,
 
-For everyone is thirsty
+For all are thirsty.
 
-Bend, O streams
+Bend, O streams;
 
-Around you the nightingales sing
+Around you the nightingales warble,
 
-And the birds chant and the sun soars across the horizons
+The birds sing, and the sun soars across the horizons.
 
-And say to the sun: set or do not set, O daughter of the yellow one, for I will take your place in giving light through the long nights
+And say to the sun: Set, or do not set, O daughter of the yellow one, for I will stand in your place, giving light through the long nights.
 
-We are the embrace of the hunted, the outcast, the seeker of truth, that one gone astray in the village, accused of shedding blood
+We are the embrace of the hunted and the outcast, of the seeker of truth, the one gone astray in the village, accused of shedding blood.
 
-Let him drink from you, quench his thirst from the suns of your lights, lay out uprightness for him and welcome him in the night
+Let him drink from you, let him slake his thirst at the suns of your light; spread uprightness out before him, and welcome him in the night,
 
-So that if he steals, pour the awe of majesty over his imagination, and he turns back to the paths of uprightness.
+So that if he steals, you pour the awe of majesty over his imagination, and he turns back to the paths of uprightness.

@@ -1,140 +1,140 @@
 Title: What Is the Difference Between Thinking (Fikr) and Reasoning ('Aql)?
-Excerpt: One of the prominent figures in contemplating the verses -and one I love listening to- said, when the presenter asked him: Why in Surah Ar-Ra'd is it (Indeed in that are signs for a people who give thought), and in An-Nahl (Indeed in that is a sign for a people who give thought), and why (Indeed in that are signs for a people who reason) in both surahs?
+Excerpt: One of the leading voices in reflecting on the verses (and one I love to listen to) was asked by the presenter: Why, in Surat Ar-Ra'd, do we find (Indeed in that are signs for a people who give thought), and in An-Nahl (Indeed in that is a sign for a people who give thought), and why (Indeed in that are signs for a people who reason) in both surahs?
 
-One of the prominent figures in contemplating the verses -and one I love listening to- said, when the presenter asked him: Why in Surah Ar-Ra'd is it (Indeed in that are signs for a people who give thought), and in An-Nahl (Indeed in that is a sign for a people who give thought), and why (Indeed in that are signs for a people who reason) in both surahs?
+One of the leading voices in reflecting on the verses (and one I love to listen to) was asked by the presenter: Why, in Surat Ar-Ra'd, do we find (Indeed in that are signs for a people who give thought), and in An-Nahl (Indeed in that is a sign for a people who give thought), and why (Indeed in that are signs for a people who reason) in both surahs?
 
-He answered that (for a people who reason) is for the signs of the heavens, and for a people who give thought is for the signs of the earth.
+He answered that (for a people who reason) belongs to the signs of the heavens, and for a people who give thought to the signs of the earth.
 
-I said: There is a clear contradiction in this that is hidden from no one! Because thinking (*tafakkur*) and reasoning (*taʿaqqul*) in Surah Ar-Ra'd both came with the signs of the earth!
+I said: There is a contradiction here that no one could miss! For in Surat Ar-Ra'd, both thinking (*tafakkur*) and reasoning (*taʿaqqul*) come with the signs of the earth!
 
-This is not the answer; because this is not the question:
+That is not the answer, because that is not the question:
 
-What is the difference between signs and a sign..:
+What is the difference between "signs" and "a sign"..:
 
-Rather, the question is:
+The real question is:
 
-Why did they come in this order in three surahs, Ar-Ra'd, An-Nahl, and Ar-Rum: for a people who give thought - for a people who reason?
+Why do they come in this same order in three surahs, Ar-Ra'd, An-Nahl and Ar-Rum: for a people who give thought, then for a people who reason?
 
 And what is the difference between thinking and reasoning?
 
-We say -and Allah is the One whose help is sought-:
+We say (and it is Allah whose help is sought):
 
-That what distinguishes the difference between thinking and reasoning in the Quran is negation.
+What sets thinking and reasoning apart in the Quran is negation.
 
 Negation?
 
 Yes.
 
-Look, the Quran says: (and most of them do not reason).
+Look: the Quran says (and most of them do not reason).
 
-But there is not a single verse in the Quran that negates thinking: (they do not give thought)!
+Yet there is not a single verse in the whole Quran that denies people thought: (they do not give thought)!
 
-And what does this mean?
+And what does that mean?
 
-I think, and knowledge is with Allah, that it means thinking is an instinctive, natural ability in the human being; every human being is a thinker, but not every thinker is one who reasons.
+I believe (and true knowledge is with Allah) that it means thinking is an instinctive, natural ability in human beings: every human being thinks, but not everyone who thinks reasons.
 
-Thinking is a single substance present in everyone -I do not mean physical substance but the kind- , and reasoning is not in everyone.
+Thinking is one and the same material in everyone (I do not mean physical material, but its kind), whereas reasoning is not found in everyone.
 
-Thinking is at a single level, and reasoning is at different levels; each person's reasoning takes shape according to his effort, environment, culture, and society.
+Thinking stands at a single level; reasoning rises by many degrees, each person's reason taking shape according to his effort, his surroundings, his culture and his society.
 
-Thinking is not subject to the influence of nature and external factors. For thinking is instinctive, and reasoning is acquired.
+Thinking does not bend to nature or to outside forces. For thinking is instinctive, and reasoning is acquired.
 
-No one can strip thinking from a person, but his reasoning is influenced and influences.
+No one can tear thinking out of a person; but his reason is shaped by others, and shapes them in turn.
 
-Thinking tends more toward stability, and reasoning tends more toward change.
+Thinking tends to hold still; reasoning tends to change.
 
-Thinking is the ability to observe, remember, memorize, pay attention, concentrate, and so on, and it is inner speech, feelings, emotions, imaginings, and memories.
+Thinking is the ability to observe, to remember, to retain, to pay attention, to concentrate, and so on; it is our inner talk, our feelings and emotions, our imaginings and memories.
 
-As for reasoning, it is using and directing these in a sound and correct way.
+Reasoning is using all of these, and steering them, soundly and rightly.
 
-Do you not see that some people think but come out with wrong outputs and ideas? Yes, he has thought, but he has not reasoned.
+Have you not seen how some people think, yet come out with wrong conclusions and wrong ideas? Yes, he thought; but he did not reason.
 
-And if he thinks and comes out with sound results? Then he is a thinker who reasons.
+And if he thinks and arrives at sound results? Then he is one who thinks and reasons.
 
-If you ask me: Which is more connected to the physical sense (the brain), thinking or reasoning?
+And if you ask me: Which is more bound up with the physical (the brain), thinking or reasoning?
 
-I would answer you: that thinking is closer to the brain than reasoning.
+I would answer: thinking is closer to the brain than reasoning is.
 
-Do you not see that Allah the Exalted says (Then will you not hear?) (Then will you not see?) and He did not say: Will you not walk, will you not use your hands!
+Do you not see that Allah the Exalted says (Then will you not hear?) (Then will you not see?), and does not say: Will you not walk? Will you not use your hands?
 
-Why? Because hearing and sight are the closest to the brain and to thinking.
+Why? Because hearing and sight are the nearest to the brain and to thinking.
 
-So the meaning of "Will you not hear" is: will you not put your reasoning to work on what you hear, and so reason through what is said!?
+So "Will you not hear?" means: will you not set your reason to work on what you hear, and so understand what is said!?
 
 Will you not reason about what you see?
 
-Because the Quran's purpose for sight and hearing is thinking about what they take in, then reasoning and being guided to the truth.
+For what the Quran seeks from sight and hearing is that we think about what they bring in, then reason, and so find our way to the truth.
 
-And there is no benefit in sight, reasoning, and hearing that do not bring their owner to the truth; this is the point.
+Sight and reason and hearing are of no use if they do not bring their owner to the truth; that is the whole point.
 
-And that is why He said: (And among them are those who listen to you. But can you cause the deaf to hear, although they will not use reason? (42) [Yunus]
+That is why He said: (And among them are those who listen to you. But can you cause the deaf to hear, although they will not use reason (42) [Yunus]
 
-They listen to the Quran, but they do not reason about what they hear; so there is no difference between them and the deaf, for whether they hear or do not hear, as long as they do not reason and understand, they are alike in deafness.
+They listen to the Quran, but they do not reason about what they hear; so there is no difference between them and the deaf. Whether they hear or not, so long as they neither reason nor understand, they are equally deaf.
 
-And if He meant physical hearing by it, He would not have made them equal to the deaf, nor ended it with reasoning.
+Had He meant physical hearing, He would not have counted them the same as the deaf, nor closed the verse with reason.
 
-(And among them are those who look at you. But can you guide the blind although they will not [attempt to] see? (43) [Yunus]
+(And among them are those who look at you. But can you guide the blind although they will not [attempt to] see (43) [Yunus]
 
-And if He intended physical sight, He would not have used the word guidance; because it is the purpose of this sense, and how can one be guided without reasoning!?
+Had He meant physical sight, He would not have used the word "guide", for guidance is the very purpose of this sense; and how can anyone be guided without reasoning!?
 
-Hence He put reasoning before guidance. Because if he heard and reasoned, he would see with his heart and be guided, and the one sense would suffice him over the rest of the senses! (And We had certainly established them in such as We have not established you, and We made for them hearing and vision and hearts. But their hearing and vision and hearts availed them not from anything [of the punishment] when they were [continually] rejecting the signs of Allah; and they were enveloped by what they used to ridicule. (26) [Al-Ahqaf]
+So He placed reasoning before guidance. For had he heard and reasoned, he would have seen with his heart and been guided, and that one sense would have spared him all the rest! (And We had certainly established them in such as We have not established you, and We made for them hearing and vision and hearts. But their hearing and vision and hearts availed them not from anything [of the punishment] when they were [continually] rejecting the signs of Allah; and they were enveloped by what they used to ridicule (26) [Al-Ahqaf]
 
-And perhaps hearing is closer to reasoning than sight.
+And perhaps hearing lies closer to reasoning than sight does.
 
-An example of what we mentioned earlier:
+An example of what we said earlier:
 
-If he looked at the planets (looking and sense) and then thought about them, his instinctive thinking would lead him to the fact that every effect has a cause (thinking), and then this would guide him to the fact that the created has a Creator (reasoning, then guidance).
+Were someone to look at the planets (looking, a sense) and then think about them, his instinctive thinking would lead him to see that every effect has a cause (thinking); and that, in turn, would guide him to see that what is created has a Creator (reasoning, and then guidance).
 
-And He arranged them in this order, thinking then reasoning, in Surahs Ar-Ra'd and An-Nahl; because this is the nature of the human being in his thinking processes -for any subject he thinks about and deals with- he progresses gradually from thinking to reasoning so that it is more upright and more complete for him in guidance, and that a person takes time when he thinks about any subject he deals with and analyzes, until he comes out with mature and sound ideas, and that fast, momentary thinking is the furthest thing from rationality.
+He arranged them in this order, thinking and then reasoning, in Surat Ar-Ra'd and Surat An-Nahl, because this is how human beings think: whatever the subject they ponder and work through, they move step by step from thinking to reasoning, which is straighter and fuller for them on the road to guidance. A person needs time when he thinks a matter through and takes it apart, before he arrives at mature and sound ideas; and quick, snap thinking is as far from reason as anything can be.
 
-And speed and haste in thinking, just as they are a sign of intelligence, are a cause of shallowness, especially with those subjects we are dealing with for the first time.
+Speed and haste in thinking, though a sign of intelligence, are also a cause of shallowness, especially with subjects we are tackling for the first time.
 
-So one should not rush with a bold initial idea until he has verified and confirmed it.
+So one should not rush ahead with a bold first idea before testing it and making sure of it.
 
-As for a subject he already knows, it is intelligent to deal with it quickly in one's thinking.
+But with a subject he already knows, it is intelligent to think it through quickly.
 
-And that being guided is a methodology that relies on gradualness and slowness in thinking and reasoning, not speed and haste; because the latter may lead him astray and make him slip.
+Guidance, then, is a method built on going step by step, on slowness in thinking and reasoning, not on speed and haste; for haste may lead a person astray and make him stumble.
 
-And among the reasons for putting thinking before reasoning, too, is that a person progresses gradually in his growth from childhood to maturity: from instinctive thinking to reasoning, so it is more in harmony with the nature of his growth.
+Another reason thinking comes before reasoning is that a person grows step by step from childhood to maturity, from instinctive thinking to reason; so this order fits better with the way he grows.
 
-So reasoning is a fruit and maturity, and thinking is a cause, and this may not be put before that!
+Reason is a fruit, a coming of age; thinking is its cause; and the one may not be put before the other!
 
-Also among the evidence is that Allah the Exalted uses with the Children of Israel: (Then will you not reason?); because they already had the evidence of the truthfulness of the prophethood of Muhammad ﷺ, so they do not need this gradual progression; because knowledge had already reached them, so rebuke and reproach were due upon them.
+Further evidence: with the Children of Israel, Allah the Exalted uses (Then will you not reason?), because they already held the proofs that Muhammad ﷺ was truly a prophet. They had no need of this gradual path; the knowledge had already come to them, and so they deserved rebuke and reproach.
 
 The evidence:
 
-(Do you order righteousness of the people and forget yourselves while you recite the Scripture? Then will you not reason? (44) [Al-Baqarah]
+(Do you order righteousness of the people and forget yourselves while you recite the Scripture? Then will you not reason (44) [Al-Baqarah]
 
-(And when they meet those who believe, they say, “We have believed”; but when they are alone with one another, they say, “Do you talk to them about what Allah has revealed to you so they can argue with you about it before your Lord?” Then will you not reason? (76) [Al-Baqarah]
+(And when they meet those who believe, they say, "We have believed"; but when they are alone with one another, they say, "Do you talk to them about what Allah has revealed to you so they can argue with you about it before your Lord?" Then will you not reason (76) [Al-Baqarah]
 
-(O People of the Scripture, why do you argue about Abraham while the Torah and the Gospel were not revealed until after him? Then will you not reason? (65) [Al Imran]
+(O People of the Scripture, why do you argue about Abraham while the Torah and the Gospel were not revealed until after him? Then will you not reason (65) [Al Imran]
 
-And why, when He speaks about the signs of rain, does He use reasoning, not thinking, as in Ar-Rum and Al-Ankabut?
+And why, when He speaks of the signs of rain, does He use reasoning rather than thinking, as in Ar-Rum and Al-Ankabut?
 
-(And if you asked them, “Who sends down rain from the sky and gives life thereby to the earth after its lifelessness?” they would surely say, “Allah.” Say, “Praise to Allah”; but most of them do not reason. (63) [Al-Ankabut]
+(And if you asked them, "Who sends down rain from the sky and gives life thereby to the earth after its lifelessness?" they would surely say " Allah." Say, "Praise to Allah "; but most of them do not reason (63) [Al-Ankabut]
 
-(And of His signs is [that] He shows you the lightning [causing] fear and aspiration, and He sends down rain from the sky by which He brings to life the earth after its lifelessness. Indeed in that are signs for a people who use reason. (24) [Ar-Rum]
+(And of His signs is [that] He shows you the lightning [causing] fear and aspiration, and He sends down rain from the sky by which He brings to life the earth after its lifelessness. Indeed in that are signs for a people who use reason (24) [Ar-Rum]
 
-Because the Bedouin knows that the One who sends down the rain is Allah the Exalted, so he does not need initial thinking; so if he sees this sign, the descent of rain and the life of the earth after its death, the meaning is that the evidence has settled with him, so will he not reason and be guided to the resurrection?
+Because the Bedouin knows full well that it is Allah the Exalted who sends down the rain; he has no need of that first stage of thinking. So when he sees this sign, the rain falling and the earth brought to life after its death, the proof is already in his hands: will he not, then, reason and be guided to the Resurrection?
 
-And reflect with me that Allah argues with the People of the Book by their own books, and argues with the polytheists by the signs of the heavens and the earth, then says to each group of them: The signs are clear and evident to you, and you have acknowledged them, so why do you not reason and be guided!?
+Reflect with me: Allah argues with the People of the Book by their own scriptures, and with the polytheists by the signs of the heavens and the earth, and then says to each of them: the signs are clear and plain before you, and you have acknowledged them; so why will you not reason, and be guided!?
 
-If you say: And why does He say to the Muslims (that you might give thought to this world and the Hereafter) Al-Baqarah (Who remember Allah while standing or sitting or [lying] on their sides and give thought to the creation of the heavens and the earth, [saying], “Our Lord, You did not create this aimlessly; exalted are You [above such a thing]; then protect us from the punishment of the Fire.” (191) Al Imran
+And if you ask: Then why does He say to the Muslims (that you might give thought to this world and the Hereafter) Al-Baqarah, and (Who remember Allah while standing or sitting or [lying] on their sides and give thought to the creation of the heavens and the earth, [saying], "Our Lord, You did not create this aimlessly; exalted are You [above such a thing]; then protect us from the punishment of the Fire (191) Al Imran
 
-I said that thinking and reasoning are found in all people, and that they reached guidance and reasoned, and in their belief in the signs of the heavens and the earth and the Quran they also needed deliberation, patience, and gradual progression from thinking to reasoning to guidance .
+I would answer that thinking and reasoning are found in all people, and that they had reached guidance and reasoned; yet in their faith in the signs of the heavens and the earth, and in the Quran, they too needed patience and unhurried care, a gradual passage from thinking to reasoning to guidance.
 
-And thinking is a cause for moving from one station of faith to another;
+And thinking is what carries a person from one station of faith to the next;
 
-And if he thinks, then reasons, and reaches a result close to correct, then he has reasoned; then if something better than it becomes clear to him, then he has thought; because he went back and thought again about the result he reached; and so rising in every degree of faith requires thinking, by rethinking one's arrangements, life, values, and morals, then reasoning and being guided to a result better than the one before it.
+If he thinks, then reasons, and arrives at a result close to the truth, he has reasoned; and if something better then becomes clear to him, he has thought, because he has gone back and thought again about the conclusion he reached. And so it is with every ascent in faith: each degree needs thinking, rethinking one's arrangements, one's life, one's values and character, and then reasoning and being guided to a better result than the one before.
 
-So among the meanings of thinking is that he doubts the idea, the methodology, and the previous result, and dismantles it again partially or completely, and adjusts it until he is guided to something better.
+So one of the meanings of thinking is to question the earlier idea, the earlier method and the earlier result, and to take them apart again, in part or in whole, and reshape them until one is guided to something better.
 
-He may have a bad trait such as stinginess, so he needs to dismantle it entirely and replace it with generosity, and this does not contradict the concept of faith, as you know.
+He may have a bad trait, such as stinginess, which he must pull down entirely and replace with generosity; and this, as you know, does not contradict the meaning of faith.
 
-Or he may be generous but need to adjust the meanings of generosity so that he does not go to excess, is moderate in his generosity, and gives everyone who has a right his right.
+Or he may be generous, yet need to refine what generosity means: not to squander, to keep his giving balanced, and to give everyone who has a right his due.
 
-(And give thought to the creation of the heavens and the earth: Our Lord, You did not create this aimlessly; exalted are You) they thought, so they reasoned that this creation is not in vain but for a wisdom, so they were guided to the fact that the Hereafter is true (then protect us from the punishment of the Fire).
+(and give thought to the creation of the heavens and the earth, [saying], "Our Lord, You did not create this aimlessly; exalted are You [above such a thing]") They thought, and so they reasoned that this creation is no idle play but has a wise purpose, and so they were guided to know that the Hereafter is true (then protect us from the punishment of the Fire).
 
-So they thought about this world and the Hereafter.
+So they gave thought to this world and to the Hereafter.
 
-And by this we know that the believer does not stop thinking; and the robe of silence does not befit him.
+And from this we know that the believer never stops thinking; the cloak of silence does not suit him.

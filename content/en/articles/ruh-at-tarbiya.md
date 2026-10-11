@@ -3,36 +3,36 @@ Excerpt: I read the book (The Spirit of Education) by the French thinker Gustave
 
 I read the book (The Spirit of Education) by the French thinker Gustave Le Bon
 
-In it he talks about the problems of education in France, and analyzes the causes of the decline of European education compared with the superiority of American education -in his time- it is an amazing book, so let's talk about his most important points:
+In it he takes on the problems of education in France and analyzes why European education had declined while American education excelled, in his day. It is an astonishing book, so let us talk through its most important points:
 
-Le Bon believes that the problems of education are internal, not visible; they are unexpected causes.
+Le Bon believes that the problems of education lie beneath the surface, out of sight; their causes are not the ones you would expect.
 
-The skill in education is to turn what is conscious into the unconscious.
+The art of education is to turn the conscious into the unconscious.
 
-That the Germans' superiority in education was the result of reforming it gradually, by changing public opinion first and then making the decisions clear, not by rushing.
+The Germans came to excel in education because they reformed it step by step, first changing public opinion and only then setting out the decisions, not rushing headlong.
 
-The solution is not in developing education by reforming the curricula or changing the teachers, but in a comprehensive, total change of the curricula and programs together
+The answer is not to develop education by reforming the curricula or replacing the teachers, but to change the curricula and the programs together, wholly and comprehensively
 
-He criticizes education's reliance on the intellect alone, its use of memory and neglect of the other thinking skills, and he expresses his admiration for American education, in which the teacher puts questions of explanation and observation to the student, and he says that the laboratories are empty, unused by teachers in France, and that learning through discovery, experiments, and work is essential, using the senses.
+He criticizes an education that relies on the intellect alone, that works the memory and neglects every other thinking skill. He admires American education, where the teacher puts questions of explanation and observation to the student, and he notes that the laboratories in France stand empty, unused by teachers, while learning by discovery, experiment and hands-on work, using the senses, is essential.
 
-Le Bon opposes teaching dead languages that are of no use, and holds that teaching living languages is enough.
+Le Bon opposes teaching dead languages that serve no purpose, and holds that living languages are enough.
 
-The rule of the human mind is to lead it from the compound to the abstract, and education reforms should be built on the sciences of the nerves and the mind -and I agree with him on this- for bad education comes from bad sources!
+The rule of the human mind is to lead it from the compound to the abstract, and reforms in education should be built on the sciences of the nerves and the mind (and here I agree with him), for bad education comes from bad sources!
 
-So it makes no sense to give a child lessons in algebra and abstract concepts; rather, start with him from what is tangible -I don't quite agree! We'll have an interesting, enjoyable discussion about this point, if we live long enough-
+So it makes no sense to give a child lessons in algebra and abstract concepts; you should start with what is tangible (here I don't quite agree! We will have a lively, delightful discussion about this point, if life allows)
 
-It is a waste of time to teach 20 ways to solve a problem, when one or two ways are enough -I don't quite agree! Many methods broaden one's perception, showing that there are wider ways of understanding and creativity-
+It is a waste of time to teach twenty ways of solving a problem when one or two are enough (I don't quite agree! Many methods widen the mind, showing it that there are broader paths to understanding and creativity)
 
 My critique:
 
-I agree with Le Bon in what he mentioned above, but it seems to me that Le Bon is heavily influenced by experimental methods, and that even morals, for him, come through experience and practice, not knowledge and books!
+I agree with Le Bon in what I have set out above, but he seems to me heavily under the sway of the experimental method, so much so that even morals, for him, come from experience and practice, not from knowledge and books!
 
-Amusing bits I liked:
+Witty lines I enjoyed:
 
-"The assistant teacher is despised by the professors, hated by the pupils, and suspected by the principal, so his life is hard and unbearable."
+“The assistant master is scorned by the professors, hated by the pupils and suspected by the headmaster; his life is hard beyond bearing.”
 
-Reforming education is like reforming religions; it took few messengers and few books to reform the world.
+Reforming education is like reforming religions: it took only a few messengers and a few books to reform the world.
 
-The professors who have learned doubt, favored it, and extended its dominion over everything, are unaware that the evil, the whole evil, lies in teaching children to doubt.
+Professors who have learned doubt, cherished it and extended its reign over everything do not know that the evil, the whole evil, lies in teaching children to doubt.
 
-Because nations do not stand on doubt and suspicion but on faith and certainty, and no nation has a strong, productive existence unless it has a strong, sincere faith in a high ideal that it has taken as its aspiration"
+For nations are not built on doubt and suspicion but on faith and certainty, and no nation has a strong, productive existence unless it holds a strong, sincere faith in a lofty ideal it has taken as its aspiration”

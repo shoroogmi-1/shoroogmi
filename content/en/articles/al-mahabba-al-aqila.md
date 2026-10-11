@@ -1,24 +1,24 @@
-Title: Rational Love
-Excerpt: He whose soul has been perfected, his love for things and for people becomes pure of whims, free of emotions.
+Title: A Love Ruled by Reason
+Excerpt: When a soul reaches its perfection, its love for things and for people becomes pure of whims and free of mere emotion.
 
-He whose soul has been perfected, his love for things and for people becomes pure of whims, free of emotions.
+When a soul reaches its perfection, its love for things and for people becomes pure of whims and free of mere emotion.
 
-For you love them so that guidance and good may come to them; and this is love that arises from reason, not for your own interests with them, nor for their beauty, their looks, their colors and their voices.
+You love them because you want guidance and good to reach them; this is a love born of reason, not of what you stand to gain from them, nor of their beauty, their looks, their coloring or their voices.
 
-So sincerity of intention, even when dealing with people, is the perfection of the soul and of love.
+So sincerity of purpose, even in how you deal with people, is the perfection of the soul and of love.
 
-And the same goes for goals and ambitions in life
+And so it is with goals and ambitions in life
 
-{We have certainly seen the turning of your face toward the heaven, and We will surely turn you to a qiblah with which you will be pleased} He said *tarḍāhā* (“with which you will be pleased”) and did not say *tahwāhā* (“which you desire”) or *tuḥibbuhā* (“which you love”); because the soul of the Messenger of Allah ﷺ was perfect, so he loved for the qiblah to be toward the Kaaba because it was built upon tawhid and so it is more deserving than others, and not because it was his homeland or out of partisanship for his tribe.
+{We have certainly seen the turning of your face, [O Muhammad], toward the heaven, and We will surely turn you to a qiblah with which you will be pleased} He said *tarḍāhā*, “with which you will be pleased,” and not *tahwāhā*, “which you crave,” or *tuḥibbuhā*, “which you love,” because the soul of the Messenger of Allah ﷺ was perfect. He loved that the qiblah should face the Kaaba because it was built on the oneness of Allah and so has the greater claim, not because it was his homeland, nor out of loyalty to his tribe.
 
-The perfection of the soul of the Messenger of Allah ﷺ: his heart does not become attached to a particular thing; rather, he wants the thing in his heart for the sake of good.
+Such was the perfection of the soul of the Messenger of Allah ﷺ: his heart did not cling to any particular thing; whatever he wanted in his heart, he wanted for the sake of good.
 
-*Tarḍāhā* "And since being pleased conveys love that arises from reasoning, it was chosen in this context rather than “*tuḥibbuhā*” or “*tahwāhā*” — Ibn Ashur
+*Tarḍāhā*: “And since being pleased conveys a love that arises from reasoning, it was chosen in this context rather than *tuḥibbuhā* or *tahwāhā*” (Ibn Ashur)
 
-So love that is built on rational and faith-based reasons is the most perfect love, so strive against your soul toward it, then look at the bliss of ease you are in.
+So the love that rests on reasons of the mind and of faith is the most perfect love. Strive with your soul until it loves this way, then look at the blissful ease you find yourself in.
 
-I love humanity, but there is something in me that astonishes me: the more I love humanity as a whole, the less I love people as individuals."
+“I love humanity, but I wonder at myself. The more I love humanity in general, the less I love man in particular.”
 
-It appears that Dostoevsky had reached a high stage of maturity, so much so that he freed himself from holding a special love and a particular affection for any one individual; he began to grasp that there is a general love for all human beings. As for our special, pure love, it belongs to a Being higher than us who is worthy of it!
+It seems Dostoevsky had reached a high degree of maturity, so high that he had freed himself from bearing any one individual a special love and a particular affection, and had begun to grasp that there is a general love for all human beings. As for our special, wholehearted love, it belongs to a Being higher than us, who alone is worthy of it!
 
-Yes, and whoever reaches this degree, his maturity is complete.
+Yes, and whoever reaches this degree has come to full maturity.

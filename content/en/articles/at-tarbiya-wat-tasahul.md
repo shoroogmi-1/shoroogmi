@@ -1,32 +1,32 @@
-Title: There Is a Difference Between Upbringing and Leniency
-Excerpt: Upbringing is the responsible, supportive kind, not the lenient kind.
+Title: Raising a Child Is Not the Same as Indulging One
+Excerpt: True upbringing is supportive and responsible, never indulgent.
 
-Upbringing is the responsible, supportive kind, not the lenient kind.
+True upbringing is supportive and responsible, never indulgent.
 
-Pampering and leniency mean saying yes to everything, with no limits at which the child stops, without discipline, showering him with money and fulfilling all his requests.
+Pampering and indulgence mean saying yes to everything: no limits where the child must stop, no discipline, money showered on him, and every wish granted.
 
-As for supportive upbringing, it means meeting his psychological and social needs, such as connection, understanding, empathy, and listening, without always meeting his material wants! And in the very same situation, it is discipline, setting limits, and sometimes saying no.
+Supportive upbringing, by contrast, meets his emotional and social needs (connection, understanding, empathy, a listening ear) without always meeting his material demands! And in the very same moment, it means discipline, boundaries, and, at times, saying no.
 
-The benefits of saying no to the child:
+Why saying no is good for a child:
 
-- He learns to delay his gratifications, which sharpens his will and patience
+- He learns to delay gratification, which sharpens his willpower and patience
 
-- It helps him think about how to get what he wants, which makes him strive and work.
+- It helps him think about how to get what he wants, so he strives and works for it.
 
-- It gives him empathy, and he feels the deprivation of others.
+- It teaches him empathy, so he can feel what it is to go without, as others do.
 
-Excessive pampering, on the other hand, builds a weak, fragile personality that is not responsible for its actions and depends on others.
+Excessive pampering, on the other hand, builds a weak and brittle character, one that takes no responsibility for its actions and leans on others.
 
-When the child pours out his anger and sadness to the one raising him, and that person listens to him, understands him, and hugs him, this is part of supportive upbringing and has nothing at all to do with leniency!
+When a child pours out his anger and sorrow to the one raising him, and that person listens, understands and holds him close, this is part of supportive upbringing and has nothing whatsoever to do with indulgence!
 
-The child whose parents do not listen to him pours out his feelings to someone else, and this teaches him unhealthy attachment to others and constant anxiety.
+A child whose parents will not listen pours his feelings out to someone else, and learns from it an unhealthy clinging to others and a constant anxiety.
 
-Even if your child is angry and sad during the situation, you calm his feelings, hug him, and pat his shoulders, not because you are lenient! But because you are now connecting!
+Even if your son is angry and upset in the moment, you soothe his feelings, hold him, pat his shoulders. Not because you are indulgent! But because, right now, you are connecting!
 
-A time of intense anger and intense crying is not the time for lectures and lessons, because he will not understand them. It is a time for support, empathy, and calming.
+The height of anger, the height of tears, is no time for lectures and lessons; he will not take them in. It is a time for support, empathy and calm.
 
-Postpone your lessons in upbringing until a time of calm.
+Save your lessons for a calmer hour.
 
-Sometimes you need to say no, get a little angry, be firm with the child, and make the limits clear, when connection does not help. Then right after, you go straight back to making him feel supported. Because by this you are saying: I am with you at your worst, even if you made a mistake and made me angry; with you in teaching, guidance, and support.
+Sometimes, when connection does not work, you need to say no, show a little anger, be firm with the child and make the limits clear. Then go straight back to making him feel supported. For in doing so you are telling him: I am with you at your worst, even when you have done wrong and angered me; with you to teach, to guide, and to support.
 
-By this you separate the self from the particular behavior.
+In this way you separate the person from the particular behavior.

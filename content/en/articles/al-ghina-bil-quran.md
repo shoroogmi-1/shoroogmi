@@ -1,28 +1,28 @@
-Title: Richness Through the Quran
+Title: Rich Through the Quran
 Excerpt: {And He found you lost and guided [you], and He found you poor and made [you] self-sufficient}
 
 > {And He found you lost and guided [you], and He found you poor and made [you] self-sufficient}
 
-The exegetes differed over how Allah found His Prophet Muhammad ﷺ poor and made him self-sufficient, when the Messenger of Allah did not have that wealth and riches, nor money?
+The exegetes differed over how Allah found His Prophet Muhammad ﷺ poor and made him self-sufficient, when the Messenger of Allah never had such wealth, such riches, such money?
 
-They said it is explained by the authentic hadith of the Messenger of Allah “Richness is not having many possessions (wealth and goods), but richness is richness of the soul”
+They said it is explained by the authentic hadith of the Messenger of Allah: “Richness does not lie in the abundance of goods (wealth and possessions), but richness is the richness of the soul”
 
-I say: This verse {And He found you poor and made [you] self-sufficient} is linked to what precedes it {And He found you lost and guided [you]}. He found you lost and guided you with the revelation, the Quran, and He found you poor of soul and weak of soul, scattered, divided, gloomy, lonely, fearful, and anxious, so He enriched your soul with the Quran and filled the hunger of your spirit with the revelation, so your scattered self came together, your spirit found comfort, your heart was reassured, and your composure settled.
+I say: this verse {And He found you poor and made [you] self-sufficient} is bound to the one before it {And He found you lost and guided [you]}. He found you lost and guided you by revelation, by the Quran; and He found you poor in soul, weak in soul, scattered and torn apart, sorrowful and desolate, frightened and burdened with care; so He made your soul rich with the Quran and fed the hunger of your spirit with revelation. Then your scattered self was gathered, your spirit found its companion, your heart grew tranquil, and your trembling heart was stilled.
 
-Set yourself a daily portion of the Quran that you never leave; you will attain richness of the spirit, it will be gathered together, your spirit will be reassured, and your soul will grow more cohesive and steadfast in the face of hardships and calamities.
+Keep a daily portion of the Quran and never part from it; you will reach the richness of the spirit, its scattered pieces will be gathered, your spirit will find its rest, and your soul will grow ever steadier and firmer before hardships and calamities.
 
-And among his supplications ﷺ was “O Allah, revive me,” that is: revive and strengthen my heart. And does the heart revive and grow strong except through the Quran?
+Among his supplications ﷺ was “O Allah, revive me,” that is: revive my heart and make it strong. And what revives the heart and makes it strong, if not the Quran?
 
-And it is reported in a narration: "The Quran: there is no poverty after it and no richness without it"
+And it is related in a saying: "The Quran: no poverty after it, and no richness without it"
 
-And his saying ﷺ “He is not one of us who does not *yataghanna* with the Quran” has two aspects: richness and being content without need (*istighnāʾ*), and another aspect: the beautiful voice.
+His words ﷺ “He is not one of us who does not *yataghanna* with the Quran” bear two meanings: being enriched by it, needing nothing beyond it (*istighnāʾ*); and the other meaning: the beautiful voice.
 
-So the meaning may be: He is not one of us who does not find richness in the Quran and suffice with it {And is it not sufficient for them that We revealed to you the Book which is recited to them}
+So the meaning may be: he is not one of us who does not find his richness in the Quran and is not content with it {And is it not sufficient for them that We revealed to you the Book which is recited to them?}
 
-And in the interpretation of the saying of the Exalted {He said, “O Moses, I have chosen you over the people with My messages and My words [to you]. So take what I have given you and be among the grateful”} that is: take it and suffice with it, and do not extend your eyes to anything else, and this is the saying of the Exalted {And We have certainly given you seven of the often repeated [verses] and the great Quran. Do not extend your eyes toward that by which We have given enjoyment to [certain] categories of them, and do not grieve over them. And lower your wing to the believers}.
+And in the explanation of the words of the Exalted {[Allah] said, "O Moses, I have chosen you over the people with My messages and My words [to you]. So take what I have given you and be among the grateful"}, that is: take it, let it suffice you, and do not stretch your eyes toward anything else. And this is His saying, Exalted is He: {And We have certainly given you, [O Muhammad], seven of the often repeated [verses] and the great Qur'an. Do not extend your eyes toward that by which We have given enjoyment to [certain] categories of the disbelievers, and do not grieve over them. And lower your wing to the believers}.
 
-Abu Talib al-Makki mentioned in Qut al-Qulub: "Some of the shaykhs told me regarding its meaning: that one of the close reciters was afflicted with such severe poverty that it grieved him and he was at his wits' end. He said: He saw in a dream as if someone were saying to him: Would you like it if We made you forget Surat al-An'am and you had a thousand dinars? He said: No. He said: Then Surat Hud? He said: No. He said: Then Surat Yusuf? He said: No. He said: Then you have with you the value of a hundred thousand, and you complain of poverty! So he awoke, and his worry had been lifted from him.
+Abu Talib al-Makki relates in *Qut al-Qulub*: "One of the shaykhs told me, concerning its meaning, that one of the reciters who were close to Allah was struck by such dire poverty that it grieved him and he was at his wits' end. He said: Then he saw in a dream someone saying to him: Would you like Us to make you forget Surat al-An'am, and have a thousand dinars instead? He said: No. Then Surat Hud? He said: No. Then Surat Yusuf? He said: No. He said: Then you carry with you the worth of a hundred thousand, and you complain of poverty! And he woke with his sorrow lifted from him.
 
-And thus it came in the report: (*Taghannaw* with the Quran — that is, find richness through it — and whoever does not find richness through the verses of Allah the Exalted, may Allah the Mighty and Majestic not enrich him; and the Quran is the richness with which there is no poverty and after which there is no richness; and whoever Allah has given the Quran and then thinks that anyone is richer than him has mocked the verses of Allah the Exalted.
+And so it came in the report: (*Taghannaw* with the Quran, that is, be enriched by it; whoever is not enriched by the verses of Allah the Exalted, may Allah, Mighty and Majestic, never enrich him. The Quran is the richness with which there is no poverty and beyond which there is no richness; and whoever is given the Quran by Allah and then thinks that anyone is richer than he has mocked the verses of Allah the Exalted.
 
-And in another wording: then he has made light of what Allah the Mighty and Majestic sent down). And in the well-known hadith: ((Whoever does not *yataghanna* with the Quran is not one of us”. And in the concise report: ((Certainty suffices as richness)) and the Quran is the truth of certainty."
+And in another wording: has made light of what Allah, Mighty and Majestic, sent down). And in the well-known hadith: ((Whoever does not *yataghanna* with the Quran is not one of us)). And in the concise report: ((Certainty is enough of a richness)); and the Quran is the very truth of certainty."

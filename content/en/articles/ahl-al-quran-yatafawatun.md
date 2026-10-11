@@ -1,16 +1,16 @@
 Title: The People of the Quran Differ in Style and Manner
-Excerpt: Among them is one who recites with slow *tartīl*, and if he read quickly, his enjoyment and happiness would leave him, so he keeps to a small daily portion along with great enjoyment and happiness from the *tartīl*.
+Excerpt: Some recite in slow, measured *tartīl*; if they hurried, all the joy and delight would drain out of it, so they keep a small daily portion and draw great joy and delight from their *tartīl*.
 
-Among them is one who recites with slow *tartīl*, and if he read quickly, his enjoyment and happiness would leave him, so he keeps to a small daily portion along with great enjoyment and happiness from the *tartīl*.
+Some recite in slow, measured *tartīl*; if they hurried, all the joy and delight would drain out of it, so they keep a small daily portion and draw great joy and delight from their *tartīl*.
 
-And among them is one who says: If I recited slowly, I'd fall asleep! And I'd get lazy; nothing energizes me like speed. And you see him with a large daily portion.
+And some say: If I recited slowly, I'd fall asleep! I'd grow sluggish; nothing wakes me up like speed. And you will find them getting through a large daily portion.
 
-And there was a student like this who read quickly, so the teacher told her to recite slowly: she lost her place and forgot! So the teacher left her as she was, with her speed.
+There was once a student just like this, who recited quickly. Her teacher told her to slow down and recite with *tartīl*: she lost her place and forgot! So the teacher let her be, speed and all.
 
-And this difference is fine! The reciter of the Quran is not blamed for it; rather he is guided toward moderation and balance as much as possible.
+And this difference is perfectly fine! The reciter of the Quran is not to be blamed for it; he is simply guided, as far as he can manage, toward the middle way and moderation.
 
-That the Prophet ﷺ said to Abu Bakr: I passed by you while you were reciting, and you were lowering your voice. He said: I made the One I was conversing with hear me. He said: Raise it a little. And he said to Umar: I passed by you while you were reciting, and you were raising your voice. He said: I wake the drowsy and drive away Satan. He said: Lower it a little
+The Prophet ﷺ said to Abu Bakr: "I passed by you while you were reciting and your voice was low." He said: "I made Him hear with Whom I was holding intimate converse." He said: "Raise your voice a little." Then he said to Umar: "I passed by you while you were reciting and your voice was loud." So he said: "I repel drowsiness and keep Ash-Shaitan away." So he said: "Lower your voice a little."
 
-- Authentic
+- Sahih
 
-And reflect! His prophetic guidance (lower it a little) (raise it a little) did not ask them for great effort, nor for anything that would be a hardship for them, and did not ask them to change their innate disposition and human nature: some of them are slow by disposition and some hasty,,,. Rather he guided and directed them to a small amount of raising and lowering. And this is how the teacher of the Quran should be: mindful of the differences in human natures and the psychological traits of the reciter. So leave them as they are, be lenient in this and do not be strict, for among them is the slow and the fast, some are loud, and some are quiet.. So leave them to their dispositions, but guide them toward a little!
+Now reflect! His prophetic guidance, (lower it a little) and (raise it a little), asked of them no great effort and nothing that would burden them. Nor did it ask them to change the temperament and human nature they were made with: some are slow by nature and some quick,,,. He simply guided and pointed them toward a little raising, a little lowering. And so should the teacher of the Quran be: mindful that human natures differ, and that every reciter has a temperament of their own. So leave them as they are; be gentle about it, and do not be harsh. Some are slow and some are fast, some loud and some soft.. Leave them to their nature, but guide them toward a little!

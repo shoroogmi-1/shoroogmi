@@ -554,4 +554,105 @@ if (form) {
   });
 }
 
+// Site search: titles and full article text. Arabic is matched ignoring diacritics and
+// letter variants (أ/إ/آ → ا، ة → ه، ى → ي), English ignoring case.
+const searchForm = document.querySelector(".site-search");
+if (searchForm) {
+  const input = searchForm.querySelector("input");
+  const countEl = document.querySelector(".search-count");
+  const list = document.querySelector(".search-results");
+  let docs = null;
+
+  const DIAC = /[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/;
+  function normChar(c) {
+    if (DIAC.test(c)) return "";
+    if ("إأآٱ".includes(c)) return "ا";
+    if (c === "ى") return "ي";
+    if (c === "ة") return "ه";
+    if (c === "ؤ") return "و";
+    if (c === "ئ") return "ي";
+    return c.toLowerCase();
+  }
+  // normalized text plus, for each normalized char, its index in the original
+  function normMap(str) {
+    let n = "";
+    const map = [];
+    for (let i = 0; i < str.length; i++) {
+      const c = normChar(str[i]);
+      for (const ch of c) { n += ch; map.push(i); }
+    }
+    return { n, map };
+  }
+  const norm = (str) => normMap(str).n;
+  const esc = (str) => str.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+  function highlight(text, words) {
+    const { n, map } = normMap(text);
+    const spans = [];
+    words.forEach((w) => {
+      let i = n.indexOf(w);
+      while (i !== -1) { spans.push([map[i], map[i + w.length - 1] + 1]); i = n.indexOf(w, i + w.length); }
+    });
+    spans.sort((a, b) => a[0] - b[0]);
+    let out = "", pos = 0;
+    spans.forEach(([a, b]) => { if (a < pos) return; out += esc(text.slice(pos, a)) + "<mark>" + esc(text.slice(a, b)) + "</mark>"; pos = b; });
+    return out + esc(text.slice(pos));
+  }
+
+  function snippet(text, words) {
+    const { n, map } = normMap(text);
+    const i = n.indexOf(words[0]);
+    if (i === -1) return highlight(text.slice(0, 180), words) + (text.length > 180 ? "…" : "");
+    const start = Math.max(0, map[i] - 80);
+    const end = Math.min(text.length, map[i] + 140);
+    return (start > 0 ? "…" : "") + highlight(text.slice(start, end), words) + (end < text.length ? "…" : "");
+  }
+
+  function run() {
+    const q = input.value.trim();
+    const words = norm(q).split(/\s+/).filter((w) => w.length > 1);
+    const url = new URL(location.href);
+    if (q) url.searchParams.set("q", q); else url.searchParams.delete("q");
+    history.replaceState(null, "", url);
+    if (!words.length) { list.innerHTML = ""; countEl.textContent = ""; return; }
+    const hits = [];
+    docs.forEach((d) => {
+      const t = d.nt, x = d.nx;
+      if (!words.every((w) => t.includes(w) || x.includes(w))) return;
+      let score = 0;
+      const phrase = words.join(" ");
+      if (words.length > 1) { if (t.includes(phrase)) score += 60; if (x.includes(phrase)) score += 25; }
+      words.forEach((w) => { if (t.includes(w)) score += 20; score += Math.min(10, x.split(w).length - 1); });
+      hits.push({ d, score });
+    });
+    hits.sort((a, b) => b.score - a.score);
+    countEl.textContent = hits.length
+      ? tr(`عدد النتائج: ${arNum.format(hits.length)}`, `${hits.length} result${hits.length > 1 ? "s" : ""}`)
+      : tr("لا توجد نتائج لهذه الكلمة.", "No results for that word.");
+    list.innerHTML = hits.slice(0, 60).map(({ d }) => `
+      <li class="search-hit">
+        <a href="${d.u}"><h3>${highlight(d.t, words)}</h3></a>
+        <p>${snippet(d.x, words)}</p>
+        <p class="meta">${esc(d.d)} · ${d.c.map(esc).join("، ")}</p>
+      </li>`).join("");
+  }
+
+  let timer = null;
+  input.addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(() => docs && run(), 150); });
+  searchForm.addEventListener("submit", (e) => { e.preventDefault(); docs && run(); });
+
+  countEl.textContent = tr("جارٍ تحميل الفهرس…", "Loading the index…");
+  fetch(searchForm.dataset.index)
+    .then((r) => r.json())
+    .then((data) => {
+      docs = data.map((d) => ({ ...d, nt: norm(d.t), nx: norm(d.x) }));
+      countEl.textContent = "";
+      const q = new URLSearchParams(location.search).get("q");
+      if (q) input.value = q;
+      run();
+    })
+    .catch(() => { countEl.textContent = tr("تعذّر تحميل البحث، حدّث الصفحة.", "Couldn't load search. Please refresh."); });
+  input.focus();
+}
+
 document.querySelectorAll(".year").forEach((el) => (el.textContent = new Date().getFullYear()));

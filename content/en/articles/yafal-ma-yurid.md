@@ -1,36 +1,36 @@
-Title: (Indeed, Allah will admit those who believe and do righteous deeds to gardens beneath which rivers flow. Indeed, Allah does what He intends.)
-Excerpt: And on the opposite side: (And thus have We sent it down as verses of clear evidence and because Allah guides whom He intends)
+Title: (Indeed, Allah will admit those who believe and do righteous deeds to gardens beneath which rivers flow. Indeed, Allah does what He intends)
+Excerpt: And, as its counterpart: (And thus have We sent the Qur'an down as verses of clear evidence and because Allah guides whom He intends)
 
-And on the opposite side: (And thus have We sent it down as verses of clear evidence and because Allah guides whom He intends)
+And, as its counterpart: (And thus have We sent the Qur'an down as verses of clear evidence and because Allah guides whom He intends)
 
-He is the One who willed entry into Paradise (Indeed, Allah does what He intends)
+It is He who willed the entry into Paradise (Indeed, Allah does what He intends)
 
-And He is the One who willed guidance for the servant in this world (and because Allah guides whom He intends).
+And it is He who willed that the servant be guided in this world (and because Allah guides whom He intends).
 
-(And thus have We sent it down as verses of clear evidence) After receiving the Quran, they split into two groups: a group that was not guided, so the Quran became a proof against them, and He did not will their guidance (Those are the ones for whom Allah does not intend to purify their hearts)
+(And thus have We sent the Qur'an down as verses of clear evidence) Once the Quran had reached them, they parted into two groups: one that was not guided, so the Quran became a proof against them, for He did not will their guidance (Those are the ones for whom Allah does not intend to purify their hearts)
 
-And a group for whom He willed guidance (and because Allah guides whom He intends)
+And another for whom He willed guidance (and because Allah guides whom He intends)
 
-So whoever wants guidance, let him hold to the Quran
+So whoever seeks guidance, let him take hold of the Quran
 
-Guidance He hastened for the believer in this world, and Paradise He deferred for him to the Hereafter
+Guidance He hastened to the believer in this world; Paradise He saved for him in the Hereafter
 
-So He is the One who willed guidance, and He is the One who willed entry into Paradise.
+It is He who willed the guidance, and He who willed the entry into Paradise.
 
-So you have no merit and no favor to boast of, neither in this nor in that!
+So no merit is yours, and no favour to boast of, in this or in that!
 
-"I love You with two loves: a love of longing,
+"I love You with two loves: a love of passion,
 
-And a love because You are worthy of that.
+And a love because You are worthy of it.
 
-As for the love that is a love of longing,
+As for the love that is passion's love,
 
-It is my being absorbed in remembering You, away from all besides You.
+It is my losing myself in Your remembrance, away from all but You.
 
 And as for the love of which You are worthy,
 
-It is Your lifting the veils for me until I see You.
+It is Your drawing back the veils for me until I see You.
 
-So no praise is mine in this, nor in that,
+No praise is mine in this, nor in that;
 
-But Yours is the praise in this and in that."
+Yours is the praise, in this and in that."

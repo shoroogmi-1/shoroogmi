@@ -1,8 +1,8 @@
-Title: Reflections on the Words of Allah the Exalted (Every time it lights [the way] for them, they walk therein)
-Excerpt: Understanding the Quran is light, and the extent of your understanding of the Quran is the extent to which you act on it.
+Title: Reflecting on the Words of Allah the Exalted (Every time it lights [the way] for them, they walk therein)
+Excerpt: Understanding the Quran is light, and the more deeply you understand the Quran, the more fully you live by it.
 
-Understanding the Quran is light, and the extent of your understanding of the Quran is the extent to which you act on it.
+Understanding the Quran is light, and the more deeply you understand the Quran, the more fully you live by it.
 
-Narrow, little understanding, little action
+A narrow, meager understanding: meager deeds
 
-Broad understanding, broad action
+A wide understanding: wide deeds

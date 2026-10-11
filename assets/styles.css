@@ -656,3 +656,22 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .page-hero .page-logo { display: block; width: 96px; height: 96px; border-radius: 24px; margin: 6px 0 14px;
   box-shadow: 0 10px 24px rgba(22, 50, 79, 0.25); border: 2px solid rgba(255, 255, 255, 0.35); }
 .door-icon .door-logo { width: 56px; height: 56px; border-radius: 16px; display: block; box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25); }
+/* البحث */
+.search-link { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; margin-inline: auto 10px;
+  border: 1px solid var(--border); background: var(--card); text-decoration: none; font-size: 1rem; flex-shrink: 0; }
+.search-link:hover, .search-link.active { border-color: var(--sun); }
+.site-search .search { width: 100%; font-size: 1.1rem; padding: 14px 18px; }
+.search-count { color: var(--muted); margin: 14px 0 6px; }
+.search-results { list-style: none; display: grid; gap: 14px; padding: 0; }
+.search-hit { background: var(--card); border: 2px solid var(--border); border-bottom-width: 4px; border-radius: 18px; padding: 16px 18px; }
+.search-hit h3 { font-size: 1.15rem; margin: 0 0 6px; }
+.search-hit a { color: inherit; text-decoration: none; }
+.search-hit a:hover h3 { color: var(--accent-text); }
+.search-hit p { margin: 0 0 6px; line-height: 1.8; }
+.search-hit .meta { font-size: 0.85rem; color: var(--muted); margin: 0; }
+.search-hit mark { background: color-mix(in srgb, var(--sun) 45%, transparent); color: inherit; border-radius: 4px; padding: 0 2px; }
+/* على الشاشات الواسعة يأتي زر البحث في آخر صف القائمة */
+@media (min-width: 1081px) {
+  .nav .nav-links { order: 2; }
+  .nav .search-link { order: 3; margin-inline: 10px 0; }
+}

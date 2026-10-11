@@ -1,18 +1,18 @@
 Title: The Place of Artificial Intelligence in the Quran
-Excerpt: (He said, “This is a mercy from my Lord”)
+Excerpt: ([Dhul-Qarnayn] said, “This is a mercy from my Lord”)
 
-(He said, “This is a mercy from my Lord”)
+([Dhul-Qarnayn] said, “This is a mercy from my Lord”)
 
-Sheikh Muhammad ibn Ali al-Shinqiti says: Dhul-Qarnayn counted building the barrier a mercy, and buildings, airports, and the internet are likewise all a mercy.
+Sheikh Muhammad ibn Ali al-Shinqiti says: Dhul-Qarnayn counted the building of the barrier a mercy, and so buildings, airports, and the internet are all a mercy as well.
 
-This is from his words in the tafsir of Surat al-Baqarah (he brought in this verse from al-Kahf in passing).
+He said this in his tafsir of Surat al-Baqarah, bringing in this verse from al-Kahf along the way.
 
-And when I reflected on how the Quran and Sunnah deal with machines, they did not condemn the machine itself, but rather condemned its use if it was bad.
+And when I reflected on how the Quran and the Sunnah treat tools and machines, I found that they never condemn the thing itself; they condemn its use, when that use is bad.
 
-Surat an-Nahl suffices as an example of this, for it lists blessings, among them horses, mules, clothing, weapons, and others, and in other places in the Quran, ships, transport, iron, firmly anchored cooking pots, etc., etc.
+Surat an-Nahl is example enough: it counts out blessing after blessing, among them horses, mules, clothing, armor, and more; and elsewhere in the Quran there are ships, means of travel, iron, the firmly anchored cauldrons, and on and on.
 
-But the Quran and Sunnah criticize whoever misuses them, through extravagance, or by beating animals, treating them violently, and not being gentle with them.
+Yet the Quran and the Sunnah censure those who misuse them: through extravagance, or by beating animals, treating them harshly, and showing them no gentleness.
 
-Likewise, AI is a blessing and a mercy, and let us not forget that the criticism is of how it is used, not of the thing itself.
+Artificial intelligence, likewise, is a blessing and a mercy, and let us not forget that the critique belongs to how it is used, not to the thing itself.
 
-And yes, it has harms just as it has benefits! But that some fight AI entirely and cancel it out, this is the biggest mistake!
+And yes, it has its harms, just as it has its benefits! But for some to wage war on artificial intelligence altogether and write it off entirely, that is the greatest mistake of all!
