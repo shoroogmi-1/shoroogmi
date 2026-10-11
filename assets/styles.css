@@ -710,3 +710,14 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .hero-share { margin-top: 14px; }
 .book-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 14px; }
 .book-actions .book-link { margin: 0; flex: 1 1 220px; }
+/* ما قاله المسافرون: شريط أفقي في الرئيسية */
+.testimonial-list.scroller { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; padding-bottom: 10px;
+  scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+.testimonial-list.scroller .testimonial { flex: 0 0 min(82%, 320px); scroll-snap-align: start; }
+.t-empty { color: var(--muted); text-align: center; width: 100%; padding: 22px; margin: 0;
+  border: 2px dashed var(--border); border-radius: 20px; }
+/* القائمة صارت أطول بعد «ما قاله المسافرون»: مسافات أضيق قليلًا على الشاشات المتوسطة */
+@media (min-width: 1081px) and (max-width: 1440px) {
+  .nav-links { gap: 2px; font-size: 1.05rem; }
+  .nav-links a { padding: 8px 11px; }
+}

@@ -569,22 +569,20 @@ if (rateBox) {
     const note = (data.get("note") || "").trim();
     const name = (data.get("name") || "").trim();
     statusEl.className = "form-status";
-    if (!stars && !note) {
-      statusEl.textContent = tr("اختر عدد النجوم أو اكتب تعليقك.", "Pick a number of stars or write a comment.");
+    if (!stars) {
+      statusEl.textContent = tr("اختر عدد النجوم أولًا ⭐", "Please pick a number of stars first ⭐");
       statusEl.classList.add("error");
       return;
     }
     if (data.get("_honey")) return;
     btn.disabled = true;
     statusEl.textContent = tr("جارٍ الإرسال…", "Sending…");
-    const starText = stars ? "★".repeat(stars) + "☆".repeat(5 - stars) + ` (${stars}/5)` : tr("بلا نجوم", "no stars");
-    const saved = stars
-      ? fetch(RATINGS_API, {
-          method: "POST",
-          headers: { ...sbHeaders, Prefer: "return=minimal" },
-          body: JSON.stringify({ stars, name: name || null, body: note || null, lang: EN ? "en" : "ar" }),
-        }).then((r) => r.ok).catch(() => false)
-      : Promise.resolve(false);
+    const starText = "★".repeat(stars) + "☆".repeat(5 - stars) + ` (${stars}/5)`;
+    const saved = fetch(RATINGS_API, {
+      method: "POST",
+      headers: { ...sbHeaders, Prefer: "return=minimal" },
+      body: JSON.stringify({ stars, name: name || null, body: note || null, lang: EN ? "en" : "ar" }),
+    }).then((r) => r.ok).catch(() => false);
     const mailed = fetch(`https://formsubmit.co/ajax/${rateBox.dataset.email}`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -613,23 +611,24 @@ if (rateBox) {
   });
 }
 
-// "What travelers said": the latest positive ratings (the database returns only 4–5 star ratings with a comment)
-const testimonials = document.querySelector(".testimonials");
+// "What travelers said": positive ratings only (the database returns only 4–5 stars with a comment).
+// On the home page it is a strip that scrolls sideways; testimonials.html shows them all.
+const testimonialList = document.querySelector(".testimonial-list");
 function loadTestimonials() {
-  if (!testimonials) return;
+  if (!testimonialList) return;
+  const limit = Number(testimonialList.dataset.limit || 12);
   const esc = (str) => str.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-  fetch(`${RATINGS_API}?select=stars,name,body,created_at&order=created_at.desc&limit=6`, { headers: sbHeaders })
+  fetch(`${RATINGS_API}?select=stars,name,body,created_at&order=created_at.desc&limit=${limit}`, { headers: sbHeaders })
     .then((r) => (r.ok ? r.json() : []))
     .then((rows) => {
       rows = rows.filter((r) => r.stars >= 4 && r.body);
-      if (!rows.length) return;
-      testimonials.querySelector(".testimonial-list").innerHTML = rows.map((r) => `
+      if (!rows.length) return; // keep the "be the first" message
+      testimonialList.innerHTML = rows.map((r) => `
         <figure class="testimonial">
           <p class="t-stars" aria-label="${r.stars}/5">${"★".repeat(r.stars)}</p>
           <blockquote dir="auto">${esc(r.body)}</blockquote>
           <figcaption>— ${esc(r.name || tr("مسافر", "A traveler"))}</figcaption>
         </figure>`).join("");
-      testimonials.hidden = false;
     })
     .catch(() => {});
 }
