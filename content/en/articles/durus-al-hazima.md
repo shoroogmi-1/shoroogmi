@@ -17,7 +17,7 @@ Victory at the start of the battle, then complacency, then breaking
 
 So a great victory turns into a crushing defeat upon disobedience
 
-(When He overwhelmed you with drowsiness [giving] security from Him..while another faction worried about themselves) The believer, even in times of defeats and calamities, has a wondrous tranquility in him, while the hypocrite is worried about himself: he cannot sleep from the intensity of terror
+(Then after distress, He sent down upon you security [in the form of] drowsiness, overcoming a faction of you, while another faction worried about themselves) The believer, even in times of defeats and calamities, has a wondrous tranquility in him, while the hypocrite is worried about himself: he cannot sleep from the intensity of terror
 
 What do you do after a battle you were defeated in?
 
