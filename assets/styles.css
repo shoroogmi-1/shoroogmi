@@ -619,3 +619,6 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 /* English (left-to-right) pages: keep the sun and the map decorations clear of the text */
 [dir="ltr"] .sun { left: auto; right: 9%; }
 [dir="ltr"] .decor { transform: scaleX(-1); }
+
+/* Links inside an article's text */
+.prose > p a { color: var(--accent-text); text-decoration: underline; text-underline-offset: 4px; font-weight: 600; }
