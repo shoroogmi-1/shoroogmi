@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Amiri+Quran&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css?v=36df5184">
+  <link rel="stylesheet" href="assets/styles.css?v=aec655e7">
 </head>
 <body>
   <header class="site-header">
@@ -51,6 +51,9 @@
           <label>الاسم
             <input type="text" name="name" required autocomplete="name">
           </label>
+          <label>بريدك <small class="field-hint">(اختياري، إذا كنت تريد ردًا على الرسالة فمن الضروري وضع البريد. إذا كنت لا تريد ردًا فلا يحتاج!)</small>
+            <input type="email" name="email" autocomplete="email" dir="ltr">
+          </label>
           <label>الموضوع
             <select name="topic">
               <option>سؤال</option>
@@ -62,6 +65,7 @@
           <label>رسالتك
             <textarea name="message" rows="6" required></textarea>
           </label>
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button type="submit" class="btn btn-primary">أرسل إلى البرج</button>
           <p class="form-status" role="status"></p>
         </form>
@@ -96,6 +100,6 @@
     </div>
   </footer>
 
-  <script src="assets/script.js?v=a6e8a2b5"></script>
+  <script src="assets/script.js?v=38ac58f1"></script>
 </body>
 </html>

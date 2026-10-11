@@ -627,6 +627,9 @@ def build(lang):
           <label>{t("الاسم", "Name")}
             <input type="text" name="name" required autocomplete="name">
           </label>
+          <label>{t("بريدك", "Your email")} <small class="field-hint">{t("(اختياري، إذا كنت تريد ردًا على الرسالة فمن الضروري وضع البريد. إذا كنت لا تريد ردًا فلا يحتاج!)", "(Optional. If you want a reply to your message, you need to add your email. If you don't want a reply, there's no need!)")}</small>
+            <input type="email" name="email" autocomplete="email" dir="ltr">
+          </label>
           <label>{t("الموضوع", "Topic")}
             <select name="topic">
 {chr(10).join(f"              <option>{L(o)}</option>" for o in topics)}
@@ -635,6 +638,7 @@ def build(lang):
           <label>{t("رسالتك", "Your message")}
             <textarea name="message" rows="6" required></textarea>
           </label>
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button type="submit" class="btn btn-primary">{t("أرسل إلى البرج", "Send to the Tower")}</button>
           <p class="form-status" role="status"></p>
         </form>
