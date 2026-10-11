@@ -619,8 +619,8 @@ def build(lang):
 
     topics = [("سؤال", "Question"), ("اقتراح", "Suggestion"), ("تعاون", "Collaboration"), ("تعليق على رحلة", "Comment on a journey")]
     contact = page_head(t("برج المراقبة", "Control Tower"), t("تعيسًا أو سعيدًا كلِّم برج المراقبة", "Unhappy or happy, call the Control Tower"),
-                        t("أي سؤال، وأي اقتراح، وحتى تعاون؛ موجودة وبرد لك.",
-                          "Any question, any suggestion, even a collaboration: I'm here and I'll get back to you.")) + f"""
+                        t("أي سؤال، وأي اقتراح، وحتى تعاون؛ موجودة وبرد لك -ما دمتُ حيًا-.",
+                          "Any question, any suggestion, even a collaboration: I'm here and I'll get back to you, as long as I live.")) + f"""
     <section class="section">
       <div class="container contact">
         <form class="contact-form" data-email="{EMAIL}" novalidate>
