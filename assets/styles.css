@@ -203,6 +203,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .post-card { padding: 24px; display: flex; flex-direction: column; gap: 6px; }
 .post-card h3 { font-size: 1.375rem; line-height: 1.5; }
 .post-card p { color: var(--muted); }
+.post-card p:not(.meta) { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
 .post-card .meta, .note-card .meta { margin-top: auto; font-size: 0.9375rem; color: var(--muted); }
 .tag, .status {
   align-self: flex-start; font-size: 0.85rem; font-weight: 700; padding: 2px 12px; border-radius: 999px;
