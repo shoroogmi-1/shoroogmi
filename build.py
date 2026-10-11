@@ -36,7 +36,7 @@ def share_btn(lang, path, title, extra_class=""):
     url = SITE + out_path(lang, path)
     title = re.sub(r"<[^>]+>", "", title).replace('"', "&quot;")
     return (f'<button class="share-btn{extra_class}" type="button" data-url="{url}" data-title="{title}">'
-            f'<span aria-hidden="true">🔗</span> {t("شارك", "Share")}</button>')
+            f'<span aria-hidden="true">🔗</span> {t("شارك الرابط", "Share the link")}</button>')
 
 
 def page(lang, path, key, title, body, desc, alt=None, icon=None):
