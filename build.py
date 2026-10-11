@@ -720,7 +720,7 @@ def build(lang):
             <p class="comment-status" role="status"></p>
           </form>
           <ol class="comment-list"></ol>
-          <p class="no-comments" hidden>{t("لا تعليقات بعد.. كن أول من يحلّق", "No comments yet.. be the first to take off")} ✈️</p>
+          <p class="no-comments" hidden>{t("كن أول من يحلّق", "Be the first to take off")} ✈️</p>
         </section>
         <nav class="post-nav" aria-label="{t("تنقل بين الرحلات", "Journey navigation")}">{nav}</nav>
       </div>
