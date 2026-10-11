@@ -631,3 +631,4 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .contact-side .ci-whatsapp { background: #25D366; color: #fff; border-color: transparent; }
 .contact-side .ci-substack { background: #FF6719; color: #fff; border-color: transparent; }
 .contact-side .ci-facebook { background: #1877F2; color: #fff; border-color: transparent; }
+.site-stats li a { color: inherit; text-decoration: none; }
