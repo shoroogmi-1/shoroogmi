@@ -1,0 +1,6 @@
+Title: The Connections Between Verses
+Excerpt: A reflection on the link between remembering kindness, maintaining prayer and remembrance, and the verses about striving in Allah’s cause.
+
+When the verse about divorce concludes with “Do not forget graciousness between you,” it reminds us that kindness among people should not be forgotten, but preserved through remembrance. Then it draws attention to the right of the Creator, Exalted is He, which must not be forgotten, and to maintaining the prayers, for He is the possessor of the greatest grace: “Maintain the prayers, especially the middle prayer.” It then says: “Remember Allah as He has taught you what you did not know.”
+
+Another connection appears between the verse “Thus Allah makes His signs clear to you” and the mention of fighting in Allah’s cause: “Have you not considered those who left their homes in thousands, fearing death?” This is followed by: “Fight in the cause of Allah.” Both verses encourage striving in Allah’s cause—under the authority of the rightful leader—and teach that fleeing from battle does not avert death.
