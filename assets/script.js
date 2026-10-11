@@ -266,6 +266,21 @@ if (post) {
   });
 }
 
+// Recorded audio (Hamed's voice): speed button cycles the playback rate
+const audioBox = document.querySelector(".audio-player");
+if (audioBox) {
+  const audio = audioBox.querySelector("audio");
+  const rateBtn = audioBox.querySelector(".audio-rate");
+  const rates = [1, 1.25, 1.5, 0.8];
+  let ri = 0;
+  rateBtn.addEventListener("click", () => {
+    ri = (ri + 1) % rates.length;
+    audio.defaultPlaybackRate = audio.playbackRate = rates[ri];
+    rateBtn.textContent = `السرعة ${arNum.format(rates[ri])}×`;
+  });
+  audio.addEventListener("play", () => { audio.playbackRate = rates[ri]; });
+}
+
 // Listen: read the article aloud with the browser's built-in voice for the page's language
 const listen = document.querySelector(".listen");
 if (listen && "speechSynthesis" in window) {
