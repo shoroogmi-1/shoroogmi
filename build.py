@@ -60,7 +60,7 @@ def page(lang, path, key, title, body, desc, alt=None):
       <a href="{h}index.html" class="logo"><span class="logo-sun" aria-hidden="true"></span>{t("شروق المحمادي", "Shoroog Almehmadi")}</a>
       <button class="menu-toggle" aria-label="{t("فتح القائمة", "Open menu")}" aria-expanded="false">☰</button>
       <nav class="nav-links" aria-label="{t("القائمة الرئيسية", "Main menu")}">
-        <a href="{h}index.html"{act("home")}>{t("إقلاع الإشعاع", "Radiant Takeoff")}</a>
+        <a href="{h}index.html"{act("home")}>{t("مُشعشعة", "Radiant")}</a>
         <a href="{h}sira.html"{act("sira")}>{t("جواز سفر", "Passport")}</a>
         <div class="has-sub">
           <a href="{h}blog/index.html"{act("blog")}>{t("سجل الرحلات", "Travel Log")} <span class="caret" aria-hidden="true">▾</span></a>
@@ -405,7 +405,7 @@ def build(lang):
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">{t("إقلاع الإشعاع", "Radiant Takeoff")}</h2>
+        <h2 class="section-title">{t("مُشعشعة", "Radiant")}</h2>
         <div class="tiles">
           <a class="tile" href="sira.html"><span class="tile-icon">🛂</span><h3>{t("جواز سفر", "Passport")}</h3><p>{t("هُوية الكاتبة، وسيرة مختصرة، وماذا تعمل.", "The writer's identity, a short biography, and what she does.")}</p></a>
           <a class="tile" href="blog/index.html"><span class="tile-icon">✍️</span><h3>{t("سجل الرحلات", "Travel Log")}</h3><p>{t("المقالات والزاوية ٣٦.", "The articles and Corner 36.")}</p></a>
