@@ -106,16 +106,19 @@ def page(lang, path, key, title, body, desc, alt=None):
         f.write(html)
 
 
-def page_head(eyebrow, heading, lead, crumbs=""):
+def page_head(eyebrow, heading, lead, crumbs="", extra=""):
     return f"""    <section class="page-hero">
       <div class="clouds" aria-hidden="true"><span class="cloud c1"></span><span class="cloud c2"></span></div>
       <div class="container">
 {crumbs or f'        <p class="eyebrow">{eyebrow}</p>{chr(10)}'}        <h1>{heading}</h1>
         <p class="lead">{lead}</p>
-      </div>
+{extra}      </div>
     </section>
 """
 
+
+# شريك الزاوية ٣٦
+CREATIVE_FORUM = "https://creativeforum.sa/%d8%b7%d9%84%d8%a8-%d8%a7%d8%b3%d8%aa%d8%b4%d8%a7%d8%b1%d8%a9/"
 
 # بصمة لكل ملف تنسيق/برمجة تُضاف إلى رابطه، فيحمّل المتصفح النسخة الجديدة فور أي تعديل بدل نسخته المخزّنة
 ASSET_V = {f: hashlib.md5(open(os.path.join(ROOT, "assets", f), "rb").read()).hexdigest()[:8] for f in ("styles.css", "script.js")}
@@ -547,7 +550,8 @@ def build(lang):
     zawiya = page_head(t("سجل الرحلات", "Travel Log"), t("الزاوية ٣٦", "Corner 36"),
                        t("مقالات حديثة نترجمها ونحوّرها بطريقتنا!",
                          "Recent articles we translate and reshape our own way!"),
-                       crumbs_tpl.format(t("الزاوية ٣٦", "Corner 36"))) + f"""
+                       crumbs_tpl.format(t("الزاوية ٣٦", "Corner 36")),
+                       f'        <p class="partner">{t("بالتعاون مع", "In collaboration with")} <a href="{CREATIVE_FORUM}" target="_blank" rel="noopener">{t("نادي ملتقى المبدعين الثقافي", "the Creative Forum Cultural Club")}</a></p>\n') + f"""
     <section class="section">
       <div class="container">{f"""
         <div class="posts zawiya-posts">
