@@ -27,6 +27,18 @@ def out_path(lang, path):
     return path if lang == "ar" else f"en/{path}"
 
 
+SITE = "https://shoroogmi.com/"
+
+
+def share_btn(lang, path, title, extra_class=""):
+    """زر «شارك»: يفتح قائمة المشاركة في الجوال، أو ينسخ الرابط في الحاسوب."""
+    t = lambda a, e: a if lang == "ar" else e
+    url = SITE + out_path(lang, path)
+    title = re.sub(r"<[^>]+>", "", title).replace('"', "&quot;")
+    return (f'<button class="share-btn{extra_class}" type="button" data-url="{url}" data-title="{title}">'
+            f'<span aria-hidden="true">🔗</span> {t("شارك", "Share")}</button>')
+
+
 def page(lang, path, key, title, body, desc, alt=None, icon=None):
     """path is relative to the language's root; alt is the same page in the other language
     (defaults to path)."""
@@ -95,6 +107,7 @@ def page(lang, path, key, title, body, desc, alt=None, icon=None):
         <a href="{h}books.html">{t("أمتعة السفر", "Luggage")}</a>
         <a href="{h}contact.html">{t("برج المراقبة", "Control Tower")}</a>
       </nav>
+      <p class="legal-links"><a href="{h}privacy.html">{t("سياسة الخصوصية", "Privacy Policy")}</a> · <a href="{h}terms.html">{t("شروط الاستخدام", "Terms of Use")}</a></p>
       <p class="copy">© <span class="year"></span> {t("جميع الحقوق محفوظة", "All rights reserved")}</p>
     </div>
   </footer>
@@ -377,6 +390,73 @@ CONTACTS = [
 ]
 
 
+LEGAL_UPDATED = ("١١ أكتوبر ٢٠٢٦", "October 11, 2026")
+
+# الصفحات القانونية: (عنوان القسم، [فقرات]) بالعربية ثم بالإنجليزية
+PRIVACY = [
+    (("مقدمة", "Introduction"),
+     [("هذا موقع شخصي للكاتبة شروق المحمادي (shoroogmi.com). لا يتطلب تسجيل حساب، ولا يبيع بيانات زوّاره ولا يؤجرها لأحد. توضّح هذه الصفحة ما يُجمع عند استخدامك الموقع، ولماذا، وأين يُحفظ.",
+       "This is the personal website of the writer Shoroog Almehmadi (shoroogmi.com). It requires no account, and it never sells or rents its visitors' data to anyone. This page explains what is collected when you use the site, why, and where it is kept.")]),
+    (("ما الذي نجمعه؟", "What we collect"),
+     [("<b>عدّادات مجهولة الهوية:</b> عدد زوّار الموقع، والقرّاء الدائمين، والقراءات المكتملة، والإعجابات بكل مقال. هي أرقام إجمالية فقط تُحفظ في خدمة Abacus، ولا تتضمن اسمك ولا بريدك.",
+       "<b>Anonymous counters:</b> the number of site visitors, regular readers, completed reads and likes for each article. These are totals only, kept with the Abacus service, and they never include your name or email."),
+      ("<b>التعليقات على المقالات:</b> الاسم الذي تكتبه ونص تعليقك. تُحفظ في خدمة Supabase وتظهر لكل زوّار المقال.",
+       "<b>Comments on articles:</b> the name you type and the text of your comment. They are stored with the Supabase service and are visible to everyone who reads the article."),
+      ("<b>رسائل «برج المراقبة»:</b> اسمك، وبريدك إن اخترت كتابته، وموضوع الرسالة ونصها. تُرسل عبر خدمة FormSubmit إلى بريد الكاتبة، ولا تُنشر.",
+       "<b>Control Tower messages:</b> your name, your email if you choose to give it, and your message. They are sent through the FormSubmit service to the writer's inbox and are never published."),
+      ("<b>التقييم في الصفحة الرئيسية («قيّمنا»):</b> عدد النجوم، وتعليقك، واسمك إن كتبته. يُحفظ في خدمة Supabase ويُرسل إلى بريد الكاتبة. التقييمات الإيجابية (٤ أو ٥ نجوم مع تعليق) قد تظهر للزوّار في الصفحة الرئيسية مع الاسم الذي كتبته، وما سواها لا يُنشر.",
+       "<b>The home-page rating (“Rate Us”):</b> your stars, your comment, and your name if you give one. It is stored with the Supabase service and emailed to the writer. Positive ratings (4 or 5 stars with a comment) may be shown to visitors on the home page with the name you gave; all others are never published.")]),
+    (("ما يُحفظ في متصفحك", "What is stored in your browser"),
+     [("يحفظ الموقع في متصفحك (التخزين المحلي localStorage) معلومات صغيرة تبقى في جهازك ولا تُرسل إلى أحد: تفضيلك للوضع الليلي أو النهاري، وهل سبق أن أعجبك مقال أو أكملت قراءته (حتى لا يُحسب مرتين)، وتاريخ أول زيارة لك، ووقت آخر تعليق كتبته. يمكنك مسحها في أي وقت من إعدادات متصفحك.",
+       "The site keeps a few small notes in your browser's local storage. They stay on your device and are not sent anywhere: your light or dark theme, whether you have already liked or finished an article (so it isn't counted twice), the date of your first visit, and the time of your last comment. You can clear them at any time from your browser settings."),
+      ("لا يضع الموقع ملفات تعريف ارتباط (Cookies) خاصة به، ولا يستعمل أدوات تتبّع إعلانية.",
+       "The site sets no cookies of its own and uses no advertising trackers.")]),
+    (("الخدمات الخارجية", "Third-party services"),
+     [("يعتمد الموقع على خدمات خارجية لكل منها سياسة خصوصية خاصة بها، وقد يسجّل بعضها عنوان IP لأسباب تقنية: GitHub Pages (استضافة الموقع)، وGoogle Fonts (الخطوط)، وAbacus (العدّادات)، وSupabase (التعليقات)، وFormSubmit (الرسائل والتقييمات).",
+       "The site relies on outside services, each with its own privacy policy, and some may log your IP address for technical reasons: GitHub Pages (hosting), Google Fonts (typefaces), Abacus (counters), Supabase (comments) and FormSubmit (messages and ratings)."),
+      ("التسجيلات الصوتية للمقالات مولّدة مسبقًا من نص المقالات، ولا يُرسل أي شيء عنك عند تشغيلها.",
+       "The audio recordings of the articles are generated in advance from the article text; nothing about you is sent when you play them.")]),
+    (("كيف نستخدم هذه المعلومات؟", "How we use this information"),
+     [("للرد على رسائلك، ولعرض التعليقات، ولمعرفة عدد القرّاء وما يحبونه. لا إعلانات، ولا بيع، ولا مشاركة لأغراض تسويقية.",
+       "To reply to your messages, to show comments, and to know how many people read and what they enjoy. No advertising, no selling, no sharing for marketing.")]),
+    (("حقوقك", "Your rights"),
+     [(f'يمكنك طلب حذف تعليقك أو رسالتك في أي وقت بمراسلة <a href="mailto:{EMAIL}">{EMAIL}</a>.',
+       f'You can ask for your comment or message to be deleted at any time by writing to <a href="mailto:{EMAIL}">{EMAIL}</a>.')]),
+    (("التعديلات على هذه السياسة", "Changes to this policy"),
+     [("قد تُحدَّث هذه السياسة من حين لآخر، ويظهر تاريخ آخر تحديث في أعلى الصفحة.",
+       "This policy may be updated from time to time; the date of the latest update appears at the top of the page.")]),
+]
+
+TERMS = [
+    (("قبول الشروط", "Acceptance"),
+     [("باستخدامك موقع shoroogmi.com فأنت توافق على هذه الشروط. إن لم توافق عليها فنرجو ألا تستخدم الموقع.",
+       "By using shoroogmi.com you agree to these terms. If you do not agree, please do not use the site.")]),
+    (("حقوق المحتوى ومشاركته", "Sharing the content"),
+     [("<b>المقالات والنصوص الدينية</b> (مثل «تأملات في القرآن والسنة» و«شعب العلاقة مع القرآن»): يمكن اقتباسها ونشرها دون ذكر اسم الكاتبة، ودون إذن مسبق.",
+       "<b>Religious articles and texts</b> (such as “Reflections on the Quran &amp; Sunnah” and “Branches of the Relationship with the Quran”): you may quote and publish them without the writer's name and without prior permission."),
+      ("<b>المقالات الإعلامية، ومقالات الذكاء الاصطناعي، والموضوعات الثقافية:</b> يمكن مشاركتها ونسخها كاملة، بشرط ذكر اسم الكاتبة (شروق المحمادي) أو الإشارة إلى الموقع (shoroogmi.com).",
+       "<b>Media articles, artificial-intelligence articles and cultural topics:</b> you may share and copy them in full, provided you credit the writer (Shoroog Almehmadi) or mention the website (shoroogmi.com).")]),
+    (("ما ليس ملكًا للكاتبة", "Content owned by others"),
+     [("حقوق أغلفة الكتب والأعمال المقتبس منها محفوظة لأصحابها، وتُعرض للتعريف والإشارة فقط. والترجمات الإنجليزية لمعاني الآيات مأخوذة من ترجمة Saheeh International، وترجمات الأحاديث من الترجمات المنشورة على sunnah.com.",
+       "Book covers and quoted works remain the property of their owners and are shown for reference only. The English renderings of Quranic verses are from the Saheeh International translation, and hadith translations are those published on sunnah.com.")]),
+    (("التعليقات والرسائل", "Comments and messages"),
+     [("أنت مسؤول عمّا تكتبه. يُمنع نشر الإساءة أو الشتم أو التحريض أو الإعلانات أو ما يخالف الأنظمة. وللكاتبة حذف أي تعليق دون إشعار.",
+       "You are responsible for what you write. Abuse, insults, incitement, advertising and anything unlawful are not allowed, and the writer may remove any comment without notice.")]),
+    (("التسجيلات الصوتية والترجمة", "Audio and translation"),
+     [("التسجيلات الصوتية بصوت آلي مولَّد، وقد يقع فيها خطأ في النطق، والمرجع هو النص المكتوب. والنص العربي هو الأصل إذا اختلف عن الترجمة الإنجليزية.",
+       "The audio recordings use a computer-generated voice and may mispronounce a word; the written text is the reference. Where the English translation differs from the Arabic, the Arabic original prevails.")]),
+    (("إخلاء المسؤولية", "Disclaimer"),
+     [("محتوى الموقع تأملات وآراء شخصية للكاتبة، ولا يُعدّ فتوى شرعية، ولا استشارة نفسية أو طبية أو قانونية متخصصة.",
+       "The content of this site is the writer's personal reflection and opinion. It is not a religious ruling (fatwa), nor specialist psychological, medical or legal advice.")]),
+    (("الروابط الخارجية", "External links"),
+     [("قد يحتوي الموقع على روابط لمواقع أخرى، ولا تتحمل الكاتبة مسؤولية محتواها أو سياساتها.",
+       "The site may link to other websites; the writer is not responsible for their content or policies.")]),
+    (("تعديل الشروط", "Changes to these terms"),
+     [(f'قد تُعدَّل هذه الشروط من حين لآخر، ويظهر تاريخ آخر تحديث في أعلى الصفحة. للتواصل: <a href="mailto:{EMAIL}">{EMAIL}</a>.',
+       f'These terms may change from time to time; the date of the latest update appears at the top of the page. Contact: <a href="mailto:{EMAIL}">{EMAIL}</a>.')]),
+]
+
+
 def build(lang):
     t = lambda a, e: a if lang == "ar" else e
     L = lambda v: pick(lang, v)
@@ -475,6 +555,30 @@ def build(lang):
     </section>
 """ if z0 else ""}
 
+    <section class="section testimonials" hidden>
+      <div class="container">
+        <h2 class="section-title">{t("ماذا قال المسافرون؟", "What Travelers Said")}</h2>
+        <div class="testimonial-list"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <form class="rate-box" data-email="{EMAIL}" novalidate>
+          <h2 class="section-title">{t("قيّمنا", "Rate Us")}</h2>
+          <fieldset class="stars" aria-label="{t("التقييم بالنجوم", "Star rating")}">
+            <legend class="sr-only">{t("كم نجمة تعطي الرحلة؟", "How many stars for the journey?")}</legend>
+            {"".join(f'<input type="radio" name="stars" id="star{n}" value="{n}"><label for="star{n}" title="{num(n)}">★</label>' for n in range(5, 0, -1))}
+          </fieldset>
+          <textarea name="note" rows="3" maxlength="500" placeholder="{t("كيف كانت الرحلة؟ بشّرنا!", "How was the journey? Tell us!")}" aria-label="{t("تعليق سريع", "Quick comment")}"></textarea>
+          <input type="text" name="name" maxlength="40" placeholder="{t("اسمك (اختياري)", "Your name (optional)")}" aria-label="{t("الاسم", "Name")}" autocomplete="nickname">
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="btn btn-primary">{t("أرسل", "Send")}</button>
+          <p class="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+
     <section class="section cta">
       <div class="container cta-inner">
         <h2>{t("لديك فكرة أو سؤال؟", "Have an idea or a question?")}</h2>
@@ -500,7 +604,8 @@ def build(lang):
 
     sira = page_head(t("جواز سفر", "Passport"), t("هبوط وصعود", "Landings and Takeoffs"),
                      t("مرتفعات شديدة، وهبوط قوي، تمالك قلبك حتى لا يسقط.",
-                       "Steep climbs and hard drops: hold on to your heart so it doesn't fall.")) + f"""
+                       "Steep climbs and hard drops: hold on to your heart so it doesn't fall."),
+                     extra=f'        <p class="hero-share">{share_btn(lang, "sira.html", t("جواز سفر — شروق المحمادي", "Passport — Shoroog Almehmadi"))}</p>\n') + f"""
     <section class="section quest">
       <div class="container">
         <ul class="hud" aria-label="{t("لوحة اللعبة", "Game panel")}">
@@ -613,6 +718,22 @@ def build(lang):
          t("الزاوية ٣٦: مقالات حديثة تترجمها شروق المحمادي وتحوّرها بطريقتها.", "Corner 36: recent articles translated and reshaped by Shoroog Almehmadi."),
          icon=ZAWIYA_LOGO)
 
+    # ---------- Privacy & Terms ----------
+    for path, key, title, lead, sections in (
+            ("privacy.html", "privacy", t("سياسة الخصوصية", "Privacy Policy"),
+             t("ما الذي يُجمع عند زيارتك، ولماذا، وأين يُحفظ.", "What is collected when you visit, why, and where it is kept."), PRIVACY),
+            ("terms.html", "terms", t("شروط الاستخدام", "Terms of Use"),
+             t("الشروط التي تنظّم استخدام الموقع ومحتواه.", "The terms that govern the use of this site and its content."), TERMS)):
+        body_html = "".join(f"        <h2>{L(h)}</h2>\n" + "".join(f"        <p>{L(par)}</p>\n" for par in pars) for h, pars in sections)
+        legal = page_head(me, title, lead) + f"""
+    <section class="section">
+      <div class="container narrow prose legal">
+        <p class="meta">{t("آخر تحديث:", "Last updated:")} {L(LEGAL_UPDATED)}</p>
+{body_html}      </div>
+    </section>
+"""
+        page(lang, path, key, f"{title} · {me}", legal, title)
+
     # ---------- Search ----------
     # فهرس البحث: العنوان والملخص ونص المقال كاملًا، يُحمَّل عند أول بحث فقط
     strip = lambda x: re.sub(r"\s+", " ", html_lib.unescape(re.sub(r"<[^>]+>", " ", x))).strip()
@@ -643,12 +764,13 @@ def build(lang):
 
     def book_card(title, sub, pub, year, url, front, back, desc):
         title = L(title)
+        book_id = "book-" + os.path.splitext(front)[0].replace("-front", "")
         link = (f'\n              <a class="btn btn-primary book-link" href="{url}" target="_blank" rel="noopener">🛒 {t("زيارة المتجر", "Visit the store")}</a>'
                 if url else "")
         covers = "".join(
             f'\n              <a href="{a_root}assets/books/{img}" target="_blank" rel="noopener"><img src="{a_root}assets/books/{img}" alt="{alt} {title}" width="900" height="1253" loading="lazy"></a>'
             for img, alt in ((front, t("الغلاف الأمامي لكتاب", "Front cover of")), (back, t("الغلاف الخلفي لكتاب", "Back cover of"))))
-        return f"""          <article class="book mine">
+        return f"""          <article class="book mine" id="{book_id}">
             <div class="covers">{covers}
             </div>
             <div class="book-info">
@@ -657,7 +779,10 @@ def build(lang):
               <p class="author">{L(pub)} · {L(year)}</p>
               <div class="book-desc">
 {chr(10).join(f"                <p>{L(d)}</p>" for d in desc)}
-              </div>{link}
+              </div>
+              <div class="book-actions">{link}
+              {share_btn(lang, f"books.html#{book_id}", title)}
+              </div>
             </div>
           </article>"""
 
@@ -789,6 +914,7 @@ def build(lang):
         <p class="signature">— {me}</p>
         <div class="engage">
           <button class="like-btn" type="button" aria-pressed="false"><span class="heart" aria-hidden="true">❤️</span> {t("جميل! لقد أعجبني!", "Lovely! I liked it!")} <b class="like-count">…</b></button>
+          {share_btn(lang, f"blog/articles/{slug}.html", title)}
         </div>
         <section class="comments" hidden aria-labelledby="comments-title">
           <h2 id="comments-title">💬 {t("تعليقات المسافرين", "Travelers' Comments")}</h2>
