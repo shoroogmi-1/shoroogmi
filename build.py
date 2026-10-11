@@ -60,7 +60,7 @@ def page(lang, path, key, title, body, desc, alt=None):
       <a href="{h}index.html" class="logo"><span class="logo-sun" aria-hidden="true"></span>{t("شروق المحمادي", "Shoroog Almehmadi")}</a>
       <button class="menu-toggle" aria-label="{t("فتح القائمة", "Open menu")}" aria-expanded="false">☰</button>
       <nav class="nav-links" aria-label="{t("القائمة الرئيسية", "Main menu")}">
-        <a href="{h}index.html"{act("home")}>{t("صالة المغادرة", "Departure Lounge")}</a>
+        <a href="{h}index.html"{act("home")}>{t("إقلاع الإشعاع", "Radiant Takeoff")}</a>
         <a href="{h}sira.html"{act("sira")}>{t("جواز السفر", "Passport")}</a>
         <div class="has-sub">
           <a href="{h}blog/index.html"{act("blog")}>{t("سجل الرحلات", "Travel Log")} <span class="caret" aria-hidden="true">▾</span></a>
@@ -393,12 +393,11 @@ def build(lang):
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">{t("تصفّح الموقع", "Explore the Site")}</h2>
+        <h2 class="section-title">{t("إقلاع الإشعاع", "Radiant Takeoff")}</h2>
         <div class="tiles">
-          <a class="tile" href="sira.html"><span class="tile-icon">🛂</span><h3>{t("جواز السفر", "Passport")}</h3><p>{t("من أنا، وما الذي أعمل عليه، ومحطات رحلتي.", "Who I am, what I'm working on, and the stops along my journey.")}</p></a>
-          <a class="tile" href="blog/articles.html"><span class="tile-icon">✍️</span><h3>{t("رحلات طويلة", "Long Journeys")}</h3><p>{t("نصوص أطول في التأمل والقراءة والكتابة.", "Longer pieces on reflection, reading and writing.")}</p></a>
-          <a class="tile" href="blog/zawiya-36.html"><span class="tile-icon">🌙</span><h3>{t("الزاوية ٣٦", "Corner 36")}</h3><p>{t("خواطر قصيرة وملاحظات سريعة من يومي.", "Short reflections and quick notes from my day.")}</p></a>
-          <a class="tile" href="books.html"><span class="tile-icon">📚</span><h3>{t("أمتعة السفر", "Luggage")}</h3><p>{t("كتبي.", "My books.")}</p></a>
+          <a class="tile" href="sira.html"><span class="tile-icon">🛂</span><h3>{t("جواز السفر", "Passport")}</h3><p>{t("هُوية الكاتبة، وسيرة مختصرة، وماذا تعمل.", "The writer's identity, a short biography, and what she does.")}</p></a>
+          <a class="tile" href="blog/index.html"><span class="tile-icon">✍️</span><h3>{t("سجل الرحلات", "Travel Log")}</h3><p>{t("المقالات والزاوية ٣٦.", "The articles and Corner 36.")}</p></a>
+          <a class="tile" href="books.html"><span class="tile-icon">📚</span><h3>{t("أمتعة السفر", "Luggage")}</h3><p>{t("كتب تسليك في الرحلة.", "Books to keep you company on the journey.")}</p></a>
         </div>
       </div>
     </section>
