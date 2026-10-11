@@ -627,7 +627,7 @@ def build(lang):
           <label>{t("الاسم", "Name")}
             <input type="text" name="name" required autocomplete="name">
           </label>
-          <label>{t("بريدك (اختياري، لأرد عليك)", "Your email (optional, so I can reply)")}
+          <label>{t("بريدك", "Your email")} <small class="field-hint">{t("(اختياري، إذا كنت تريد ردًا على الرسالة فمن الضروري وضع البريد. إذا كنت لا تريد ردًا فلا يحتاج!)", "(Optional. If you want a reply to your message, you need to add your email. If you don't want a reply, there's no need!)")}</small>
             <input type="email" name="email" autocomplete="email" dir="ltr">
           </label>
           <label>{t("الموضوع", "Topic")}
