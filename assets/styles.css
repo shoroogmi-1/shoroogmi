@@ -273,6 +273,13 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
   border-radius: 14px; padding: 6px 16px; font-size: 0.95rem;
 }
 
+/* Poems: centred lines, a gap after every couplet */
+.prose.poem { text-align: center; }
+.prose.poem p:not(.signature):not(.reads-note):not(.comment-status):not(.no-comments) { font-size: 1.4rem; line-height: 2; margin-bottom: 0.15em; }
+.prose.poem p.verse-end:not(.signature):not(.reads-note):not(.comment-status):not(.no-comments) { margin-bottom: 1.2em; }
+.prose.poem .signature, .prose.poem .listen, .prose.poem .engage, .prose.poem .comments, .prose.poem .post-nav { text-align: start; }
+.prose.poem .listen { justify-content: center; }
+
 /* Listen (text to speech) */
 .listen [hidden] { display: none; }
 .listen { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 1.6em; font-family: var(--font-sans); }

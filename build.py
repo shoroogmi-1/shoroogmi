@@ -141,7 +141,7 @@ def read_time(blocks):
 
 # أسماء حقول الترويسة بالعربية (والإنجليزية مقبولة أيضاً)
 FIELDS = {"العنوان": "title", "التاريخ": "date", "التصنيف": "tag", "الملخص": "excerpt"}
-OPTIONAL_FIELDS = {"الوقت": "time"}
+OPTIONAL_FIELDS = {"الوقت": "time", "النوع": "kind"}  # النوع: «قصيدة» يعرض الأبيات في المنتصف
 
 # تصنيفات «رحلات طويلة» بالترتيب الذي تظهر به أزرار الفرز. «التصنيف» في كل مقال يجب أن يكون واحدًا منها.
 CATEGORIES = ["تأملات في القرآن", "مقالات اجتماعية", "مقالات فكرية"]  # وقت النشر بنظام ٢٤ ساعة، مثل 21:30
@@ -190,6 +190,7 @@ ARTICLES = [(m["tag"], m["title"], ar_date(m["date"]), read_time(b), m["excerpt"
 SLUGS = [slug for _, slug, _ in _loaded]
 BODIES = {slug: b for _, slug, b in _loaded}
 TIMES = {slug: ar_time(m["time"]) for m, slug, _ in _loaded if m.get("time")}
+POEMS = {slug for m, slug, _ in _loaded if m.get("kind") == "قصيدة"}
 MINUTES = {slug: sum(len(t.split()) for _, t in b) / 200 for _, slug, b in _loaded}
 
 
@@ -536,6 +537,13 @@ def render_block(kind, text):
     return f"        <p>{text}</p>"
 
 
+def render_body(slug):
+    if slug not in POEMS:
+        return chr(10).join(render_block(k, t) for k, t in BODIES[slug])
+    # a poem: one line per verse half, with a gap after every couplet
+    return chr(10).join(f'        <p{" class=\"verse-end\"" if i % 2 else ""}>{t}</p>' for i, (_, t) in enumerate(BODIES[slug]))
+
+
 for old in glob.glob(os.path.join(ROOT, "blog", "articles", "*.html")):
     if os.path.splitext(os.path.basename(old))[0] not in SLUGS:
         os.remove(old)
@@ -567,14 +575,14 @@ for i, a in enumerate(ARTICLES):
     </section>
 
     <article class="section" id="post" data-slug="{slug}" data-minutes="{MINUTES[slug]:.2f}">
-      <div class="container narrow prose">
+      <div class="container narrow prose{" poem" if slug in POEMS else ""}">
         <div class="listen" hidden>
           <button class="listen-btn" type="button"><span class="listen-icon" aria-hidden="true">🎧</span> <span class="listen-label">استمع للمقال</span></button>
           <button class="listen-stop" type="button" hidden>⏹ إيقاف</button>
           <button class="listen-rate" type="button" hidden>السرعة ١×</button>
           <span class="listen-status" role="status"></span>
         </div>
-{"" if excerpt in [t for k, t in BODIES[slug] if k != "h2"][:1] else f'        <p class="excerpt">{excerpt}</p>{chr(10)}'}{chr(10).join(render_block(k, t) for k, t in BODIES[slug])}
+{"" if slug in POEMS or excerpt in [t for k, t in BODIES[slug] if k != "h2"][:1] else f'        <p class="excerpt">{excerpt}</p>{chr(10)}'}{render_body(slug)}
         <p class="signature">— شروق المحمادي</p>
         <div class="engage">
           <button class="like-btn" type="button" aria-pressed="false"><span class="heart" aria-hidden="true">🤍</span> أعجبتني <b class="like-count">…</b></button>
