@@ -203,6 +203,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .post-card { padding: 24px; display: flex; flex-direction: column; gap: 6px; }
 .post-card h3 { font-size: 1.375rem; line-height: 1.5; }
 .post-card p { color: var(--muted); }
+.post-card p:not(.meta) { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; line-clamp: 3; overflow: hidden; }
 .post-card .meta, .note-card .meta { margin-top: auto; font-size: 0.9375rem; color: var(--muted); }
 .tag, .status {
   align-self: flex-start; font-size: 0.85rem; font-weight: 700; padding: 2px 12px; border-radius: 999px;
@@ -271,6 +272,13 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
   background: color-mix(in srgb, var(--card) 80%, transparent); border: 2px solid var(--border); border-bottom-width: 4px;
   border-radius: 14px; padding: 6px 16px; font-size: 0.95rem;
 }
+
+/* Poems: centred lines, a gap after every couplet */
+.prose.poem { text-align: center; }
+.prose.poem p:not(.signature):not(.reads-note):not(.comment-status):not(.no-comments) { font-size: 1.4rem; line-height: 2; margin-bottom: 0.15em; }
+.prose.poem p.verse-end:not(.signature):not(.reads-note):not(.comment-status):not(.no-comments) { margin-bottom: 1.2em; }
+.prose.poem .signature, .prose.poem .listen, .prose.poem .engage, .prose.poem .comments, .prose.poem .post-nav { text-align: start; }
+.prose.poem .listen { justify-content: center; }
 
 /* Listen (text to speech) */
 .listen [hidden] { display: none; }
