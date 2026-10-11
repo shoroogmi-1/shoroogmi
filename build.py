@@ -588,8 +588,8 @@ def build(lang):
 {rate_section}
     <section class="section cta">
       <div class="container cta-inner">
-        <h2>{t("أي خدمة؟ خليني أسمعها! 🌸", "Anything I can do for you? Let me hear it! 🌸")}</h2>
-        <p>{t("خليني أسمع منك.", "Let me hear from you.")}</p>
+        <h2>{t("أي خدمة؟", "Anything I can do for you?")}</h2>
+        <p>{t("خليني أسمعها! 🌸", "Let me hear it! 🌸")}</p>
         <a href="contact.html" class="btn btn-primary">{t("برج المراقبة", "Control Tower")}</a>
       </div>
     </section>
