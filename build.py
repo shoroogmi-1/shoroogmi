@@ -86,6 +86,7 @@ def page(lang, path, key, title, body, desc, alt=None, icon=None):
           </div>
         </div>
         <a href="{h}books.html"{act("books")}>{t("أمتعة السفر", "Luggage")}</a>
+        <a href="{h}testimonials.html"{act("testimonials")}>{t("ما قاله المسافرون", "Reviews")}</a>
         <a href="{h}contact.html"{act("contact")}>{t("برج المراقبة", "Control Tower")}</a>
         <a class="lang-switch" href="{switch}" hreflang="{other}" lang="{other}">{t("English", "العربية")}</a>
         <button class="theme-toggle" aria-label="{t("تبديل الوضع الليلي", "Toggle dark mode")}">🌙</button>
@@ -105,6 +106,7 @@ def page(lang, path, key, title, body, desc, alt=None, icon=None):
         <a href="{h}blog/articles.html">{t("رحلات طويلة", "Long Journeys")}</a>
         <a href="{h}blog/zawiya-36.html">{t("الزاوية ٣٦", "Corner 36")}</a>
         <a href="{h}books.html">{t("أمتعة السفر", "Luggage")}</a>
+        <a href="{h}testimonials.html">{t("ما قاله المسافرون", "What Travelers Said")}</a>
         <a href="{h}contact.html">{t("برج المراقبة", "Control Tower")}</a>
       </nav>
       <p class="legal-links"><a href="{h}privacy.html">{t("سياسة الخصوصية", "Privacy Policy")}</a> · <a href="{h}terms.html">{t("شروط الاستخدام", "Terms of Use")}</a></p>
@@ -496,6 +498,40 @@ def build(lang):
     </section>
 """
 
+    # ---------- «ما قاله المسافرون» و«قيّمنا» ----------
+    def testimonials_html(limit, home=False):
+        """التقييمات الإيجابية تُحمَّل من قاعدة البيانات؛ في الرئيسية شريط يُمرَّر أفقيًا ورابط للصفحة الكاملة."""
+        more = (f'<a class="more" href="testimonials.html">{t("كل ما قاله المسافرون", "All reviews")} {fwd}</a>' if home else "")
+        return f"""    <section class="section testimonials">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">{t("ما قاله المسافرون", "What Travelers Said")}</h2>{more}
+        </div>
+        <div class="testimonial-list{" scroller" if home else ""}" data-limit="{limit}">
+          <p class="t-empty">{t("لا تقييمات بعد… كن أول من يقيّم الرحلة ⭐", "No reviews yet… be the first to rate the journey ⭐")}</p>
+        </div>
+      </div>
+    </section>
+"""
+
+    rate_section = f"""    <section class="section">
+      <div class="container narrow">
+        <form class="rate-box" data-email="{EMAIL}" novalidate>
+          <h2 class="section-title">{t("قيّمنا", "Rate Us")}</h2>
+          <fieldset class="stars" aria-label="{t("التقييم بالنجوم", "Star rating")}">
+            <legend class="sr-only">{t("كم نجمة تعطي الرحلة؟", "How many stars for the journey?")}</legend>
+            {"".join(f'<input type="radio" name="stars" id="star{n}" value="{n}"><label for="star{n}" title="{num(n)}">★</label>' for n in range(5, 0, -1))}
+          </fieldset>
+          <textarea name="note" rows="3" maxlength="500" placeholder="{t("كيف كانت الرحلة؟ بشّرنا!", "How was the journey? Tell us!")}" aria-label="{t("تعليق سريع", "Quick comment")}"></textarea>
+          <input type="text" name="name" maxlength="40" placeholder="{t("اسمك (اختياري)", "Your name (optional)")}" aria-label="{t("الاسم", "Name")}" autocomplete="nickname">
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="btn btn-primary">{t("أرسل", "Send")}</button>
+          <p class="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+"""
+
     # ---------- Home ----------
     z0 = ZAWIYA_ARTICLES[0] if ZAWIYA_ARTICLES else None
     home = f"""    <section class="hero">
@@ -548,33 +584,11 @@ def build(lang):
     </section>
 """ if z0 else ""}
 
-    <section class="section testimonials" hidden>
-      <div class="container">
-        <h2 class="section-title">{t("ماذا قال المسافرون؟", "What Travelers Said")}</h2>
-        <div class="testimonial-list"></div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container narrow">
-        <form class="rate-box" data-email="{EMAIL}" novalidate>
-          <h2 class="section-title">{t("قيّمنا", "Rate Us")}</h2>
-          <fieldset class="stars" aria-label="{t("التقييم بالنجوم", "Star rating")}">
-            <legend class="sr-only">{t("كم نجمة تعطي الرحلة؟", "How many stars for the journey?")}</legend>
-            {"".join(f'<input type="radio" name="stars" id="star{n}" value="{n}"><label for="star{n}" title="{num(n)}">★</label>' for n in range(5, 0, -1))}
-          </fieldset>
-          <textarea name="note" rows="3" maxlength="500" placeholder="{t("كيف كانت الرحلة؟ بشّرنا!", "How was the journey? Tell us!")}" aria-label="{t("تعليق سريع", "Quick comment")}"></textarea>
-          <input type="text" name="name" maxlength="40" placeholder="{t("اسمك (اختياري)", "Your name (optional)")}" aria-label="{t("الاسم", "Name")}" autocomplete="nickname">
-          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <button type="submit" class="btn btn-primary">{t("أرسل", "Send")}</button>
-          <p class="form-status" role="status"></p>
-        </form>
-      </div>
-    </section>
-
+{testimonials_html(limit=12, home=True)}
+{rate_section}
     <section class="section cta">
       <div class="container cta-inner">
-        <h2>{t("لديك فكرة أو سؤال؟", "Have an idea or a question?")}</h2>
+        <h2>{t("أي خدمة؟ خليني أسمعها! 🌹", "Anything I can do for you? Let me hear it! 🌹")}</h2>
         <p>{t("يسعدني أن أسمع منك دائماً.", "I'm always happy to hear from you.")}</p>
         <a href="contact.html" class="btn btn-primary">{t("برج المراقبة", "Control Tower")}</a>
       </div>
@@ -583,6 +597,12 @@ def build(lang):
     page(lang, "index.html", "home", me, home,
          t("الموقع الشخصي لشروق المحمادي: جواز سفر، سجل الرحلات، أمتعة السفر، وبرج المراقبة.",
            "The personal website of Shoroog Almehmadi: Passport, Travel Log, Luggage, and Control Tower."))
+
+    # ---------- What travelers said (page) ----------
+    reviews = page_head(me, t("ما قاله المسافرون", "What Travelers Said"),
+                        t("كلمات من رافقونا في الرحلة.", "Words from those who traveled with us.")) + testimonials_html(limit=200) + rate_section
+    page(lang, "testimonials.html", "testimonials", f"{t('ما قاله المسافرون', 'What Travelers Said')} · {me}", reviews,
+         t("تقييمات قرّاء موقع شروق المحمادي.", "Reviews from readers of Shoroog Almehmadi's website."))
 
     # ---------- Sira ----------
     def station_item(i, s):
