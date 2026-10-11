@@ -166,8 +166,11 @@ def load_article(path):
     for ar_key, key in FIELDS.items():
         if not meta.get(key):
             raise SystemExit(f"{path}: الحقل «{ar_key}» مفقود في الترويسة")
-    if meta["tag"] not in CATEGORIES:
-        raise SystemExit(f"{path}: التصنيف «{meta['tag']}» غير معروف. التصنيفات المتاحة: {'، '.join(CATEGORIES)}")
+    # أكثر من تصنيف يُفصل بفاصلة: «تأملات في القرآن والسنة، مقالات نفسية واجتماعية»
+    meta["tag"] = tuple(t.strip() for t in re.split(r"[،,]", meta["tag"]) if t.strip())
+    for t in meta["tag"]:
+        if t not in CATEGORIES:
+            raise SystemExit(f"{path}: التصنيف «{t}» غير معروف. التصنيفات المتاحة: {'، '.join(CATEGORIES)}")
     if meta.get("time") and not re.fullmatch(r"\d{1,2}:\d{2}", meta["time"]):
         raise SystemExit(f"{path}: اكتبي الوقت بهذا الشكل 21:30")
     blocks = []
@@ -190,7 +193,7 @@ ARTICLES = [(m["tag"], m["title"], ar_date(m["date"]), read_time(b), m["excerpt"
 SLUGS = [slug for _, slug, _ in _loaded]
 BODIES = {slug: b for _, slug, b in _loaded}
 TIMES = {slug: ar_time(m["time"]) for m, slug, _ in _loaded if m.get("time")}
-POEMS = {slug for m, slug, _ in _loaded if m.get("kind") == "قصيدة" or m["tag"] == "قصائد"}
+POEMS = {slug for m, slug, _ in _loaded if m.get("kind") == "قصيدة" or "قصائد" in m["tag"]}
 MINUTES = {slug: sum(len(t.split()) for _, t in b) / 200 for _, slug, b in _loaded}
 
 
@@ -198,11 +201,16 @@ def slug_of(a):
     return SLUGS[ARTICLES.index(a)]
 
 
+def tags_html(tags, indent):
+    spans = "".join(f'<span class="tag">{t}</span>' for t in tags)
+    return f'{indent}<div class="tags">{spans}</div>' if len(tags) > 1 else indent + spans
+
+
 def article_card(a, p=""):
     """p is the path prefix from the current page to the blog folder."""
     tag, title, date, read, excerpt = a
-    return f"""          <article class="post-card" data-tag="{tag}">
-            <span class="tag">{tag}</span>
+    return f"""          <article class="post-card" data-tag="{'|'.join(tag)}">
+{tags_html(tag, "            ")}
             <h3><a class="stretched" href="{p}articles/{slug_of(a)}.html">{title}</a></h3>
             <p>{excerpt}</p>
             <p class="meta">{date} · {read} قراءة</p>
@@ -558,12 +566,12 @@ for i, a in enumerate(ARTICLES):
         nav += f'<a class="pn prev" href="{SLUGS[i + 1]}.html"><span>الرحلة السابقة</span>{older[1]}</a>'
     if newer:
         nav += f'<a class="pn next" href="{SLUGS[i - 1]}.html"><span>الرحلة التالية</span>{newer[1]}</a>'
-    related = [r for r in ARTICLES if r[0] == tag and r is not a][:2]
+    related = [r for r in ARTICLES if set(r[0]) & set(tag) and r is not a][:2]
     body = f"""    <section class="page-hero article-hero">
       <div class="clouds" aria-hidden="true"><span class="cloud c1"></span><span class="cloud c2"></span></div>
       <div class="container narrow">
         <nav class="crumbs" aria-label="مسار التنقل"><a href="../index.html">سجل الرحلات</a> / <a href="../articles.html">رحلات طويلة</a></nav>
-        <span class="tag">{tag}</span>
+{tags_html(tag, "        ")}
         <h1>{title}</h1>
         <ul class="post-meta">
           <li>📅 {date}</li>{f"{chr(10)}          <li>🕘 {TIMES[slug]}</li>" if slug in TIMES else ""}
@@ -608,7 +616,7 @@ for i, a in enumerate(ARTICLES):
         body += f"""
     <section class="section alt">
       <div class="container">
-        <h2 class="section-title">رحلات أخرى في «{tag}»</h2>
+        <h2 class="section-title">رحلات أخرى في «{"» و«".join(tag)}»</h2>
         <div class="posts">
 {chr(10).join(article_card(r, "../") for r in related)}
         </div>
