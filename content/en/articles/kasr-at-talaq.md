@@ -1,0 +1,82 @@
+Title: Breaking Divorce with Rays of Radiance
+Excerpt: For the end of the surah is an introduction to its beginning!
+
+For the end of the surah is an introduction to its beginning!
+
+(Allah is the One who created seven heavens, and of the earth their like; the command comes down among them, that you may know that Allah has power over all things and that Allah encompasses all things in knowledge (12) (At-Talaq)
+
+Why did Allah create the heavens and the earth? The command descends among them!
+
+And what is the command?
+
+It is what is mentioned at its beginning!
+
+(O Prophet, when you divorce women, divorce them at the start of their waiting period, and count the waiting period carefully, and be mindful of Allah, your Lord. Do not drive them out of their homes, nor are they to leave, unless they commit a flagrant indecency. These are the bounds set by Allah, and whoever oversteps the bounds of Allah has wronged himself. You do not know; perhaps Allah will bring about something new after that (1) (At-Talaq)
+
+Perhaps Allah will bring about something new after that: a good decree that was not within your awareness
+
+You do not know; perhaps Allah will decree decrees you do not know of, and you see Him repeat it a second time, that His decrees are above your present knowledge of reality, for His knowledge is of the past, goes beyond the now, and knows the future
+
+(Then when they near the end of their term, either keep them on in kindness or part from them in kindness, and call two upright men among you as witnesses, and give the testimony for the sake of Allah. This is what is urged upon whoever believes in Allah and the Last Day. And whoever is mindful of Allah, He will make a way out for him (2) and provide for him from where he never reckoned. And whoever puts his trust in Allah, He is enough for him. Allah carries His command through; Allah has set a measure for everything (3)
+
+He provides for him, decrees decrees for him, and brings about for him a matter he does not know and is not aware of, because of the shortcoming of human knowledge of the unseen.
+
+Once again, why did Allah create the heavens and the earth? Between them descend affairs, decrees, provisions, and arrangements. Yes, why?!
+
+If you see His power to create them, you will know who this God is who arranges your affairs and decrees them (that you may know that Allah has power over all things and that Allah encompasses all things in knowledge )
+
+He has set a measure for everything; because He has power over all things!
+
+Everything has a limit at which it ends! Illness has its measure and its limit is healing, misguidance has a limit so He decrees guidance for it, poverty has a measure at which it ends and turns into wealth, ignorance's measure is knowledge, and so any hardship has a measure at which it ends, however great it is. So take it easy, calm your fear, and put your mind at rest.
+
+And know that Allah's knowledge has encompassed the days, the past and the future, time and place; He knows everything about them,
+
+And you, what is your knowledge next to His knowledge? (You do not know - he never reckoned) so you cannot calculate, imagine, or be aware of His decrees and His knowledge, however far you reach and however hard you try,
+
+So isn't it better for you to leave your limited knowledge and entrust it to His unlimited knowledge?
+
+Yes, and more restful!
+
+(As for those of your women who have despaired of menstruation, if you are in doubt, their waiting period is three months, and likewise for those who have not menstruated. And those who are pregnant, their term is when they deliver their burden. And whoever is mindful of Allah, He will make his affair easy for him (4) That is the command of Allah which He has sent down to you. And whoever is mindful of Allah, He will wipe away his misdeeds for him and make his reward great (5)
+
+(At-Talaq)
+
+And now, a question:
+
+Isn't it only the one who is mindful of Allah for whom He makes a way out! And I am not one of the God-fearing!?
+
+Yes! For He said: whoever avoids what He forbids, obeys His commands, and repents to Him enters the ranks of the God-fearing, and on top of that He removes his misdeeds, and beyond that He makes great his reward; because He replaces bad deeds with good ones (And whoever is mindful of Allah, He will wipe away his misdeeds for him and make his reward great (5)
+
+And changing the difficult into the easy is included in His command and His decree sent down from the heaven to the earth. Read the two verses -and please, look closely and slowly at the link between them!- (And whoever is mindful of Allah, He will make his affair easy for him (4) That is the command of Allah which He has sent down to you)
+
+That is the command of Allah which He has sent down to you: these are the rulings of divorce set out earlier in the surah and everything Allah has legislated.
+
+And now reflect with me: whoever obeys the command of Allah, Allah will make his affair easy for him! Because the reward is of the same kind as the deed (be as He wants, and He will be for you as you want). Obey His command, and He will ease your matter and fulfill His promise to you, for the fulfillment of Allah's promise of victory and opening is conditional on obedience and avoiding sin.
+
+Yes! He makes his difficult matter easy, that is the command of Allah! Don't say how!? Impossible? It is His command, and that's that.
+
+(House them where you yourselves live, according to your means, and do not harass them so as to make things hard for them. And if they are pregnant, spend on them until they deliver. Then if they nurse the child for you, give them their due payment, and consult one another in kindness; but if you make it difficult for each other, another woman will nurse him (6) At-Talaq
+
+And this verse, I see, also closed with a promise of ease!
+
+Where? (but if you make it difficult for each other) if you do not agree on the mother -the divorced one- nursing, then Allah will make another wet nurse easy to find! (another woman will nurse him) if you fear Allah and act on what is at the beginning of the verse, the lodging and the other rulings.
+
+So this is a promise to his mother -and to his father too- of ease in nursing, so do not carry the worry
+
+Then He promised the man anxious about how little he has in hand ease as well (Let the one with plenty spend out of his plenty, and the one whose provision is measured out to him, let him spend from what Allah has given him. Allah does not burden a soul beyond what He has given it. Allah will bring ease after hardship (7)
+
+(How many a town defied the command of its Lord and His messengers, so We called it to a harsh reckoning and punished it with a dreadful punishment (8) So it tasted the ill result of its doing, and the end of its doing was ruin (9) Allah has prepared for them a severe punishment; so be mindful of Allah, you people of understanding who have believed. Allah has sent down to you a reminder (10) (At-Talaq)
+
+When it disobeyed Allah and His Messenger, it had a severe reckoning in this world and punishment, so whoever wants protection from that must hold to the fear of Allah, and that is why He said (so be mindful of Allah, you people of understanding who have believed. Allah has sent down to you a reminder)
+
+If you want ease in your affairs and your provisions and hardship to go away, then hold to taqwa, and if taqwa is hard for you, then hold to reciting the Quran; because it makes easy the means of attaining it, and the Quran and taqwa are two helpers in hardships, through them affairs are made easy, which your Messenger ﷺ recites (a Messenger who recites to you the clear verses of Allah, to bring those who believe and do righteous deeds out of the darknesses into the light. And whoever believes in Allah and does good, He will admit him into gardens with rivers flowing beneath them, to remain in them forever; Allah has made his provision good indeed (11)
+
+So the Quran brings him out of the darknesses into the light, and through it the provision of this world and the Hereafter is made good (Allah has made his provision good indeed)
+
+And Surah At-Talaq is wondrous!
+
+For it mentions the rulings of divorce and the brokenness, hardship, and pain in it! And the surah scatters rays of good omen and joy through it, with the promise of ease after hardship and good provision!
+
+What is this marvelous beauty in this surah?! Tell me, by your Lord, what is this splendor?! It breaks the bad, gloomy mood when souls have become troubled and darkened, as it promises them abundant provision, hope, goodness, and ease! And that however great the test, what is coming is more beautiful than the reality and the imagined.
+
+As if it breaks divorce with rays of radiance

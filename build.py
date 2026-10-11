@@ -118,26 +118,7 @@ def page_head(eyebrow, heading, lead, crumbs=""):
 
 # ---------- shared content ----------
 # الخواطر، الأحدث أولاً: (العنوان، التاريخ، النص)
-ZAWIYA = [
-    (("الضوء لا يستأذن", "Light Doesn't Knock"), "2026-10-01",
-     ("يدخل الضوء من أصغر شقّ في النافذة. هكذا هي الأفكار الجيدة: لا تحتاج إلا إلى فرصة صغيرة.",
-      "Light comes in through the smallest crack in the window. Good ideas are like that: all they need is a small chance.")),
-    (("قهوة الصباح", "Morning Coffee"), "2026-09-24",
-     ("ليست القهوة ما يوقظني، بل الدقائق الهادئة التي أمنحها لنفسي قبل أن يبدأ اليوم.",
-      "It isn't the coffee that wakes me, but the quiet minutes I give myself before the day begins.")),
-    (("عن البدايات", "On Beginnings"), "2026-09-17",
-     ("كل بداية تبدو صغيرة من الداخل، وكبيرة جداً حين ننظر إليها بعد عام.",
-      "Every beginning looks small from the inside, and very big when we look back at it a year later.")),
-    (("سؤال الأسبوع", "Question of the Week"), "2026-09-10",
-     ("ما الشيء الذي تؤجله لأنك تنتظر أن تصبح جاهزاً؟ ربما الجاهزية تأتي بعد الخطوة، لا قبلها.",
-      "What are you putting off because you're waiting to be ready? Maybe readiness comes after the step, not before it.")),
-    (("غيمة عابرة", "A Passing Cloud"), "2026-09-03",
-     ("الأيام الثقيلة مثل الغيوم: تحجب الشمس قليلاً، لكنها لا تطفئها.",
-      "Heavy days are like clouds: they hide the sun a little, but they don't put it out.")),
-    (("رسالة إلى نفسي", "A Note to Myself"), "2026-08-27",
-     ("تمهّلي. ليس كل ما هو مهم عاجلاً، وليس كل ما هو عاجل مهماً.",
-      "Slow down. Not everything important is urgent, and not everything urgent is important.")),
-]
+ZAWIYA = []
 
 AR_DIGITS = str.maketrans("0123456789", "٠١٢٣٤٥٦٧٨٩")
 
@@ -188,7 +169,10 @@ OPTIONAL_FIELDS = {"الوقت": "time", "النوع": "kind"}  # الوقت ب�
 EN_FIELDS = {"Title": "title", "Excerpt": "excerpt"}
 
 # تصنيفات «رحلات طويلة» بالترتيب الذي تظهر به أزرار الفرز. «التصنيف» في كل مقال يجب أن يكون واحدًا منها.
-CATEGORIES = ["تأملات في القرآن والسنة", "شعب العلاقة مع القرآن", "مقالات نفسية واجتماعية", "مقالات فكرية", "مقالات تربوية", "الشهرة والمشاهير", "قصائد"]
+CATEGORIES = ["تأملات في القرآن والسنة", "شعب العلاقة مع القرآن", "مقالات نفسية واجتماعية", "مقالات فكرية", "مقالات تربوية",
+              "مقالات إعلامية", "الذكاء الاصطناعي", "الشهرة والمشاهير", "القيادة", "قصائد"]
+# المقال الذي تصنيفه «الزاوية ٣٦» يظهر في صفحة الزاوية ٣٦ لا في رحلات طويلة
+ZAWIYA_TAG = "الزاوية ٣٦"
 # اسم كل تصنيف في النسخة الإنجليزية
 CATEGORIES_EN = {
     "تأملات في القرآن والسنة": "Reflections on the Quran & Sunnah",
@@ -196,7 +180,11 @@ CATEGORIES_EN = {
     "مقالات نفسية واجتماعية": "Psychological & Social Essays",
     "مقالات فكرية": "Intellectual Essays",
     "مقالات تربوية": "Parenting & Education Essays",
+    "مقالات إعلامية": "Media Essays",
+    "الذكاء الاصطناعي": "Artificial Intelligence",
     "الشهرة والمشاهير": "Fame & Celebrities",
+    "القيادة": "Leadership",
+    ZAWIYA_TAG: "Corner 36",
     "قصائد": "Poems",
 }
 
@@ -231,7 +219,7 @@ def load_article(path):
     # أكثر من تصنيف يُفصل بفاصلة: «تأملات في القرآن والسنة، مقالات نفسية واجتماعية»
     meta["tag"] = tuple(t.strip() for t in re.split(r"[،,]", meta["tag"]) if t.strip())
     for t in meta["tag"]:
-        if t not in CATEGORIES:
+        if t not in CATEGORIES and t != ZAWIYA_TAG:
             raise SystemExit(f"{path}: التصنيف «{t}» غير معروف. التصنيفات المتاحة: {'، '.join(CATEGORIES)}")
     if meta.get("time") and not re.fullmatch(r"\d{1,2}:\d{2}", meta["time"]):
         raise SystemExit(f"{path}: اكتبي الوقت بهذا الشكل 21:30")
@@ -268,7 +256,7 @@ def articles_for(lang):
         else:
             title, excerpt, tags = m["title"], m["excerpt"], m["tag"]
         out.append({
-            "slug": slug, "tag": tags, "title": title, "excerpt": excerpt, "blocks": blocks, "poem": poem,
+            "slug": slug, "tag": tags, "zawiya": ZAWIYA_TAG in m["tag"], "title": title, "excerpt": excerpt, "blocks": blocks, "poem": poem,
             "date": fmt_date(lang, m["date"]), "read": read_time(lang, blocks),
             "time": fmt_time(lang, m["time"]) if m.get("time") else "",
             "minutes": word_count(blocks) / 200,
@@ -341,8 +329,10 @@ def build(lang):
     q1, q2 = t("«", "“"), t("»", "”")
     me = t("شروق المحمادي", "Shoroog Almehmadi")
 
-    ARTICLES = articles_for(lang)
-    SLUGS = [a["slug"] for a in ARTICLES]
+    ALL_ARTICLES = articles_for(lang)
+    ARTICLES = [a for a in ALL_ARTICLES if not a["zawiya"]]
+    ZAWIYA_ARTICLES = [a for a in ALL_ARTICLES if a["zawiya"]]
+    SLUGS = [a["slug"] for a in ALL_ARTICLES]
 
     def article_card(a, p=""):
         """p is the path prefix from the current page to the blog folder."""
@@ -377,7 +367,7 @@ def build(lang):
 """
 
     # ---------- Home ----------
-    z0 = ZAWIYA[0]
+    z0 = ZAWIYA_ARTICLES[0] if ZAWIYA_ARTICLES else None
     home = f"""    <section class="hero">
       <div class="sky" aria-hidden="true">
         <div class="sun"><span class="rays"></span></div>
@@ -414,18 +404,19 @@ def build(lang):
     </section>
 
 {latest("blog/", "blog/articles.html") if ARTICLES else ""}
-    <section class="section">
+{f"""    <section class="section">
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">{t("من الزاوية ٣٦", "From Corner 36")}</h2>
           <a class="more" href="blog/zawiya-36.html">{t("كل الخواطر", "All notes")} {fwd}</a>
         </div>
         <blockquote class="quote">
-          <p>{q1}{L(z0[2])}{q2}</p>
-          <cite>{L(z0[0])} · {fmt_date(lang, z0[1])}</cite>
+          <p>{q1}{z0["excerpt"]}{q2}</p>
+          <cite><a href="blog/articles/{z0["slug"]}.html">{z0["title"]}</a> · {z0["date"]}</cite>
         </blockquote>
       </div>
     </section>
+""" if z0 else ""}
 
     <section class="section cta">
       <div class="container cta-inner">
@@ -493,7 +484,7 @@ def build(lang):
             <span class="door-icon">🌙</span>
             <h2>{t("الزاوية ٣٦", "Corner 36")}</h2>
             <p>{t("خواطر قصيرة، أسئلة، وملاحظات عابرة من يومي.", "Short reflections, questions and passing notes from my day.")}</p>
-            <span class="count">{num(len(ZAWIYA))} {t("خواطر", "notes")}</span>
+            <span class="count">{num(len(ZAWIYA) + len(ZAWIYA_ARTICLES))} {t("خواطر", "notes")}</span>
           </a>
         </div>
       </div>
@@ -506,8 +497,8 @@ def build(lang):
           <h2 class="section-title">{t("أحدث الخواطر", "Latest Notes")}</h2>
           <a class="more" href="zawiya-36.html">{t("الزاوية ٣٦", "Corner 36")} {fwd}</a>
         </div>
-        <div class="notes">
-{chr(10).join(zawiya_card(len(ZAWIYA) - i, z) for i, z in enumerate(ZAWIYA[:3]))}
+        <div class="posts">
+{chr(10).join(article_card(a) for a in ZAWIYA_ARTICLES[:3])}
         </div>
       </div>
     </section>
@@ -549,10 +540,13 @@ def build(lang):
                          "A small corner for short reflections, questions and passing notes."),
                        crumbs_tpl.format(t("الزاوية ٣٦", "Corner 36"))) + f"""
     <section class="section">
-      <div class="container">
-        <div class="notes">
+      <div class="container">{f"""
+        <div class="posts zawiya-posts">
+{chr(10).join(article_card(a) for a in ZAWIYA_ARTICLES)}
+        </div>""" if ZAWIYA_ARTICLES else ""}
+{f"""        <div class="notes">
 {chr(10).join(zawiya_card(len(ZAWIYA) - i, z) for i, z in enumerate(ZAWIYA))}
-        </div>
+        </div>""" if ZAWIYA else ""}
       </div>
     </section>
 """
@@ -658,21 +652,23 @@ def build(lang):
         if os.path.splitext(os.path.basename(old))[0] not in SLUGS:
             os.remove(old)
 
-    for i, a in enumerate(ARTICLES):
+    for a in ALL_ARTICLES:
+        group = ZAWIYA_ARTICLES if a["zawiya"] else ARTICLES
+        i = group.index(a)
         slug, tag, title, excerpt = a["slug"], a["tag"], a["title"], a["excerpt"]
-        newer = ARTICLES[i - 1] if i > 0 else None
-        older = ARTICLES[i + 1] if i + 1 < len(ARTICLES) else None
+        newer = group[i - 1] if i > 0 else None
+        older = group[i + 1] if i + 1 < len(group) else None
         nav = ""
         if older:
             nav += f'<a class="pn prev" href="{older["slug"]}.html"><span>{t("الرحلة السابقة", "Previous journey")}</span>{older["title"]}</a>'
         if newer:
             nav += f'<a class="pn next" href="{newer["slug"]}.html"><span>{t("الرحلة التالية", "Next journey")}</span>{newer["title"]}</a>'
-        related = [r for r in ARTICLES if set(r["tag"]) & set(tag) and r is not a][:2]
+        related = [r for r in group if set(r["tag"]) & set(tag) and r is not a][:2]
         lead_blocks = [x for k, x in a["blocks"] if k != "h2"][:2]
         body = f"""    <section class="page-hero article-hero">
       <div class="clouds" aria-hidden="true"><span class="cloud c1"></span><span class="cloud c2"></span></div>
       <div class="container narrow">
-        <nav class="crumbs" aria-label="{t("مسار التنقل", "Breadcrumb")}"><a href="../index.html">{t("سجل الرحلات", "Travel Log")}</a> / <a href="../articles.html">{t("رحلات طويلة", "Long Journeys")}</a></nav>
+        <nav class="crumbs" aria-label="{t("مسار التنقل", "Breadcrumb")}"><a href="../index.html">{t("سجل الرحلات", "Travel Log")}</a> / {f'<a href="../zawiya-36.html">{t("الزاوية ٣٦", "Corner 36")}</a>' if a["zawiya"] else f'<a href="../articles.html">{t("رحلات طويلة", "Long Journeys")}</a>'}</nav>
 {tags_html(tag, "        ")}
         <h1>{title}</h1>
         <ul class="post-meta">

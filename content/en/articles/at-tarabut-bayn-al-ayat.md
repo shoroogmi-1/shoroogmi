@@ -1,0 +1,8 @@
+Title: The Connection Between the Verses
+Excerpt: The connection between the verses: When He concluded the verse on divorce (And do not forget graciousness between you..), He drew attention to the fact that graciousness among the creation is not to be forgotten, but is preserved through remembrance; then He drew attention to not forgetting the right of the Creator, glorified and exalted is He, and to guarding the prayers, for He is the Possessor of the greatest grace (Maintain with care the prayers and the middle prayer…) until He said (then remember Allah, as He has taught you that which you did not know).
+
+The connection between the verses: When He concluded the verse on divorce (And do not forget graciousness between you..), He drew attention to the fact that graciousness among the creation is not to be forgotten, but is preserved through remembrance; then He drew attention to not forgetting the right of the Creator, glorified and exalted is He, and to guarding the prayers, for He is the Possessor of the greatest grace (Maintain with care the prayers and the middle prayer…) until He said (then remember Allah, as He has taught you that which you did not know).
+
+Also among the connections between the verses: (Thus does Allah make clear to you His verses..) and among His verses is fighting in the cause of Allah:
+
+(Have you not considered those who left their homes in many thousands, fearing death..) then after it came (And fight in the cause of Allah..). The subject of the two verses: urging jihad in the cause of Allah -under the banner of the ruler- and that fleeing from fighting does not ward off death.
