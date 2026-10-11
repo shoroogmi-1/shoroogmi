@@ -7,6 +7,7 @@
   النص الذي يختلف بين اللغتين يُكتب زوجًا: ("النص العربي", "English text").
 - بعد أي تعديل شغّلي الأمر أعلاه لتحديث ملفات HTML.
 """
+import hashlib
 import glob
 import os
 import re
@@ -52,7 +53,7 @@ def page(lang, path, key, title, body, desc, alt=None):
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Amiri+Quran&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{p}assets/styles.css">
+  <link rel="stylesheet" href="{p}assets/styles.css?v={ASSET_V["styles.css"]}">
 </head>
 <body>
   <header class="site-header">
@@ -95,7 +96,7 @@ def page(lang, path, key, title, body, desc, alt=None):
     </div>
   </footer>
 
-  <script src="{p}assets/script.js"></script>
+  <script src="{p}assets/script.js?v={ASSET_V["script.js"]}"></script>
 </body>
 </html>
 """
@@ -114,6 +115,10 @@ def page_head(eyebrow, heading, lead, crumbs=""):
       </div>
     </section>
 """
+
+
+# بصمة لكل ملف تنسيق/برمجة تُضاف إلى رابطه، فيحمّل المتصفح النسخة الجديدة فور أي تعديل بدل نسخته المخزّنة
+ASSET_V = {f: hashlib.md5(open(os.path.join(ROOT, "assets", f), "rb").read()).hexdigest()[:8] for f in ("styles.css", "script.js")}
 
 
 # ---------- shared content ----------
@@ -614,8 +619,8 @@ def build(lang):
 
     topics = [("سؤال", "Question"), ("اقتراح", "Suggestion"), ("تعاون", "Collaboration"), ("تعليق على رحلة", "Comment on a journey")]
     contact = page_head(t("برج المراقبة", "Control Tower"), t("تعيسًا أو سعيدًا كلِّم برج المراقبة", "Unhappy or happy, call the Control Tower"),
-                        t("أي سؤال، وأي اقتراح، وحتى تعاون؛ موجودة وبرد لك.",
-                          "Any question, any suggestion, even a collaboration: I'm here and I'll get back to you.")) + f"""
+                        t("أي سؤال، وأي اقتراح، وحتى تعاون؛ موجودة وبرد لك -ما دمتُ حيًا-.",
+                          "Any question, any suggestion, even a collaboration: I'm here and I'll get back to you, as long as I live.")) + f"""
     <section class="section">
       <div class="container contact">
         <form class="contact-form" data-email="{EMAIL}" novalidate>
