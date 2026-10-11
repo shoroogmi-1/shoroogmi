@@ -1,5 +1,7 @@
 // Theme toggle (remembers the choice)
 const root = document.documentElement;
+const EN = root.lang === "en";
+const tr = (ar, en) => (EN ? en : ar);
 const themeBtn = document.querySelector(".theme-toggle");
 
 function currentTheme() {
@@ -153,7 +155,7 @@ if (map) {
 // Counters (visitors, reads, likes) are stored in the free Abacus counter service
 const COUNTER_API = "https://abacus.jasoncameron.dev";
 const COUNTER_NS = "shoroogmi";
-const arNum = new Intl.NumberFormat("ar-EG");
+const arNum = new Intl.NumberFormat(EN ? "en-US" : "ar-EG");
 
 async function counter(action, key) {
   try {
@@ -264,7 +266,7 @@ if (post) {
   });
 }
 
-// Listen: read the article aloud with the browser's built-in Arabic voice
+// Listen: read the article aloud with the browser's built-in voice for the page's language
 const listen = document.querySelector(".listen");
 if (listen && "speechSynthesis" in window) {
   const synth = window.speechSynthesis;
@@ -283,9 +285,10 @@ if (listen && "speechSynthesis" in window) {
   synth.cancel(); // stop anything left over from a previous page
   listen.hidden = false;
 
-  function arabicVoice() {
+  function pageVoice() {
     const voices = synth.getVoices();
-    return voices.find((v) => /^ar[-_]SA/i.test(v.lang)) || voices.find((v) => /^ar/i.test(v.lang)) || null;
+    const [best, any] = EN ? [/^en[-_]US/i, /^en/i] : [/^ar[-_]SA/i, /^ar/i];
+    return voices.find((v) => best.test(v.lang)) || voices.find((v) => any.test(v.lang)) || null;
   }
 
   // Short sentences keep long paragraphs from being cut off in some browsers
@@ -306,7 +309,7 @@ if (listen && "speechSynthesis" in window) {
 
   function setUi() {
     icon.textContent = state === "playing" ? "⏸" : "🎧";
-    label.textContent = state === "playing" ? "إيقاف مؤقت" : state === "paused" ? "متابعة الاستماع" : "استمع للمقال";
+    label.textContent = state === "playing" ? tr("إيقاف مؤقت", "Pause") : state === "paused" ? tr("متابعة الاستماع", "Resume") : tr("استمع للمقال", "Listen to the article");
     stopBtn.hidden = rateBtn.hidden = state === "idle";
     playBtn.classList.toggle("active", state !== "idle");
   }
@@ -318,15 +321,15 @@ if (listen && "speechSynthesis" in window) {
     clearHighlight();
     el.classList.add("speaking");
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = "ar-SA";
-    const voice = arabicVoice();
+    u.lang = EN ? "en-US" : "ar-SA";
+    const voice = pageVoice();
     if (voice) u.voice = voice;
     u.rate = rates[rateIndex];
     u.onend = () => { if (state === "playing") { index++; speakNext(); } };
     u.onerror = (e) => {
       if (e.error === "interrupted" || e.error === "canceled") return;
       stop();
-      status.textContent = "تعذّرت القراءة الصوتية على هذا الجهاز.";
+      status.textContent = tr("تعذّرت القراءة الصوتية على هذا الجهاز.", "Read-aloud isn't available on this device.");
     };
     synth.speak(u);
   }
@@ -347,7 +350,7 @@ if (listen && "speechSynthesis" in window) {
       if (state === "idle") {
         queue = buildQueue();
         index = 0;
-        status.textContent = arabicVoice() || !synth.getVoices().length ? "" : "قد لا يحتوي جهازك على صوت عربي.";
+        status.textContent = pageVoice() || !synth.getVoices().length ? "" : tr("قد لا يحتوي جهازك على صوت عربي.", "Your device may not have an English voice.");
       }
       state = "playing";
       speakNext();
@@ -357,7 +360,7 @@ if (listen && "speechSynthesis" in window) {
   stopBtn.addEventListener("click", stop);
   rateBtn.addEventListener("click", () => {
     rateIndex = (rateIndex + 1) % rates.length;
-    rateBtn.textContent = `السرعة ${arNum.format(rates[rateIndex])}×`;
+    rateBtn.textContent = `${tr("السرعة", "Speed")} ${arNum.format(rates[rateIndex])}×`;
     if (state === "playing") { synth.cancel(); speakNext(); }
   });
   addEventListener("pagehide", () => synth.cancel());
@@ -375,7 +378,7 @@ if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
   const empty = commentsBox.querySelector(".no-comments");
   const cForm = commentsBox.querySelector(".comment-form");
   const cStatus = commentsBox.querySelector(".comment-status");
-  const when = new Intl.DateTimeFormat("ar-EG", { day: "numeric", month: "long", year: "numeric", hour: "numeric", minute: "2-digit" });
+  const when = new Intl.DateTimeFormat(EN ? "en-US" : "ar-EG", { day: "numeric", month: "long", year: "numeric", hour: "numeric", minute: "2-digit" });
 
   function addComment(c) {
     const li = document.createElement("li");
@@ -397,7 +400,7 @@ if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
   fetch(`${api}?slug=eq.${encodeURIComponent(slug)}&select=name,body,created_at&order=created_at.asc`, { headers })
     .then((r) => (r.ok ? r.json() : Promise.reject()))
     .then((rows) => { rows.forEach(addComment); empty.hidden = rows.length > 0; })
-    .catch(() => { empty.hidden = false; empty.textContent = "تعذّر تحميل التعليقات الآن."; });
+    .catch(() => { empty.hidden = false; empty.textContent = tr("تعذّر تحميل التعليقات الآن.", "Comments couldn't be loaded right now."); });
 
   cForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -407,13 +410,13 @@ if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
     cStatus.className = "comment-status";
     if (data.get("website")) return; // a bot filled the hidden field
     if (!name || !body) {
-      cStatus.textContent = "اكتب اسمك وتعليقك.";
+      cStatus.textContent = tr("اكتب اسمك وتعليقك.", "Write your name and comment.");
       cStatus.classList.add("error");
       return;
     }
     const last = Number(store("sm-last-comment") || 0);
     if (Date.now() - last < 30000) {
-      cStatus.textContent = "تمهّل قليلًا قبل التعليق مرة أخرى ☕";
+      cStatus.textContent = tr("تمهّل قليلًا قبل التعليق مرة أخرى ☕", "Take a moment before commenting again ☕");
       cStatus.classList.add("error");
       return;
     }
@@ -430,10 +433,10 @@ if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
       addComment(saved || { name, body, created_at: new Date().toISOString() });
       store("sm-last-comment", String(Date.now()));
       cForm.reset();
-      cStatus.textContent = "وصل تعليقك إلى البرج ✈️";
+      cStatus.textContent = tr("وصل تعليقك إلى البرج ✈️", "Your comment reached the tower ✈️");
       cStatus.classList.add("success");
     } catch (err) {
-      cStatus.textContent = "لم يُرسل التعليق، حاول مرة أخرى.";
+      cStatus.textContent = tr("لم يُرسل التعليق، حاول مرة أخرى.", "Your comment wasn't sent, please try again.");
       cStatus.classList.add("error");
     } finally {
       button.disabled = false;
@@ -454,15 +457,15 @@ if (form) {
 
     statusEl.className = "form-status";
     if (!name || !message) {
-      statusEl.textContent = "يرجى كتابة اسمك ورسالتك.";
+      statusEl.textContent = tr("يرجى كتابة اسمك ورسالتك.", "Please write your name and message.");
       statusEl.classList.add("error");
       return;
     }
-    const subject = `${topic} من ${name}`;
+    const subject = `${topic} ${tr("من", "from")} ${name}`;
     const body = `${message}\n\n— ${name}`;
     window.location.href =
       `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    statusEl.textContent = "فتحنا لك تطبيق البريد والرسالة جاهزة، اضغط «إرسال» هناك.";
+    statusEl.textContent = tr("فتحنا لك تطبيق البريد والرسالة جاهزة، اضغط «إرسال» هناك.", "We opened your email app with the message ready. Press “Send” there.");
     statusEl.classList.add("success");
   });
 }

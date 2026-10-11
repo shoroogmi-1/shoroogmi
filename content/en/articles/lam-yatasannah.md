@@ -1,0 +1,4 @@
+Title: (Look at your food and your drink; it has not changed with time)
+Excerpt: Among Allah's gentleness with His servant is that when He causes his life to die (wealth, health, loneliness, and so on) and then revives it for him anew as healing, provision, and companionship, he feels that nothing has been taken from him — and indeed nothing has been taken from him, because Allah's mending of him is greater and His generosity more abundant.
+
+Among Allah's gentleness with His servant is that when He causes his life to die (wealth, health, loneliness, and so on) and then revives it for him anew as healing, provision, and companionship, he feels that nothing has been taken from him — and indeed nothing has been taken from him, because Allah's mending of him is greater and His generosity more abundant.

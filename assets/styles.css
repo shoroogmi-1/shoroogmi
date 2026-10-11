@@ -579,6 +579,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 
   .hero { padding: 200px 0 70px; }
   .sun { top: 40px; left: 50%; width: 110px; height: 110px; transform: translateX(-50%); }
+  [dir="ltr"] .sun { right: auto; }
   .hero-inner { text-align: center; margin-inline: auto; }
   .hero .lead { margin-inline: auto; }
   .hero-actions, .site-stats { justify-content: center; }
@@ -611,3 +612,10 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
   * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* Language switch (العربية / English) */
+.nav-links a.lang-switch { border: 1.5px solid color-mix(in srgb, var(--sun) 70%, transparent); font-weight: 600; }
+
+/* English (left-to-right) pages: keep the sun and the map decorations clear of the text */
+[dir="ltr"] .sun { left: auto; right: 9%; }
+[dir="ltr"] .decor { transform: scaleX(-1); }
