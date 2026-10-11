@@ -273,6 +273,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 }
 
 /* Listen (text to speech) */
+.listen [hidden] { display: none; }
 .listen { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 1.6em; font-family: var(--font-sans); }
 .listen-btn, .listen-stop, .listen-rate {
   font-family: inherit; font-size: 1rem; font-weight: 700; cursor: pointer; color: var(--ink);
