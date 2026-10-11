@@ -695,3 +695,10 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .legal-links a { color: inherit; opacity: 0.85; }
 .legal-links a:hover { opacity: 1; text-decoration: underline; }
 .legal h2 { font-size: 1.3rem; margin-top: 1.6em; }
+/* ماذا قال المسافرون؟ (التقييمات الإيجابية) */
+.testimonial-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px; }
+.testimonial { margin: 0; background: var(--card); border: 2px solid var(--border); border-bottom-width: 4px; border-radius: 20px; padding: 18px 20px; }
+.testimonial .t-stars { color: var(--sun); font-size: 1.2rem; letter-spacing: 2px; margin: 0 0 8px; }
+.testimonial blockquote { margin: 0 0 10px; line-height: 1.9; font-size: 1.02rem; }
+.testimonial figcaption { color: var(--muted); font-size: 0.9rem; }
+.rate-box input[name="name"] { width: 100%; font: inherit; padding: 10px 16px; border-radius: 14px; border: 1px solid var(--border); background: var(--bg); color: var(--ink); }

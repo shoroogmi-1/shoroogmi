@@ -554,7 +554,10 @@ if (form) {
   });
 }
 
-// Home page "Rate us": star rating + quick comment, sent to the writer's inbox through FormSubmit
+// Home page "Rate us": star rating + quick comment. Each rating is saved in Supabase (the database only lets the
+// public read positive ones: 4–5 stars with a comment) and also emailed to the writer through FormSubmit.
+const RATINGS_API = `${COMMENTS_URL}/rest/v1/ratings`;
+const sbHeaders = { apikey: COMMENTS_KEY, Authorization: `Bearer ${COMMENTS_KEY}`, "Content-Type": "application/json" };
 const rateBox = document.querySelector(".rate-box");
 if (rateBox) {
   const statusEl = rateBox.querySelector(".form-status");
@@ -564,6 +567,7 @@ if (rateBox) {
     const data = new FormData(rateBox);
     const stars = Number(data.get("stars") || 0);
     const note = (data.get("note") || "").trim();
+    const name = (data.get("name") || "").trim();
     statusEl.className = "form-status";
     if (!stars && !note) {
       statusEl.textContent = tr("اختر عدد النجوم أو اكتب تعليقك.", "Pick a number of stars or write a comment.");
@@ -574,32 +578,62 @@ if (rateBox) {
     btn.disabled = true;
     statusEl.textContent = tr("جارٍ الإرسال…", "Sending…");
     const starText = stars ? "★".repeat(stars) + "☆".repeat(5 - stars) + ` (${stars}/5)` : tr("بلا نجوم", "no stars");
-    try {
-      const res = await fetch(`https://formsubmit.co/ajax/${rateBox.dataset.email}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          _subject: `${tr("تقييم الموقع", "Site rating")}: ${starText}`,
-          _template: "box",
-          _captcha: "false",
-          rating: starText,
-          comment: note || "—",
-          page: EN ? "English" : "العربية",
-        }),
-      });
-      const out = await res.json().catch(() => ({}));
-      if (!res.ok || out.success === false || out.success === "false") throw new Error(out.message || res.status);
+    const saved = stars
+      ? fetch(RATINGS_API, {
+          method: "POST",
+          headers: { ...sbHeaders, Prefer: "return=minimal" },
+          body: JSON.stringify({ stars, name: name || null, body: note || null, lang: EN ? "en" : "ar" }),
+        }).then((r) => r.ok).catch(() => false)
+      : Promise.resolve(false);
+    const mailed = fetch(`https://formsubmit.co/ajax/${rateBox.dataset.email}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        _subject: `${tr("تقييم الموقع", "Site rating")}: ${starText}`,
+        _template: "box",
+        _captcha: "false",
+        rating: starText,
+        name: name || "—",
+        comment: note || "—",
+        page: EN ? "English" : "العربية",
+      }),
+    }).then(async (r) => { const out = await r.json().catch(() => ({})); return r.ok && out.success !== false && out.success !== "false"; })
+      .catch(() => false);
+    const [ok1, ok2] = await Promise.all([saved, mailed]);
+    if (ok1 || ok2) {
       rateBox.reset();
       statusEl.textContent = tr("وصل تقييمك ✈️ شكرًا لأنك سافرت معنا!", "Your rating has landed ✈️ Thank you for traveling with us!");
       statusEl.classList.add("success");
-    } catch (err) {
+      if (ok1 && stars >= 4 && note) loadTestimonials();
+    } else {
       statusEl.textContent = tr("تعذّر الإرسال الآن، حاول مرة أخرى بعد قليل.", "Couldn't send right now. Please try again shortly.");
       statusEl.classList.add("error");
-    } finally {
-      btn.disabled = false;
     }
+    btn.disabled = false;
   });
 }
+
+// "What travelers said": the latest positive ratings (the database returns only 4–5 star ratings with a comment)
+const testimonials = document.querySelector(".testimonials");
+function loadTestimonials() {
+  if (!testimonials) return;
+  const esc = (str) => str.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  fetch(`${RATINGS_API}?select=stars,name,body,created_at&order=created_at.desc&limit=6`, { headers: sbHeaders })
+    .then((r) => (r.ok ? r.json() : []))
+    .then((rows) => {
+      rows = rows.filter((r) => r.stars >= 4 && r.body);
+      if (!rows.length) return;
+      testimonials.querySelector(".testimonial-list").innerHTML = rows.map((r) => `
+        <figure class="testimonial">
+          <p class="t-stars" aria-label="${r.stars}/5">${"★".repeat(r.stars)}</p>
+          <blockquote dir="auto">${esc(r.body)}</blockquote>
+          <figcaption>— ${esc(r.name || tr("مسافر", "A traveler"))}</figcaption>
+        </figure>`).join("");
+      testimonials.hidden = false;
+    })
+    .catch(() => {});
+}
+loadTestimonials();
 
 // Site search: titles and full article text. Arabic is matched ignoring diacritics and
 // letter variants (أ/إ/آ → ا، ة → ه، ى → ي), English ignoring case.

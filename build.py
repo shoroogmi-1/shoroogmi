@@ -390,8 +390,10 @@ PRIVACY = [
        "<b>Anonymous counters:</b> the number of site visitors, regular readers, completed reads and likes for each article. These are totals only, kept with the Abacus service, and they never include your name or email."),
       ("<b>التعليقات على المقالات:</b> الاسم الذي تكتبه ونص تعليقك. تُحفظ في خدمة Supabase وتظهر لكل زوّار المقال.",
        "<b>Comments on articles:</b> the name you type and the text of your comment. They are stored with the Supabase service and are visible to everyone who reads the article."),
-      ("<b>رسائل «برج المراقبة» والتقييم في الصفحة الرئيسية:</b> اسمك، وبريدك إن اخترت كتابته، وموضوع الرسالة ونصها، أو عدد النجوم وتعليقك. تُرسل عبر خدمة FormSubmit إلى بريد الكاتبة، ولا تُنشر.",
-       "<b>Control Tower messages and the home-page rating:</b> your name, your email if you choose to give it, and your message, or your star rating and comment. They are sent through the FormSubmit service to the writer's inbox and are never published.")]),
+      ("<b>رسائل «برج المراقبة»:</b> اسمك، وبريدك إن اخترت كتابته، وموضوع الرسالة ونصها. تُرسل عبر خدمة FormSubmit إلى بريد الكاتبة، ولا تُنشر.",
+       "<b>Control Tower messages:</b> your name, your email if you choose to give it, and your message. They are sent through the FormSubmit service to the writer's inbox and are never published."),
+      ("<b>التقييم في الصفحة الرئيسية («قيّمنا»):</b> عدد النجوم، وتعليقك، واسمك إن كتبته. يُحفظ في خدمة Supabase ويُرسل إلى بريد الكاتبة. التقييمات الإيجابية (٤ أو ٥ نجوم مع تعليق) قد تظهر للزوّار في الصفحة الرئيسية مع الاسم الذي كتبته، وما سواها لا يُنشر.",
+       "<b>The home-page rating (“Rate Us”):</b> your stars, your comment, and your name if you give one. It is stored with the Supabase service and emailed to the writer. Positive ratings (4 or 5 stars with a comment) may be shown to visitors on the home page with the name you gave; all others are never published.")]),
     (("ما يُحفظ في متصفحك", "What is stored in your browser"),
      [("يحفظ الموقع في متصفحك (التخزين المحلي localStorage) معلومات صغيرة تبقى في جهازك ولا تُرسل إلى أحد: تفضيلك للوضع الليلي أو النهاري، وهل سبق أن أعجبك مقال أو أكملت قراءته (حتى لا يُحسب مرتين)، وتاريخ أول زيارة لك، ووقت آخر تعليق كتبته. يمكنك مسحها في أي وقت من إعدادات متصفحك.",
        "The site keeps a few small notes in your browser's local storage. They stay on your device and are not sent anywhere: your light or dark theme, whether you have already liked or finished an article (so it isn't counted twice), the date of your first visit, and the time of your last comment. You can clear them at any time from your browser settings."),
@@ -541,6 +543,13 @@ def build(lang):
     </section>
 """ if z0 else ""}
 
+    <section class="section testimonials" hidden>
+      <div class="container">
+        <h2 class="section-title">{t("ماذا قال المسافرون؟", "What Travelers Said")}</h2>
+        <div class="testimonial-list"></div>
+      </div>
+    </section>
+
     <section class="section">
       <div class="container narrow">
         <form class="rate-box" data-email="{EMAIL}" novalidate>
@@ -549,7 +558,8 @@ def build(lang):
             <legend class="sr-only">{t("كم نجمة تعطي الرحلة؟", "How many stars for the journey?")}</legend>
             {"".join(f'<input type="radio" name="stars" id="star{n}" value="{n}"><label for="star{n}" title="{num(n)}">★</label>' for n in range(5, 0, -1))}
           </fieldset>
-          <textarea name="note" rows="3" maxlength="1000" placeholder="{t("كيف كانت الرحلة؟ بشّرنا!", "How was the journey? Tell us!")}" aria-label="{t("تعليق سريع", "Quick comment")}"></textarea>
+          <textarea name="note" rows="3" maxlength="500" placeholder="{t("كيف كانت الرحلة؟ بشّرنا!", "How was the journey? Tell us!")}" aria-label="{t("تعليق سريع", "Quick comment")}"></textarea>
+          <input type="text" name="name" maxlength="40" placeholder="{t("اسمك (اختياري)", "Your name (optional)")}" aria-label="{t("الاسم", "Name")}" autocomplete="nickname">
           <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button type="submit" class="btn btn-primary">{t("أرسل", "Send")}</button>
           <p class="form-status" role="status"></p>
