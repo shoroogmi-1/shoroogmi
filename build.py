@@ -453,7 +453,7 @@ def build(lang):
       <div class="container">
         <h2 class="section-title">{t("مُشعشعة", "Radiant")}</h2>
         <div class="tiles">
-          <a class="tile" href="sira.html"><span class="tile-icon">🛂</span><h3>{t("جواز سفر", "Passport")}</h3><p>{t("هُوية الكاتبة، وسيرة مختصرة، وماذا تعمل.", "The writer's identity, a short biography, and what she does.")}</p></a>
+          <a class="tile" href="sira.html"><span class="tile-icon">🛂</span><h3>{t("جواز سفر", "Passport")}</h3><p>{t("هوية الكاتبة وسيرة موجزة.", "The writer's identity and a brief biography.")}</p></a>
           <a class="tile" href="blog/index.html"><span class="tile-icon">✍️</span><h3>{t("سجل الرحلات", "Travel Log")}</h3><p>{t("مقالات والزاوية ٣٦", "Articles and Corner 36")}</p></a>
           <a class="tile" href="books.html"><span class="tile-icon">📚</span><h3>{t("أمتعة السفر", "Luggage")}</h3><p>{t("كتب تسليك في الرحلة.", "Books to keep you company on the journey.")}</p></a>
         </div>
