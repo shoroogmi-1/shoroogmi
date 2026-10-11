@@ -325,13 +325,32 @@ if (listen && "speechSynthesis" in window) {
     const voice = pageVoice();
     if (voice) u.voice = voice;
     u.rate = rates[rateIndex];
+    u.onstart = () => { started = true; clearTimeout(watchdog); };
     u.onend = () => { if (state === "playing") { index++; speakNext(); } };
     u.onerror = (e) => {
       if (e.error === "interrupted" || e.error === "canceled") return;
       stop();
       status.textContent = tr("تعذّرت القراءة الصوتية على هذا الجهاز.", "Read-aloud isn't available on this device.");
     };
+    synth.resume(); // Chrome can be left paused, which silently swallows speech
     synth.speak(u);
+  }
+
+  // Some phones accept the request but never speak (silent switch on, or no voice for the
+  // language installed); after a few seconds without a sound, tell the reader why.
+  let started = false;
+  let watchdog = null;
+  function watchStart() {
+    clearTimeout(watchdog);
+    if (started) return;
+    watchdog = setTimeout(() => {
+      if (started || state !== "playing") return;
+      stop();
+      status.textContent = tr(
+        "لم يصدر صوت. تأكد أن الجوال ليس على الوضع الصامت، وأن فيه صوتًا عربيًا (في الآيفون: الإعدادات ← تسهيلات الاستخدام ← المحتوى المنطوق ← الأصوات ← العربية).",
+        "No sound came out. Check that your phone isn't on silent and has an English voice installed (on iPhone: Settings → Accessibility → Spoken Content → Voices)."
+      );
+    }, 4000);
   }
 
   function stop() {
@@ -350,10 +369,12 @@ if (listen && "speechSynthesis" in window) {
       if (state === "idle") {
         queue = buildQueue();
         index = 0;
+        started = false;
         status.textContent = pageVoice() || !synth.getVoices().length ? "" : tr("قد لا يحتوي جهازك على صوت عربي.", "Your device may not have an English voice.");
       }
       state = "playing";
       speakNext();
+      watchStart();
     }
     setUi();
   });
