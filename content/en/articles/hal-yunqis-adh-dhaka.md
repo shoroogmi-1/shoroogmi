@@ -1,5 +1,6 @@
 Title: Is Artificial Intelligence Diminishing Our Social Intelligence?
 Excerpt: The easiest skill is communication, is that what you think? But the interview published in Harvard Business Review, titled: How AI Is Changing Communication: Balancing Efficiency and Effectiveness.
+Quote: AI may cancel spontaneity, crush astonishing quick wit, and replace it with ready-made answers, like ice cream.
 
 The easiest skill is communication, is that what you think? But the interview published in Harvard Business Review, titled: How AI Is Changing Communication: Balancing Efficiency and Effectiveness.
 

@@ -164,7 +164,7 @@ def read_time(lang, blocks):
 
 # أسماء حقول الترويسة بالعربية (والإنجليزية مقبولة أيضاً)
 FIELDS = {"العنوان": "title", "التاريخ": "date", "التصنيف": "tag", "الملخص": "excerpt"}
-OPTIONAL_FIELDS = {"الوقت": "time", "النوع": "kind"}  # الوقت بنظام ٢٤ ساعة مثل 21:30، والنوع «قصيدة» يعرض الأبيات في المنتصف
+OPTIONAL_FIELDS = {"الوقت": "time", "النوع": "kind", "اقتباس": "quote", "Quote": "quote"}  # الوقت بنظام ٢٤ ساعة مثل 21:30، والنوع «قصيدة» يعرض الأبيات في المنتصف
 # ترويسة الترجمة الإنجليزية (التاريخ والتصنيف والوقت تؤخذ من المقال العربي)
 EN_FIELDS = {"Title": "title", "Excerpt": "excerpt"}
 
@@ -251,12 +251,14 @@ def articles_for(lang):
             # *word* in the translation is shown in italics (used for transliterated Arabic words)
             em = lambda x: re.sub(r"\*([^*]+)\*", r"<em>\1</em>", x)
             title, excerpt = em(en["title"]), em(en["excerpt"])
+            quote = em(en.get("quote") or en["excerpt"])
             blocks = [(k, em(x)) for k, x in en_blocks]
             tags = tuple(CATEGORIES_EN[t] for t in m["tag"])
         else:
             title, excerpt, tags = m["title"], m["excerpt"], m["tag"]
+            quote = m.get("quote") or excerpt
         out.append({
-            "slug": slug, "tag": tags, "zawiya": ZAWIYA_TAG in m["tag"], "title": title, "excerpt": excerpt, "blocks": blocks, "poem": poem,
+            "slug": slug, "tag": tags, "zawiya": ZAWIYA_TAG in m["tag"], "title": title, "excerpt": excerpt, "quote": quote, "blocks": blocks, "poem": poem,
             "date": fmt_date(lang, m["date"]), "read": read_time(lang, blocks),
             "time": fmt_time(lang, m["time"]) if m.get("time") else "",
             "minutes": word_count(blocks) / 200,
@@ -345,12 +347,13 @@ def build(lang):
     ZAWIYA_ARTICLES = [a for a in ALL_ARTICLES if a["zawiya"]]
     SLUGS = [a["slug"] for a in ALL_ARTICLES]
 
-    def article_card(a, p=""):
-        """p is the path prefix from the current page to the blog folder."""
+    def article_card(a, p="", hook=False):
+        """p is the path prefix from the current page to the blog folder.
+        hook: show the article's chosen quote (اقتباس) instead of the excerpt, used on the home page."""
         return f"""          <article class="post-card" data-tag="{'|'.join(a["tag"])}">
 {tags_html(a["tag"], "            ")}
             <h3><a class="stretched" href="{p}articles/{a["slug"]}.html">{a["title"]}</a></h3>
-            <p>{a["excerpt"]}</p>
+            <p>{q1 + a["quote"] + q2 if hook else a["excerpt"]}</p>
             <p class="meta">{a["date"]} · {a["read"]} {t("قراءة", "read")}</p>
           </article>"""
 
@@ -363,7 +366,7 @@ def build(lang):
             <p class="meta">{fmt_date(lang, date)}</p>
           </article>"""
 
-    def latest(prefix, more):
+    def latest(prefix, more, hook=False):
         return f"""    <section class="section alt">
       <div class="container">
         <div class="section-head">
@@ -371,7 +374,7 @@ def build(lang):
           <a class="more" href="{more}">{t("كل الرحلات", "All journeys")} {fwd}</a>
         </div>
         <div class="posts">
-{chr(10).join(article_card(a, prefix) for a in ARTICLES[:3])}
+{chr(10).join(article_card(a, prefix, hook) for a in ARTICLES[:3])}
         </div>
       </div>
     </section>
@@ -414,15 +417,15 @@ def build(lang):
       </div>
     </section>
 
-{latest("blog/", "blog/articles.html") if ARTICLES else ""}
+{latest("blog/", "blog/articles.html", hook=True) if ARTICLES else ""}
 {f"""    <section class="section">
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">{t("من الزاوية ٣٦", "From Corner 36")}</h2>
-          <a class="more" href="blog/zawiya-36.html">{t("كل الخواطر", "All notes")} {fwd}</a>
+          <a class="more" href="blog/zawiya-36.html">{t("افتح الزاوية", "Open the Corner")} {fwd}</a>
         </div>
         <blockquote class="quote">
-          <p>{q1}{z0["excerpt"]}{q2}</p>
+          <p>{q1}{z0["quote"]}{q2}</p>
           <cite><a href="blog/articles/{z0["slug"]}.html">{z0["title"]}</a> · {z0["date"]}</cite>
         </blockquote>
       </div>
