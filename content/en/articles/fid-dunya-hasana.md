@@ -1,7 +1,7 @@
 Title: Our Lord, Give Us in This World [That Which Is] Good and in the Hereafter [That Which Is] Good
-Excerpt: And among the people is he who says, “Our Lord, give us good in this world,” and he will have in the Hereafter no share: this is a warning to the believer not to be like the disbeliever, who seeks only this world and does not believe in the Hereafter.
+Excerpt: And among the people is he who says, “Our Lord, give us in this world,” and he will have in the Hereafter no share: this is a warning to the believer not to be like the disbeliever, who seeks only this world and does not believe in the Hereafter.
 
-And among the people is he who says, “Our Lord, give us good in this world,” and he will have in the Hereafter no share: this is a warning to the believer not to be like the disbeliever, who seeks only this world and does not believe in the Hereafter.
+And among the people is he who says, “Our Lord, give us in this world,” and he will have in the Hereafter no share: this is a warning to the believer not to be like the disbeliever, who seeks only this world and does not believe in the Hereafter.
 
 Rather, call upon Allah for the good of this world and the Hereafter (But among them is he who says, “Our Lord, give us in this world [that which is] good and in the Hereafter [that which is] good and protect us from the punishment of the Fire.”)
 
