@@ -141,10 +141,10 @@ def read_time(blocks):
 
 # أسماء حقول الترويسة بالعربية (والإنجليزية مقبولة أيضاً)
 FIELDS = {"العنوان": "title", "التاريخ": "date", "التصنيف": "tag", "الملخص": "excerpt"}
-OPTIONAL_FIELDS = {"الوقت": "time", "النوع": "kind"}  # النوع: «قصيدة» يعرض الأبيات في المنتصف
+OPTIONAL_FIELDS = {"الوقت": "time", "النوع": "kind"}  # الوقت بنظام ٢٤ ساعة مثل 21:30، والنوع «قصيدة» يعرض الأبيات في المنتصف
 
 # تصنيفات «رحلات طويلة» بالترتيب الذي تظهر به أزرار الفرز. «التصنيف» في كل مقال يجب أن يكون واحدًا منها.
-CATEGORIES = ["تأملات في القرآن", "مقالات اجتماعية", "مقالات فكرية", "قصائد"]  # وقت النشر بنظام ٢٤ ساعة، مثل 21:30
+CATEGORIES = ["تأملات في القرآن والسنة", "مقالات اجتماعية", "مقالات فكرية", "قصائد"]
 
 
 def ar_time(hhmm):
@@ -394,7 +394,7 @@ page("blog/index.html", "blog", "سجل الرحلات · شروق المحما�
 crumbs_tpl = '        <nav class="crumbs" aria-label="مسار التنقل"><a href="index.html">سجل الرحلات</a> / <span>{}</span></nav>\n'
 
 # ---------- Articles ----------
-articles = page_head("سجل الرحلات", "رحلات طويلة", "تأملات في القرآن، ومقالات اجتماعية وفكرية، وقصائد.",
+articles = page_head("سجل الرحلات", "رحلات طويلة", "تأملات في القرآن والسنة، ومقالات اجتماعية وفكرية، وقصائد.",
                      crumbs_tpl.format("رحلات طويلة")) + f"""
     <section class="section">
       <div class="container">
@@ -582,7 +582,7 @@ for i, a in enumerate(ARTICLES):
           <button class="listen-rate" type="button" hidden>السرعة ١×</button>
           <span class="listen-status" role="status"></span>
         </div>
-{"" if slug in POEMS or excerpt in [t for k, t in BODIES[slug] if k != "h2"][:1] else f'        <p class="excerpt">{excerpt}</p>{chr(10)}'}{render_body(slug)}
+{"" if slug in POEMS or excerpt in [t for k, t in BODIES[slug] if k != "h2"][:2] else f'        <p class="excerpt">{excerpt}</p>{chr(10)}'}{render_body(slug)}
         <p class="signature">— شروق المحمادي</p>
         <div class="engage">
           <button class="like-btn" type="button" aria-pressed="false"><span class="heart" aria-hidden="true">🤍</span> أعجبتني <b class="like-count">…</b></button>
