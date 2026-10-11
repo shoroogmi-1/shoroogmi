@@ -1,7 +1,7 @@
 /* ===== Sun & sky palette ===== */
 :root {
   /* خط واحد للموقع كله: GE SS Two إن كان مثبّتاً على الجهاز، وإلا Readex Pro الأقرب له */
-  --font-sans: "GE SS Two", "Readex Pro", system-ui, sans-serif;
+  --font-sans: "GE SS Two", "Readex Pro", "Amiri Quran", system-ui, sans-serif; /* Amiri Quran fills in Quranic marks Readex lacks */
   --font-display: var(--font-sans);
   --font-serif: var(--font-sans);
   --bg: #f5fbfe;

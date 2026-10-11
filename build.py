@@ -33,7 +33,7 @@ def page(path, key, title, body, desc):
   <script>try{{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Amiri+Quran&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{p}assets/styles.css">
 </head>
 <body>
@@ -574,7 +574,7 @@ for i, a in enumerate(ARTICLES):
           <button class="listen-rate" type="button" hidden>السرعة ١×</button>
           <span class="listen-status" role="status"></span>
         </div>
-{"" if BODIES[slug] and BODIES[slug][0][1] == excerpt else f'        <p class="excerpt">{excerpt}</p>{chr(10)}'}{chr(10).join(render_block(k, t) for k, t in BODIES[slug])}
+{"" if excerpt in [t for k, t in BODIES[slug] if k != "h2"][:1] else f'        <p class="excerpt">{excerpt}</p>{chr(10)}'}{chr(10).join(render_block(k, t) for k, t in BODIES[slug])}
         <p class="signature">— شروق المحمادي</p>
         <div class="engage">
           <button class="like-btn" type="button" aria-pressed="false"><span class="heart" aria-hidden="true">🤍</span> أعجبتني <b class="like-count">…</b></button>
