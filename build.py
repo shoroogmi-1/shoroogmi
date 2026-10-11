@@ -141,7 +141,10 @@ def read_time(blocks):
 
 # أسماء حقول الترويسة بالعربية (والإنجليزية مقبولة أيضاً)
 FIELDS = {"العنوان": "title", "التاريخ": "date", "التصنيف": "tag", "الملخص": "excerpt"}
-OPTIONAL_FIELDS = {"الوقت": "time"}  # وقت النشر بنظام ٢٤ ساعة، مثل 21:30
+OPTIONAL_FIELDS = {"الوقت": "time"}
+
+# تصنيفات «رحلات طويلة» بالترتيب الذي تظهر به أزرار الفرز. «التصنيف» في كل مقال يجب أن يكون واحدًا منها.
+CATEGORIES = ["تأملات في القرآن", "مقالات اجتماعية", "مقالات فكرية"]  # وقت النشر بنظام ٢٤ ساعة، مثل 21:30
 
 
 def ar_time(hhmm):
@@ -163,6 +166,8 @@ def load_article(path):
     for ar_key, key in FIELDS.items():
         if not meta.get(key):
             raise SystemExit(f"{path}: الحقل «{ar_key}» مفقود في الترويسة")
+    if meta["tag"] not in CATEGORIES:
+        raise SystemExit(f"{path}: التصنيف «{meta['tag']}» غير معروف. التصنيفات المتاحة: {'، '.join(CATEGORIES)}")
     if meta.get("time") and not re.fullmatch(r"\d{1,2}:\d{2}", meta["time"]):
         raise SystemExit(f"{path}: اكتبي الوقت بهذا الشكل 21:30")
     blocks = []
@@ -213,6 +218,30 @@ def zawiya_card(i, z):
           </article>"""
 
 
+LATEST_HOME = f"""    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">أحدث الرحلات الطويلة</h2>
+          <a class="more" href="blog/articles.html">كل الرحلات ←</a>
+        </div>
+        <div class="posts">
+{chr(10).join(article_card(a, "blog/") for a in ARTICLES[:3])}
+        </div>
+      </div>
+    </section>
+"""
+LATEST_BLOG = f"""    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">أحدث الرحلات الطويلة</h2>
+          <a class="more" href="articles.html">كل الرحلات ←</a>
+        </div>
+        <div class="posts">
+{chr(10).join(article_card(a) for a in ARTICLES[:3])}
+        </div>
+      </div>
+    </section>
+"""
 # ---------- Home ----------
 home = f"""    <section class="hero">
       <div class="sky" aria-hidden="true">
@@ -248,18 +277,7 @@ home = f"""    <section class="hero">
       </div>
     </section>
 
-    <section class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="section-title">أحدث الرحلات الطويلة</h2>
-          <a class="more" href="blog/articles.html">كل الرحلات ←</a>
-        </div>
-        <div class="posts">
-{chr(10).join(article_card(a, "blog/") for a in ARTICLES[:3])}
-        </div>
-      </div>
-    </section>
-
+{LATEST_HOME if ARTICLES else ""}
     <section class="section">
       <div class="container">
         <div class="section-head">
@@ -357,18 +375,7 @@ blog = page_head("سجل الرحلات", "سجل الرحلات", "مساحتا
       </div>
     </section>
 
-    <section class="section alt">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="section-title">أحدث الرحلات الطويلة</h2>
-          <a class="more" href="articles.html">كل الرحلات ←</a>
-        </div>
-        <div class="posts">
-{chr(10).join(article_card(a) for a in ARTICLES[:3])}
-        </div>
-      </div>
-    </section>
-
+{LATEST_BLOG if ARTICLES else ""}
     <section class="section">
       <div class="container">
         <div class="section-head">
@@ -386,22 +393,21 @@ page("blog/index.html", "blog", "سجل الرحلات · شروق المحما�
 crumbs_tpl = '        <nav class="crumbs" aria-label="مسار التنقل"><a href="index.html">سجل الرحلات</a> / <span>{}</span></nav>\n'
 
 # ---------- Articles ----------
-tags = sorted({a[0] for a in ARTICLES})
-articles = page_head("سجل الرحلات", "رحلات طويلة", "نصوص في التأمل والقراءة والكتابة.",
+articles = page_head("سجل الرحلات", "رحلات طويلة", "تأملات في القرآن، ومقالات اجتماعية وفكرية.",
                      crumbs_tpl.format("رحلات طويلة")) + f"""
     <section class="section">
       <div class="container">
         <div class="toolbar">
           <div class="filters">
             <button class="filter active" data-filter="all">الكل</button>
-{chr(10).join(f'            <button class="filter" data-filter="{t}">{t}</button>' for t in tags)}
+{chr(10).join(f'            <button class="filter" data-filter="{t}">{t}</button>' for t in CATEGORIES)}
           </div>
           <input class="search" type="search" placeholder="ابحث في الرحلات…" aria-label="ابحث في الرحلات الطويلة">
         </div>
         <div class="posts" data-filterable>
 {chr(10).join(article_card(a) for a in ARTICLES)}
         </div>
-        <p class="empty" hidden>لا توجد رحلات مطابقة.</p>
+        <p class="empty"{" hidden" if ARTICLES else ""}>لا توجد رحلات بعد.</p>
       </div>
     </section>
 """
@@ -568,8 +574,7 @@ for i, a in enumerate(ARTICLES):
           <button class="listen-rate" type="button" hidden>السرعة ١×</button>
           <span class="listen-status" role="status"></span>
         </div>
-        <p class="excerpt">{excerpt}</p>
-{chr(10).join(render_block(k, t) for k, t in BODIES[slug])}
+{"" if BODIES[slug] and BODIES[slug][0][1] == excerpt else f'        <p class="excerpt">{excerpt}</p>{chr(10)}'}{chr(10).join(render_block(k, t) for k, t in BODIES[slug])}
         <p class="signature">— شروق المحمادي</p>
         <div class="engage">
           <button class="like-btn" type="button" aria-pressed="false"><span class="heart" aria-hidden="true">🤍</span> أعجبتني <b class="like-count">…</b></button>
