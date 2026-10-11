@@ -26,7 +26,7 @@ def out_path(lang, path):
     return path if lang == "ar" else f"en/{path}"
 
 
-def page(lang, path, key, title, body, desc, alt=None):
+def page(lang, path, key, title, body, desc, alt=None, icon=None):
     """path is relative to the language's root; alt is the same page in the other language
     (defaults to path)."""
     t = lambda a, e: a if lang == "ar" else e
@@ -47,7 +47,7 @@ def page(lang, path, key, title, body, desc, alt=None):
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{title}</title>
+  <title>{title}</title>{f'{chr(10)}  <link rel="icon" type="image/png" href="{p}{icon}">{chr(10)}  <link rel="apple-touch-icon" href="{p}{icon}">' if icon else ""}
   <meta name="description" content="{desc}">
   <link rel="alternate" hreflang="{other}" href="{switch}">
   <script>try{{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
@@ -107,11 +107,11 @@ def page(lang, path, key, title, body, desc, alt=None):
         f.write(html)
 
 
-def page_head(eyebrow, heading, lead, crumbs="", extra=""):
+def page_head(eyebrow, heading, lead, crumbs="", extra="", logo=""):
     return f"""    <section class="page-hero">
       <div class="clouds" aria-hidden="true"><span class="cloud c1"></span><span class="cloud c2"></span></div>
       <div class="container">
-{crumbs or f'        <p class="eyebrow">{eyebrow}</p>{chr(10)}'}        <h1>{heading}</h1>
+{crumbs or f'        <p class="eyebrow">{eyebrow}</p>{chr(10)}'}{logo}        <h1>{heading}</h1>
         <p class="lead">{lead}</p>
 {extra}      </div>
     </section>
@@ -143,6 +143,9 @@ def LISTEN_HTML(t):
           <span class="listen-status" role="status"></span>
         </div>"""
 
+
+# شعار الزاوية ٣٦
+ZAWIYA_LOGO = "assets/images/zawiya-36-logo.png"
 
 # شريك الزاوية ٣٦
 CREATIVE_FORUM = "https://creativeforum.sa/%d8%b7%d9%84%d8%a8-%d8%a7%d8%b3%d8%aa%d8%b4%d8%a7%d8%b1%d8%a9/"
@@ -532,7 +535,7 @@ def build(lang):
             <span class="count">{num(len(ARTICLES))} {t("رحلات", "journeys")}</span>
           </a>
           <a class="blog-door night" href="zawiya-36.html">
-            <span class="door-icon">🌙</span>
+            <span class="door-icon"><img class="door-logo" src="{"../" * out_path(lang, "blog/index.html").count("/")}{ZAWIYA_LOGO}" alt="" width="56" height="56"></span>
             <h2>{t("الزاوية ٣٦", "Corner 36")}</h2>
             <p>{t("مقالات حديثة نترجمها ونحوّرها بطريقتنا!", "Recent articles we translate and reshape our own way!")}</p>
             <span class="count">{num(len(ZAWIYA) + len(ZAWIYA_ARTICLES))} {t("مقالات", "articles")}</span>
@@ -586,11 +589,13 @@ def build(lang):
          t("رحلات شروق المحمادي الطويلة.", "Shoroog Almehmadi's long journeys."))
 
     # ---------- Zawiya 36 ----------
+    z_root = "../" * out_path(lang, "blog/zawiya-36.html").count("/")
     zawiya = page_head(t("سجل الرحلات", "Travel Log"), t("الزاوية ٣٦", "Corner 36"),
                        t("مقالات حديثة نترجمها ونحوّرها بطريقتنا!",
                          "Recent articles we translate and reshape our own way!"),
                        crumbs_tpl.format(t("الزاوية ٣٦", "Corner 36")),
-                       f'        <p class="partner">{t("بالتعاون مع", "In collaboration with")} <a href="{CREATIVE_FORUM}" target="_blank" rel="noopener">{t("نادي ملتقى المبدعين الثقافي", "the Creative Forum Cultural Club")}</a></p>\n') + f"""
+                       f'        <p class="partner">{t("بالتعاون مع", "In collaboration with")} <a href="{CREATIVE_FORUM}" target="_blank" rel="noopener">{t("نادي ملتقى المبدعين الثقافي", "the Creative Forum Cultural Club")}</a></p>\n',
+                       f'        <img class="page-logo" src="{z_root}{ZAWIYA_LOGO}" alt="{t("شعار الزاوية ٣٦", "Corner 36 logo")}" width="96" height="96">\n') + f"""
     <section class="section">
       <div class="container">{f"""
         <div class="posts zawiya-posts">
@@ -603,7 +608,8 @@ def build(lang):
     </section>
 """
     page(lang, "blog/zawiya-36.html", "blog-zawiya", f"{t('الزاوية ٣٦', 'Corner 36')} · {me}", zawiya,
-         t("الزاوية ٣٦: مقالات حديثة تترجمها شروق المحمادي وتحوّرها بطريقتها.", "Corner 36: recent articles translated and reshaped by Shoroog Almehmadi."))
+         t("الزاوية ٣٦: مقالات حديثة تترجمها شروق المحمادي وتحوّرها بطريقتها.", "Corner 36: recent articles translated and reshaped by Shoroog Almehmadi."),
+         icon=ZAWIYA_LOGO)
 
     # ---------- Books ----------
     a_root = "../" * out_path(lang, "books.html").count("/")
