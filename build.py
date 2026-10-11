@@ -701,7 +701,7 @@ def build(lang):
 {"" if a["poem"] or excerpt in lead_blocks else f'        <p class="excerpt">{excerpt}</p>{chr(10)}'}{render_body(a)}
         <p class="signature">— {me}</p>
         <div class="engage">
-          <button class="like-btn" type="button" aria-pressed="false"><span class="heart" aria-hidden="true">🤍</span> {t("جميل!", "Lovely!")} <b class="like-count">…</b></button>
+          <button class="like-btn" type="button" aria-pressed="false"><span class="heart" aria-hidden="true">❤️</span> {t("جميل! لقد أعجبني!", "Lovely! I liked it!")} <b class="like-count">…</b></button>
         </div>
         <section class="comments" hidden aria-labelledby="comments-title">
           <h2 id="comments-title">💬 {t("تعليقات المسافرين", "Travelers' Comments")}</h2>
