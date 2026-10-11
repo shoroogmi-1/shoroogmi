@@ -1,20 +1,20 @@
-Title: No Conflict Between Swift (Hadr) Recitation and Reflection!
-Excerpt: And there is no conflict between reading many pages and reflection and understanding.
+Title: Swift Recitation (Hadr) and Reflection Are Not at Odds!
+Excerpt: Reading many pages does not stand in the way of reflection and understanding.
 
-And there is no conflict between reading many pages and reflection and understanding.
+Reading many pages does not stand in the way of reflection and understanding.
 
-As mentioned by the Quran memorization expert Dr. Saeed Hamza in his course: The Secrets of Mastering Quran Memorization, and he gave a fine example of this: the imams of the Haram in Makkah and Madinah in Ramadan, in Taraweeh, recite quickly, in *hadr*; and a verse passes by them and they weep at it and are moved.
+So said Dr. Saeed Hamza, an expert in Quran memorization, in his course *The Secrets of Mastering Quran Memorization*, and he gave a fine example: in Ramadan, the imams of the Two Holy Mosques in Makkah and Madinah recite the Taraweeh swiftly, in *hadr*; yet a verse passes over their tongues and they weep at it, moved.
 
-And among those who were granted an opening in understanding and reflection in our own time is the engineer Muhammad al-Muqrami -may Allah have mercy on him- who used to complete the Quran every day and night, and for him taking a great deal of the Quran did not conflict with reflection and understanding.
+Among those in our own time to whom understanding and reflection were opened wide was the engineer Muhammad al-Muqrami, may Allah have mercy on him, who used to complete the whole Quran every day and night; for him, taking in a great deal of the Quran never stood in the way of reflection and understanding.
 
-In fact, sometimes this is a whisper of Satan to hold you back from increasing in good deeds and blessings: Make do with one page, reflection is more important!
+In fact, this idea is sometimes a whisper of Satan, meant to hold you back from gathering more good deeds and blessings: Make do with one page, reflection matters more!
 
-When there is no conflict between them, and if one read a juz' every day it would be goodness and blessing whose effect and light he would see, and reflection, understanding, and correcting one's recitation all come with time, Allah willing
+When in truth there is no conflict between the two. Read a juz' every day and it will be goodness and blessing whose mark and light you will see; and reflection, understanding and a corrected recitation will all come with time, Allah willing
 
-The best in the Prophetic Sunnah is completing the Quran every month (a juz' every day), or every 10 days (3 juz'), or every seven (five juz'), or every three (10 juz').
+The best in the Prophetic Sunnah is to complete the Quran every month (a juz' a day), or every ten days (three juz'), or every seven (five juz'), or every three (ten juz').
 
-And what makes it easier: spreading it across the five prayers.
+One thing that makes it easier: spreading it across the five daily prayers.
 
-A single complete reading of the Quran contains three million good deeds, so let us not be indifferent to it!
+A single complete reading of the Quran holds three million good deeds, so let us not think little of it!
 
-May Allah bless us and you in the Mighty Quran and benefit us by it.
+May Allah bless us and you through the Mighty Quran and let us benefit from it.

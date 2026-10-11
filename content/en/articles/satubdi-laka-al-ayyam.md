@@ -1,28 +1,28 @@
-Title: The Days Will Reveal to You What You Did Not Know
-Excerpt: The Prophet ﷺ loved this line of poetry and used to repeat it; it is by Tarafa ibn al-Abd:
+Title: The Days Will Show You What You Did Not Know
+Excerpt: The Prophet ﷺ loved this line of poetry and would often repeat it; it is by Tarafa ibn al-Abd:
 
-The Prophet ﷺ loved this line of poetry and used to repeat it; it is by Tarafa ibn al-Abd:
+The Prophet ﷺ loved this line of poetry and would often repeat it; it is by Tarafa ibn al-Abd:
 
-The days will reveal to you what you did not know,
+The days will show you what you never knew,
 
-and news will be brought to you by one you never provisioned.
+and news will reach you from one you never fed for the road.
 
-The days will uncover for you, and events will make plain to you, the matters you did not know, and the news will be carried to you by a man you never asked for it and never gave provisions or a wage. (al-Zawzani's Concise Commentary)
+The days will lay bare, and events will bring to light, the things you did not know, and the news will be carried to you by a man you never asked for it, and to whom you gave neither provisions nor wage. (al-Zawzani, *The Concise Commentary*)
 
-And news will be brought to you by one for whom you never bought
+And news will reach you from one for whom you never bought
 
-traveling goods, nor set for him the time of an appointment.
+a traveler’s pack, nor set for him a day to keep.
 
-And news will be brought to you by one for whom you never bought goods for the journey (*batātan*), and for whom you never fixed or set a particular time or appointment to bring it to you; rather, the truths appear to you unbidden. (Same source)
+The news will be brought to you by one for whom you never bought goods for the journey (*batātan*), and for whom you never fixed a set time or appointment to bring it; rather, the truths appear to you of their own accord. (Same source)
 
-His beautiful verses reminded me of the saying of Allah the Exalted (For every news is a fixed time, and you are going to know)
+His lovely lines brought to my mind the words of Allah the Exalted: (For every happening is a finality; and you are going to know)
 
-For every news is a fixed time: a reality and an occurrence, even if after a while
+*For every happening is a finality*: a truth that will come to pass, even if after a while
 
 — Ibn Kathir
 
-That for every report that Allah the Exalted gives there is a time or a place in which it comes to pass, without failing or delay; and if you take *al-mustaqarr* in the sense of settling, the meaning is that every promise and threat from Allah the Exalted has a settling, and they will certainly come to know that the matter is as Allah the Exalted told when it appears and descends. And this with which He warned the disbelievers may mean the punishment of the Hereafter, and it may mean the Muslims' overpowering of the disbelievers through war, killing and subjugation in this world. al-Razi
+That is, every report Allah the Exalted gives has a time or a place in which it comes to pass, without fail and without delay. And if you take *al-mustaqarr* to mean ‘settling,’ the meaning is that every promise and every threat from Allah the Exalted must settle into reality, and they will surely know, when it appears and descends upon them, that the matter is just as Allah the Exalted said. As for that with which He warned the disbelievers, it may mean the punishment of the Hereafter, and it may mean the Muslims’ prevailing over the disbelievers in this world through war, slaying, and subjugation. al-Razi
 
-Every report in the Quran has a reality… and it includes both the threat of the Hereafter and the threat of this world, and each has its fixed time. And from al-Suddi: what He had been promising them of punishment came to settle on the day of Badr.
+Every report in the Quran has a reality … and it covers both the threat of the Hereafter and the threat of this world, and each has its finality. And from al-Suddi: what He had been promising them of punishment came to pass on the day of Badr.
 
-And "you are going to know" is joined to the sentence ﴿For every news is a fixed time﴾, meaning: you will know it; that is, it is not known now, and you will know it in the future when it befalls you. And this is clearer as a threat of punishment in this world. Ibn Ashur
+And *and you are going to know* is joined to the sentence ﴿For every happening is a finality﴾, meaning: you will come to know it; that is, it is unknown now, and you will know it in the future, when it descends upon you. And this fits most clearly with the threat of punishment in this world. Ibn Ashur

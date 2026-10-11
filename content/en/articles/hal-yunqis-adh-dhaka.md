@@ -1,54 +1,54 @@
-Title: Is Artificial Intelligence Diminishing Our Social Intelligence?
-Excerpt: The easiest skill is communication, is that what you think? But the interview published in Harvard Business Review, titled: How AI Is Changing Communication: Balancing Efficiency and Effectiveness.
-Quote: AI may cancel spontaneity, crush astonishing quick wit, and replace it with ready-made answers, like ice cream.
+Title: Is Artificial Intelligence Eroding Our Social Intelligence?
+Excerpt: Communication is the easiest skill of all — or so you think? Yet the interview published in Harvard Business Review, titled: How AI Is Changing Communication: Weighing Efficiency with Efficacy.
+Quote: AI may wipe out spontaneity, shatter that dazzling quickness of wit, and swap it for ready-made answers, frozen like ice cream.
 
-The easiest skill is communication, is that what you think? But the interview published in Harvard Business Review, titled: How AI Is Changing Communication: Balancing Efficiency and Effectiveness.
+Communication is the easiest skill of all — or so you think? Yet the interview published in Harvard Business Review, titled: How AI Is Changing Communication: Weighing Efficiency with Efficacy.
 
-reveals to us that communication is critical thinking. You analyze your manager’s face before speaking to him, then make the right decision: is today a good day to talk to him?
+shows us that communication is critical thinking. You read your manager's face before you speak to him, and then you make the right call: is today a good day to bring it up?
 
-You also use creativity in putting language together, and after every conversation you use memory for the details of the discussion: if it was enjoyable, you laughed to yourself! And if it was neutral or bad, you ask yourself: where was the flaw? Did I make a mistake? Was my performance good? What do I feel toward her: comfort, neutrality, or aversion? Do I continue this relationship or stop? What are her ways of communicating? Her strategies in speaking? And other evaluative questions which mean that we think, remember, and analyze, and make decisions based on the facts at hand.
+You also use creativity to weave your words together, and after every conversation your memory replays the details: if it was delightful, you laugh to yourself! And if it was flat, or went badly, you ask yourself: where did it go wrong? Did I slip up? Did I come across well? How do I feel about her — at ease, indifferent, put off? Do I keep up this relationship or let it go? How does she communicate? What are her tactics when she talks? And all the other questions of appraisal, which mean that we think, remember, analyze, and make decisions based on what is in front of us.
 
-Your communication skills so far are the comprehensive sum of everything you have been through in life: they are the result of culture, personal growth, beautiful smiles, harsh experiences, and embarrassing situations.
+Your communication skills, as they stand today, are the sum total of everything you have lived through: the fruit of your culture, your personal growth, the lovely smiles, the hard experiences, and the embarrassing moments.
 
-And when we rely entirely on AI to communicate with others, what we are doing is delegating responsibility to it. “My co-founder, Brian, says: ‘You can delegate the work, but you can’t delegate the responsibility.’ So if I don’t review the output and don’t pay attention to the quality of the work, in the end I’m the one the bad results come back to… and in the end, you must not lose the quality of your communication.”
+And when we lean on AI entirely to communicate with others, what we are really doing is handing the responsibility over to it: "My co-founder, Brian, has this line, 'You can delegate the work, but you can't delegate the accountability.' And so if I'm not reviewing the output, if I'm not paying attention to the quality of the work, that reflects back on me… At the end of the day, the most important thing is the quality of your communications."
 
-You used to face social problems and then think of a solution to them, so over time you learned the skills of emotional regulation and how to deal with mistakes, developed a distinctive social system, and reached a brilliant level of social intelligence.
+You used to run into social problems and then think your way to a solution, and so, over time, you learned to master your emotions and to handle mistakes; you built a distinctive social system of your own, and reached a brilliant level of social intelligence.
 
-And when we use AI excessively, so that it answers customers’ messages, picks the appropriate jokes, and interacts socially apart from us while we watch in isolation, we undermine our social skills, or in the truest phrase: we diminish the social intelligence we worked hard to develop, strove to improve, and accumulated experience in producing and creating, until we became the shape and uniqueness we are today.
+And when we use AI to excess — letting it answer clients' messages, pick the right jokes, and socialize on our behalf while we look on from the sidelines — we undermine our social skills, or, to put it most truthfully: we erode the social intelligence we toiled to develop, labored to refine, and built up through experience after experience of making and creating, until we became the shape and the singular selves we are today.
 
-AI may make you exaggerate emotional expression even though your real personality is one of few words. And it diminishes your real ability to empathize with others through these stiff, automated replies.
+AI may push you to overdo emotional expression, even though the real you is a person of few words. And with these stiff, mechanical replies, it wears away your real capacity to feel for others.
 
-Those machines put barriers between us and the other person, whom, had we spoken to him, we might have discovered had distinctive abilities, or a withering in his mind! For human conversation is what reveals the flaws and the potential.
+Those machines raise walls between us and the other person — someone who, had we only spoken to him, might have revealed remarkable gifts, or a mind gone to waste! For it is human conversation that lays bare both the flaws and the potential.
 
-Spontaneity and quick wit are the highest degree of social intelligence: to answer confidently and quickly without preparation or pages you read from. You feel victorious when you utter a dazzling reply to your opponent, and you boast about the story and pass it on, or you regret words and learn.
+Spontaneity and quick wit are the height of social intelligence: to answer with confidence and speed, without preparation, without notes to read from. You feel triumphant when you fire back a dazzling retort at your opponent, and you boast about it and tell the story to others; or you regret your words, and you learn.
 
-AI may cancel spontaneity, crush astonishing quick wit, and replace it with ready-made answers, like ice cream.
+AI may wipe out spontaneity, shatter that dazzling quickness of wit, and swap it for ready-made answers, frozen like ice cream.
 
-The threat to social truth
+The threat to who we really are in society
 
-AI may cancel who we truly are. Whether you are firm in your style, or light-hearted and playful, AI replaces all of this with an always-positive style, free of negative feelings and of the harsh, stern style, contrary to human nature, in which moods differ according to place and time. AI must not take your unique voice and your distinctive style in discussion.
+AI may erase who we truly are. Whether your manner is firm, or you are witty and full of fun, AI replaces it all with a manner that is forever positive, scrubbed of any negative feeling and of all harshness and sternness — unlike human nature, whose moods shift with the place and the hour. AI must not take away your unique voice and your distinctive way of arguing.
 
-AI flatters a lot and uses positive feelings, and it is almost stupid when it comes to understanding negative feelings and the words hidden in the depths of the heart, that hidden reading which only an intelligent human picks up.
+AI flatters endlessly and trades in positive feelings, and it is almost dim-witted when it comes to grasping negative feelings and the words a heart keeps hidden — that hidden reading only an intelligent human can pick up.
 
-When we use AI as a substitute for ourselves in replying, we cancel our present truth: short sentences mean that we are annoyed right now, or that we are sending the other person messages, which he implicitly understands, that we would, please, like to close the conversation. As for that machine, it never stops its bombastic chatter: would you like me to summarize the above for you in a statistical table?
+When we let AI reply in our place, we erase the truth of who we are in that moment: short sentences mean we are irritated right now, or that we are sending the other person a message — one he understands between the lines — that we would, please, like to end the conversation. That machine, on the other hand, never stops its pompous chatter: would you like me to summarize all of the above in a statistical table?
 
-So that I may know your real way of speaking: the real you, verbose and lavish with letters, or smiling and bold, or the one of clipped words and a busy schedule, you must show up! Show yourself to us in the truth of your mood and your time, as you are now! Stop hiding behind that cold machine and its kind, friendly words. Tell us truly who you are, tell us about your mood now, about your hard day, about your joy that has room for hours of talk!
+So that I can know how you really speak — the real you, expansive and lavish with words, or the cheerful, daring one, or the one of clipped phrases and a crowded schedule — you have to show up! Show yourself to us in the truth of your mood and your moment, just as you are right now! Stop hiding behind that cold machine and its sweet, friendly words. Tell us who you really are, tell us about your mood right now, about your hard day, about the joy in you that has room for hours of talk!
 
-The problem with AI is that it does not enable you to understand what the other person says as it truly is, and look at yourself when you use it: it does not always understand you. A chief executive cannot hear the real voice of the employees with this machine.
+The trouble with AI is that it does not let you understand what the other person says as it truly is — and look at yourself when you use it: it does not always understand you. No chief executive can hear the real voice of his employees through this machine.
 
-Wade Foster was asked about his experience developing “Wade Bot,” and he said: I have many models for developing a bot that imitates me, but so far the bot only resembles me 80-90%. My experiments say that AI is strong at programming, weak at communication. My co-founder said: its voice is cold and does not engage with the text, not like the human voice, which shows the truth of the self from the text. And on a bright note, we can train AI to imitate our way of speaking so it becomes our partner in producing the podcast.
+Wade Foster was asked about his experience developing a "Wade bot," and he said: I have a whole host of models I use to build a bot that imitates me, but even so it only gets 80, 90% of the way there. My experience tells me AI is strong at coding and weak at communication. My co-founder said: it sounds cold and does not respond to the text, not like a human voice, which reveals the truth of the self through the text. And on the bright side, we can train AI to imitate the way we talk, so that it becomes our partner in producing the podcast.
 
 Social learning
 
-AI will not give you the free experiences and expertise of others, those whose lessons you learn so they spare you disasters that could cost you thousands of riyals, those inspiring discussions you consider messages to you, after which you change for the better; the machine cannot replace them: do you remember a social discussion that changed you for the better?
+AI will not give you the free experiences and hard-won wisdom of others, the kind whose lessons you learn so that they spare you disasters that could cost you thousands of riyals — those inspiring conversations you take as messages meant for you, after which you change for the better; no machine can take their place: do you remember a conversation with someone that changed you for the better?
 
-We learn even from our enemies, and we cannot learn from this excessively flattering machine as we do from them!
+We learn even from our enemies, and we cannot learn from this endlessly flattering machine the way we learn from them!
 
-The looming danger of AI pursues the beginner worker if he uses it excessively, while the expert may destroy everything he has learned, or forget some of it.
+The danger AI holds over us stalks the beginner who uses it to excess; and as for the expert, it may wreck all he has learned, or make him forget some of it.
 
-“People know that the more they rely on AI, the more ideal the output, but it is not information they gathered and composed themselves, and that is why they are wary of it. If you think about it, you find that communication is the final result of an entire long process. Communication is the practical application of critical thinking. So if we delegate this thinking process to the machine, and then we are asked a question or asked for advice, we are afraid; because we realize that we do not have the required depth of knowledge, nor the foundation of critical thinking for what we say and engage with. That is why it is very important not only to review the output, but to review the thinking process itself; so that if you are suddenly asked, or have to respond, you trust your answer and your reaction”
+"People are getting more nervous the more they're using AI because they realize that the output is pixel perfect, but it's not really their synthesized information. If you think about it, communication is the end result of a whole long process. Communication is operationalized critical thinking, and if we outsource that critical thinking and then are put on the spot to answer questions, to give input, to give an update, people get really anxious because they realize they don't have that depth of knowledge and the critical thinking behind it. And so it is really important not just to review the output, but to really review the thinking so that when you're put on the spot, when you have to respond, you have that confidence that you know what you're really thinking and speaking about."
 
-“Ignoring the use of AI entirely is a mistake, and delegating to it entirely is also a mistake; the best is to use it responsibly. As for when to use it and when not to, that ultimately depends on the type of task and your good judgment of it. If we delegate many tasks to AI and are then asked about them, the “comprehension gap” appears, and you know only the surface of the tasks: ‘Ah, the reality is that I don’t yet know enough about this matter as I should.’ But in other tasks you can use AI, and the effect of the comprehension gap is relatively lower because you are aware of it”
+"Again, it kind of just depends on the task. AI is this fantastic tool and to not use it I think would be a mistake. It could be a lot better if you use it responsibly… there is this sort of comprehension gap that's kicking in when you don't use AI responsibly, where you're sort of delegating almost too much. And as you get asked questions about this thing, as you start to investigate, you realize, 'Oh, I don't actually know enough about this area that I should.' But there could be areas where the impact is relatively low and you're fine delegating the work to the AI more fully. And so it just comes down to the judgment here."
 
 ![Graphic article 1](hal-yunqis-adh-dhaka-1.jpg)
 ![Graphic article 2](hal-yunqis-adh-dhaka-2.jpg)

@@ -7,28 +7,28 @@ Allah likened the Quran to the *ṣayyib*, the rain.
 
 ## Reflection
 
-That He said *ka-ṣayyib* (“like a rainstorm”) and did not say *ka-maṭar* (“like rain”); because the quality of the *ṣayyib* is lasting benefit, and it is not like *maṭar*, which may be relief-giving rain and may be punishment
+That He said *ka-ṣayyib* ("like a rainstorm") and not *ka-maṭar* ("like rain"); because the mark of the *ṣayyib* is lasting benefit, unlike *maṭar*, which may come as relief and may come as punishment
 
-And Abu Ubaydah said: when it is in punishment, it is “*amṭarat*,” and when it is in mercy, it is “*maṭarat*.”
+And Abu Ubaydah said: when it is punishment, it is "*amṭarat*," and when it is mercy, it is "*maṭarat*."
 
-And for this reason the Messenger of Allah said in the supplication: We have been given rain (*muṭirnā*) by the grace of Allah and His mercy. *Muṭirnā* is derived from *maṭar*
+And this is why the Messenger of Allah said in the supplication: We have had a rainfall (*muṭirnā*) due to the Blessing and Mercy of Allah. *Muṭirnā* is derived from *maṭar*
 
-And His saying, the Exalted, {if you are inconvenienced by rain}: what is meant by it is definitely *al-ghayth* (relief-giving rain).
+And His saying, the Exalted, {if you are troubled by rain}: what is meant here is certainly *al-ghayth*, relief-giving rain.
 
 And Aisha (may Allah be pleased with her) used the word *maṭar*:
 
-From Aisha (may Allah be pleased with her): ((That the Messenger of Allah ﷺ, when he saw rain, would say: O Allah, let it be a beneficial rain (*ṣayyiban nāfiʿan*) ))
+Narrated Aisha (may Allah be pleased with her): ((Whenever Allah's Messenger ﷺ saw the rain, he used to say, "O Allah! Let it be a strong fruitful rain (*ṣayyiban nāfiʿan*)" ))
 
-That the quality of the *ṣayyib* is benefit, and the Quran is of great benefit to its companion and a safety for him that does not harm him "because whoever holds fast to the Quran is safe from harm in this world and the Hereafter " — Fakhr al-Din al-Razi
+That the mark of the *ṣayyib* is benefit, and the Quran is of immense benefit to its companion, a safety for him that brings him no harm "because whoever holds fast to the Quran is safe from harm in this world and the Hereafter " — Fakhr al-Din al-Razi
 
-And the companion of the Quran takes from this quality that he is of great benefit to people and does not harm others.
+And the companion of the Quran takes on this quality: he is a source of good to all creation and brings harm to no one.
 
-Rain may be little and may be much, whereas the *ṣayyib* is abundant, plentiful and dense; and likewise the Quran, for the believer, is of great benefit, with numerous benefits in this world and the Hereafter; its benefits cannot be counted.
+Rain may be scant and may be plenty, but the *ṣayyib* is abundant, heavy and dense; and so is the Quran for the believer: rich in benefit, its blessings in this world and the Hereafter beyond counting.
 
-That the Quran is a *ṣayyib* that puts out the fire of trials, calamities and turmoil; and in the accounts of those folk there is much of this: whoever recited his daily portion of the Quran, Allah put out a trial or a calamity from him through it and repelled it from him. He sees it with his own eyes and hears it with his own ears.
+That the Quran is a *ṣayyib* that puts out the fires of trials, calamities and turmoil; and the accounts of those people of old are full of this: one who recited his daily portion of the Quran, and through it Allah put out a trial or a calamity and turned it away from him. He sees it with his own eyes and hears it with his own ears.
 
-And the *ṣayyib* has numerous benefits: it benefits livestock, creatures, people, the land, the mountains and the fruits; and the Quran, every letter of it benefits its companion with ten good deeds —and Allah multiplies for whom He wills— and with light, knowledge and wisdom.
+And the *ṣayyib* brings many kinds of good: it benefits livestock, creatures, people, the land, the mountains and the fruits; and the Quran — every letter of it brings its companion ten good deeds —and Allah multiplies for whom He wills— and light, knowledge and wisdom.
 
-And its companion is of numerous benefits
+And its companion brings many kinds of good
 
-That the soul, after the *ṣayyib* comes down, feels rest, joy and happiness, and that is what the reciter of the Quran feels after finishing his daily portion
+That the soul, after the *ṣayyib* has come down, feels rest, joy and gladness — and that is just what the reciter of the Quran feels when he finishes his daily portion

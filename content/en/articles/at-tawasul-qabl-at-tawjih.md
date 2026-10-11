@@ -1,14 +1,14 @@
 Title: Connection Before Correction!
-Excerpt: Connect with the child first, for example, express your love for him and your encouragement, and ask him about his day, and only then give the direct advice!
+Excerpt: Connect with the child first: show him your love, for instance, and your encouragement, and ask him about his day. Only then give your direct advice!
 
-Connect with the child first, for example, express your love for him and your encouragement, and ask him about his day, and only then give the direct advice!
+Connect with the child first: show him your love, for instance, and your encouragement, and ask him about his day. Only then give your direct advice!
 
-The Messenger of Allah ﷺ took him by the hand and said: O Mu'adh, by Allah, I love you; by Allah, I love you. Then he said: I advise you, O Mu'adh, never to leave off saying at the end of every prayer: O Allah, help me to remember You, to thank You, and to worship You well
+The Messenger of Allah ﷺ caught his hand and said: By Allah, I love you, Mu'adh. I give some instruction to you. Never leave to recite this supplication after every (prescribed) prayer: "O Allah, help me in remembering You, in giving You thanks, and worshipping You well."
 
-Notice in the hadith that he ﷺ expressed love first (connection), and only after that began the guidance.
+Notice how, in this hadith, he ﷺ expressed his love first (connection), and only then began to guide.
 
-Don't correct in the middle of a strong outburst
+Don't correct in the heat of a strong outburst
 
-Calm him down first, then correct.
+Calm him first, then correct.
 
-The mind does not take in what is said to it during intense anger; it is not a time for teaching but for calming.
+The mind cannot take in what is said to it in the grip of fierce anger; this is a time not for teaching, but for soothing.

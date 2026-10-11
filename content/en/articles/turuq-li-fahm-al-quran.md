@@ -1,22 +1,22 @@
 Title: Creative Ways to Understand the Quran
-Excerpt: Creative ways to understand the Quran - vary them so you feel the joy of understanding and reflection:
+Excerpt: Creative ways to understand the Quran (mix them up, and taste the delight of understanding and reflection):
 
-Creative ways to understand the Quran - vary them so you feel the joy of understanding and reflection:
+Creative ways to understand the Quran (mix them up, and taste the delight of understanding and reflection):
 
-- If a verse comes to your mind and keeps pressing on you, don't ignore it. Believe me, it's a message! So look up its tafsir.
+- When a verse crosses your mind and won't let you go, don't brush it aside. Believe me, it's a message! Go and look up its tafsir.
 
-- Pay close attention to the parables and stories of the Quran. One of the early generations used to weep whenever he read (And these examples We present to the people, but none will understand them except those of knowledge), fearing that he was not one of those of knowledge!
+- Give great care to the parables and stories of the Quran. One of the early Muslims used to weep whenever he recited (And these examples We present to the people, but none will understand them except those of knowledge), afraid that he might not be one of those of knowledge!
 
-- Each time, take a group of verses on a single topic (the story of the People of the Cave, the verses on riba, the five verses from Surat al-Baqarah..), look up their tafsir, summarize them, and share them with a companion or on your page.
+- Each time, pick a group of verses on a single theme (the story of the People of the Cave, the verses on riba, the five verses of Surat al-Baqarah...), look up their tafsir, sum them up, and share them with a friend or on your page.
 
-- Tafsir in brief: unusual words, explanation of the verse, the reason for revelation, the abrogating and the abrogated, and lessons for reflection and action.
+- Tafsir in a nutshell: the rare words, the meaning of the verse, the occasion of revelation, what abrogates and what is abrogated, and the lessons for reflection and action.
 
-- I advise you to read your daily portion from the concise, simplified tafsirs
+- I advise you to read your daily portion in one of the short, simplified tafsirs
 
-- When you read a word you don't know the meaning of, look it up in the Mushaf al-Madinah app and turn on the feature that highlights unusual words and their meanings. Word after word, day after day, you'll suddenly find you've come to know the meanings of most words! And a great door of reflection will be opened for you.
+- When you come across a word you don't know, look it up in the Mushaf al-Madinah app, and turn on the feature that colours the rare words and shows their meanings. Word by word, day after day, you will suddenly find that you know the meanings of most of the words! And a great door of reflection will have swung open for you.
 
-- Take a friend and tell them: test me on the meanings of the words!
+- Grab a friend and say: quiz me on the meanings of the words!
 
-- Share what you learn with others: discuss it with your friend, post it on your page.
+- Share what you learn with others: talk it over with a friend, post it on your page.
 
-- I recommend these apps: al-Tafsir al-Muharrar, Mushaf al-Madinah, al-Tafsir al-Tafa'uli (audio), Tadarus al-Quran (amazing!)
+- The apps I recommend: al-Tafsir al-Muharrar, Mushaf al-Madinah, al-Tafsir al-Tafa'uli (audio), Tadarus al-Quran (amazing!)

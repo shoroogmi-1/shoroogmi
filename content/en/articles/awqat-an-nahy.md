@@ -1,24 +1,24 @@
-Title: Times When Acts of Obedience Are Forbidden
-Excerpt: The times when acts of obedience are forbidden are the examinations of the worshippers and the tests of the lovers: whether they will be patient in postponing the act of obedience until the time is over.
+Title: The Times When Worship Is Forbidden
+Excerpt: The times when worship is forbidden are the examinations of the devoted and the trials of those who love: will they have the patience to put off their worship until the hour has passed?
 
-The times when acts of obedience are forbidden are the examinations of the worshippers and the tests of the lovers: whether they will be patient in postponing the act of obedience until the time is over.
+The times when worship is forbidden are the examinations of the devoted and the trials of those who love: will they have the patience to put off their worship until the hour has passed?
 
-And if we told you about the wonders of those folk, you would find something astonishing!
+And if we told you the marvels of those people of old, you would be astonished!
 
-For they told us of a young man who, out of his intense love of fasting, could not bear the days of Tashreeq, and searched for legal stratagems to contrive and find himself an excuse so he could fast!
+They told us of a young man so in love with fasting that he could not bear the days of Tashreeq, and he went hunting for legal loopholes, some clever way to find himself an excuse to fast!
 
-Until he feared disobeying the Messenger ﷺ, so he held back and obeyed.
+Until he feared disobeying the Messenger ﷺ — and so he held back, and obeyed.
 
-And Ali ibn Bakkar said: For forty years nothing has saddened me except the breaking of dawn.
+And Ali ibn Bakkar said: For forty years nothing has grieved me but the breaking of the dawn.
 
-I say: perhaps what saddened him was the time of being held back, then when the sun rose, he prayed and the intimacy returned.
+I say: perhaps what grieved him was the hour of being held back; then, when the sun had risen, he would pray, and the intimacy would return.
 
-And women during menstruation, and the distress they feel: she is not at peace until she returns to prayer, and if she is afflicted with it in the last ten nights or on the Day of Arafah, that is a great trial from her Lord. So if she is patient and bears being kept from fasting and prayer, and takes up remembrance, the Quran and supplication, then indeed Allah does not allow to be lost the reward of the doers of good.
+And women in their time of menstruation, and the tightness they feel: she finds no rest until she returns to prayer, and if it comes upon her in the last ten nights or on the Day of Arafah, that is a great trial from her Lord. Yet if she is patient and bears being kept from fasting and prayer, and takes up remembrance, the Quran and supplication, then indeed, Allah does not allow to be lost the reward of the doers of good.
 
-And there is no place harder on the one who remembers Allah than the lavatory, where his tongue is held back from remembrance after flowing freely, so much so that Ibn Baz used to wrap his turban over his mouth when he entered the lavatory!
+And no place is harder on one who remembers Allah than the lavatory, where his tongue, once flowing freely, is held back from remembrance — so much so that Ibn Baz used to wrap his turban over his mouth when he entered the lavatory!
 
-And perhaps this is among the wisdoms of saying: *Ghufrānaka* (“[I seek] Your forgiveness”); with it he calms his longing!
+And perhaps this is among the wisdoms of saying *Ghufrānaka* ("Grant me Thy forgiveness"): with it he soothes his longing!
 
-And so, whoever holds himself back from disobedience, Allah compensates him with being held back from obedience, as longing and love!
+And so, whoever holds himself back from sin, Allah repays him by holding him back from worship — out of longing and love!
 
-And whoever is patient against the self's enticements to disobedience, Allah replaces them for him with its enticements to obedience!
+And whoever is patient against the self's seductions toward sin, Allah exchanges them for its seductions toward obedience!

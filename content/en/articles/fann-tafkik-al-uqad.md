@@ -1,44 +1,44 @@
 Title: The Art of Untying Psychological Knots (as in the Quran)
-Excerpt: They insulted them and harmed them in Makkah, until the Muslims came to feel pain at the sight of the Kaaba! How can we perform Hajj and ʿUmrah while we are in pain, seeing the places of torture and the corners of cruelty!? And when Allah knew what was in their souls, He said to them:
+Excerpt: In Makkah they cursed them and tormented them, until the very sight of the Kaaba came to hurt the Muslims! How could we perform Hajj and ʿUmrah, aching as we look upon the places of torture and the corners of cruelty!? And when Allah knew what lay in their souls, He said to them:
 
 ## The First Scene: In Makkah
 
-They insulted them and harmed them in Makkah, until the Muslims came to feel pain at the sight of the Kaaba! How can we perform Hajj and ʿUmrah while we are in pain, seeing the places of torture and the corners of cruelty!? And when Allah knew what was in their souls, He said to them:
+In Makkah they cursed them and tormented them, until the very sight of the Kaaba came to hurt the Muslims! How could we perform Hajj and ʿUmrah, aching as we look upon the places of torture and the corners of cruelty!? And when Allah knew what lay in their souls, He said to them:
 
-(And complete the Hajj and ʿumrah for Allah) For you do not perform Hajj for the sake of people, nor for those who lived in the days of ignorance, nor for the idols you see, nor because of the insults that hurt you.. rather, you perform Hajj for the sake of Allah the Exalted.
+(And complete the Hajj and 'umrah for Allah) You do not perform Hajj for the sake of people, nor for those of the days of ignorance, nor for the idols you see, nor for the insults that wounded you... no, you perform Hajj for the sake of Allah the Exalted.
 
-He untied all their psychological knots and emotional associations with the one and only password:
+He untied every one of their psychological knots and emotional associations with a single password:
 
-Tawhid: making your intention in all your affairs purely for Allah alone,
+Tawhid: devoting your aim, in all that you do, purely to Allah alone,
 
-not for the sake of those pains, nor for those memories
+not to those pains, and not to those memories
 
-The word (Allah) alone erases everything, and after it everything shines.
+The word (Allah) alone wipes everything away, and after it everything is bathed in light.
 
-And when the matter you are striving in is good, yet surrounded by things that are disliked and hard, the hardships should not turn you away from it.
+And when the thing you strive for is good, yet hedged about with what is hateful and hard, the hardship should not turn you away from it.
 
-For good things are worth bearing along with their hardships, as long as the intention is for Allah.
+For what is good is worth bearing, hardships and all, so long as the intention is for Allah.
 
 Ibn Ashur said:
 
-"And they are the ones who barred the Muslims from it, so that the Muslims would not grow weary of the Hajj in which they had met the harm of the polytheists. So it was said to them: that does not hold you back from desiring Hajj and ʿUmrah, because you perform Hajj only for Allah, not for the sake of the polytheists; and because when a good and desirable thing is surrounded by what is disliked, that should not turn one away from it; rather, that obstacle must be removed from it, and among the ways of removing it is the fighting referred to in the preceding verses.
+"And they are the ones who barred the Muslims from it; [the verse came] lest the Muslims grow weary of the Hajj in which they had suffered the harm of the polytheists. So they were told: that must not keep you from desiring Hajj and ʿUmrah, for you perform Hajj for Allah alone, not for the sake of the polytheists; and because when something good and desirable is hedged about with what is hateful, that should not turn one away from it; rather, that obstacle must be removed from it, and one of the ways of removing it is the fighting alluded to in the preceding verses.
 
-And it may be that the restriction in His saying (for Allah) is to purify the intention from what used to mingle with people's intentions in the days of ignorance, of seeking nearness to the idols"
+It may also be that the qualification in His words (for Allah) serves to purify the intention of what used to cloud people's intentions in the days of ignorance: seeking nearness to the idols"
 
 ## The Second Scene: In Madinah
 
-And when the Muslims were defeated at Uhud, and they passed by the mountain, the Prophet ﷺ said: Uhud, we love it and it loves us!
+And when the Muslims had been defeated at Uhud, and they passed by the mountain, the Prophet ﷺ said: Uhud, we love it and it loves us!
 
-He did not say it as a mere historical remark; rather, he said it as a cure for those associations that had formed in their souls, or to prevent them from forming in later generations.
+He did not say it as a mere historical remark; he said it to heal the associations that had formed in their souls, or to keep them from ever forming in the generations to come.
 
-What we learn from this: using spoken phrases to untie knots and associations (any useful, meaningful phrase)
+The lesson here: using spoken words to untie knots and associations (any phrase that is helpful and meaningful)
 
-So the one who fell in the ice cream shop while the customers laughed at him should visit the shop again (courage in facing illusions and psychological fears), then say spoken phrases to himself:
+So the one who fell over in the ice cream shop while the customers laughed at him should go back to that shop (the courage to face down imagined fears and inner dread), and then say to himself, out loud:
 
 Falling the first time doesn't mean you'll fall the second time!
 
-It's okay, try again
+It's fine, try again
 
-As if these new customers know you and know what happened! Oh please, Mr. World-Famous! And other cheerful phrases until your soul grows stronger.
+What, do these new customers know you and know what happened? Come off it, Mr. World-Famous! And other cheerful words like these, until your heart grows strong.
 
-Likewise, making the intention and purpose purely for Allah the Exalted; for it is one of the greatest means of untying psychological associations.
+And likewise, devoting your intention and aim purely to Allah the Exalted; for it is among the greatest means of untying the soul's associations.

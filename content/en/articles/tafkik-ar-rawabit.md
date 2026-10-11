@@ -1,26 +1,26 @@
-Title: Untying Psychological and Past Associations
-Excerpt: A task I always give my mind: untying psychological and past associations!
+Title: Untying Emotional Associations and Ties to the Past
+Excerpt: A task I always hand my mind: untying emotional associations and ties to the past!
 
-A task I always give my mind: untying psychological and past associations!
+A task I always hand my mind: untying emotional associations and ties to the past!
 
-Let's suppose something embarrassing happened to you in an ice cream shop; every time you see its logo and colors, you instantly remember that moment, and you feel miserable and embarrassed
+Say something embarrassing once happened to you in an ice cream shop. Now, every time you see its logo and its colors, the moment comes rushing back, and you feel miserable and mortified
 
-You could have treated it as a mental puzzle you hand to your mind to untangle: untie the association, please!, ignore it, forget it, nobody even noticed you, and honestly, nobody's making themselves miserable over it but you!
+You could treat it as a mental puzzle and hand it to your mind to untangle: untie that link, please! Ignore it, forget it, nobody even noticed you, and honestly, nobody is souring their own mood over it but you!
 
-What actually happens: you go to that shop happy and enjoying yourself.
+And what actually happens? You walk into that shop happy, and you enjoy yourself.
 
-Who forms the knots and associations? You.
+Who ties the knots and forges the links? You.
 
 Who unties them? You.
 
-And beware of excessive emotional and impulsive expression, for it is one of the greatest causes of misery! That is because it makes the associations stronger and sharper
+And beware of excessive, overwrought emotional expression, for it is among the greatest causes of misery! It only makes the associations stronger and sharper
 
-Hold to moderation in feeling anger, embarrassment, love, joy, and sadness.
+Keep to moderation in what you feel: anger, embarrassment, love, joy, and sorrow.
 
-Do you understand now why his laughter ﷺ was a smile? And do you know why he forbade tearing one's garments and slapping one's face in grief? Because exaggerated emotional expression destroys the mind and the psyche.
+Do you see now why his laughter ﷺ was a smile? And do you know why he forbade tearing at one's clothes and striking one's face in grief? Because exaggerated emotional expression wrecks the mind and the spirit.
 
-And stay away from every source that gives you exaggerated expression: some posts, the news, videos, stories,,,
+And keep away from every source that feeds you exaggerated expression: certain posts, the news, videos, stories,,,
 
-Even in body language, avoid excessive expression.
+Even in your body language, avoid overexpression.
 
-There are those for whom every corner of life reminds them of misery and resentment, and there are those for whom every atom of it reminds them of gratitude and contentment.
+Some people find, in every corner of life, a reminder of misery and resentment; and some find, in every atom of it, a reminder of gratitude and contentment.

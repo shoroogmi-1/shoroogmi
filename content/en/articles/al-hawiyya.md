@@ -1,8 +1,8 @@
 Title: Identity
-Excerpt: As much as identity gives us steadiness and stability and provides us with protection and security, it equally keeps us from seeing the truth
+Excerpt: Identity gives us steadiness and stability, shelter and safety; yet in the very same measure, it keeps us from seeing the truth
 
-As much as identity gives us steadiness and stability and provides us with protection and security, it equally keeps us from seeing the truth
+Identity gives us steadiness and stability, shelter and safety; yet in the very same measure, it keeps us from seeing the truth
 
-and pushes us to defend our former identity, and into blind fanaticism and intellectual insularity.
+It drives us to defend the selves we used to be, and pulls us into blind fanaticism and a mind shut tight.
 
-So yes, forming an identity and being at peace with it matters, but going too far in making it sacred veils from us an understanding of what is real, factual and observable.
+So yes, building an identity and living in harmony with it matters. But once we make it too sacred, it veils from us what is real, what is actual, what is there to be seen.

@@ -1,28 +1,28 @@
-Title: Reflecting on the Saying of the Exalted {They said, “O our father, why do you not entrust us with Joseph”}
-Excerpt: Then, when they had betrayed him, and wanted his second brother, Benjamin, (He said, “Should I entrust you with him except as I entrusted you with his brother before?”)?
+Title: Reflecting on the Words of the Exalted {They said, “O our father, why do you not entrust us with Joseph”}
+Excerpt: Then, after they had betrayed him and came asking for his second brother, Benjamin, (He said, “Should I entrust you with him except [under coercion] as I entrusted you with his brother before?”)?
 
-Then, when they had betrayed him, and wanted his second brother, Benjamin, (He said, “Should I entrust you with him except as I entrusted you with his brother before?”)?
+Then, after they had betrayed him and came asking for his second brother, Benjamin, (He said, “Should I entrust you with him except [under coercion] as I entrusted you with his brother before?”)?
 
-Reflect on the shared words: *taʾmannā* (“entrust us”), *āmanukum* (“entrust you”)?
+Notice the word the two verses share: *taʾmannā*, “entrust us,” and *āmanukum*, “entrust you”?
 
-A person gives trust and safety once; then if he is wounded, he doubts a thousand times, and neither trusts nor grants safety
+A person gives his trust and his sense of safety once; wound him, and he will doubt a thousand times, and neither trust nor feel safe again
 
-Part of the astuteness of Jacob (peace be upon him) is that when they insisted on taking Benjamin, he took covenants and pledges from them and made an exception (He said, “Never will I send him with you until you give me a promise by Allah that you will bring him [back] to me, unless you should be surrounded by enemies”). And in it is that the one who was betrayed may refuse to trust the betrayer, even if the betrayal happened only once, and granting him safety is only with caution, wariness, precaution, and vigilance, by taking pledges, writing, contracts, witnesses, and other means, so as to secure his right and preserve it as a protection
+It was Jacob's shrewdness, peace be upon him, that when they pressed him to let Benjamin go, he bound them with oaths and pledges and made an exception (He said, “Never will I send him with you until you give me a promise by Allah that you will bring him [back] to me, unless you should be surrounded by enemies”). Here is a lesson: the one who has been betrayed is entitled not to trust the betrayer, even if he betrayed only once. And if he does extend his trust, let it be with caution and care, guarded and watchful, by taking pledges, writing things down, contracts, witnesses and other such means, so that his right is secure and kept safe
 
-The nature of the human mind: building on the first judgment and experience. That is why, when they told him about the Aziz taking Benjamin, while they were now telling the truth, (He said, “Rather, your souls have enticed you to something”). He said it because he was human, subject to the nature of innate human judgments; otherwise, Allah's prophet Jacob (peace be upon him) had his knowledge praised by Allah (And indeed, he was a possessor of knowledge because of what We had taught him), so nothing he said detracts from his knowledge.
+This is the nature of the human mind: it builds on its first judgment, its first experience. That is why, when they told him that the Aziz had taken Benjamin, though this time they were telling the truth, (He said, “Rather, your souls have enticed you to something”). He said it because he was human, and the natural judgments of human beings ran their course in him too. Otherwise, Allah's prophet Jacob, peace be upon him, was praised by Allah for his knowledge (And indeed, he was a possessor of knowledge because of what We had taught him), so nothing he said takes away from his knowledge.
 
-And despite his pain from the bitterness of the two experiences (losing Joseph and Benjamin), his good opinion of Allah was very high, and this, and Allah knows best, is his praised knowledge, and what knowledge yields of reverent fear and good opinion (He said, “Rather, your souls have enticed you to something, so patience is most fitting. Perhaps Allah will bring them to me all together. Indeed, it is He who is the Knowing, the Wise”) and his saying (O my sons, go and find out about Joseph and his brother and despair not of relief from Allah. Indeed, no one despairs of relief from Allah except the disbelieving people).
+And for all the pain of those two bitter experiences (losing Joseph, then Benjamin), his good expectation of Allah stood very high. This, and Allah knows best, is the knowledge for which he was praised, and the fruit that knowledge bears: reverent awe and good expectation of Allah (He said, “Rather, your souls have enticed you to something, so patience is most fitting. Perhaps Allah will bring them to me all together. Indeed it is He who is the Knowing, the Wise”), and his words (O my sons, go and find out about Joseph and his brother and despair not of relief from Allah. Indeed, no one despairs of relief from Allah except the disbelieving people).
 
-And we learn from this that a person should not judge by the first experience because it failed and fell short; for the second experience may bring success and great prosperity.
+What we learn from this is that a person should not judge by his first experience just because it failed and disappointed him; the second may bring success and great reward.
 
-And building on the first experience (which reminds him of feelings of frustration, aversion, despair, and the like) makes him lose opportunities for understanding, relationships, productivity, and work, and many lost benefits were lost because we built on the bitterness of the first
+Building on that first experience (which brings back the frustration, the resentment, the despair and the rest) robs him of chances to understand, to build relationships, to produce and to work. So many good things have slipped away from us only because we built on the bitterness of the first time
 
-And that a person should not judge creation and people with the same outlook and perception, for that comes from narrowness of the soul and ignorance; rather, he should vary his judgments of them between good opinion and bad
+Nor should a person judge all of creation, all people, through one lens and one picture; that comes from a narrow soul and from ignorance. Rather, let his judgments of them vary, sometimes thinking well of them, sometimes ill
 
-And Dr. Wahbah al-Zuhayli said regarding the qualities of a judge:
+Dr. Wahbah al-Zuhayli said, on the qualities of a judge:
 
-"Knowing people and their conditions, and having insight into their cunning and deception, and he should not think well of them; rather, he should be wary and astute regarding what they portray in their questions, lest they excel in what is detestable, and this is supported by the hadith: “Guard yourselves against people by thinking ill of them.”"
+“Knowing people and their conditions, and seeing through their cunning and deceit. He should not think well of them; rather, he should be wary and alert to what they dress up in their questions, lest they become skilled at what is wrong. The hadith adds to this: «Guard yourselves against people by thinking ill of them».”
 
-And among them: that he should look into stories of schemes, deceptions, and cunning, and sit with his enemies and his friends to acquire this knowledge! For it is not in books but in gatherings.
+And among these qualities: that he should study tales of plots, tricks and cunning, and sit with his enemies and his friends alike to gain this knowledge! For it is not found in books but in gatherings.
 
-So that he is not deceived, and is astute and perceptive, because whoever falls into deception does so because of his ignorance of it, and every deception that did not fool you was, first, by Allah's granting you success, and second, by your knowledge of it
+So that he is not taken in, but stays alert and sharp. For whoever falls for a deception falls because he did not know it; and every trick that failed to fool you failed, first, because Allah granted you success, and second, because you knew it for what it was

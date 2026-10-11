@@ -1,26 +1,26 @@
 Title: (And one who invites to Allah, by His permission, and an illuminating lamp)
-Excerpt: You may describe a person as a moon; yes.
+Excerpt: You might describe a person as a moon; yes.
 
-You may describe a person as a moon; yes.
+You might describe a person as a moon; yes.
 
-You may describe him as a sun or half a sun; yes.
+You might describe them as a sun, or half a sun; yes.
 
-But to describe him as a sun and a moon; no!
+But to describe someone as both a sun and a moon? No!
 
-The sun and the moon have not come together for anyone as they came together for Muhammad ﷺ (And the sun and the moon are joined).
+Never have the sun and the moon come together for anyone as they came together for Muhammad ﷺ (And the sun and the moon are joined).
 
-The moon is the Quran he brought; it brings out of darkness into light.
+The moon is the Quran he brought, leading out of the darkness into the light.
 
-Whoever lives with the Quran alone is like one who lives under the full moon alone and does not see the day; and the matter of this world and the religion is not complete except with the pure Prophetic Sunnah, just as the night is completed by the day.
+Whoever lives with the Quran alone is like one who lives beneath the full moon alone, never seeing the day; the affairs of this world and of faith are made whole only by the pure Prophetic Sunnah, just as the night is made whole by the day.
 
-So the Quran is a night, and the Sunnah is the completion of the day and the night.
+The Quran is a night, and the Sunnah completes the whole of the day and the night.
 
-The Quran is recited at night; isn't it?
+And the Quran is recited by night, is it not?
 
-And the full moon never leaves the one who recites, even when others wander blindly in the dark.
+The full moon never leaves the one who recites it, even while others wander blindly in the dark.
 
-And the Sunnah is the sun by which Allah completes and perfects the matter of this world and the religion. Whoever takes hold of both has taken an ample share.
+And the Sunnah is the sun by which Allah completes and perfects the affairs of this world and of faith. Whoever holds to both has taken an abundant portion.
 
-(Blessed is He who has placed in the sky great stars and placed therein a lamp and a luminous moon)
+(Blessed is He who has placed in the sky great stars and placed therein a [burning] lamp and luminous moon)
 
 O Allah, send prayers and peace upon our Prophet Muhammad.

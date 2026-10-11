@@ -1,8 +1,8 @@
-Title: The Prohibition of Reviling and Insulting Oneself
-Excerpt: In it is the safeguarding and protection of the self, even from its own owner, lest he transgress against it with reviling, insults, and harm!
+Title: The Prohibition on Reviling and Cursing Oneself
+Excerpt: Here the soul is held inviolable and guarded, even from its own keeper, lest he assail it with reviling, cursing, and harm!
 
-> "That the Messenger of Allah ﷺ said: When one of you dozes while praying, let him sleep until sleep leaves him, for when one of you prays while dozing, he does not know; perhaps he means to seek forgiveness and instead reviles himself"
+> "Allah's Messenger ﷺ said: If anyone of you feels drowsy while praying he should go to bed (sleep) till his slumber is over because in praying while drowsy one does not know whether one is asking for forgiveness or for a bad thing for oneself"
 
-In it is the safeguarding and protection of the self, even from its own owner, lest he transgress against it with reviling, insults, and harm!
+Here the soul is held inviolable and guarded, even from its own keeper, lest he assail it with reviling, cursing, and harm!
 
-And so great is the safeguarding, protection, and respect of the self that he commanded him to sleep if he dozes, rather than revile himself! And invoke evil upon it.
+So inviolable is the soul, so guarded and so honoured, that he commanded him to sleep when drowsiness comes, rather than revile himself! Or call down evil upon it.

@@ -1,46 +1,46 @@
 Title: The People of Allah Catch the Scent of Hearts
-Excerpt: The people of Allah catch the scent of hearts from miles away; and they find in the heart a contraction or an expansion at it.
+Excerpt: The people of Allah catch the scent of hearts from miles away, and they feel it in their own hearts as a contraction or an expansion.
 
-The people of Allah catch the scent of hearts from miles away; and they find in the heart a contraction or an expansion at it.
+The people of Allah catch the scent of hearts from miles away, and they feel it in their own hearts as a contraction or an expansion.
 
-(Or do those in whose hearts is disease think that Allah would never expose their hatred?) Or do the hypocrites think that Allah will not reveal their affair to His believing servants? Rather, He will make their affair plain and clear, so that those of insight understand them.(Ibn Kathir)
+(Or do those in whose hearts is disease think that Allah would never expose their [feelings of] hatred) Do the hypocrites imagine that Allah will not lay their affair bare before His believing servants? Rather, He will make it plain and bring it to light, until those of insight understand them. (Ibn Kathir)
 
-And what is the use of light and insight, the very things you've chattered to us about so much?
+And what good are light and insight — those very things you have chattered to us about so endlessly?
 
-(O you who have believed, if you fear Allah, He will grant you a criterion) He made the criterion unrestricted and general and omitted its object, so that it would be general: a criterion in all the affairs of this world and the Hereafter: by it the doubtful matters are recognized, the dilemmas are solved, the distresses are relieved, the enemies are driven back, and the darknesses are extinguished beneath the light of humble devotion and the garment of good deeds, and by it extraordinary distinctions come about, exposing the enemy from the friend.
+(O you who have believed, if you fear Allah, He will grant you a criterion) He left "criterion" unqualified and general, and left its object unstated, so that it would embrace everything: a criterion in every matter of this world and the Hereafter. By it the ambiguous is recognized, the knotty is untied, distress is lifted, enemies are routed, and darkness is extinguished beneath the light of humble devotion and the cloak of good deeds; and through it come wondrous powers of discernment that tell the enemy apart from the friend.
 
-And insight, and what will make you know what insight is? It lets you hear the greetings in the heart and the hidden longings, and the subtle things that stir in it, and it shows you the stories behind the walls; its light in the heart cannot be resisted, rather it grows mighty and overpowers, and it directs the steps, until you hear all kinds of accounts: "I don't know what made me get up right then?!" "No idea why I went to that place.."
+And insight — and what will make you know what insight is? It lets you hear the greetings within the heart and its hidden longings, and the subtle things that stir it; it shows you the stories behind the walls. Its light in the heart cannot be resisted; it rises in might and prevails. It guides your steps, until you hear all sorts of stories: "I don't know what made me get up right then?!" "No idea why I went to that place.."
 
-I don't know! But Allah knows, and He makes it known to the people of knowledge and faith, so He directs their hearts and their feet to safe shores in the hours of evil, and shows them His gentleness and how He handles their enemy, so they see the crime scene and their place in the play from afar, praising, astonished, amazed, safe, looking up at the sky, saying: Alhamdulillah! You have never let us down! Abashed before the gentleness of His ways; from that they became devoted to the love of the Beloved, and from that they kept their gaze on their mushafs, and from there they never tired of the sweetness of standing before Him when the lamp was put out; the lamp rose over them, from their inner selves to their outer.
+I don't know! But Allah knows, and He makes it known to the people of knowing and of faith: He turns their hearts and their feet toward safe shores in the hours of evil, and shows them His gentleness and how He deals with their enemy, so that they watch the crime scene, and their own part in the play, from afar — praising, stunned, marvelling, safe, gazing up at the sky and saying: Alhamdulillah! You have never once forsaken us! Abashed before such gentle graces. From this they grew addicted to the love of the Beloved; from this they kept their eyes upon their mushafs; from here they never wearied of the sweetness of standing before Him once the lamp was put out — for a lamp rose over them, shining from their inmost selves to their outward selves.
 
-"Whenever I said that by nearness
+"Whenever I said that nearness
 
-the fires of my heart would die down,
+would put out the fires in my heart,
 
-union only added to the blaze,
+union only fanned the blaze —
 
-such is the lover's state.
+such is the lover's lot.
 
-Neither in union do I find solace,
+In union I find no solace,
 
-nor in parting do I forget,
+nor does parting make me forget;
 
-there is no cure for passion,
+for love there is no cure,
 
-so count reason and soul as lost.
+so count your mind and soul as lost.
 
-I have surrendered my affair
+I have yielded up my fate
 
-to love, in meaning and in sense,
+to love, in meaning and in sense.
 
-ah, the tearing of my heart,
+Ah, my heart torn to pieces!
 
-ah, my slaying and my plunder,
+Ah, my slaying and my plunder!
 
-I died of the gentleness of His ways,
+I died of those gentle graces —
 
-such is the lover's state."
+such is the lover's lot."
 
-So, O forsaken one! You aimed at the wrong enemy
+So, O forsaken one! You picked the wrong enemy.
 
-You are the forsaken one, not them.
+You are the forsaken one, not they.

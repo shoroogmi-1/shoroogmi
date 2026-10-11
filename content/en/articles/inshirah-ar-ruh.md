@@ -1,52 +1,52 @@
 Title: When the Spirit Expands, the Soul Opens Up
-Excerpt: The psychological advice that says "Don't wait until your mood and feelings improve; start and work anyway" is advice that is both right and wrong!
+Excerpt: The psychological advice that says "Don't wait for your mood and feelings to improve; just start, and get to work anyway" is both right and wrong!
 
-The psychological advice that says "Don't wait until your mood and feelings improve; start and work anyway" is advice that is both right and wrong!
+The psychological advice that says "Don't wait for your mood and feelings to improve; just start, and get to work anyway" is both right and wrong!
 
-Right with respect to the soul, wrong with respect to the spirit!
+Right for the soul, and wrong for the spirit!
 
-Please, sit here, let's discuss it at leisure;
+Come, sit down here, and let's talk it through at our leisure;
 
-This advice is right for the soul: yes, whatever your feelings, work and start; but if laziness comes over you and you yawn and fall asleep, where is the striving and where is the work?
+The advice is right for the soul: yes, whatever you feel, start and get to work. If laziness creeps up on you, and you yawn and drift off to sleep, where is the striving, where is the work?
 
-And if you respond to every feeling, where is your authority over yourself, and where is your prevailing?
+And if you answer to every passing feeling, where is your mastery over yourself, where is your victory?
 
-You must struggle, strive, toil, and go against your feelings and your desires.
+You must struggle, strain, and toil, and swim against your feelings and your whims.
 
-Wrong with respect to the spirit; because it is from the breath of God, and it has different properties and moods, so the dealings and laws with it are somewhat different.
+But it is wrong for the spirit; because the spirit comes from the breath of God, and it has a different nature and different moods, so the rules for handling it are somewhat different.
 
-For the heart needs something to improve it first, before receiving knowledge and setting out to work; so when the spirit improves and the chest expands, the heart opens up to the world and to everything; the appetite for food and drink is unlocked, and he turns to people with his heart and listens with his ear, so he loves them and they love him, and the vessels of his brain expand to receive knowledge with a clear, healthy soul.
+For the heart first needs something to mend it before it can take in knowledge and set out to work. Once the spirit is restored and the breast expands, the heart opens up to the world and to everything in it: the appetite for food and drink returns; a person turns to others with his whole heart and listens with his ears, so he loves them and they love him; and the vessels of his mind widen to take in knowledge with a soul that is clear and whole.
 
-And I liked the saying of one of the contemporary Muslim philosophers when he said, and I phrase it in these words:
+I was struck by the words of one contemporary Muslim philosopher, which I put in my own phrasing:
 
-"Whoever's spirit opens to the heavens opens to the earth, for openness to the Truth is openness to the creation, and his mind opens to everything and his heart to everyone; and when the vents of the spirit close, he closes himself off from people, and his soul is blocked from food, hating and cursing every corner of the world; for whoever is discontent with Allah, nothing in the world ever pleases him"
+"Whoever's spirit opens to the heavens opens to the earth; for opening to the Truth is opening to the creation. His mind opens to everything, and his heart to everyone. But when the vents of the spirit close, he shuts himself off from people, his appetite is shut off from food, and he hates and curses every corner of the world. For whoever is displeased with Allah, nothing in this world will ever please him"
 
-So if you ask me: And what improves the spirit?
+So if you ask me: and how is the spirit restored?
 
-We answer you: that you open your night with the night prayer and witr, and that you begin it with the Quran, the food of the heart, that is.
+We answer: open your night with the night prayer and witr, and begin it with the Quran, the heart's own food.
 
-Feed the hungry spirit, fill it with food, nourishment, and adhkar, enrich it with the words of the Truth so that it doesn't go begging from the creation!
+Feed your hungry spirit. Fill it with food and nourishment and remembrance. Make it rich with the words of the Truth, so that it never goes begging from the creation!
 
-And fill its insides with the Quran, fill it up until it overflows and says: Now I've had enough, and I'm ready to face the world, whatever it may be.
+Fill it, fill it to the brim with the Quran, until it overflows and says: Enough, I am full, and now I am ready to face the world, whatever it may hold.
 
-"One third, and one third is a lot. To leave your heirs rich is better than to leave them dependent, begging from people" (authentic hadith)
+"One-third, and even one-third is much. You'd better leave your inheritors wealthy rather than leaving them poor, begging others" (authentic hadith)
 
-And the inheritance left to you is the Quran (Then We caused to inherit the Book those We have chosen of Our servants), so bequeath it to your spirit so that it becomes chaste and refrains. As for the third, it is the third of the night with the Quran, an hour or two in which you tire your feet before your Master (Indeed, your Lord knows that you stand almost two thirds of the night, or half of it, or a third of it) (Al-Muzzammil: 20)
+And the inheritance left to you is the Quran: (Then We caused to inherit the Book those We have chosen of Our servants). So bequeath it to your spirit, until it is too rich to beg and keeps its hands to itself. As for the third, it is the third of the night with the Quran: an hour or two in which you weary your feet before your Master (Indeed, your Lord knows, [O Muhammad], that you stand [in prayer] almost two thirds of the night or half of it or a third of it) (Al-Muzzammil: 20)
 
-And whoever is the opposite of this, and begins his day with the creation and the world, and has no portion of Quran or night prayer, has exposed himself to the hardship of the day and its decrees; that's him and that's that! That's his business!
+And whoever does the opposite, beginning his day with people and the world, with no portion of Quran and no night prayer, has left himself open to the hardships of the day and whatever it brings. That's his lookout! Let him be!
 
-So they toy with him in every way; if they laugh, he laughs, and if they sadden him, he grows sad; he has no say over his own affair.
+People play with him however they please: if they laugh, he laughs; if they grieve him, he grieves; he has no footing of his own.
 
-His understanding falters in learning, his memory grows weary and worn out, the doors of the soul are bolted shut, and the windows of the senses refuse to receive the light, so what success can it have?
+His understanding stumbles in his studies, his memory tires and grinds to a halt; the doors of the soul are bolted shut, and the windows of the senses refuse to let in the light. What hope can it have?
 
-His soul is shut off from receiving, it is tied up, so it grows depressed and falls flat on its face!
+His soul is sealed against taking anything in, tied up tight, until it sinks into gloom and falls flat on its face!
 
-Even from the most enjoyable and beautiful hobbies in his life, and the most comforting relationships; because he began the other way around.
+Sealed off even from the loveliest, most delightful pastimes of his life, and from his most comforting friendships; because he began the wrong way around.
 
-(if they are sincere to Allah and His Messenger) (At-Tawbah) "The disciples said: O Spirit of Allah, tell us about the one who is sincere to Allah? He said: The one who gives precedence to the right of Allah over the right of people, and when two matters arise for him -or: the matter of this world and the matter of the Hereafter appear to him- he begins with the one for the Hereafter, then turns to the one for this world." (Ibn Kathir)
+(when they are sincere to Allah and His Messenger) (At-Tawbah) "The disciples said: O Spirit of Allah, tell us of the one who is sincere to Allah. He said: The one who puts the right of Allah before the right of people; and when two matters come to him (or: when a matter of this world and a matter of the Hereafter present themselves to him), he begins with the one for the Hereafter, and then turns to the one for this world." (Ibn Kathir)
 
-So begin with the Hereafter, on to this world
+So begin with the Hereafter, and from there go on to this world
 
-And descend from the spirit, and the soul will be led to you like a gentle, calm child in your hands, not making trouble nor wearing you out, but obeying and responding to the one whose spirit has submitted to the Truth, so it surrendered and was safe from the troubles of the soul.
+Come down from the spirit, and the soul will come along to you like a meek, quiet child in your hands: no mischief, no trouble, only obedience and response to one whose spirit has surrendered to the Truth, and so it yields and is spared the soul's troubles.
 
-(Did We not expand for you your chest?) We expanded it with the Quran; so when the spirit expands, the soul opens up!
+(Did We not expand for you, [O Muhammad], your breast?) We expanded it with the Quran; and when the spirit expands, the soul opens up!

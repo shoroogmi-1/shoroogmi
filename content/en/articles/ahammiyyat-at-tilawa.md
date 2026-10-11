@@ -1,14 +1,14 @@
 Title: The Importance of Reciting and Memorizing the Quran
-Excerpt: The importance of reciting and memorizing the Quran lies in attaching the heart to the Most Merciful; for attaining the love of Allah, the Mighty and Majestic, comes from abundant remembrance, and whoever loves something mentions it often.
+Excerpt: Reciting and memorizing the Quran matter because they bind the heart to the Most Merciful; the love of Allah, Mighty and Majestic, is won through abundant remembrance, and whoever loves something speaks of it often.
 
-The importance of reciting and memorizing the Quran lies in attaching the heart to the Most Merciful; for attaining the love of Allah, the Mighty and Majestic, comes from abundant remembrance, and whoever loves something mentions it often.
+Reciting and memorizing the Quran matter because they bind the heart to the Most Merciful; the love of Allah, Mighty and Majestic, is won through abundant remembrance, and whoever loves something speaks of it often.
 
-And the importance of understanding the Quran is that it helps one act upon it; for your acting upon the Quran is in proportion to your understanding of it:
+And understanding the Quran matters because it helps you live by it; the measure of your understanding is the measure of your practice:
 
-Narrow understanding, little action.
+A narrow understanding, a meager practice.
 
-Broad understanding, much action.
+A broad understanding, an abundant practice.
 
-And Allah has made clear to us the reason the Children of Israel killed their prophets, and for their denial, disbelief, and mockery: that they read the Torah as words without understanding it, and that is why they did not act upon it; so He said (And among them are unlettered ones who do not know the Scripture except as wishful recitation).
+Allah has shown us why the Children of Israel killed their prophets, and why they denied, disbelieved, and mocked: they read the Torah as mere words without grasping it, and so they did not live by it. He said: (And among them are unlettered ones who do not know the Scripture except in wishful thinking).
 
-That is: they read it as words and do not understand its meanings.
+That is: they recite its words, but its meanings escape them.

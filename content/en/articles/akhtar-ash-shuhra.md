@@ -1,18 +1,18 @@
 Title: The Greatest Danger of Fame
-Excerpt: In a podcast episode, the guest, a cook, mentions that his fame grew, which made him eager to bring a family atmosphere into the picture after he had been alone in the lens's focus,
+Excerpt: In a podcast episode, the guest, a chef, recalls that as his fame grew, he began to want a homely, family feel in the frame, after years of standing alone in the lens,
 
-In a podcast episode, the guest, a cook, mentions that his fame grew, which made him eager to bring a family atmosphere into the picture after he had been alone in the lens's focus,
+In a podcast episode, the guest, a chef, recalls that as his fame grew, he began to want a homely, family feel in the frame, after years of standing alone in the lens,
 
-He showed his wife first, then his children, little by little: the extended family and the grandmother,
+First he showed his wife, then his children, then little by little the wider family, the grandmother too,
 
-Then he expresses his deep regret and sorrow: I wish I hadn't brought my family into the picture,
+Then he voices his bitter, aching regret: if only I had never brought my family into the picture,
 
 The podcaster: Why?
 
-The family blew apart afterward: the grandmother or the mother, a rift and quarreling arose between them that lasts to this day, his wife divorced, and the siblings scattered after having been together. I used to think people looked at you the same innocent way you look at them, but there are those who see you laughing with family, joking with your wife, and playing with your children while they lack this, and envy gets into them.
+The family burst apart. The grandmother and the mother fell out, and the feud runs on to this day; his wife divorced him; the siblings who used to gather together scattered. I used to think people looked at you with the same innocence you looked at them with. But there are people who watch you laughing with your family, teasing your wife, playing with your children, while they themselves have none of this, and envy creeps in.
 
-At the start of the road the star shines alone, then wants more and brings in his family, and when he reaches this point he has reached the greatest danger of fame: losing the most sacred of social circles: the family.
+At the start of the road, the star shines alone; then he wants more and brings his family in. And once he reaches that point, he has reached the greatest danger of fame: losing the most sacred of all social circles, the family.
 
-I went to this celebrity's channel to look for his latest videos; he now appears only with strangers and other people in the videos, without the family.
+I went to this celebrity's channel to look for his latest videos. These days he appears only with strangers and other guests, never with his family.
 
-It seems he has learned the lesson, but the question remains: have we learned this lesson?
+It seems he has learned his lesson. But the question remains: have we learned it?

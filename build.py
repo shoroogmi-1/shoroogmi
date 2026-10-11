@@ -8,6 +8,7 @@
 - بعد أي تعديل شغّلي الأمر أعلاه لتحديث ملفات HTML.
 """
 import hashlib
+import html as html_lib
 import json
 import glob
 import os
@@ -60,6 +61,7 @@ def page(lang, path, key, title, body, desc, alt=None, icon=None):
   <header class="site-header">
     <div class="container nav">
       <a href="{h}index.html" class="logo"><span class="logo-sun" aria-hidden="true"></span>{t("شروق المحمادي", "Shoroog Almehmadi")}</a>
+      <a class="search-link{" active" if key == "search" else ""}" href="{h}search.html" aria-label="{t("ابحث في الموقع", "Search the site")}">🔍</a>
       <button class="menu-toggle" aria-label="{t("فتح القائمة", "Open menu")}" aria-expanded="false">☰</button>
       <nav class="nav-links" aria-label="{t("القائمة الرئيسية", "Main menu")}">
         <a href="{h}index.html"{act("home")}>{t("مُشعشعة", "Radiant")}</a>
@@ -610,6 +612,31 @@ def build(lang):
     page(lang, "blog/zawiya-36.html", "blog-zawiya", f"{t('الزاوية ٣٦', 'Corner 36')} · {me}", zawiya,
          t("الزاوية ٣٦: مقالات حديثة تترجمها شروق المحمادي وتحوّرها بطريقتها.", "Corner 36: recent articles translated and reshaped by Shoroog Almehmadi."),
          icon=ZAWIYA_LOGO)
+
+    # ---------- Search ----------
+    # فهرس البحث: العنوان والملخص ونص المقال كاملًا، يُحمَّل عند أول بحث فقط
+    strip = lambda x: re.sub(r"\s+", " ", html_lib.unescape(re.sub(r"<[^>]+>", " ", x))).strip()
+    index = [{"u": f"blog/articles/{a['slug']}.html", "t": strip(a["title"]), "d": a["date"], "c": list(a["tag"]),
+              "x": strip(" ".join([a["excerpt"]] + [x for k, x in a["blocks"] if k != "img"]))} for a in ALL_ARTICLES]
+    idx_name = f"assets/search-{lang}.json"
+    with open(os.path.join(ROOT, idx_name), "w", encoding="utf-8") as f:
+        json.dump(index, f, ensure_ascii=False, separators=(",", ":"))
+    idx_v = hashlib.md5(json.dumps(index, ensure_ascii=False).encode("utf-8")).hexdigest()[:8]
+    s_root = "../" * out_path(lang, "search.html").count("/")
+    search = page_head(t("سجل الرحلات", "Travel Log"), t("ابحث في الرحلات", "Search the Journeys"),
+                       t("اكتب أي كلمة: من عنوان المقال أو من داخل نصه.", "Type any word, from an article's title or from inside its text.")) + f"""
+    <section class="section">
+      <div class="container narrow">
+        <form class="site-search" role="search" data-index="{s_root}{idx_name}?v={idx_v}">
+          <input class="search" type="search" name="q" placeholder="{t("ابحث عن كلمة أو جملة…", "Search for a word or phrase…")}" aria-label="{t("كلمة البحث", "Search term")}" autocomplete="off">
+        </form>
+        <p class="search-count" role="status"></p>
+        <ol class="search-results"></ol>
+      </div>
+    </section>
+"""
+    page(lang, "search.html", "search", f"{t('ابحث في الرحلات', 'Search the Journeys')} · {me}", search,
+         t("ابحث في مقالات شروق المحمادي.", "Search Shoroog Almehmadi's articles."))
 
     # ---------- Books ----------
     a_root = "../" * out_path(lang, "books.html").count("/")

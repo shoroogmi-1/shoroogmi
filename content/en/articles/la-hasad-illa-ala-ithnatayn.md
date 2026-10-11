@@ -1,22 +1,22 @@
-Title: No Envy Except in Two
-Excerpt: Why did he pair the owner of wealth with the owner of the Qur'an in envy?
+Title: No Envy Except for Two
+Excerpt: Why did he pair the man of wealth with the man of the Qur'an when speaking of envy?
 
-Why did he pair the owner of wealth with the owner of the Qur'an in envy?
+Why did he pair the man of wealth with the man of the Qur'an when speaking of envy?
 
-Because the first became rich through his wealth, and the second, Allah made rich in his heart.
+Because the first grew rich through his wealth, while the second was made rich by Allah, in his heart.
 
-And we were told that a billionaire met a memorizer of the Qur'an in a grocery store; the billionaire said to him:
+We were told that a billionaire once met a hafiz of the Qur'an in a grocery store, and the billionaire said to him:
 
-Can I give you my money, and you give me what's in your chest?!
+Could I give you my money, and you give me what you carry in your chest?!
 
-As for the richness of the heart: it is the delight of the eye, the bliss of knowing, chanting it in intimate comfort, contentment, satisfaction and tranquility, blessing and protection, hidden subtle graces, and something beyond description from which minds fear losing their minds
+As for the richness of the heart: it is the comfort of the eyes, the bliss of knowing, the intimate joy of chanting it, contentment, satisfaction and serenity, blessing and protection, hidden gentle graces, and something beyond all description, before which minds fear they will lose their minds
 
-And why did he mention the owner of wealth before the owner of the Qur'an?
+And why did he mention the man of wealth before the man of the Qur'an?
 
-Because his benefit extends to others, so he takes precedence over one whose benefit is for himself.
+Because his good reaches others, and so he comes before the one whose good stays with himself.
 
-So if the memorizer of the Qur'an teaches the Qur'an to people, perhaps he equals him in rank, or comes close to it, or surpasses him, and Allah knows best.
+Yet if the hafiz teaches the Qur'an to others, perhaps he equals him in rank, or comes close, or even surpasses him. And Allah knows best.
 
-(And spend out of what We have provided for them) is all kinds of provision: knowledge, wealth, and children, as al-Fakhr said.
+(and spend out of what We have provided for them): this covers every kind of provision, knowledge, wealth, and children, as al-Fakhr said.
 
-“There is no envy except in two: a man whom Allah has given wealth and he spends from it during the hours of the night and the hours of the day, and a man whom Allah has given the Qur'an and he stands with it during the hours of the night and the hours of the day”
+“There is to be no envy except for two: A man to whom Allah grants wealth and he spends from it during the hours of the night and the hours of the day. And a man to whom Allah grants (memorization of) the Quran so he stands with it (in prayer) during the hours of the night and the hours of the day”
