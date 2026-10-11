@@ -183,7 +183,7 @@ def fmt_time(lang, hhmm):
 
 
 def word_count(blocks):
-    return sum(len(t.split()) for _, t in blocks)
+    return sum(len(t.split()) for k, t in blocks if k != "img")
 
 
 def read_time(lang, blocks):
@@ -224,6 +224,9 @@ CATEGORIES_EN = {
 }
 
 
+IMG_RE = re.compile(r"!\[([^\]]*)\]\(([^)\s]+)\)")
+
+
 def read_md(path, fields):
     """ترويسة (مفتاح: قيمة) ثم سطر فارغ ثم النص.
     في النص: سطر يبدأ بـ ## عنوان فرعي، وسطر يبدأ بـ > اقتباس، والباقي فقرات."""
@@ -239,7 +242,16 @@ def read_md(path, fields):
             raise SystemExit(f"{path}: الحقل «{label}» مفقود في الترويسة")
     blocks = []
     for para in re.split(r"\n\s*\n", body.strip()):
-        para = " ".join(line.strip() for line in para.splitlines())
+        lines = [line.strip() for line in para.splitlines() if line.strip()]
+        # فقرة كل أسطرها صور: ![وصف](اسم-الملف.jpg) — الملفات في assets/images
+        if lines and all(IMG_RE.fullmatch(line) for line in lines):
+            for line in lines:
+                src = IMG_RE.fullmatch(line).group(2)
+                if not os.path.exists(os.path.join(ROOT, "assets", "images", src)):
+                    raise SystemExit(f"{path}: الصورة {src} غير موجودة في assets/images")
+            blocks.append(("img", "\n".join(lines)))
+            continue
+        para = " ".join(lines)
         if para.startswith("## "):
             blocks.append(("h2", para[3:]))
         elif para.startswith("> "):
@@ -679,7 +691,20 @@ def build(lang):
          t("برج المراقبة: تواصل مع شروق المحمادي.", "Control Tower: get in touch with Shoroog Almehmadi."))
 
     # ---------- Article pages ----------
+    art_root = "../" * out_path(lang, "blog/articles/x.html").count("/")  # from an article page to the site root
+
     def render_block(kind, text):
+        if kind == "img":
+            figs = []
+            for line in text.split("\n"):
+                alt, src = IMG_RE.fullmatch(line).groups()
+                url = f"{art_root}assets/images/{src}"
+                cap = f"<figcaption>{alt}</figcaption>" if alt else ""
+                figs.append(f'<figure class="post-figure"><a href="{url}" target="_blank" rel="noopener">'
+                            f'<img src="{url}" alt="{alt}" loading="lazy"></a>{cap}</figure>')
+            if len(figs) == 1:
+                return "        " + figs[0]
+            return f'        <div class="post-gallery">{"".join(figs)}</div>'
         if kind == "h2":
             return f"        <h2>{text}</h2>"
         if kind == "quote":

@@ -1,8 +1,10 @@
-Title: The "Leave Them" Theory
+Title: The Let Them Theory
 Excerpt: Leave them to do what they do: blocking, rejecting, scheming, and driving away are by the will of Allah! None can remove that but Him!
 Quote: Leave them to rejoice in the little; ahead of them is much to keep them busy..
 
 Leave them to do what they do: blocking, rejecting, scheming, and driving away are by the will of Allah! None can remove that but Him!
+
+![The Let Them Theory by Mel Robbins](the-let-them-theory.jpg)
 
 Because your attempt to correct them, change them, convince them, and win their affection falls under "the desire to control," and you cannot control anything but yourself.
 

@@ -27,7 +27,10 @@ def article_text(path):
     title = re.search(r"^العنوان:\s*(.*)$", head, re.M).group(1).strip()
     blocks = []
     for para in re.split(r"\n\s*\n", body.strip()):
-        para = " ".join(line.strip() for line in para.splitlines())
+        lines = [line.strip() for line in para.splitlines() if line.strip()]
+        if lines and all(re.fullmatch(r"!\[[^\]]*\]\([^)\s]+\)", line) for line in lines):
+            continue  # فقرة صور لا تُقرأ
+        para = " ".join(lines)
         para = re.sub(r"^(## |> )", "", para)
         para = re.sub(r"<[^>]+>", "", para)  # روابط HTML داخل الفقرات
         if para:
