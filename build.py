@@ -590,7 +590,7 @@ def build(lang):
             </div>
           </article>"""
 
-    books = page_head(t("أمتعة السفر", "Luggage"), t("كتبي", "My Books"), "") + f"""
+    books = page_head(t("أمتعة السفر", "Luggage"), t("كتب ماتعة!", "Delightful Books!"), "") + f"""
     <section class="section">
       <div class="container">
         <div class="books mine-list">
