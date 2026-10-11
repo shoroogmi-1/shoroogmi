@@ -1,0 +1,46 @@
+name: Record article audio
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Article slugs to record, separated by spaces (empty = all that need it)"
+        required: false
+        default: ""
+  push:
+    branches: [add-arabic-website]
+    paths:
+      - 'tools/make_audio.py'
+      - '.github/workflows/audio.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install the voice tool
+        run: pip install edge-tts==7.2.8
+      - name: Record
+        env:
+          ONLY: ${{ github.event_name == 'push' && 'al-faris-al-qawwal' || inputs.only }}
+        run: |
+          if [ -n "$ONLY" ]; then python3 tools/make_audio.py --only $ONLY; else python3 tools/make_audio.py; fi
+      - name: Commit recordings
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/audio
+          if git diff --cached --quiet; then
+            echo "No new recordings."
+          else
+            git commit -m "Record article audio"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
