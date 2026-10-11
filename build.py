@@ -278,7 +278,7 @@ def load_article(path):
 
 
 # newest first
-_loaded = sorted((load_article(f) for f in glob.glob(os.path.join(ROOT, "content", "articles", "*.md"))),
+_loaded = sorted((load_article(f) for f in sorted(glob.glob(os.path.join(ROOT, "content", "articles", "*.md")))),
                  key=lambda x: x[0]["date"], reverse=True)
 _en_files = {os.path.splitext(os.path.basename(f))[0]: f
              for f in glob.glob(os.path.join(ROOT, "content", "en", "articles", "*.md"))}
