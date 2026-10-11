@@ -285,10 +285,25 @@ if (listen && "speechSynthesis" in window) {
   synth.cancel(); // stop anything left over from a previous page
   listen.hidden = false;
 
+  // iPhone/iPad list "enhanced" voices that may not be downloaded; choosing one gives silence,
+  // so on Apple devices we only set the language and let the system pick its installed voice.
+  const isApple = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  let useVoice = !isApple;
+  let current = null; // keep the utterance referenced so the browser doesn't drop it mid-speech
+  // iPhone mutes browser speech when the ring switch is on silent. Playing a silent looping clip
+  // while reading puts the page in "media playback" mode, which the silent switch doesn't mute.
+  const keepAwake = new Audio("data:audio/wav;base64,UklGRmQGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YUAGAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA");
+  keepAwake.loop = true;
+  keepAwake.setAttribute("playsinline", "");
+  function mediaOn() { keepAwake.play().catch(() => {}); }
+  function mediaOff() { keepAwake.pause(); }
+
   function pageVoice() {
-    const voices = synth.getVoices();
+    const voices = synth.getVoices().filter((v) => !/enhanced|premium|siri/i.test(v.name));
     const [best, any] = EN ? [/^en[-_]US/i, /^en/i] : [/^ar[-_]SA/i, /^ar/i];
-    return voices.find((v) => best.test(v.lang)) || voices.find((v) => any.test(v.lang)) || null;
+    return voices.find((v) => best.test(v.lang) && v.localService) || voices.find((v) => best.test(v.lang)) ||
+      voices.find((v) => any.test(v.lang) && v.localService) || voices.find((v) => any.test(v.lang)) || null;
   }
 
   // Short sentences keep long paragraphs from being cut off in some browsers
@@ -321,14 +336,15 @@ if (listen && "speechSynthesis" in window) {
     clearHighlight();
     el.classList.add("speaking");
     const u = new SpeechSynthesisUtterance(text);
+    current = u;
     u.lang = EN ? "en-US" : "ar-SA";
-    const voice = pageVoice();
+    const voice = useVoice ? pageVoice() : null;
     if (voice) u.voice = voice;
     u.rate = rates[rateIndex];
-    u.onstart = () => { started = true; clearTimeout(watchdog); };
-    u.onend = () => { if (state === "playing") { index++; speakNext(); } };
+    u.onstart = () => { if (u !== current) return; started = true; clearTimeout(watchdog); };
+    u.onend = () => { if (u === current && state === "playing") { index++; speakNext(); } };
     u.onerror = (e) => {
-      if (e.error === "interrupted" || e.error === "canceled") return;
+      if (u !== current || e.error === "interrupted" || e.error === "canceled") return;
       stop();
       status.textContent = tr("تعذّرت القراءة الصوتية على هذا الجهاز.", "Read-aloud isn't available on this device.");
     };
@@ -345,16 +361,25 @@ if (listen && "speechSynthesis" in window) {
     if (started) return;
     watchdog = setTimeout(() => {
       if (started || state !== "playing") return;
+      // First try again with the system's default voice for the language before giving up
+      if (useVoice) {
+        useVoice = false;
+        synth.cancel();
+        speakNext();
+        watchStart();
+        return;
+      }
       stop();
       status.textContent = tr(
         "لم يصدر صوت. تأكد أن الجوال ليس على الوضع الصامت، وأن فيه صوتًا عربيًا (في الآيفون: الإعدادات ← تسهيلات الاستخدام ← المحتوى المنطوق ← الأصوات ← العربية).",
         "No sound came out. Check that your phone isn't on silent and has an English voice installed (on iPhone: Settings → Accessibility → Spoken Content → Voices)."
       );
-    }, 4000);
+    }, 3500);
   }
 
   function stop() {
     state = "idle";
+    mediaOff();
     synth.cancel();
     clearHighlight();
     index = 0;
@@ -364,6 +389,7 @@ if (listen && "speechSynthesis" in window) {
   playBtn.addEventListener("click", () => {
     if (state === "playing") {
       state = "paused";
+      mediaOff();
       synth.cancel(); // pause by stopping, then resume from the same sentence
     } else {
       if (state === "idle") {
@@ -373,6 +399,7 @@ if (listen && "speechSynthesis" in window) {
         status.textContent = pageVoice() || !synth.getVoices().length ? "" : tr("قد لا يحتوي جهازك على صوت عربي.", "Your device may not have an English voice.");
       }
       state = "playing";
+      mediaOn();
       speakNext();
       watchStart();
     }
