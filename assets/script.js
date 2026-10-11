@@ -651,7 +651,7 @@ document.querySelectorAll(".share-btn").forEach((btn) => {
     }
     try {
       await navigator.clipboard.writeText(url);
-      done(tr("✓ نُسخ الرابط", "✓ Link copied"));
+      done(tr("✓ شارك الرابط", "✓ Share the link"));
     } catch (e) {
       window.prompt(tr("انسخ الرابط:", "Copy the link:"), url);
     }

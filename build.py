@@ -36,7 +36,7 @@ def share_btn(lang, path, title, extra_class=""):
     url = SITE + out_path(lang, path)
     title = re.sub(r"<[^>]+>", "", title).replace('"', "&quot;")
     return (f'<button class="share-btn{extra_class}" type="button" data-url="{url}" data-title="{title}">'
-            f'<span aria-hidden="true">🔗</span> {t("شارك", "Share")}</button>')
+            f'<span aria-hidden="true">🔗</span> {t("شارك الرابط", "Share the link")}</button>')
 
 
 def page(lang, path, key, title, body, desc, alt=None, icon=None):
@@ -390,41 +390,34 @@ CONTACTS = [
 ]
 
 
-LEGAL_UPDATED = ("١١ أكتوبر ٢٠٢٦", "October 11, 2026")
+LEGAL_UPDATED = ("١٢ أكتوبر ٢٠٢٦", "October 12, 2026")
 
 # الصفحات القانونية: (عنوان القسم، [فقرات]) بالعربية ثم بالإنجليزية
 PRIVACY = [
     (("مقدمة", "Introduction"),
-     [("هذا موقع شخصي للكاتبة شروق المحمادي (shoroogmi.com). لا يتطلب تسجيل حساب، ولا يبيع بيانات زوّاره ولا يؤجرها لأحد. توضّح هذه الصفحة ما يُجمع عند استخدامك الموقع، ولماذا، وأين يُحفظ.",
-       "This is the personal website of the writer Shoroog Almehmadi (shoroogmi.com). It requires no account, and it never sells or rents its visitors' data to anyone. This page explains what is collected when you use the site, why, and where it is kept.")]),
+     [("موقع شخصي لا يتطلب حسابًا، ولا يبيع بياناتك ولا يشاركها.",
+       "A personal website. It needs no account, and it never sells or shares your data.")]),
     (("ما الذي نجمعه؟", "What we collect"),
-     [("<b>عدّادات مجهولة الهوية:</b> عدد زوّار الموقع، والقرّاء الدائمين، والقراءات المكتملة، والإعجابات بكل مقال. هي أرقام إجمالية فقط تُحفظ في خدمة Abacus، ولا تتضمن اسمك ولا بريدك.",
-       "<b>Anonymous counters:</b> the number of site visitors, regular readers, completed reads and likes for each article. These are totals only, kept with the Abacus service, and they never include your name or email."),
-      ("<b>التعليقات على المقالات:</b> الاسم الذي تكتبه ونص تعليقك. تُحفظ في خدمة Supabase وتظهر لكل زوّار المقال.",
-       "<b>Comments on articles:</b> the name you type and the text of your comment. They are stored with the Supabase service and are visible to everyone who reads the article."),
-      ("<b>رسائل «برج المراقبة»:</b> اسمك، وبريدك إن اخترت كتابته، وموضوع الرسالة ونصها. تُرسل عبر خدمة FormSubmit إلى بريد الكاتبة، ولا تُنشر.",
-       "<b>Control Tower messages:</b> your name, your email if you choose to give it, and your message. They are sent through the FormSubmit service to the writer's inbox and are never published."),
-      ("<b>التقييم في الصفحة الرئيسية («قيّمنا»):</b> عدد النجوم، وتعليقك، واسمك إن كتبته. يُحفظ في خدمة Supabase ويُرسل إلى بريد الكاتبة. التقييمات الإيجابية (٤ أو ٥ نجوم مع تعليق) قد تظهر للزوّار في الصفحة الرئيسية مع الاسم الذي كتبته، وما سواها لا يُنشر.",
-       "<b>The home-page rating (“Rate Us”):</b> your stars, your comment, and your name if you give one. It is stored with the Supabase service and emailed to the writer. Positive ratings (4 or 5 stars with a comment) may be shown to visitors on the home page with the name you gave; all others are never published.")]),
-    (("ما يُحفظ في متصفحك", "What is stored in your browser"),
-     [("يحفظ الموقع في متصفحك (التخزين المحلي localStorage) معلومات صغيرة تبقى في جهازك ولا تُرسل إلى أحد: تفضيلك للوضع الليلي أو النهاري، وهل سبق أن أعجبك مقال أو أكملت قراءته (حتى لا يُحسب مرتين)، وتاريخ أول زيارة لك، ووقت آخر تعليق كتبته. يمكنك مسحها في أي وقت من إعدادات متصفحك.",
-       "The site keeps a few small notes in your browser's local storage. They stay on your device and are not sent anywhere: your light or dark theme, whether you have already liked or finished an article (so it isn't counted twice), the date of your first visit, and the time of your last comment. You can clear them at any time from your browser settings."),
-      ("لا يضع الموقع ملفات تعريف ارتباط (Cookies) خاصة به، ولا يستعمل أدوات تتبّع إعلانية.",
-       "The site sets no cookies of its own and uses no advertising trackers.")]),
-    (("الخدمات الخارجية", "Third-party services"),
-     [("يعتمد الموقع على خدمات خارجية لكل منها سياسة خصوصية خاصة بها، وقد يسجّل بعضها عنوان IP لأسباب تقنية: GitHub Pages (استضافة الموقع)، وGoogle Fonts (الخطوط)، وAbacus (العدّادات)، وSupabase (التعليقات)، وFormSubmit (الرسائل والتقييمات).",
-       "The site relies on outside services, each with its own privacy policy, and some may log your IP address for technical reasons: GitHub Pages (hosting), Google Fonts (typefaces), Abacus (counters), Supabase (comments) and FormSubmit (messages and ratings)."),
-      ("التسجيلات الصوتية للمقالات مولّدة مسبقًا من نص المقالات، ولا يُرسل أي شيء عنك عند تشغيلها.",
-       "The audio recordings of the articles are generated in advance from the article text; nothing about you is sent when you play them.")]),
-    (("كيف نستخدم هذه المعلومات؟", "How we use this information"),
-     [("للرد على رسائلك، ولعرض التعليقات، ولمعرفة عدد القرّاء وما يحبونه. لا إعلانات، ولا بيع، ولا مشاركة لأغراض تسويقية.",
-       "To reply to your messages, to show comments, and to know how many people read and what they enjoy. No advertising, no selling, no sharing for marketing.")]),
+     [("<b>عدّاد القراءة والزيارات والإعجابات:</b> أرقام فقط، لا يحفظ اسمك ولا بريدك.",
+       "<b>Read, visit and like counters:</b> numbers only. They never keep your name or email."),
+      ("<b>التعليقات على المقالات:</b> الاسم الذي تكتبه ونص تعليقك، وتظهر للقرّاء.",
+       "<b>Comments on articles:</b> the name you type and your comment, shown to readers."),
+      ("<b>رسائل برج المراقبة:</b> تصل إلى بريد الكاتبة، ولا تُنشر.",
+       "<b>Control Tower messages:</b> they reach the writer's inbox and are never published."),
+      ("<b>التقييم:</b> يصل إلى بريد الكاتبة، وقد يظهر في الصفحة الرئيسية بالاسم الذي كتبته.",
+       "<b>Ratings:</b> they reach the writer's inbox, and may appear on the home page with the name you gave.")]),
+    (("ما يُحفظ في جهازك", "What stays on your device"),
+     [("تفضيلاتك فقط: الوضع الليلي، وما أعجبك وما أكملت قراءته. لا ملفات ارتباط (Cookies)، ولا تتبّع إعلاني.",
+       "Only your preferences: dark mode, and what you liked or finished reading. No cookies, no ad tracking.")]),
+    (("لماذا نجمعها؟", "Why"),
+     [("للرد عليك، وعرض التعليقات، ومعرفة عدد القرّاء. لا إعلانات، ولا بيع.",
+       "To reply to you, show comments, and know how many people read. No ads, no selling.")]),
     (("حقوقك", "Your rights"),
-     [(f'يمكنك طلب حذف تعليقك أو رسالتك في أي وقت بمراسلة <a href="mailto:{EMAIL}">{EMAIL}</a>.',
-       f'You can ask for your comment or message to be deleted at any time by writing to <a href="mailto:{EMAIL}">{EMAIL}</a>.')]),
-    (("التعديلات على هذه السياسة", "Changes to this policy"),
-     [("قد تُحدَّث هذه السياسة من حين لآخر، ويظهر تاريخ آخر تحديث في أعلى الصفحة.",
-       "This policy may be updated from time to time; the date of the latest update appears at the top of the page.")]),
+     [(f'اطلب حذف تعليقك أو رسالتك متى شئت: <a href="mailto:{EMAIL}">{EMAIL}</a>.',
+       f'Ask for your comment or message to be deleted at any time: <a href="mailto:{EMAIL}">{EMAIL}</a>.')]),
+    (("التعديلات", "Changes"),
+     [("قد تُحدَّث هذه السياسة، وتاريخ آخر تحديث في أعلى الصفحة.",
+       "This policy may be updated; the date of the latest update is at the top of the page.")]),
 ]
 
 TERMS = [
@@ -437,8 +430,8 @@ TERMS = [
       ("<b>المقالات الإعلامية، ومقالات الذكاء الاصطناعي، والموضوعات الثقافية:</b> يمكن مشاركتها ونسخها كاملة، بشرط ذكر اسم الكاتبة (شروق المحمادي) أو الإشارة إلى الموقع (shoroogmi.com).",
        "<b>Media articles, artificial-intelligence articles and cultural topics:</b> you may share and copy them in full, provided you credit the writer (Shoroog Almehmadi) or mention the website (shoroogmi.com).")]),
     (("ما ليس ملكًا للكاتبة", "Content owned by others"),
-     [("حقوق أغلفة الكتب والأعمال المقتبس منها محفوظة لأصحابها، وتُعرض للتعريف والإشارة فقط. والترجمات الإنجليزية لمعاني الآيات مأخوذة من ترجمة Saheeh International، وترجمات الأحاديث من الترجمات المنشورة على sunnah.com.",
-       "Book covers and quoted works remain the property of their owners and are shown for reference only. The English renderings of Quranic verses are from the Saheeh International translation, and hadith translations are those published on sunnah.com.")]),
+     [("حقوق أغلفة الكتب والأعمال المقتبس منها محفوظة لأصحابها، وتُعرض للتعريف فقط. والترجمات الإنجليزية لمعاني الآيات مأخوذة من ترجمة Saheeh International (المنشورة على Quran.com)، وترجمات الأحاديث من الترجمات المنشورة على Sunnah.com.",
+       "Book covers and quoted works belong to their owners and are shown for reference only. The English renderings of Quranic verses are from the Saheeh International translation (as published on Quran.com), and hadith translations are those published on Sunnah.com.")]),
     (("التعليقات والرسائل", "Comments and messages"),
      [("أنت مسؤول عمّا تكتبه. يُمنع نشر الإساءة أو الشتم أو التحريض أو الإعلانات أو ما يخالف الأنظمة. وللكاتبة حذف أي تعليق دون إشعار.",
        "You are responsible for what you write. Abuse, insults, incitement, advertising and anything unlawful are not allowed, and the writer may remove any comment without notice.")]),
