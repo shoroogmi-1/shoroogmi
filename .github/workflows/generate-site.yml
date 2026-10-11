@@ -52,7 +52,7 @@ jobs:
         run: python3 build.py
       - name: Commit generated HTML
         run: |
-          git add '*.html' 'blog/articles/*.html' 'en/blog/articles/*.html'
+          git add '*.html' 'blog/articles/*.html' 'en/blog/articles/*.html' assets/search-ar.json assets/search-en.json sitemap.xml robots.txt
           if git diff --cached --quiet; then
             echo "No generated HTML changes."
           else

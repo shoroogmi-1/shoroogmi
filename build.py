@@ -28,6 +28,7 @@ def out_path(lang, path):
 
 
 SITE = "https://shoroogmi.com/"
+SITEMAP = []  # (url, {lang: url}, lastmod) تُملأ أثناء البناء
 
 
 def share_btn(lang, path, title, extra_class=""):
@@ -39,7 +40,7 @@ def share_btn(lang, path, title, extra_class=""):
             f'<span aria-hidden="true">🔗</span> {t("شارك الرابط", "Share the link")}</button>')
 
 
-def page(lang, path, key, title, body, desc, alt=None, icon=None):
+def page(lang, path, key, title, body, desc, alt=None, icon=None, image=None, og_type="website", lastmod=None, jsonld=None):
     """path is relative to the language's root; alt is the same page in the other language
     (defaults to path)."""
     t = lambda a, e: a if lang == "ar" else e
@@ -48,6 +49,28 @@ def page(lang, path, key, title, body, desc, alt=None, icon=None):
     h = p + ("" if lang == "ar" else "en/")  # to this language's home
     other = "en" if lang == "ar" else "ar"
     switch = p + out_path(other, alt or path)
+
+    # روابط مطلقة لمحركات البحث ومعاينات المشاركة
+    def abs_url(lng, pth):
+        pth = out_path(lng, pth)
+        return SITE + (pth[:-len("index.html")] if pth.endswith("index.html") else pth)
+    canonical = abs_url(lang, path)
+    other_abs = abs_url(other, alt or path)
+    og_img = SITE + (image or "assets/images/og-default.jpg")
+    SITEMAP.append((canonical, {lang: canonical, other: other_abs} if not alt else {lang: canonical}, lastmod))
+    seo = (f'  <link rel="canonical" href="{canonical}">\n'
+           f'  <link rel="alternate" hreflang="{lang}" href="{canonical}">\n'
+           + (f'  <link rel="alternate" hreflang="{other}" href="{other_abs}">\n' if not alt else "")
+           + f'  <meta property="og:type" content="{og_type}">\n'
+           f'  <meta property="og:site_name" content="{t("شروق المحمادي", "Shoroog Almehmadi")}">\n'
+           f'  <meta property="og:title" content="{title}">\n'
+           f'  <meta property="og:description" content="{desc}">\n'
+           f'  <meta property="og:url" content="{canonical}">\n'
+           f'  <meta property="og:image" content="{og_img}">\n'
+           f'  <meta property="og:locale" content="{t("ar_SA", "en_US")}">\n'
+           f'  <meta name="twitter:card" content="summary_large_image">\n')
+    if jsonld:
+        seo += f'  <script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>\n'
 
     def act(k):
         return ' class="active"' if k == key or (k == "blog" and key.startswith("blog")) else ""
@@ -62,8 +85,7 @@ def page(lang, path, key, title, body, desc, alt=None, icon=None):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title}</title>{f'{chr(10)}  <link rel="icon" type="image/png" href="{p}{icon}">{chr(10)}  <link rel="apple-touch-icon" href="{p}{icon}">' if icon else ""}
   <meta name="description" content="{desc}">
-  <link rel="alternate" hreflang="{other}" href="{switch}">
-  <script>try{{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
+{seo}  <script>try{{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Amiri+Quran&display=swap" rel="stylesheet">
@@ -326,7 +348,7 @@ def articles_for(lang):
             quote = m.get("quote") or excerpt
         out.append({
             "slug": slug, "tag": tags, "zawiya": ZAWIYA_TAG in m["tag"], "title": title, "excerpt": excerpt, "quote": quote, "blocks": blocks, "poem": poem,
-            "date": fmt_date(lang, m["date"]), "read": read_time(lang, blocks),
+            "date": fmt_date(lang, m["date"]), "iso": m["date"], "read": read_time(lang, blocks),
             "time": fmt_time(lang, m["time"]) if m.get("time") else "",
             "minutes": word_count(blocks) / 200,
         })
@@ -596,7 +618,15 @@ def build(lang):
 """
     page(lang, "index.html", "home", me, home,
          t("الموقع الشخصي لشروق المحمادي: جواز سفر، سجل الرحلات، أمتعة السفر، وبرج المراقبة.",
-           "The personal website of Shoroog Almehmadi: Passport, Travel Log, Luggage, and Control Tower."))
+           "The personal website of Shoroog Almehmadi: Passport, Travel Log, Luggage, and Control Tower."),
+         jsonld={"@context": "https://schema.org", "@graph": [
+             {"@type": "Person", "@id": SITE + "#person", "name": "شروق المحمادي", "alternateName": ["Shoroog Almehmadi", "shoroogmi"],
+              "url": SITE, "jobTitle": t("كاتبة", "Writer"), "image": SITE + "assets/images/og-default.jpg",
+              "sameAs": [c[3] for c in CONTACTS if c[3] and c[3].startswith("https://")]},
+             {"@type": "WebSite", "@id": SITE + "#website", "name": t("شروق المحمادي", "Shoroog Almehmadi"), "url": SITE,
+              "inLanguage": lang, "author": {"@id": SITE + "#person"},
+              "potentialAction": {"@type": "SearchAction", "target": SITE + out_path(lang, "search.html") + "?q={search_term_string}",
+                                  "query-input": "required name=search_term_string"}}]})
 
     # ---------- What travelers said (page) ----------
     reviews = page_head(me, t("ما قاله المسافرون", "What Travelers Said"),
@@ -959,10 +989,28 @@ def build(lang):
         # the other language's copy of this article, or its list of articles if not translated
         alt = None if lang == "en" or slug in _en_files else "blog/articles.html"
         plain = lambda x: re.sub(r"<[^>]+>", "", x).replace('"', "&quot;")
-        page(lang, f"blog/articles/{slug}.html", "blog-articles", f"{plain(title)} · {me}", body, plain(excerpt), alt)
+        first_img = next((IMG_RE.fullmatch(x.split("\n")[0]).group(2) for k, x in a["blocks"] if k == "img"), None)
+        img_path = f"assets/images/{first_img}" if first_img else None
+        ld = {"@context": "https://schema.org", "@type": "Article", "headline": plain(title), "description": plain(excerpt),
+              "inLanguage": lang, "datePublished": a["iso"], "author": {"@type": "Person", "name": me, "url": SITE},
+              "image": SITE + (img_path or "assets/images/og-default.jpg"), "mainEntityOfPage": SITE + out_path(lang, f"blog/articles/{slug}.html")}
+        page(lang, f"blog/articles/{slug}.html", "blog-articles", f"{plain(title)} · {me}", body, plain(excerpt), alt,
+             image=img_path, og_type="article", lastmod=a["iso"], jsonld=ld)
     return len(ARTICLES)
 
 
 n_ar = build("ar")
 n_en = build("en")
+
+# خريطة الموقع وملف robots لمحركات البحث
+with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as f:
+    f.write('<?xml version="1.0" encoding="UTF-8"?>\n'
+            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n')
+    for url, alts, lastmod in SITEMAP:
+        f.write(f"  <url>\n    <loc>{url}</loc>\n" + (f"    <lastmod>{lastmod}</lastmod>\n" if lastmod else "")
+                + "".join(f'    <xhtml:link rel="alternate" hreflang="{lg}" href="{u}"/>\n' for lg, u in sorted(alts.items()))
+                + "  </url>\n")
+    f.write("</urlset>\n")
+with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8") as f:
+    f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n")
 print(f"تم: {n_ar} مقالات بالعربية، و{n_en} بالإنجليزية")
