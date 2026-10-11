@@ -391,7 +391,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .station:nth-child(even) .stop-card { grid-column: 3; }
 
 .node {
-  position: relative; width: 96px; height: 96px; border-radius: 50%; border: none; cursor: pointer;
+  position: relative; display: grid; place-items: center; padding: 0; width: 96px; height: 96px; border-radius: 50%; border: none; cursor: pointer;
   background: radial-gradient(circle at 35% 30%, #fff 0 8%, var(--sun-soft) 30%, var(--sun) 75%);
   box-shadow: 0 10px 0 #d99a12, 0 20px 22px rgba(22, 50, 79, 0.28), inset 0 -6px 0 rgba(0, 0, 0, 0.08);
   transition: transform 0.15s, box-shadow 0.15s;
@@ -424,7 +424,8 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 }
 
 /* special stations */
-.station.start .node { background: radial-gradient(circle at 35% 30%, #fff 0 8%, #c9ecfb 30%, #7fcbed 75%); box-shadow: 0 10px 0 #4fa6cf, 0 20px 22px rgba(22, 50, 79, 0.28); }
+.station.start .node { background: radial-gradient(circle at 35% 30%, #fff 0 8%, #c8f2b0 30%, #6cc84a 75%); box-shadow: 0 10px 0 #4a9a2f, 0 20px 22px rgba(22, 50, 79, 0.28); }
+.station.start .node:active { box-shadow: 0 2px 0 #4a9a2f, 0 6px 10px rgba(22, 50, 79, 0.25); }
 .station.fail .node { background: radial-gradient(circle at 35% 30%, #fff 0 8%, #ffc2b8 30%, #f2735e 75%); box-shadow: 0 10px 0 #c24a37, 0 20px 22px rgba(22, 50, 79, 0.28); }
 .station.fail .stop-card { border-color: #f2a294; }
 .station.fail .badge { background: #2b1b1b; border-color: #2b1b1b; }
