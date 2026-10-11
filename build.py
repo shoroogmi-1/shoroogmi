@@ -188,10 +188,11 @@ OPTIONAL_FIELDS = {"الوقت": "time", "النوع": "kind"}  # الوقت ب�
 EN_FIELDS = {"Title": "title", "Excerpt": "excerpt"}
 
 # تصنيفات «رحلات طويلة» بالترتيب الذي تظهر به أزرار الفرز. «التصنيف» في كل مقال يجب أن يكون واحدًا منها.
-CATEGORIES = ["تأملات في القرآن والسنة", "مقالات نفسية واجتماعية", "مقالات فكرية", "قصائد"]
+CATEGORIES = ["تأملات في القرآن والسنة", "شعب العلاقة مع القرآن", "مقالات نفسية واجتماعية", "مقالات فكرية", "قصائد"]
 # اسم كل تصنيف في النسخة الإنجليزية
 CATEGORIES_EN = {
     "تأملات في القرآن والسنة": "Reflections on the Quran & Sunnah",
+    "شعب العلاقة مع القرآن": "Branches of the Relationship with the Quran",
     "مقالات نفسية واجتماعية": "Psychological & Social Essays",
     "مقالات فكرية": "Intellectual Essays",
     "قصائد": "Poems",
