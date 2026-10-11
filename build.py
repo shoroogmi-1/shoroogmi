@@ -288,8 +288,7 @@ STATIONS = [
     ("🏆", ("<b>جائزة أدب العزلة</b>، هيئة الأدب والنشر والترجمة، ٢٠٢٠.",
            "<b>Literature of Solitude Award</b>, Literature, Publishing and Translation Commission, 2020."), "🥇", "award"),
     ("🔬", ("نشرت <b>ستة بحوث علمية</b>.", "I published <b>six research papers</b>."), "📜📜📜", ""),
-    ("📖", ("<b>حفظت القرآن</b>: وهذا هو الإنجاز الحقيقي الذي أستشعر طعمه ونكهته بين شهادات لا نكهة لها.",
-           "<b>I memorized the Quran</b>: this is the real achievement, the one whose taste and flavor I savor among certificates that have no flavor."), "✨", "final"),
+    ("📖", ("<b>حفظ القرآن</b> ٢٠٢٦.", "<b>Memorized the Quran</b>, 2026."), "✨", "final"),
 ]
 
 # كتبي: (العنوان، العنوان الفرعي، الناشر، السنة، الرابط، صورة الغلاف الأمامي، صورة الغلاف الخلفي، فقرات الوصف)
