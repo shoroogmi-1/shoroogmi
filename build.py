@@ -60,7 +60,7 @@ def page(lang, path, key, title, body, desc, alt=None):
       <a href="{h}index.html" class="logo"><span class="logo-sun" aria-hidden="true"></span>{t("شروق المحمادي", "Shoroog Almehmadi")}</a>
       <button class="menu-toggle" aria-label="{t("فتح القائمة", "Open menu")}" aria-expanded="false">☰</button>
       <nav class="nav-links" aria-label="{t("القائمة الرئيسية", "Main menu")}">
-        <a href="{h}index.html"{act("home")}>{t("إقلاع الإشعاع", "Radiant Takeoff")}</a>
+        <a href="{h}index.html"{act("home")}>{t("مُشعشعة", "Radiant")}</a>
         <a href="{h}sira.html"{act("sira")}>{t("جواز سفر", "Passport")}</a>
         <div class="has-sub">
           <a href="{h}blog/index.html"{act("blog")}>{t("سجل الرحلات", "Travel Log")} <span class="caret" aria-hidden="true">▾</span></a>
@@ -284,11 +284,11 @@ STATIONS = [
            "I read <b>“The Crowd: A Study of the Popular Mind”</b> 3 times! Just to understand what social classes and race mean, which I didn't understand until 2026."), "🔁🔁🔁", ""),
     ("🏆", ("<b>جائزة أدب العزلة</b>، هيئة الأدب والنشر والترجمة، ٢٠٢٠.",
            "<b>Literature of Solitude Award</b>, Literature, Publishing and Translation Commission, 2020."), "🥇", "award"),
-    ("🗑️", ("رميت أول كتاب في سلة المهملات <b>«قانون الجذب»</b>، ثم توالت الكتب الساقطة بعدها. إنه لإنجاز أن تفرّق بين الجهل والعلم! وتضع كلًّا منهما في مكانه الصحيح.",
-            "The first book I threw in the trash was <b>“The Law of Attraction”</b>, and more failed books followed. It's an achievement to tell ignorance from knowledge! And to put each in its rightful place."), "⚔️🗑️", ""),
+    ("🗑️", ("رميت أول كتاب في سلة المهملات، ثم توالت الكتب الساقطة بعدها. إنه لإنجاز أن تفرّق بين الجهل والعلم! وتضع كلًّا منهما في مكانه الصحيح.",
+            "I threw my first book in the trash, and more failed books followed. It's an achievement to tell ignorance from knowledge! And to put each in its rightful place."), "⚔️🗑️", ""),
     ("🔬", ("نشرت <b>ستة بحوث علمية</b>.", "I published <b>six research papers</b>."), "📜📜📜", ""),
-    ("📘", ("<b>«Positive Thinking»</b> أول كتاب إنجليزي قرأته.",
-           "<b>“Positive Thinking”</b>, the first English book I read."), "🇬🇧", ""),
+    ("📘", ("<b>«<bdi>The Power of Positive Thinking</bdi>»</b> أول كتاب إنجليزي قرأته.",
+           "<b>“The Power of Positive Thinking”</b>, the first English book I read."), "🇬🇧", ""),
     ("📖", ("<b>حفظت القرآن</b>: وهذا هو الإنجاز الحقيقي الذي أستشعر طعمه ونكهته بين شهادات لا نكهة لها.",
            "<b>I memorized the Quran</b>: this is the real achievement, the one whose taste and flavor I savor among certificates that have no flavor."), "✨", "final"),
 ]
@@ -405,7 +405,7 @@ def build(lang):
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">{t("إقلاع الإشعاع", "Radiant Takeoff")}</h2>
+        <h2 class="section-title">{t("مُشعشعة", "Radiant")}</h2>
         <div class="tiles">
           <a class="tile" href="sira.html"><span class="tile-icon">🛂</span><h3>{t("جواز سفر", "Passport")}</h3><p>{t("هُوية الكاتبة، وسيرة مختصرة، وماذا تعمل.", "The writer's identity, a short biography, and what she does.")}</p></a>
           <a class="tile" href="blog/index.html"><span class="tile-icon">✍️</span><h3>{t("سجل الرحلات", "Travel Log")}</h3><p>{t("المقالات والزاوية ٣٦.", "The articles and Corner 36.")}</p></a>
@@ -714,7 +714,7 @@ def build(lang):
             <p class="comment-status" role="status"></p>
           </form>
           <ol class="comment-list"></ol>
-          <p class="no-comments" hidden>{t("لا تعليقات بعد… كن أول من يعلّق", "No comments yet… be the first to comment")} ✈️</p>
+          <p class="no-comments" hidden>{t("لا تعليقات بعد.. كن أول من يحلّق", "No comments yet.. be the first to take off")} ✈️</p>
         </section>
         <nav class="post-nav" aria-label="{t("تنقل بين الرحلات", "Journey navigation")}">{nav}</nav>
       </div>
