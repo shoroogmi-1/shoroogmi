@@ -37,7 +37,7 @@ if (grid) {
     const q = search ? search.value.trim() : "";
     let shown = 0;
     items.forEach((el) => {
-      const match = (tag === "all" || el.dataset.tag === tag) && (!q || el.textContent.includes(q));
+      const match = (tag === "all" || el.dataset.tag.split("|").includes(tag)) && (!q || el.textContent.includes(q));
       el.classList.toggle("hidden", !match);
       if (match) shown++;
     });
