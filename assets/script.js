@@ -569,22 +569,20 @@ if (rateBox) {
     const note = (data.get("note") || "").trim();
     const name = (data.get("name") || "").trim();
     statusEl.className = "form-status";
-    if (!stars && !note) {
-      statusEl.textContent = tr("اختر عدد النجوم أو اكتب تعليقك.", "Pick a number of stars or write a comment.");
+    if (!stars) {
+      statusEl.textContent = tr("اختر عدد النجوم أولًا ⭐", "Please pick a number of stars first ⭐");
       statusEl.classList.add("error");
       return;
     }
     if (data.get("_honey")) return;
     btn.disabled = true;
     statusEl.textContent = tr("جارٍ الإرسال…", "Sending…");
-    const starText = stars ? "★".repeat(stars) + "☆".repeat(5 - stars) + ` (${stars}/5)` : tr("بلا نجوم", "no stars");
-    const saved = stars
-      ? fetch(RATINGS_API, {
-          method: "POST",
-          headers: { ...sbHeaders, Prefer: "return=minimal" },
-          body: JSON.stringify({ stars, name: name || null, body: note || null, lang: EN ? "en" : "ar" }),
-        }).then((r) => r.ok).catch(() => false)
-      : Promise.resolve(false);
+    const starText = "★".repeat(stars) + "☆".repeat(5 - stars) + ` (${stars}/5)`;
+    const saved = fetch(RATINGS_API, {
+      method: "POST",
+      headers: { ...sbHeaders, Prefer: "return=minimal" },
+      body: JSON.stringify({ stars, name: name || null, body: note || null, lang: EN ? "en" : "ar" }),
+    }).then((r) => r.ok).catch(() => false);
     const mailed = fetch(`https://formsubmit.co/ajax/${rateBox.dataset.email}`, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
