@@ -118,26 +118,7 @@ def page_head(eyebrow, heading, lead, crumbs=""):
 
 # ---------- shared content ----------
 # الخواطر، الأحدث أولاً: (العنوان، التاريخ، النص)
-ZAWIYA = [
-    (("الضوء لا يستأذن", "Light Doesn't Knock"), "2026-10-01",
-     ("يدخل الضوء من أصغر شقّ في النافذة. هكذا هي الأفكار الجيدة: لا تحتاج إلا إلى فرصة صغيرة.",
-      "Light comes in through the smallest crack in the window. Good ideas are like that: all they need is a small chance.")),
-    (("قهوة الصباح", "Morning Coffee"), "2026-09-24",
-     ("ليست القهوة ما يوقظني، بل الدقائق الهادئة التي أمنحها لنفسي قبل أن يبدأ اليوم.",
-      "It isn't the coffee that wakes me, but the quiet minutes I give myself before the day begins.")),
-    (("عن البدايات", "On Beginnings"), "2026-09-17",
-     ("كل بداية تبدو صغيرة من الداخل، وكبيرة جداً حين ننظر إليها بعد عام.",
-      "Every beginning looks small from the inside, and very big when we look back at it a year later.")),
-    (("سؤال الأسبوع", "Question of the Week"), "2026-09-10",
-     ("ما الشيء الذي تؤجله لأنك تنتظر أن تصبح جاهزاً؟ ربما الجاهزية تأتي بعد الخطوة، لا قبلها.",
-      "What are you putting off because you're waiting to be ready? Maybe readiness comes after the step, not before it.")),
-    (("غيمة عابرة", "A Passing Cloud"), "2026-09-03",
-     ("الأيام الثقيلة مثل الغيوم: تحجب الشمس قليلاً، لكنها لا تطفئها.",
-      "Heavy days are like clouds: they hide the sun a little, but they don't put it out.")),
-    (("رسالة إلى نفسي", "A Note to Myself"), "2026-08-27",
-     ("تمهّلي. ليس كل ما هو مهم عاجلاً، وليس كل ما هو عاجل مهماً.",
-      "Slow down. Not everything important is urgent, and not everything urgent is important.")),
-]
+ZAWIYA = []
 
 AR_DIGITS = str.maketrans("0123456789", "٠١٢٣٤٥٦٧٨٩")
 
@@ -386,7 +367,7 @@ def build(lang):
 """
 
     # ---------- Home ----------
-    z0 = ZAWIYA[0]
+    z0 = ZAWIYA_ARTICLES[0] if ZAWIYA_ARTICLES else None
     home = f"""    <section class="hero">
       <div class="sky" aria-hidden="true">
         <div class="sun"><span class="rays"></span></div>
@@ -423,18 +404,19 @@ def build(lang):
     </section>
 
 {latest("blog/", "blog/articles.html") if ARTICLES else ""}
-    <section class="section">
+{f"""    <section class="section">
       <div class="container">
         <div class="section-head">
           <h2 class="section-title">{t("من الزاوية ٣٦", "From Corner 36")}</h2>
           <a class="more" href="blog/zawiya-36.html">{t("كل الخواطر", "All notes")} {fwd}</a>
         </div>
         <blockquote class="quote">
-          <p>{q1}{L(z0[2])}{q2}</p>
-          <cite>{L(z0[0])} · {fmt_date(lang, z0[1])}</cite>
+          <p>{q1}{z0["excerpt"]}{q2}</p>
+          <cite><a href="blog/articles/{z0["slug"]}.html">{z0["title"]}</a> · {z0["date"]}</cite>
         </blockquote>
       </div>
     </section>
+""" if z0 else ""}
 
     <section class="section cta">
       <div class="container cta-inner">
@@ -515,8 +497,8 @@ def build(lang):
           <h2 class="section-title">{t("أحدث الخواطر", "Latest Notes")}</h2>
           <a class="more" href="zawiya-36.html">{t("الزاوية ٣٦", "Corner 36")} {fwd}</a>
         </div>
-        <div class="notes">
-{chr(10).join(zawiya_card(len(ZAWIYA) - i, z) for i, z in enumerate(ZAWIYA[:3]))}
+        <div class="posts">
+{chr(10).join(article_card(a) for a in ZAWIYA_ARTICLES[:3])}
         </div>
       </div>
     </section>
@@ -562,9 +544,9 @@ def build(lang):
         <div class="posts zawiya-posts">
 {chr(10).join(article_card(a) for a in ZAWIYA_ARTICLES)}
         </div>""" if ZAWIYA_ARTICLES else ""}
-        <div class="notes">
+{f"""        <div class="notes">
 {chr(10).join(zawiya_card(len(ZAWIYA) - i, z) for i, z in enumerate(ZAWIYA))}
-        </div>
+        </div>""" if ZAWIYA else ""}
       </div>
     </section>
 """

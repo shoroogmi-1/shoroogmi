@@ -71,9 +71,9 @@ The wretched soul and the happy soul
 
 Thamud denied in their transgression (11) When the most wretched of them was sent forth (12) And the messenger of Allah said to them: The she-camel of Allah, and her drink (13) But they denied him and hamstrung her, so their Lord brought down upon them destruction for their sin and leveled it (14) And He does not fear the consequence thereof (15).
 
-When He finished mentioning the divisions of the happy and the wretched soul (And he has failed who corrupts it), He brought a real example of a particular wretched soul, namely the wretched one of the people of 'Aad, and that this is the outcome of whoever does not strive for guidance and purify himself: his soul leads him astray until it makes him slip, seduces him, and makes him transgress.
+When He finished mentioning the divisions of the happy and the wretched soul (And he has failed who corrupts it), He brought a real example of a particular wretched soul, namely the wretched one of the people of Thamud, and that this is the outcome of whoever does not strive for guidance and purify himself: his soul leads him astray until it makes him slip, seduces him, and makes him transgress.
 
-So if you ask me: And why did He mention in Surat Ash-Shams the story of 'Aad and not mention Pharaoh, for example, who was more wretched than him?
+So if you ask me: And why did He mention in Surat Ash-Shams the story of Thamud and not mention Pharaoh, for example, who was more wretched than him?
 
 The surah is brief, so brevity suits it, and sufficing with one example of the wretched soul that did not purify itself; and whoever disobeyed Allah and His Messenger, this was his outcome in this world before the Hereafter.
 

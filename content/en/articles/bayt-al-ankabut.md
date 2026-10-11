@@ -63,7 +63,7 @@ Emigration and sacrifice are among the hardest of tests: that you leave what you
 
 (O My servants who have believed, indeed My earth is spacious, so worship only Me (56) (Al-Ankabut)
 
-My earth is spacious: sins have substitutes among acts of obedience, gossip and idle talk have a replacement in beneficial knowledge, a bad friend is replaced by a righteous friend, goodness and mercy, and better and more ample than unlawful money is lawful, blessed money. You do not leave anything but that something more beautiful and more beneficial takes its place; (And whoever emigrates for the cause of Allah will find on the earth many locations and abundance) (At-Tawbah) It is as if repentance and striving are a journey and a voyage to a more beautiful city, a roomier and more spacious place than the one you lived in.
+My earth is spacious: sins have substitutes among acts of obedience, gossip and idle talk have a replacement in beneficial knowledge, a bad friend is replaced by a righteous friend, goodness and mercy, and better and more ample than unlawful money is lawful, blessed money. You do not leave anything but that something more beautiful and more beneficial takes its place; (And whoever emigrates for the cause of Allah will find on the earth many locations and abundance) (An-Nisa) It is as if repentance and striving are a journey and a voyage to a more beautiful city, a roomier and more spacious place than the one you lived in.
 
 And the reward for all that patience and that hardship and striving:
 
