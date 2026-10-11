@@ -635,6 +635,29 @@ function loadTestimonials() {
 }
 loadTestimonials();
 
+// Share buttons: the phone's share sheet when available, otherwise copy the link
+document.querySelectorAll(".share-btn").forEach((btn) => {
+  const original = btn.innerHTML;
+  const done = (msg) => {
+    btn.textContent = msg;
+    btn.classList.add("done");
+    setTimeout(() => { btn.innerHTML = original; btn.classList.remove("done"); }, 2200);
+  };
+  btn.addEventListener("click", async () => {
+    const { url, title } = btn.dataset;
+    if (navigator.share) {
+      try { await navigator.share({ title, url }); } catch (e) { /* closed by the reader */ }
+      return;
+    }
+    try {
+      await navigator.clipboard.writeText(url);
+      done(tr("✓ نُسخ الرابط", "✓ Link copied"));
+    } catch (e) {
+      window.prompt(tr("انسخ الرابط:", "Copy the link:"), url);
+    }
+  });
+});
+
 // Site search: titles and full article text. Arabic is matched ignoring diacritics and
 // letter variants (أ/إ/آ → ا، ة → ه، ى → ي), English ignoring case.
 const searchForm = document.querySelector(".site-search");

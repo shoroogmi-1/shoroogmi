@@ -27,6 +27,18 @@ def out_path(lang, path):
     return path if lang == "ar" else f"en/{path}"
 
 
+SITE = "https://shoroogmi.com/"
+
+
+def share_btn(lang, path, title, extra_class=""):
+    """زر «شارك»: يفتح قائمة المشاركة في الجوال، أو ينسخ الرابط في الحاسوب."""
+    t = lambda a, e: a if lang == "ar" else e
+    url = SITE + out_path(lang, path)
+    title = re.sub(r"<[^>]+>", "", title).replace('"', "&quot;")
+    return (f'<button class="share-btn{extra_class}" type="button" data-url="{url}" data-title="{title}">'
+            f'<span aria-hidden="true">🔗</span> {t("شارك", "Share")}</button>')
+
+
 def page(lang, path, key, title, body, desc, alt=None, icon=None):
     """path is relative to the language's root; alt is the same page in the other language
     (defaults to path)."""
@@ -592,7 +604,8 @@ def build(lang):
 
     sira = page_head(t("جواز سفر", "Passport"), t("هبوط وصعود", "Landings and Takeoffs"),
                      t("مرتفعات شديدة، وهبوط قوي، تمالك قلبك حتى لا يسقط.",
-                       "Steep climbs and hard drops: hold on to your heart so it doesn't fall.")) + f"""
+                       "Steep climbs and hard drops: hold on to your heart so it doesn't fall."),
+                     extra=f'        <p class="hero-share">{share_btn(lang, "sira.html", t("جواز سفر — شروق المحمادي", "Passport — Shoroog Almehmadi"))}</p>\n') + f"""
     <section class="section quest">
       <div class="container">
         <ul class="hud" aria-label="{t("لوحة اللعبة", "Game panel")}">
@@ -751,12 +764,13 @@ def build(lang):
 
     def book_card(title, sub, pub, year, url, front, back, desc):
         title = L(title)
+        book_id = "book-" + os.path.splitext(front)[0].replace("-front", "")
         link = (f'\n              <a class="btn btn-primary book-link" href="{url}" target="_blank" rel="noopener">🛒 {t("زيارة المتجر", "Visit the store")}</a>'
                 if url else "")
         covers = "".join(
             f'\n              <a href="{a_root}assets/books/{img}" target="_blank" rel="noopener"><img src="{a_root}assets/books/{img}" alt="{alt} {title}" width="900" height="1253" loading="lazy"></a>'
             for img, alt in ((front, t("الغلاف الأمامي لكتاب", "Front cover of")), (back, t("الغلاف الخلفي لكتاب", "Back cover of"))))
-        return f"""          <article class="book mine">
+        return f"""          <article class="book mine" id="{book_id}">
             <div class="covers">{covers}
             </div>
             <div class="book-info">
@@ -765,7 +779,10 @@ def build(lang):
               <p class="author">{L(pub)} · {L(year)}</p>
               <div class="book-desc">
 {chr(10).join(f"                <p>{L(d)}</p>" for d in desc)}
-              </div>{link}
+              </div>
+              <div class="book-actions">{link}
+              {share_btn(lang, f"books.html#{book_id}", title)}
+              </div>
             </div>
           </article>"""
 
@@ -897,6 +914,7 @@ def build(lang):
         <p class="signature">— {me}</p>
         <div class="engage">
           <button class="like-btn" type="button" aria-pressed="false"><span class="heart" aria-hidden="true">❤️</span> {t("جميل! لقد أعجبني!", "Lovely! I liked it!")} <b class="like-count">…</b></button>
+          {share_btn(lang, f"blog/articles/{slug}.html", title)}
         </div>
         <section class="comments" hidden aria-labelledby="comments-title">
           <h2 id="comments-title">💬 {t("تعليقات المسافرين", "Travelers' Comments")}</h2>

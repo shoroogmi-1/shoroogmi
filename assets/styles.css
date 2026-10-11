@@ -702,3 +702,11 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .testimonial blockquote { margin: 0 0 10px; line-height: 1.9; font-size: 1.02rem; }
 .testimonial figcaption { color: var(--muted); font-size: 0.9rem; }
 .rate-box input[name="name"] { width: 100%; font: inherit; padding: 10px 16px; border-radius: 14px; border: 1px solid var(--border); background: var(--bg); color: var(--ink); }
+/* زر المشاركة */
+.share-btn { font: inherit; font-weight: 700; font-size: 0.95rem; padding: 10px 18px; border-radius: 999px; cursor: pointer;
+  background: var(--card); color: var(--ink); border: 2px solid var(--border); border-bottom-width: 4px; display: inline-flex; align-items: center; gap: 6px; }
+.share-btn:hover { border-color: var(--sun); }
+.share-btn.done { border-color: #2f9a63; color: #2f9a63; }
+.hero-share { margin-top: 14px; }
+.book-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 14px; }
+.book-actions .book-link { margin: 0; flex: 1 1 220px; }
