@@ -63,7 +63,7 @@ That is why the safest course is that, with the years, a person becomes content 
 
 The manner of his weeping ﷺ:
 
-It was not with clamor and screaming, but quietly, with tears that are shed and flow down without sobbing, and if his weeping intensified, they would hear a sound from his chest like the simmering of a pot.
+It was not with clamor and screaming, but quietly, with tears that are shed and flow down without sobbing, and if his weeping intensified, they would hear a buzzing sound from his chest.
 
 Finally, these meanings can be applied and are not idealistic ideas. Start with what is easy in them and apply it. Each time, apply something from it.
 
