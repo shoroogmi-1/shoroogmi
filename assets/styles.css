@@ -636,3 +636,11 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .contact-form .field-hint { font-weight: 400; font-size: 0.85rem; color: var(--muted); }
 .page-hero .partner { margin-top: 10px; font-size: 1rem; color: var(--muted); }
 .page-hero .partner a { color: var(--accent-text); font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+/* مشغّل التسجيل الصوتي للمقال */
+.audio-player { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 0 0 28px; padding: 16px 18px;
+  background: var(--card); border: 2px solid var(--border); border-bottom-width: 4px; border-radius: 18px; }
+.audio-player .audio-label { margin: 0; flex-basis: 100%; font-weight: 700; font-size: 1.05rem; }
+.audio-player audio { flex: 1 1 240px; min-width: 0; height: 44px; }
+.audio-rate { font: inherit; font-weight: 700; font-size: 0.95rem; padding: 8px 16px; border-radius: 999px; cursor: pointer;
+  background: transparent; color: var(--ink); border: 2px solid var(--border); }
+.audio-rate:hover { border-color: var(--sun); }

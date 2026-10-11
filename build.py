@@ -8,6 +8,7 @@
 - بعد أي تعديل شغّلي الأمر أعلاه لتحديث ملفات HTML.
 """
 import hashlib
+import json
 import glob
 import os
 import re
@@ -115,6 +116,32 @@ def page_head(eyebrow, heading, lead, crumbs="", extra=""):
 {extra}      </div>
     </section>
 """
+
+
+# تسجيلات المقالات بصوت حامد (تصنعها tools/make_audio.py في GitHub Actions)
+AUDIO_DIR = os.path.join(ROOT, "assets", "audio")
+_audio_manifest_path = os.path.join(AUDIO_DIR, "manifest.json")
+AUDIO_V = json.load(open(_audio_manifest_path, encoding="utf-8")) if os.path.exists(_audio_manifest_path) else {}
+
+
+def audio_player(lang, slug):
+    """مشغّل التسجيل في صفحة المقال العربي، إن وُجد تسجيل؛ وإلا تُستعمل قراءة المتصفح."""
+    if lang != "ar" or not os.path.exists(os.path.join(AUDIO_DIR, f"{slug}.mp3")):
+        return ""
+    return f"""        <div class="audio-player">
+          <p class="audio-label">🎧 استمع للمقال بصوت حامد</p>
+          <audio controls preload="none" src="../../assets/audio/{slug}.mp3?v={AUDIO_V.get(slug, "")}"></audio>
+          <button class="audio-rate" type="button">السرعة ١×</button>
+        </div>"""
+
+
+def LISTEN_HTML(t):
+    return f"""        <div class="listen" hidden>
+          <button class="listen-btn" type="button"><span class="listen-icon" aria-hidden="true">🎧</span> <span class="listen-label">{t("استمع للمقال", "Listen to the article")}</span></button>
+          <button class="listen-stop" type="button" hidden>⏹ {t("إيقاف", "Stop")}</button>
+          <button class="listen-rate" type="button" hidden>{t("السرعة ١×", "Speed 1×")}</button>
+          <span class="listen-status" role="status"></span>
+        </div>"""
 
 
 # شريك الزاوية ٣٦
@@ -699,12 +726,7 @@ def build(lang):
 
     <article class="section" id="post" data-slug="{slug}" data-minutes="{a["minutes"]:.2f}">
       <div class="container narrow prose{" poem" if a["poem"] else ""}">
-        <div class="listen" hidden>
-          <button class="listen-btn" type="button"><span class="listen-icon" aria-hidden="true">🎧</span> <span class="listen-label">{t("استمع للمقال", "Listen to the article")}</span></button>
-          <button class="listen-stop" type="button" hidden>⏹ {t("إيقاف", "Stop")}</button>
-          <button class="listen-rate" type="button" hidden>{t("السرعة ١×", "Speed 1×")}</button>
-          <span class="listen-status" role="status"></span>
-        </div>
+{audio_player(lang, slug) or LISTEN_HTML(t)}
 {"" if a["poem"] or excerpt in lead_blocks else f'        <p class="excerpt">{excerpt}</p>{chr(10)}'}{render_body(a)}
         <p class="signature">— {me}</p>
         <div class="engage">
