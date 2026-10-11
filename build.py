@@ -144,7 +144,7 @@ FIELDS = {"العنوان": "title", "التاريخ": "date", "التصنيف":
 OPTIONAL_FIELDS = {"الوقت": "time", "النوع": "kind"}  # النوع: «قصيدة» يعرض الأبيات في المنتصف
 
 # تصنيفات «رحلات طويلة» بالترتيب الذي تظهر به أزرار الفرز. «التصنيف» في كل مقال يجب أن يكون واحدًا منها.
-CATEGORIES = ["تأملات في القرآن", "مقالات اجتماعية", "مقالات فكرية"]  # وقت النشر بنظام ٢٤ ساعة، مثل 21:30
+CATEGORIES = ["تأملات في القرآن", "مقالات اجتماعية", "مقالات فكرية", "قصائد"]  # وقت النشر بنظام ٢٤ ساعة، مثل 21:30
 
 
 def ar_time(hhmm):
@@ -190,7 +190,7 @@ ARTICLES = [(m["tag"], m["title"], ar_date(m["date"]), read_time(b), m["excerpt"
 SLUGS = [slug for _, slug, _ in _loaded]
 BODIES = {slug: b for _, slug, b in _loaded}
 TIMES = {slug: ar_time(m["time"]) for m, slug, _ in _loaded if m.get("time")}
-POEMS = {slug for m, slug, _ in _loaded if m.get("kind") == "قصيدة"}
+POEMS = {slug for m, slug, _ in _loaded if m.get("kind") == "قصيدة" or m["tag"] == "قصائد"}
 MINUTES = {slug: sum(len(t.split()) for _, t in b) / 200 for _, slug, b in _loaded}
 
 
@@ -394,7 +394,7 @@ page("blog/index.html", "blog", "سجل الرحلات · شروق المحما�
 crumbs_tpl = '        <nav class="crumbs" aria-label="مسار التنقل"><a href="index.html">سجل الرحلات</a> / <span>{}</span></nav>\n'
 
 # ---------- Articles ----------
-articles = page_head("سجل الرحلات", "رحلات طويلة", "تأملات في القرآن، ومقالات اجتماعية وفكرية.",
+articles = page_head("سجل الرحلات", "رحلات طويلة", "تأملات في القرآن، ومقالات اجتماعية وفكرية، وقصائد.",
                      crumbs_tpl.format("رحلات طويلة")) + f"""
     <section class="section">
       <div class="container">
