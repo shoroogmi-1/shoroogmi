@@ -554,6 +554,53 @@ if (form) {
   });
 }
 
+// Home page "Rate us": star rating + quick comment, sent to the writer's inbox through FormSubmit
+const rateBox = document.querySelector(".rate-box");
+if (rateBox) {
+  const statusEl = rateBox.querySelector(".form-status");
+  const btn = rateBox.querySelector('button[type="submit"]');
+  rateBox.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(rateBox);
+    const stars = Number(data.get("stars") || 0);
+    const note = (data.get("note") || "").trim();
+    statusEl.className = "form-status";
+    if (!stars && !note) {
+      statusEl.textContent = tr("اختر عدد النجوم أو اكتب تعليقك.", "Pick a number of stars or write a comment.");
+      statusEl.classList.add("error");
+      return;
+    }
+    if (data.get("_honey")) return;
+    btn.disabled = true;
+    statusEl.textContent = tr("جارٍ الإرسال…", "Sending…");
+    const starText = stars ? "★".repeat(stars) + "☆".repeat(5 - stars) + ` (${stars}/5)` : tr("بلا نجوم", "no stars");
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${rateBox.dataset.email}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `${tr("تقييم الموقع", "Site rating")}: ${starText}`,
+          _template: "box",
+          _captcha: "false",
+          rating: starText,
+          comment: note || "—",
+          page: EN ? "English" : "العربية",
+        }),
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || out.success === false || out.success === "false") throw new Error(out.message || res.status);
+      rateBox.reset();
+      statusEl.textContent = tr("وصل تقييمك ✈️ شكرًا لأنك سافرت معنا!", "Your rating has landed ✈️ Thank you for traveling with us!");
+      statusEl.classList.add("success");
+    } catch (err) {
+      statusEl.textContent = tr("تعذّر الإرسال الآن، حاول مرة أخرى بعد قليل.", "Couldn't send right now. Please try again shortly.");
+      statusEl.classList.add("error");
+    } finally {
+      btn.disabled = false;
+    }
+  });
+}
+
 // Site search: titles and full article text. Arabic is matched ignoring diacritics and
 // letter variants (أ/إ/آ → ا، ة → ه، ى → ي), English ignoring case.
 const searchForm = document.querySelector(".site-search");

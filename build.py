@@ -95,6 +95,7 @@ def page(lang, path, key, title, body, desc, alt=None, icon=None):
         <a href="{h}books.html">{t("أمتعة السفر", "Luggage")}</a>
         <a href="{h}contact.html">{t("برج المراقبة", "Control Tower")}</a>
       </nav>
+      <p class="legal-links"><a href="{h}privacy.html">{t("سياسة الخصوصية", "Privacy Policy")}</a> · <a href="{h}terms.html">{t("شروط الاستخدام", "Terms of Use")}</a></p>
       <p class="copy">© <span class="year"></span> {t("جميع الحقوق محفوظة", "All rights reserved")}</p>
     </div>
   </footer>
@@ -377,6 +378,71 @@ CONTACTS = [
 ]
 
 
+LEGAL_UPDATED = ("١١ أكتوبر ٢٠٢٦", "October 11, 2026")
+
+# الصفحات القانونية: (عنوان القسم، [فقرات]) بالعربية ثم بالإنجليزية
+PRIVACY = [
+    (("مقدمة", "Introduction"),
+     [("هذا موقع شخصي للكاتبة شروق المحمادي (shoroogmi.com). لا يتطلب تسجيل حساب، ولا يبيع بيانات زوّاره ولا يؤجرها لأحد. توضّح هذه الصفحة ما يُجمع عند استخدامك الموقع، ولماذا، وأين يُحفظ.",
+       "This is the personal website of the writer Shoroog Almehmadi (shoroogmi.com). It requires no account, and it never sells or rents its visitors' data to anyone. This page explains what is collected when you use the site, why, and where it is kept.")]),
+    (("ما الذي نجمعه؟", "What we collect"),
+     [("<b>عدّادات مجهولة الهوية:</b> عدد زوّار الموقع، والقرّاء الدائمين، والقراءات المكتملة، والإعجابات بكل مقال. هي أرقام إجمالية فقط تُحفظ في خدمة Abacus، ولا تتضمن اسمك ولا بريدك.",
+       "<b>Anonymous counters:</b> the number of site visitors, regular readers, completed reads and likes for each article. These are totals only, kept with the Abacus service, and they never include your name or email."),
+      ("<b>التعليقات على المقالات:</b> الاسم الذي تكتبه ونص تعليقك. تُحفظ في خدمة Supabase وتظهر لكل زوّار المقال.",
+       "<b>Comments on articles:</b> the name you type and the text of your comment. They are stored with the Supabase service and are visible to everyone who reads the article."),
+      ("<b>رسائل «برج المراقبة» والتقييم في الصفحة الرئيسية:</b> اسمك، وبريدك إن اخترت كتابته، وموضوع الرسالة ونصها، أو عدد النجوم وتعليقك. تُرسل عبر خدمة FormSubmit إلى بريد الكاتبة، ولا تُنشر.",
+       "<b>Control Tower messages and the home-page rating:</b> your name, your email if you choose to give it, and your message, or your star rating and comment. They are sent through the FormSubmit service to the writer's inbox and are never published.")]),
+    (("ما يُحفظ في متصفحك", "What is stored in your browser"),
+     [("يحفظ الموقع في متصفحك (التخزين المحلي localStorage) معلومات صغيرة تبقى في جهازك ولا تُرسل إلى أحد: تفضيلك للوضع الليلي أو النهاري، وهل سبق أن أعجبك مقال أو أكملت قراءته (حتى لا يُحسب مرتين)، وتاريخ أول زيارة لك، ووقت آخر تعليق كتبته. يمكنك مسحها في أي وقت من إعدادات متصفحك.",
+       "The site keeps a few small notes in your browser's local storage. They stay on your device and are not sent anywhere: your light or dark theme, whether you have already liked or finished an article (so it isn't counted twice), the date of your first visit, and the time of your last comment. You can clear them at any time from your browser settings."),
+      ("لا يضع الموقع ملفات تعريف ارتباط (Cookies) خاصة به، ولا يستعمل أدوات تتبّع إعلانية.",
+       "The site sets no cookies of its own and uses no advertising trackers.")]),
+    (("الخدمات الخارجية", "Third-party services"),
+     [("يعتمد الموقع على خدمات خارجية لكل منها سياسة خصوصية خاصة بها، وقد يسجّل بعضها عنوان IP لأسباب تقنية: GitHub Pages (استضافة الموقع)، وGoogle Fonts (الخطوط)، وAbacus (العدّادات)، وSupabase (التعليقات)، وFormSubmit (الرسائل والتقييمات).",
+       "The site relies on outside services, each with its own privacy policy, and some may log your IP address for technical reasons: GitHub Pages (hosting), Google Fonts (typefaces), Abacus (counters), Supabase (comments) and FormSubmit (messages and ratings)."),
+      ("التسجيلات الصوتية للمقالات مولّدة مسبقًا من نص المقالات، ولا يُرسل أي شيء عنك عند تشغيلها.",
+       "The audio recordings of the articles are generated in advance from the article text; nothing about you is sent when you play them.")]),
+    (("كيف نستخدم هذه المعلومات؟", "How we use this information"),
+     [("للرد على رسائلك، ولعرض التعليقات، ولمعرفة عدد القرّاء وما يحبونه. لا إعلانات، ولا بيع، ولا مشاركة لأغراض تسويقية.",
+       "To reply to your messages, to show comments, and to know how many people read and what they enjoy. No advertising, no selling, no sharing for marketing.")]),
+    (("حقوقك", "Your rights"),
+     [(f'يمكنك طلب حذف تعليقك أو رسالتك في أي وقت بمراسلة <a href="mailto:{EMAIL}">{EMAIL}</a>.',
+       f'You can ask for your comment or message to be deleted at any time by writing to <a href="mailto:{EMAIL}">{EMAIL}</a>.')]),
+    (("التعديلات على هذه السياسة", "Changes to this policy"),
+     [("قد تُحدَّث هذه السياسة من حين لآخر، ويظهر تاريخ آخر تحديث في أعلى الصفحة.",
+       "This policy may be updated from time to time; the date of the latest update appears at the top of the page.")]),
+]
+
+TERMS = [
+    (("قبول الشروط", "Acceptance"),
+     [("باستخدامك موقع shoroogmi.com فأنت توافق على هذه الشروط. إن لم توافق عليها فنرجو ألا تستخدم الموقع.",
+       "By using shoroogmi.com you agree to these terms. If you do not agree, please do not use the site.")]),
+    (("حقوق المحتوى", "Ownership of content"),
+     [("المقالات والقصائد والتأملات والتسجيلات الصوتية والصور المنشورة في الموقع ملك للكاتبة شروق المحمادي، ما لم يُذكر غير ذلك.",
+       "The articles, poems, reflections, audio recordings and images on this site belong to the writer Shoroog Almehmadi unless stated otherwise."),
+      ("يُسمح بالاقتباس القصير مع ذكر اسم الكاتبة ورابط المقال. أما نسخ المقال كاملًا، أو إعادة نشره، أو استعماله تجاريًا، فيحتاج إذنًا كتابيًا مسبقًا.",
+       "Short quotations are welcome with the writer's name and a link to the article. Copying an article in full, republishing it, or using it commercially requires prior written permission.")]),
+    (("ما ليس ملكًا للكاتبة", "Content owned by others"),
+     [("حقوق أغلفة الكتب والأعمال المقتبس منها محفوظة لأصحابها، وتُعرض للتعريف والإشارة فقط. والترجمات الإنجليزية لمعاني الآيات مأخوذة من ترجمة Saheeh International، وترجمات الأحاديث من الترجمات المنشورة على sunnah.com.",
+       "Book covers and quoted works remain the property of their owners and are shown for reference only. The English renderings of Quranic verses are from the Saheeh International translation, and hadith translations are those published on sunnah.com.")]),
+    (("التعليقات والرسائل", "Comments and messages"),
+     [("أنت مسؤول عمّا تكتبه. يُمنع نشر الإساءة أو الشتم أو التحريض أو الإعلانات أو ما يخالف الأنظمة. وللكاتبة حذف أي تعليق دون إشعار.",
+       "You are responsible for what you write. Abuse, insults, incitement, advertising and anything unlawful are not allowed, and the writer may remove any comment without notice.")]),
+    (("التسجيلات الصوتية والترجمة", "Audio and translation"),
+     [("التسجيلات الصوتية بصوت آلي مولَّد، وقد يقع فيها خطأ في النطق، والمرجع هو النص المكتوب. والنص العربي هو الأصل إذا اختلف عن الترجمة الإنجليزية.",
+       "The audio recordings use a computer-generated voice and may mispronounce a word; the written text is the reference. Where the English translation differs from the Arabic, the Arabic original prevails.")]),
+    (("إخلاء المسؤولية", "Disclaimer"),
+     [("محتوى الموقع تأملات وآراء شخصية للكاتبة، ولا يُعدّ فتوى شرعية، ولا استشارة نفسية أو طبية أو قانونية متخصصة.",
+       "The content of this site is the writer's personal reflection and opinion. It is not a religious ruling (fatwa), nor specialist psychological, medical or legal advice.")]),
+    (("الروابط الخارجية", "External links"),
+     [("قد يحتوي الموقع على روابط لمواقع أخرى، ولا تتحمل الكاتبة مسؤولية محتواها أو سياساتها.",
+       "The site may link to other websites; the writer is not responsible for their content or policies.")]),
+    (("تعديل الشروط", "Changes to these terms"),
+     [(f'قد تُعدَّل هذه الشروط من حين لآخر، ويظهر تاريخ آخر تحديث في أعلى الصفحة. للتواصل: <a href="mailto:{EMAIL}">{EMAIL}</a>.',
+       f'These terms may change from time to time; the date of the latest update appears at the top of the page. Contact: <a href="mailto:{EMAIL}">{EMAIL}</a>.')]),
+]
+
+
 def build(lang):
     t = lambda a, e: a if lang == "ar" else e
     L = lambda v: pick(lang, v)
@@ -474,6 +540,22 @@ def build(lang):
       </div>
     </section>
 """ if z0 else ""}
+
+    <section class="section">
+      <div class="container narrow">
+        <form class="rate-box" data-email="{EMAIL}" novalidate>
+          <h2 class="section-title">{t("قيّمنا", "Rate Us")}</h2>
+          <fieldset class="stars" aria-label="{t("التقييم بالنجوم", "Star rating")}">
+            <legend class="sr-only">{t("كم نجمة تعطي الرحلة؟", "How many stars for the journey?")}</legend>
+            {"".join(f'<input type="radio" name="stars" id="star{n}" value="{n}"><label for="star{n}" title="{num(n)}">★</label>' for n in range(5, 0, -1))}
+          </fieldset>
+          <textarea name="note" rows="3" maxlength="1000" placeholder="{t("كيف كانت الرحلة؟ بشّرنا!", "How was the journey? Tell us!")}" aria-label="{t("تعليق سريع", "Quick comment")}"></textarea>
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="btn btn-primary">{t("أرسل", "Send")}</button>
+          <p class="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
 
     <section class="section cta">
       <div class="container cta-inner">
@@ -612,6 +694,22 @@ def build(lang):
     page(lang, "blog/zawiya-36.html", "blog-zawiya", f"{t('الزاوية ٣٦', 'Corner 36')} · {me}", zawiya,
          t("الزاوية ٣٦: مقالات حديثة تترجمها شروق المحمادي وتحوّرها بطريقتها.", "Corner 36: recent articles translated and reshaped by Shoroog Almehmadi."),
          icon=ZAWIYA_LOGO)
+
+    # ---------- Privacy & Terms ----------
+    for path, key, title, lead, sections in (
+            ("privacy.html", "privacy", t("سياسة الخصوصية", "Privacy Policy"),
+             t("ما الذي يُجمع عند زيارتك، ولماذا، وأين يُحفظ.", "What is collected when you visit, why, and where it is kept."), PRIVACY),
+            ("terms.html", "terms", t("شروط الاستخدام", "Terms of Use"),
+             t("الشروط التي تنظّم استخدام الموقع ومحتواه.", "The terms that govern the use of this site and its content."), TERMS)):
+        body_html = "".join(f"        <h2>{L(h)}</h2>\n" + "".join(f"        <p>{L(par)}</p>\n" for par in pars) for h, pars in sections)
+        legal = page_head(me, title, lead) + f"""
+    <section class="section">
+      <div class="container narrow prose legal">
+        <p class="meta">{t("آخر تحديث:", "Last updated:")} {L(LEGAL_UPDATED)}</p>
+{body_html}      </div>
+    </section>
+"""
+        page(lang, path, key, f"{title} · {me}", legal, title)
 
     # ---------- Search ----------
     # فهرس البحث: العنوان والملخص ونص المقال كاملًا، يُحمَّل عند أول بحث فقط

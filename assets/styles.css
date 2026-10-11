@@ -675,3 +675,23 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
   .nav .nav-links { order: 2; }
   .nav .search-link { order: 3; margin-inline: 10px 0; }
 }
+/* قيّمنا: نجوم وتعليق سريع في الصفحة الرئيسية */
+.rate-box { display: grid; gap: 14px; justify-items: center; text-align: center; background: var(--card);
+  border: 2px solid var(--border); border-bottom-width: 4px; border-radius: 22px; padding: 26px 20px; }
+.rate-box .section-title { margin: 0; }
+.rate-box .stars { border: 0; padding: 0; margin: 0; display: inline-flex; flex-direction: row-reverse; gap: 6px; }
+.rate-box .stars input { position: absolute; opacity: 0; width: 1px; height: 1px; pointer-events: none; }
+.rate-box .stars label { font-size: 2.4rem; line-height: 1; cursor: pointer; color: var(--border); transition: transform 0.12s, color 0.12s; }
+.rate-box .stars label:hover, .rate-box .stars label:hover ~ label,
+.rate-box .stars input:checked ~ label { color: var(--sun); }
+.rate-box .stars label:hover { transform: scale(1.15); }
+.rate-box .stars input:focus-visible + label { outline: 2px solid var(--sun); outline-offset: 3px; border-radius: 6px; }
+.rate-box textarea { width: 100%; font: inherit; padding: 12px 16px; border-radius: 14px; border: 1px solid var(--border);
+  background: var(--bg); color: var(--ink); resize: vertical; }
+.rate-box .hp { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+/* روابط الخصوصية والشروط في التذييل */
+.legal-links { font-size: 0.85rem; margin: 6px 0 0; }
+.legal-links a { color: inherit; opacity: 0.85; }
+.legal-links a:hover { opacity: 1; text-decoration: underline; }
+.legal h2 { font-size: 1.3rem; margin-top: 1.6em; }
