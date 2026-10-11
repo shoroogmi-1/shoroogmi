@@ -274,8 +274,6 @@ def tags_html(tags, indent):
 # محطات جواز سفر بالترتيب: (أيقونة، النص — يقبل <b> للتأكيد، إيموجي الشارة، نوع خاص اختياري)
 STATIONS = [
     ("🐪", ("<b>١٩٩٩</b> - السعودية", "<b>1999</b> - Saudi Arabia"), "👶", "start"),
-    ("📕", ("<b>«نكت ونكت»</b> أول كتاب سخيف قرأته وأنا في الابتدائية.",
-           "<b>“Nukat wa Nukat”</b> (Jokes and More Jokes), the first silly book I read, back in elementary school."), "🤡", ""),
     ("🎓", ("<b>بكالوريوس علاقات عامة، إعلام واتصال</b> - جامعة أم القرى، مكة المكرمة، ٢٠٢٠.",
            "<b>Bachelor's in Public Relations, Media and Communication</b> - Umm Al-Qura University, Makkah, 2020."), "🎉", ""),
     ("✍️", ("<b>كاتبة إعلانات وسيناريو</b> لما يزيد عن عشرين جهة.",
