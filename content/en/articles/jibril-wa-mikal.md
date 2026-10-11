@@ -1,4 +1,4 @@
-Title: (Say, Whoever is an enemy to Allah and His angels and His messengers and Gabriel and Michael – then indeed, Allah is an enemy to the disbelievers)
+Title: (Whoever is an enemy to Allah and His angels and His messengers and Gabriel and Michael – then indeed, Allah is an enemy to the disbelievers)
 Excerpt: Allah the Exalted mentioned Gabriel before Michael (peace be upon them) because of the elevated status of the bearer of the Quran, even if he is an angel! So the bearer of the Quran is put before others in mention because of the elevated status of what has settled in his breast
 
 Allah the Exalted mentioned Gabriel before Michael (peace be upon them) because of the elevated status of the bearer of the Quran, even if he is an angel! So the bearer of the Quran is put before others in mention because of the elevated status of what has settled in his breast
