@@ -465,14 +465,16 @@ if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
   });
 }
 
-// Contact form: opens the visitor's email app with the message ready to send
+// Contact form: sends the message straight to the writer's inbox through FormSubmit (no email app needed)
 const form = document.querySelector(".contact-form");
 if (form) {
   const statusEl = form.querySelector(".form-status");
-  form.addEventListener("submit", (e) => {
+  const btn = form.querySelector('button[type="submit"]');
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const data = new FormData(form);
     const name = data.get("name").trim();
+    const email = (data.get("email") || "").trim();
     const topic = data.get("topic");
     const message = data.get("message").trim();
 
@@ -482,12 +484,31 @@ if (form) {
       statusEl.classList.add("error");
       return;
     }
-    const subject = `${topic} ${tr("من", "from")} ${name}`;
-    const body = `${message}\n\n— ${name}`;
-    window.location.href =
-      `mailto:${form.dataset.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    statusEl.textContent = tr("فتحنا لك تطبيق البريد والرسالة جاهزة، اضغط «إرسال» هناك.", "We opened your email app with the message ready. Press “Send” there.");
-    statusEl.classList.add("success");
+    if (data.get("_honey")) return;
+    btn.disabled = true;
+    statusEl.textContent = tr("جارٍ الإرسال…", "Sending…");
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${form.dataset.email}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          _subject: `${tr("برج المراقبة", "Control Tower")}: ${topic} ${tr("من", "from")} ${name}`,
+          _template: "box",
+          _captcha: "false",
+          name, ...(email ? { email } : {}), topic, message,
+        }),
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok || out.success === false || out.success === "false") throw new Error(out.message || res.status);
+      form.reset();
+      statusEl.textContent = tr("وصلت رسالتك إلى البرج ✈️ شكرًا لك!", "Your message reached the Tower ✈️ Thank you!");
+      statusEl.classList.add("success");
+    } catch (err) {
+      statusEl.textContent = tr("تعذّر الإرسال الآن، حاول مرة أخرى بعد قليل.", "Couldn't send right now. Please try again shortly.");
+      statusEl.classList.add("error");
+    } finally {
+      btn.disabled = false;
+    }
   });
 }
 

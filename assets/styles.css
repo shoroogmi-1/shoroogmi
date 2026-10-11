@@ -306,7 +306,7 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 }
 .comment-form input:focus-visible, .comment-form textarea:focus-visible { outline: 2px solid var(--sun); outline-offset: 1px; }
 .comment-form .btn { justify-self: start; }
-.comment-form .hp { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+.comment-form .hp, .contact-form .hp { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
 .comments .comment-status { min-height: 1.6em; margin: 0; font-weight: 500; }
 .comment-status.error { color: #d64545; }
 .comment-status.success { color: #2f9a63; }
