@@ -1,5 +1,6 @@
 Title: And You Are the Knight Who Says, “Patience!”
 Excerpt: And you are the knight who says, “Patience!” … when speech and neighing have died away
+Quote: So the leader in times of crisis gives people good news of relief and good, makes them patient and is patient along with them, and does not postpone it to the end.
 
 And you are the knight who says, “Patience!” … when speech and neighing have died away
 

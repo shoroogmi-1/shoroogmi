@@ -1,5 +1,6 @@
 Title: What Deserves Tears and What Does Not: Reflections on the Weeping of the Prophet ﷺ
 Excerpt: 1- The prohibition of weeping over what lies ahead: this is what Ibn al-Qayyim called “the weeping of fear” (Zad al-Ma’ad).
+Quote: So hold back your tears from what lies ahead of you, and let us set off on this journey of ours to learn what to shed them for.
 
 1- The prohibition of weeping over what lies ahead: this is what Ibn al-Qayyim called “the weeping of fear” (Zad al-Ma’ad).
 
