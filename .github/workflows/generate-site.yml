@@ -27,6 +27,7 @@ jobs:
         with:
           ref: main
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -59,3 +60,16 @@ jobs:
             git commit -m "Generate HTML pages from article content"
             git pull --rebase origin main && git push origin main
           fi
+      # إرسال المقالات الجديدة أو المعدّلة فورًا إلى Bing وغيره (IndexNow)، بعد أن صارت صفحاتها منشورة
+      - name: Notify search engines
+        if: github.event_name == 'push'
+        continue-on-error: true
+        run: |
+          sleep 90
+          BEFORE="${{ github.event.before }}"
+          if git cat-file -e "$BEFORE" 2>/dev/null; then
+            CHANGED=$(git diff --name-only "$BEFORE" "${{ github.sha }}" -- content/)
+          else
+            CHANGED=$(git show --name-only --format= "${{ github.sha }}" -- content/)
+          fi
+          python3 tools/indexnow.py $CHANGED
