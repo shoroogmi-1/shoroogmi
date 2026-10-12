@@ -721,3 +721,15 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
   .nav-links { gap: 2px; font-size: 1.05rem; }
   .nav-links a { padding: 8px 11px; }
 }
+/* تظليل القارئ وملاحظاته (خاصة بجهازه) */
+mark.hl { background: color-mix(in srgb, var(--sun) 55%, transparent); color: inherit; border-radius: 3px; padding: 0 1px; cursor: pointer; }
+mark.hl.has-note { box-shadow: inset 0 -3px 0 #e88aa8; }
+.hl-bar { position: absolute; z-index: 60; display: flex; flex-wrap: wrap; gap: 6px; max-width: min(92vw, 380px); padding: 8px;
+  background: var(--card); border: 2px solid var(--border); border-bottom-width: 4px; border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25); font-family: var(--font-sans); }
+.hl-bar[hidden] { display: none; }
+.hl-bar button { font: inherit; font-size: 0.92rem; font-weight: 700; padding: 7px 12px; border-radius: 999px; cursor: pointer;
+  background: var(--bg-alt); color: var(--ink); border: 1px solid var(--border); }
+.hl-bar button:hover { border-color: var(--sun); }
+.hl-bar .hl-note { flex-basis: 100%; margin: 2px 4px 4px; font-size: 0.95rem; line-height: 1.7; }
+.hl-bar .hl-msg { padding: 6px 10px; font-weight: 700; color: #2f9a63; }

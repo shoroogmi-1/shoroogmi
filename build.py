@@ -377,18 +377,31 @@ STATIONS = [
 
 # كتبي: (العنوان، العنوان الفرعي، الناشر، السنة، الرابط، صورة الغلاف الأمامي، صورة الغلاف الخلفي، فقرات الوصف)
 # الصور في assets/books/
-BOOKS = [
-    (("يا بشرى هذا غلام", "Ya Bushra Hadha Ghulam"),
-     ("تأملات في حسن الظن بالله واليقين والبشرى", "Reflections on Thinking Well of Allah, Certainty, and Glad Tidings"),
-     ("جمعية أدباء الأحساء", "Al-Ahsa Writers Association · In Arabic"), ("٢٠٢٦", "2026"),
-     "https://elitepublishsa.com/products/%D9%8A%D8%A7%D8%A8%D8%B4%D8%B1%D9%89-%D9%87%D8%B0%D8%A7-%D8%BA%D9%84%D8%A7%D9%85-%D8%B4%D8%B1%D9%88%D9%82-%D8%A7%D9%84%D8%AD%D9%85%D8%A7%D8%AF%D9%8A",
-     "ya-bushra-front.jpg", "ya-bushra-back.jpg", [
-         ("لا أعرف كتابًا كتبته من قلبي مخلوطًا بدمي مثل (يا بشرى هذا غلام: تأملات في حسن الظن بالله واليقين والبشرى)، وأعتقد أن هذه المعاني الثلاثة ركائز إيمانية هامة لتعميق علاقتنا مع ربٍّ رحيمٍ ودود، وليست مزاجًا متفائلًا طارئًا.",
-          "I know of no book I have written from my heart, mixed with my blood, like (Ya Bushra Hadha Ghulam: Reflections on Thinking Well of Allah, Certainty, and Glad Tidings). I believe these three meanings are important pillars of faith for deepening our relationship with a Merciful, Loving Lord, not a passing optimistic mood."),
-         ("نشرت الكتاب إلكترونيًا، وقد لاقى استحسانًا وانتشارًا لم أتوقعه، ورأيت أثر كلماته بفضل الله فيمن حولي، وقد طبعناه الآن في نسخة ورقية جديدة، مُرتّبةٍ مفهرسةٍ مُدقّقةٍ، وأضفنا إليه مقالاتٍ جديدة، وجدتها مُرضية تليق بقارئي الكريم.",
-          "I published the book electronically, and it met with an appreciation and a reach I did not expect, and by the grace of Allah I saw the effect of its words on those around me. We have now printed it in a new paper edition, organized, indexed and proofread, and added new articles to it that I found satisfying and worthy of my dear reader."),
-     ]),
-]
+def load_books():
+    """الكتب من content/books/*.md (وترجمتها في content/en/books/ بالاسم نفسه)، مرتبة بحقل «الترتيب»."""
+    out = []
+    ar_fields = {"العنوان": "title", "العنوان الفرعي": "sub", "الناشر": "pub", "السنة": "year", "رابط المتجر": "url",
+                 "الغلاف الأمامي": "front", "الغلاف الخلفي": "back", "الترتيب": "order"}
+    for path in sorted(glob.glob(os.path.join(ROOT, "content", "books", "*.md"))):
+        m, blocks = read_md(path, {k: v for k, v in ar_fields.items() if k in ("العنوان", "الغلاف الأمامي", "الغلاف الخلفي")})
+        m = {ar_fields.get(k, k): v for k, v in m.items()}
+        en_path = os.path.join(ROOT, "content", "en", "books", os.path.basename(path))
+        en, en_blocks = ({}, [])
+        if os.path.exists(en_path):
+            en, en_blocks = read_md(en_path, {"Title": "title"})
+            en = {k.lower(): v for k, v in en.items()}
+        for img in (m["front"], m["back"]):
+            if not os.path.exists(os.path.join(ROOT, "assets", "books", img)):
+                raise SystemExit(f"{path}: صورة الغلاف {img} غير موجودة في assets/books")
+        pair = lambda a, e: (a, e or a)
+        desc = [pair(x, en_blocks[i][1] if i < len(en_blocks) else "") for i, (_, x) in enumerate(blocks)]
+        out.append((int(m.get("order") or 99), (pair(m["title"], en.get("title")), pair(m.get("sub", ""), en.get("subtitle")),
+                    pair(m.get("pub", ""), en.get("publisher")), pair(m.get("year", ""), en.get("year")),
+                    m.get("url") or None, m["front"], m["back"], desc)))
+    return [b for _, b in sorted(out, key=lambda x: x[0])]
+
+
+BOOKS = load_books()
 
 EMAIL = "shoroogmi1@gmail.com"
 # شعارات التطبيقات (من مكتبة Simple Icons، رخصة CC0)
@@ -431,8 +444,8 @@ PRIVACY = [
       ("<b>التقييم:</b> يصل إلى بريد الكاتبة، وقد يظهر في الصفحة الرئيسية بالاسم الذي كتبته.",
        "<b>Ratings:</b> they reach the writer's inbox, and may appear on the home page with the name you gave.")]),
     (("ما يُحفظ في جهازك", "What stays on your device"),
-     [("تفضيلاتك فقط: الوضع الليلي، وما أعجبك وما أكملت قراءته. لا ملفات ارتباط (Cookies)، ولا تتبّع إعلاني.",
-       "Only your preferences: dark mode, and what you liked or finished reading. No cookies, no ad tracking.")]),
+     [("تفضيلاتك فقط: الوضع الليلي، وما أعجبك وما أكملت قراءته، وتظليلاتك وملاحظاتك على المقالات (لا يراها أحد غيرك). لا ملفات ارتباط (Cookies)، ولا تتبّع إعلاني.",
+       "Only your preferences: dark mode, what you liked or finished reading, and your highlights and notes on articles (nobody else sees them). No cookies, no ad tracking.")]),
     (("لماذا نجمعها؟", "Why"),
      [("للرد عليك، وعرض التعليقات، ومعرفة عدد القرّاء. لا إعلانات، ولا بيع.",
        "To reply to you, show comments, and know how many people read. No ads, no selling.")]),

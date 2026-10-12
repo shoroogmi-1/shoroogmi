@@ -657,6 +657,148 @@ document.querySelectorAll(".share-btn").forEach((btn) => {
   });
 });
 
+// Reader highlights & notes: select text inside an article paragraph to highlight it, add a private note,
+// or share the quote. Everything stays in this browser (localStorage); nobody else sees it.
+if (post) {
+  const prose = post.querySelector(".prose");
+  const slug = post.dataset.slug;
+  const KEY = `sm-hl-${EN ? "en" : "ar"}-${slug}`;
+  const blocks = () => [...prose.querySelectorAll(":scope > p:not(.signature):not(.excerpt), :scope > h2, :scope > blockquote p")];
+  const load = () => { try { return JSON.parse(localStorage.getItem(KEY) || "[]"); } catch (e) { return []; } };
+  const save = (list) => { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {} };
+  let list = load();
+
+  const bar = document.createElement("div");
+  bar.className = "hl-bar";
+  bar.hidden = true;
+  document.body.appendChild(bar);
+
+  // offset of (node, offset) inside a block's text
+  function textOffset(block, node, offset) {
+    const r = document.createRange();
+    r.setStart(block, 0);
+    r.setEnd(node, offset);
+    return r.toString().length;
+  }
+
+  function wrap(block, start, end, id) {
+    const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT);
+    let pos = 0, n;
+    const parts = [];
+    while ((n = walker.nextNode())) {
+      const len = n.data.length, a = Math.max(start - pos, 0), b = Math.min(end - pos, len);
+      if (a < b) parts.push([n, a, b]);
+      pos += len;
+    }
+    parts.forEach(([node, a, b]) => {
+      const r = document.createRange();
+      r.setStart(node, a);
+      r.setEnd(node, b);
+      const m = document.createElement("mark");
+      m.className = "hl";
+      m.dataset.hl = id;
+      r.surroundContents(m);
+    });
+  }
+
+  function render() {
+    prose.querySelectorAll("mark.hl").forEach((m) => m.replaceWith(...m.childNodes));
+    prose.normalize();
+    const bs = blocks();
+    list.forEach((h) => {
+      const b = bs[h.b];
+      if (!b || b.textContent.slice(h.s, h.e) !== h.t) return; // text changed since: skip quietly
+      wrap(b, h.s, h.e, h.id);
+      if (h.note) prose.querySelectorAll(`mark[data-hl="${h.id}"]`).forEach((m) => m.classList.add("has-note"));
+    });
+  }
+
+  function place(rect) {
+    bar.hidden = false;
+    const top = window.scrollY + rect.bottom + 10;
+    const left = Math.min(Math.max(window.scrollX + rect.left + rect.width / 2 - bar.offsetWidth / 2, 8), window.innerWidth - bar.offsetWidth - 8);
+    bar.style.top = `${top}px`;
+    bar.style.left = `${left}px`;
+  }
+  const hide = () => { bar.hidden = true; };
+
+  async function shareQuote(text) {
+    const title = document.querySelector(".article-hero h1")?.textContent.trim() || document.title;
+    const msg = `«${text}»\n— ${title}`;
+    if (navigator.share) { try { await navigator.share({ text: msg, url: location.href.split("#")[0] }); } catch (e) {} return; }
+    try { await navigator.clipboard.writeText(`${msg}\n${location.href.split("#")[0]}`); flash(tr("✓ نُسخ الاقتباس", "✓ Quote copied")); } catch (e) {}
+  }
+  function flash(msg) {
+    bar.innerHTML = `<span class="hl-msg">${msg}</span>`;
+    setTimeout(hide, 1600);
+  }
+
+  function noteDialog(h) {
+    const v = window.prompt(tr("ملاحظتك على هذا الاقتباس (تبقى في جهازك فقط):", "Your note on this passage (stays on your device only):"), h.note || "");
+    if (v === null) return;
+    h.note = v.trim();
+    save(list);
+    render();
+  }
+
+  // a fresh selection inside one paragraph → toolbar
+  let pending = null;
+  function onSelect() {
+    const sel = window.getSelection();
+    if (!sel || sel.isCollapsed || !sel.rangeCount) return;
+    const range = sel.getRangeAt(0);
+    const bs = blocks();
+    const bi = bs.findIndex((b) => b.contains(range.startContainer) && b.contains(range.endContainer));
+    if (bi === -1) return;
+    const b = bs[bi];
+    const s = textOffset(b, range.startContainer, range.startOffset), e = textOffset(b, range.endContainer, range.endOffset);
+    const text = b.textContent.slice(s, e);
+    if (!text.trim()) return;
+    pending = { b: bi, s, e, t: text };
+    bar.innerHTML = `<button type="button" data-a="hl">🖍 ${tr("ظلّل", "Highlight")}</button><button type="button" data-a="note">✍️ ${tr("ملاحظة", "Note")}</button><button type="button" data-a="share">🔗 ${tr("شارك الاقتباس", "Share quote")}</button>`;
+    place(range.getBoundingClientRect());
+  }
+  let selTimer = null;
+  document.addEventListener("selectionchange", () => { clearTimeout(selTimer); selTimer = setTimeout(onSelect, 250); });
+
+  // clicking an existing highlight → its menu
+  prose.addEventListener("click", (e) => {
+    const m = e.target.closest("mark.hl");
+    if (!m || !window.getSelection().isCollapsed) return;
+    const h = list.find((x) => x.id === m.dataset.hl);
+    if (!h) return;
+    pending = { existing: h };
+    bar.innerHTML = (h.note ? `<p class="hl-note">✍️ ${h.note.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c])}</p>` : "") +
+      `<button type="button" data-a="note">✍️ ${h.note ? tr("عدّل الملاحظة", "Edit note") : tr("أضف ملاحظة", "Add note")}</button><button type="button" data-a="share">🔗 ${tr("شارك", "Share")}</button><button type="button" data-a="del">🗑 ${tr("أزل التظليل", "Remove")}</button>`;
+    place(m.getBoundingClientRect());
+  });
+
+  bar.addEventListener("mousedown", (e) => e.preventDefault()); // keep the selection while tapping the bar
+  bar.addEventListener("click", (e) => {
+    const a = e.target.closest("button")?.dataset.a;
+    if (!a || !pending) return;
+    if (pending.existing) {
+      const h = pending.existing;
+      if (a === "del") { list = list.filter((x) => x !== h); save(list); render(); hide(); }
+      if (a === "note") { hide(); noteDialog(h); }
+      if (a === "share") shareQuote(h.t);
+      return;
+    }
+    if (a === "share") { shareQuote(pending.t); return; }
+    const h = { id: Date.now().toString(36), ...pending };
+    list.push(h);
+    save(list);
+    window.getSelection().removeAllRanges();
+    render();
+    hide();
+    if (a === "note") noteDialog(h);
+  });
+  document.addEventListener("click", (e) => { if (!bar.contains(e.target) && !e.target.closest("mark.hl") && window.getSelection().isCollapsed) hide(); });
+  window.addEventListener("resize", hide);
+
+  render();
+}
+
 // Site search: titles and full article text. Arabic is matched ignoring diacritics and
 // letter variants (أ/إ/آ → ا، ة → ه، ى → ي), English ignoring case.
 const searchForm = document.querySelector(".site-search");
