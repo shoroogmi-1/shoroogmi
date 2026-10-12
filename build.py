@@ -83,7 +83,10 @@ def page(lang, path, key, title, body, desc, alt=None, icon=None, image=None, og
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{title}</title>{f'{chr(10)}  <link rel="icon" type="image/png" href="{p}{icon}">{chr(10)}  <link rel="apple-touch-icon" href="{p}{icon}">' if icon else ""}
+  <title>{title}</title>
+{f'  <link rel="icon" type="image/png" href="{p}{icon}">{chr(10)}  <link rel="apple-touch-icon" href="{p}{icon}">' if icon else
+ f'  <link rel="icon" href="{p}favicon.ico" sizes="48x48">{chr(10)}  <link rel="icon" type="image/svg+xml" href="{p}assets/images/favicon.svg">{chr(10)}  <link rel="apple-touch-icon" href="{p}assets/images/apple-touch-icon.png">{chr(10)}  <link rel="manifest" href="{p}site.webmanifest">'}
+  <meta name="theme-color" content="#fbc93d">
   <meta name="description" content="{desc}">
 {seo}  <script>try{{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
