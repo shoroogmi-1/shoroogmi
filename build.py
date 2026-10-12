@@ -183,6 +183,10 @@ def LISTEN_HTML(t):
         </div>"""
 
 
+# «اختيارات القرّاء»: قائمة يكتبها tools/popular.py يوميًا من عدّاد القراءات والإعجابات
+_pop = os.path.join(ROOT, "content", "popular.json")
+POPULAR = json.load(open(_pop, encoding="utf-8")).get("items", []) if os.path.exists(_pop) else []
+
 # شعار الزاوية ٣٦
 ZAWIYA_LOGO = "assets/images/zawiya-36-logo.png"
 
@@ -533,6 +537,26 @@ def build(lang):
     </section>
 """
 
+    # ---------- «اختيارات القرّاء»: الأكثر قراءةً وإعجابًا (تُحدَّث يوميًا من tools/popular.py) ----------
+    def readers_picks(prefix):
+        by_slug = {a["slug"]: a for a in ALL_ARTICLES}
+        picks = [by_slug[x["slug"]] for x in POPULAR if x["slug"] in by_slug][:6]
+        if not picks:
+            return ""
+        cards = "\n".join(article_card(a, prefix, hook=True).replace(
+            '<article class="post-card"', f'<article class="post-card pick" data-rank="{num(i)}"', 1) for i, a in enumerate(picks, 1))
+        return f"""    <section class="section readers-picks">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">{t("اختيارات القرّاء", "Readers' Picks")} <span class="title-note">{t("(الأكثر تأثيرًا)", "(Most Impactful)")}</span></h2>
+        </div>
+        <div class="posts scroller">
+{cards}
+        </div>
+      </div>
+    </section>
+"""
+
     # ---------- «ما قاله المسافرون» و«قيّمنا» ----------
     def testimonials_html(limit, home=False):
         """التقييمات الإيجابية تُحمَّل من قاعدة البيانات؛ في الرئيسية شريط يُمرَّر أفقيًا ورابط للصفحة الكاملة."""
@@ -605,6 +629,7 @@ def build(lang):
     </section>
 
 {latest("blog/", "blog/articles.html", hook=True) if ARTICLES else ""}
+{readers_picks("blog/")}
 {f"""    <section class="section">
       <div class="container">
         <div class="section-head">

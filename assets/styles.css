@@ -733,3 +733,11 @@ mark.hl.has-note { box-shadow: inset 0 -3px 0 #e88aa8; }
 .hl-bar button:hover { border-color: var(--sun); }
 .hl-bar .hl-note { flex-basis: 100%; margin: 2px 4px 4px; font-size: 0.95rem; line-height: 1.7; }
 .hl-bar .hl-msg { padding: 6px 10px; font-weight: 700; color: #2f9a63; }
+/* اختيارات القرّاء (الأكثر تأثيرًا): شريط أفقي ببطاقات مرقّمة */
+.posts.scroller { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; padding: 6px 2px 12px; scrollbar-width: thin; }
+.posts.scroller .post-card { flex: 0 0 min(82%, 320px); scroll-snap-align: start; }
+.post-card.pick { position: relative; }
+.post-card.pick::before { content: attr(data-rank); position: absolute; top: -12px; inset-inline-end: 14px; z-index: 1;
+  display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
+  background: var(--sun); color: #16324f; font-weight: 800; font-size: 1.05rem; box-shadow: 0 3px 0 #d99a12; }
+.title-note { font-size: 0.6em; font-weight: 600; color: var(--muted); }

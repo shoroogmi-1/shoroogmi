@@ -9,6 +9,9 @@ on:
       - 'tools/**'
       - '.github/workflows/generate-site.yml'
   workflow_dispatch:
+  # كل يوم ٦:١٧ صباحًا بتوقيت السعودية: تحديث «اختيارات القرّاء» من عدّاد القراءات والإعجابات
+  schedule:
+    - cron: '17 3 * * *'
 
 permissions:
   contents: write
@@ -49,11 +52,14 @@ jobs:
             git commit -m "Record article audio"
             git pull --rebase origin main && git push origin HEAD:main
           done
+      - name: Update readers' picks
+        continue-on-error: true
+        run: python3 tools/popular.py
       - name: Generate HTML
         run: python3 build.py
       - name: Commit generated HTML
         run: |
-          git add '*.html' 'blog/articles/*.html' 'en/blog/articles/*.html' assets/search-ar.json assets/search-en.json sitemap.xml robots.txt
+          git add '*.html' 'blog/articles/*.html' 'en/blog/articles/*.html' assets/search-ar.json assets/search-en.json sitemap.xml robots.txt content/popular.json
           if git diff --cached --quiet; then
             echo "No generated HTML changes."
           else
