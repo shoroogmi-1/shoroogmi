@@ -1,20 +1,56 @@
 {
- "updated": "2026-10-12",
+ "updated": "2026-10-13",
  "items": [
   {
-   "slug": "al-faris-al-qawwal",
+   "slug": "nazariyyat-dharhum",
    "reads": 3,
-   "likes": 1,
-   "score": 5
+   "likes": 3,
+   "score": 9
   },
   {
-   "slug": "nazariyyat-dharhum",
-   "reads": 1,
+   "slug": "al-faris-al-qawwal",
+   "reads": 4,
+   "likes": 2,
+   "score": 8
+  },
+  {
+   "slug": "al-makana-as-samawiyya",
+   "reads": 2,
    "likes": 1,
-   "score": 3
+   "score": 4
+  },
+  {
+   "slug": "shuab-al-alaqa",
+   "reads": 2,
+   "likes": 0,
+   "score": 2
+  },
+  {
+   "slug": "akhtar-ash-shuhra",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
+   "slug": "al-hawiyya",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
   },
   {
    "slug": "al-ijtima-bad-al-iftiraq",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
+   "slug": "ansini-ma-amdayt",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
+   "slug": "fi-bidayat-alaqatik",
    "reads": 1,
    "likes": 0,
    "score": 1
@@ -39,12 +75,6 @@
   },
   {
    "slug": "sana-barqih",
-   "reads": 1,
-   "likes": 0,
-   "score": 1
-  },
-  {
-   "slug": "shuab-al-alaqa",
    "reads": 1,
    "likes": 0,
    "score": 1
