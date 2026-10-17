@@ -741,3 +741,22 @@ mark.hl.has-note { box-shadow: inset 0 -3px 0 #e88aa8; }
   display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%;
   background: var(--sun); color: #16324f; font-weight: 800; font-size: 1.05rem; box-shadow: 0 3px 0 #d99a12; }
 .title-note { font-size: 0.6em; font-weight: 600; color: var(--muted); }
+
+/* وسائط المقال: فيديو ويوتيوب وصوت وملفات للتحميل */
+.post-video video, .post-video .yt { display: block; width: 100%; border-radius: 14px; background: #000; }
+.post-video .yt { position: relative; aspect-ratio: 16 / 9; overflow: hidden; }
+.post-video .yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.post-sound audio { width: 100%; }
+.post-file { display: flex; align-items: center; gap: 12px; margin: 22px 0; padding: 14px 18px; border: 1px solid var(--border, #d2eaf6);
+  border-radius: 14px; background: var(--card, #fff); color: inherit; text-decoration: none; }
+.post-file:hover { border-color: var(--sun, #fbc93d); }
+.post-file-icon { font-size: 1.5rem; }
+.post-file-name { flex: 1; font-weight: 600; }
+.post-file-ext { font-size: 0.85rem; color: var(--muted); white-space: nowrap; }
+/* تعريف تصنيف «الزاوية ٣٦» في رحلات طويلة */
+.cat-intro { display: flex; align-items: center; gap: 14px; margin: 0 0 22px; padding: 14px 18px; border-radius: 16px;
+  background: var(--card, #fff); border: 1px solid var(--border, #d2eaf6); }
+.cat-intro[hidden] { display: none; }
+.cat-intro img { border-radius: 12px; flex: none; }
+.cat-intro p { margin: 0; }
+.cat-intro .partner { display: block; font-size: 0.9rem; color: var(--muted); }

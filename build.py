@@ -3,7 +3,7 @@
 التشغيل:  python3 build.py
 
 - المقالات: ملف لكل مقال في content/articles/، وترجمته الإنجليزية بالاسم نفسه في content/en/articles/ (انظري README.md).
-- الزاوية ٣٦ والكتب ومحطات جواز سفر والتواصل: قوائم داخل هذا الملف (ابحثي عن ZAWIYA و BOOKS و STATIONS و CONTACTS).
+- الكتب ومحطات جواز سفر والتواصل: قوائم داخل هذا الملف (ابحثي عن BOOKS و STATIONS و CONTACTS).
   النص الذي يختلف بين اللغتين يُكتب زوجًا: ("النص العربي", "English text").
 - بعد أي تعديل شغّلي الأمر أعلاه لتحديث ملفات HTML.
 """
@@ -13,6 +13,7 @@ import json
 import glob
 import os
 import re
+from urllib.parse import quote as url_quote
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 LANGS = ("ar", "en")
@@ -107,7 +108,6 @@ def page(lang, path, key, title, body, desc, alt=None, icon=None, image=None, og
           <a href="{h}blog/index.html"{act("blog")}>{t("سجل الرحلات", "Travel Log")} <span class="caret" aria-hidden="true">▾</span></a>
           <div class="sub">
             <a href="{h}blog/articles.html"{sub("blog-articles")}>{t("رحلات طويلة", "Long Journeys")}</a>
-            <a href="{h}blog/zawiya-36.html"{sub("blog-zawiya")}>{t("الزاوية ٣٦", "Corner 36")}</a>
           </div>
         </div>
         <a href="{h}books.html"{act("books")}>{t("أمتعة السفر", "Luggage")}</a>
@@ -129,7 +129,6 @@ def page(lang, path, key, title, body, desc, alt=None, icon=None, image=None, og
       <nav class="footer-links" aria-label="{t("روابط التذييل", "Footer links")}">
         <a href="{h}sira.html">{t("جواز سفر", "Passport")}</a>
         <a href="{h}blog/articles.html">{t("رحلات طويلة", "Long Journeys")}</a>
-        <a href="{h}blog/zawiya-36.html">{t("الزاوية ٣٦", "Corner 36")}</a>
         <a href="{h}books.html">{t("أمتعة السفر", "Luggage")}</a>
         <a href="{h}testimonials.html">{t("ما قاله المسافرون", "What Travelers Said")}</a>
         <a href="{h}contact.html">{t("برج المراقبة", "Control Tower")}</a>
@@ -201,8 +200,6 @@ ASSET_V = {f: hashlib.md5(open(os.path.join(ROOT, "assets", f), "rb").read()).he
 
 
 # ---------- shared content ----------
-# الخواطر، الأحدث أولاً: (العنوان، التاريخ، النص)
-ZAWIYA = []
 
 AR_DIGITS = str.maketrans("0123456789", "٠١٢٣٤٥٦٧٨٩")
 
@@ -247,15 +244,16 @@ def read_time(lang, blocks):
 
 
 # أسماء حقول الترويسة بالعربية (والإنجليزية مقبولة أيضاً)
-FIELDS = {"العنوان": "title", "التاريخ": "date", "التصنيف": "tag", "الملخص": "excerpt"}
-OPTIONAL_FIELDS = {"الوقت": "time", "النوع": "kind", "اقتباس": "quote", "Quote": "quote"}  # الوقت بنظام ٢٤ ساعة مثل 21:30، والنوع «قصيدة» يعرض الأبيات في المنتصف
+FIELDS = {"العنوان": "title", "التاريخ": "date", "التصنيف": "tag"}
+# «الملخص» صار اختياريًا: المقالات الجديدة تكتفي بـ«اقتباس»، وهو الذي يظهر في بطاقة المقال
+OPTIONAL_FIELDS = {"الملخص": "excerpt", "Excerpt": "excerpt", "الوقت": "time", "النوع": "kind", "اقتباس": "quote", "Quote": "quote"}  # الوقت بنظام ٢٤ ساعة مثل 21:30، والنوع «قصيدة» يعرض الأبيات في المنتصف
 # ترويسة الترجمة الإنجليزية (التاريخ والتصنيف والوقت تؤخذ من المقال العربي)
-EN_FIELDS = {"Title": "title", "Excerpt": "excerpt"}
+EN_FIELDS = {"Title": "title"}
 
 # تصنيفات «رحلات طويلة» بالترتيب الذي تظهر به أزرار الفرز. «التصنيف» في كل مقال يجب أن يكون واحدًا منها.
 CATEGORIES = ["تأملات في القرآن والسنة", "شعب العلاقة مع القرآن", "مقالات نفسية واجتماعية", "مقالات فكرية", "مقالات تربوية",
-              "مقالات إعلامية", "الذكاء الاصطناعي", "الشهرة والمشاهير", "القيادة", "قصائد"]
-# المقال الذي تصنيفه «الزاوية ٣٦» يظهر في صفحة الزاوية ٣٦ لا في رحلات طويلة
+              "مقالات إعلامية", "تقارير الإعلام الإيراني", "الذكاء الاصطناعي", "الشهرة والمشاهير", "القيادة", "الزاوية ٣٦", "قصائد"]
+# «الزاوية ٣٦» صارت تصنيفًا من تصنيفات رحلات طويلة (صفحتها القديمة تحوّل إليه)
 ZAWIYA_TAG = "الزاوية ٣٦"
 # اسم كل تصنيف في النسخة الإنجليزية
 CATEGORIES_EN = {
@@ -265,6 +263,7 @@ CATEGORIES_EN = {
     "مقالات فكرية": "Intellectual Essays",
     "مقالات تربوية": "Parenting & Education Essays",
     "مقالات إعلامية": "Media Essays",
+    "تقارير الإعلام الإيراني": "Iranian Media Reports",
     "الذكاء الاصطناعي": "Artificial Intelligence",
     "الشهرة والمشاهير": "Fame & Celebrities",
     "القيادة": "Leadership",
@@ -274,6 +273,30 @@ CATEGORIES_EN = {
 
 
 IMG_RE = re.compile(r"!\[([^\]]*)\]\(([^)\s]+)\)")
+# سطر وسائط في المقال: صورة أو فيديو أو صوت ![وصف](ملف) — ملف للتحميل [وصف](ملف) — أو رابط يوتيوب وحده
+MEDIA_RE = re.compile(r"(!?)\[([^\]]*)\]\(([^)\s]+)\)")
+YT_RE = re.compile(r"https?://(?:www\.|m\.)?(?:youtube\.com/(?:watch\?v=|shorts/|embed/)|youtu\.be/)([\w-]{11})\S*")
+VIDEO_EXT = (".mp4", ".webm", ".mov", ".m4v")
+SOUND_EXT = (".mp3", ".m4a", ".wav", ".ogg")
+# مجلدات الوسائط: assets/media (للصور والفيديو والملفات) و assets/images (القديم)
+MEDIA_DIRS = ("assets/media", "assets/images")
+
+
+def media_path(src):
+    """مسار ملف الوسائط داخل الموقع، أو None إن لم يوجد."""
+    for d in MEDIA_DIRS:
+        if os.path.exists(os.path.join(ROOT, d, src)):
+            return f"{d}/{src}"
+    return None
+
+
+def is_media_line(line):
+    m = MEDIA_RE.fullmatch(line)
+    if m:
+        if YT_RE.fullmatch(m.group(3)):
+            return True
+        return m.group(1) == "!" or "." in m.group(3).rsplit("/", 1)[-1] and "://" not in m.group(3)
+    return bool(YT_RE.fullmatch(line))
 
 
 def read_md(path, fields):
@@ -292,12 +315,12 @@ def read_md(path, fields):
     blocks = []
     for para in re.split(r"\n\s*\n", body.strip()):
         lines = [line.strip() for line in para.splitlines() if line.strip()]
-        # فقرة كل أسطرها صور: ![وصف](اسم-الملف.jpg) — الملفات في assets/images
-        if lines and all(IMG_RE.fullmatch(line) for line in lines):
+        # فقرة كل أسطرها وسائط: صور/فيديو/صوت/ملفات (في assets/media أو assets/images) أو روابط يوتيوب
+        if lines and all(is_media_line(line) for line in lines):
             for line in lines:
-                src = IMG_RE.fullmatch(line).group(2)
-                if not os.path.exists(os.path.join(ROOT, "assets", "images", src)):
-                    raise SystemExit(f"{path}: الصورة {src} غير موجودة في assets/images")
+                m = MEDIA_RE.fullmatch(line)
+                if m and "://" not in m.group(3) and not media_path(m.group(3)):
+                    raise SystemExit(f"{path}: الملف {m.group(3)} غير موجود في assets/media ولا assets/images")
             blocks.append(("img", "\n".join(lines)))
             continue
         para = " ".join(lines)
@@ -315,7 +338,7 @@ def load_article(path):
     # أكثر من تصنيف يُفصل بفاصلة: «تأملات في القرآن والسنة، مقالات نفسية واجتماعية»
     meta["tag"] = tuple(t.strip() for t in re.split(r"[،,]", meta["tag"]) if t.strip())
     for t in meta["tag"]:
-        if t not in CATEGORIES and t != ZAWIYA_TAG:
+        if t not in CATEGORIES:
             raise SystemExit(f"{path}: التصنيف «{t}» غير معروف. التصنيفات المتاحة: {'، '.join(CATEGORIES)}")
     if meta.get("time") and not re.fullmatch(r"\d{1,2}:\d{2}", meta["time"]):
         raise SystemExit(f"{path}: اكتبي الوقت بهذا الشكل 21:30")
@@ -346,15 +369,20 @@ def articles_for(lang):
                 raise SystemExit(f"content/en/articles/{slug}.md: عدد أبيات الترجمة لا يساوي عدد أبيات القصيدة")
             # *word* in the translation is shown in italics (used for transliterated Arabic words)
             em = lambda x: re.sub(r"\*([^*]+)\*", r"<em>\1</em>", x)
-            title, excerpt = em(en["title"]), em(en["excerpt"])
-            quote = em(en.get("quote") or en["excerpt"])
+            title = em(en["title"])
+            first = next((x for k, x in en_blocks if k == "p"), "")
+            excerpt = em(en.get("excerpt") or en.get("quote") or first)
+            quote = em(en.get("quote") or excerpt)
             blocks = [(k, em(x)) for k, x in en_blocks]
             tags = tuple(CATEGORIES_EN[t] for t in m["tag"])
         else:
-            title, excerpt, tags = m["title"], m["excerpt"], m["tag"]
+            title, tags = m["title"], m["tag"]
+            first = next((x for k, x in blocks if k == "p"), "")
+            excerpt = m.get("excerpt") or m.get("quote") or first
             quote = m.get("quote") or excerpt
         out.append({
-            "slug": slug, "tag": tags, "zawiya": ZAWIYA_TAG in m["tag"], "title": title, "excerpt": excerpt, "quote": quote, "blocks": blocks, "poem": poem,
+            "slug": slug, "tag": tags, "title": title, "excerpt": excerpt,
+            "has_excerpt": bool(m.get("excerpt")) if lang == "ar" else bool(excerpt and en.get("excerpt")), "quote": quote, "blocks": blocks, "poem": poem,
             "date": fmt_date(lang, m["date"]), "iso": m["date"], "read": read_time(lang, blocks),
             "time": fmt_time(lang, m["time"]) if m.get("time") else "",
             "minutes": word_count(blocks) / 200,
@@ -503,8 +531,7 @@ def build(lang):
     me = t("شروق المحمادي", "Shoroog Almehmadi")
 
     ALL_ARTICLES = articles_for(lang)
-    ARTICLES = [a for a in ALL_ARTICLES if not a["zawiya"]]
-    ZAWIYA_ARTICLES = [a for a in ALL_ARTICLES if a["zawiya"]]
+    ARTICLES = ALL_ARTICLES
     SLUGS = [a["slug"] for a in ALL_ARTICLES]
 
     def article_card(a, p="", hook=False):
@@ -515,15 +542,6 @@ def build(lang):
             <h3><a class="stretched" href="{p}articles/{a["slug"]}.html">{a["title"]}</a></h3>
             <p>{q1 + a["quote"] + q2 if hook else a["excerpt"]}</p>
             <p class="meta">{a["date"]} · {a["read"]} {t("قراءة", "read")}</p>
-          </article>"""
-
-    def zawiya_card(i, z):
-        title, date, text = z
-        return f"""          <article class="note-card">
-            <span class="note-num">#{num(i)}</span>
-            <h3>{L(title)}</h3>
-            <p>{L(text)}</p>
-            <p class="meta">{fmt_date(lang, date)}</p>
           </article>"""
 
     def latest(prefix, more, hook=False):
@@ -595,7 +613,6 @@ def build(lang):
 """
 
     # ---------- Home ----------
-    z0 = ZAWIYA_ARTICLES[0] if ZAWIYA_ARTICLES else None
     home = f"""    <section class="hero">
       <div class="sky" aria-hidden="true">
         <div class="sun"><span class="rays"></span></div>
@@ -625,7 +642,7 @@ def build(lang):
         <h2 class="section-title">{t("مُشعشعة", "Radiant")}</h2>
         <div class="tiles">
           <a class="tile" href="sira.html"><span class="tile-icon">🛂</span><h3>{t("جواز سفر", "Passport")}</h3><p>{t("هوية الكاتبة وسيرة موجزة.", "The writer's identity and a brief biography.")}</p></a>
-          <a class="tile" href="blog/index.html"><span class="tile-icon">✍️</span><h3>{t("سجل الرحلات", "Travel Log")}</h3><p>{t("مقالات والزاوية ٣٦", "Articles and Corner 36")}</p></a>
+          <a class="tile" href="blog/index.html"><span class="tile-icon">✍️</span><h3>{t("سجل الرحلات", "Travel Log")}</h3><p>{t("مقالات وتأملات وتقارير.", "Essays, reflections and reports.")}</p></a>
           <a class="tile" href="books.html"><span class="tile-icon">📚</span><h3>{t("أمتعة السفر", "Luggage")}</h3><p>{t("كتب تسليك في الرحلة.", "Books to keep you company on the journey.")}</p></a>
         </div>
       </div>
@@ -633,19 +650,6 @@ def build(lang):
 
 {latest("blog/", "blog/articles.html", hook=True) if ARTICLES else ""}
 {readers_picks("blog/")}
-{f"""    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="section-title">{t("من الزاوية ٣٦", "From Corner 36")}</h2>
-          <a class="more" href="blog/zawiya-36.html">{t("افتح الزاوية", "Open the Corner")} {fwd}</a>
-        </div>
-        <blockquote class="quote">
-          <p>{q1}{z0["quote"]}{q2}</p>
-          <cite><a href="blog/articles/{z0["slug"]}.html">{z0["title"]}</a> · {z0["date"]}</cite>
-        </blockquote>
-      </div>
-    </section>
-""" if z0 else ""}
 
 {testimonials_html(limit=12, home=True)}
 {rate_section}
@@ -715,7 +719,7 @@ def build(lang):
 
     # ---------- Blog hub ----------
     blog = page_head(t("سجل الرحلات", "Travel Log"), t("سجل الرحلات", "Travel Log"),
-                     t("مقالات والزاوية ٣٦", "Articles and Corner 36")) + f"""
+                     t("مقالات وتأملات وتقارير.", "Essays, reflections and reports.")) + f"""
     <section class="section">
       <div class="container">
         <div class="blog-split">
@@ -725,31 +729,14 @@ def build(lang):
             <p>{t("مقالات وتأملات بين الثقيلة والخفيفة.", "Essays and reflections, from the weighty to the light.")}</p>
             <span class="count">{num(len(ARTICLES))} {t("رحلات", "journeys")}</span>
           </a>
-          <a class="blog-door night" href="zawiya-36.html">
-            <span class="door-icon"><img class="door-logo" src="{"../" * out_path(lang, "blog/index.html").count("/")}{ZAWIYA_LOGO}" alt="" width="56" height="56"></span>
-            <h2>{t("الزاوية ٣٦", "Corner 36")}</h2>
-            <p>{t("مقالات حديثة نترجمها ونحوّرها بطريقتنا!", "Recent articles we translate and reshape our own way!")}</p>
-            <span class="count">{num(len(ZAWIYA) + len(ZAWIYA_ARTICLES))} {t("مقالات", "articles")}</span>
-          </a>
         </div>
       </div>
     </section>
 
 {latest("", "articles.html") if ARTICLES else ""}
-    <section class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="section-title">{t("أحدث مقالات الزاوية", "Latest from the Corner")}</h2>
-          <a class="more" href="zawiya-36.html">{t("الزاوية ٣٦", "Corner 36")} {fwd}</a>
-        </div>
-        <div class="posts">
-{chr(10).join(article_card(a) for a in ZAWIYA_ARTICLES[:3])}
-        </div>
-      </div>
-    </section>
 """
     page(lang, "blog/index.html", "blog", f"{t('سجل الرحلات', 'Travel Log')} · {me}", blog,
-         t("سجل رحلات شروق المحمادي: رحلات طويلة والزاوية ٣٦.", "Shoroog Almehmadi's travel log: Long Journeys and Corner 36."))
+         t("سجل رحلات شروق المحمادي: رحلات طويلة.", "Shoroog Almehmadi's travel log: Long Journeys."))
 
     crumbs_tpl = (f'        <nav class="crumbs" aria-label="{t("مسار التنقل", "Breadcrumb")}"><a href="index.html">'
                   f'{t("سجل الرحلات", "Travel Log")}</a> / <span>{{}}</span></nav>\n')
@@ -757,8 +744,8 @@ def build(lang):
     # ---------- Articles ----------
     cats = CATEGORIES if lang == "ar" else [CATEGORIES_EN[c] for c in CATEGORIES]
     articles = page_head(t("سجل الرحلات", "Travel Log"), t("رحلات طويلة", "Long Journeys"),
-                         t("تأملات في القرآن والسنة، ومقالات نفسية واجتماعية وفكرية، وقصائد.",
-                           "Reflections on the Quran and Sunnah, psychological, social and intellectual essays, and poems."),
+                         t("تأملات في القرآن والسنة، ومقالات نفسية واجتماعية وفكرية وإعلامية، والزاوية ٣٦، وقصائد.",
+                           "Reflections on the Quran and Sunnah, psychological, social, intellectual and media essays, Corner 36, and poems."),
                          crumbs_tpl.format(t("رحلات طويلة", "Long Journeys"))) + f"""
     <section class="section">
       <div class="container">
@@ -768,6 +755,11 @@ def build(lang):
 {chr(10).join(f'            <button class="filter" data-filter="{c}">{c}</button>' for c in cats)}
           </div>
           <input class="search" type="search" placeholder="{t("ابحث في الرحلات…", "Search the journeys…")}" aria-label="{t("ابحث في الرحلات الطويلة", "Search the long journeys")}">
+        </div>
+        <div class="cat-intro" data-for="{t(ZAWIYA_TAG, CATEGORIES_EN[ZAWIYA_TAG])}" hidden>
+          <img src="{"../" * out_path(lang, "blog/articles.html").count("/")}{ZAWIYA_LOGO}" alt="{t("شعار الزاوية ٣٦", "Corner 36 logo")}" width="64" height="64">
+          <p>{t("مقالات حديثة نترجمها ونحوّرها بطريقتنا!", "Recent articles we translate and reshape our own way!")}
+          <span class="partner">{t("بالتعاون مع", "In collaboration with")} <a href="{CREATIVE_FORUM}" target="_blank" rel="noopener">{t("نادي ملتقى المبدعين الثقافي", "the Creative Forum Cultural Club")}</a></span></p>
         </div>
         <div class="posts" data-filterable>
 {chr(10).join(article_card(a) for a in ARTICLES)}
@@ -779,28 +771,18 @@ def build(lang):
     page(lang, "blog/articles.html", "blog-articles", f"{t('رحلات طويلة', 'Long Journeys')} · {me}", articles,
          t("رحلات شروق المحمادي الطويلة.", "Shoroog Almehmadi's long journeys."))
 
-    # ---------- Zawiya 36 ----------
-    z_root = "../" * out_path(lang, "blog/zawiya-36.html").count("/")
-    zawiya = page_head(t("سجل الرحلات", "Travel Log"), t("الزاوية ٣٦", "Corner 36"),
-                       t("مقالات حديثة نترجمها ونحوّرها بطريقتنا!",
-                         "Recent articles we translate and reshape our own way!"),
-                       crumbs_tpl.format(t("الزاوية ٣٦", "Corner 36")),
-                       f'        <p class="partner">{t("بالتعاون مع", "In collaboration with")} <a href="{CREATIVE_FORUM}" target="_blank" rel="noopener">{t("نادي ملتقى المبدعين الثقافي", "the Creative Forum Cultural Club")}</a></p>\n',
-                       f'        <img class="page-logo" src="{z_root}{ZAWIYA_LOGO}" alt="{t("شعار الزاوية ٣٦", "Corner 36 logo")}" width="96" height="96">\n') + f"""
-    <section class="section">
-      <div class="container">{f"""
-        <div class="posts zawiya-posts">
-{chr(10).join(article_card(a) for a in ZAWIYA_ARTICLES)}
-        </div>""" if ZAWIYA_ARTICLES else ""}
-{f"""        <div class="notes">
-{chr(10).join(zawiya_card(len(ZAWIYA) - i, z) for i, z in enumerate(ZAWIYA))}
-        </div>""" if ZAWIYA else ""}
-      </div>
-    </section>
-"""
-    page(lang, "blog/zawiya-36.html", "blog-zawiya", f"{t('الزاوية ٣٦', 'Corner 36')} · {me}", zawiya,
-         t("الزاوية ٣٦: مقالات حديثة تترجمها شروق المحمادي وتحوّرها بطريقتها.", "Corner 36: recent articles translated and reshaped by Shoroog Almehmadi."),
-         icon=ZAWIYA_LOGO)
+    # ---------- Zawiya 36: صارت تصنيفًا؛ الرابط القديم يحوّل إلى رحلات طويلة مفتوحةً على التصنيف ----------
+    z_target = "articles.html#" + url_quote(t(ZAWIYA_TAG, CATEGORIES_EN[ZAWIYA_TAG]))
+    with open(os.path.join(ROOT, out_path(lang, "blog/zawiya-36.html")), "w", encoding="utf-8") as f:
+        f.write(f"""<!doctype html>
+<html lang="{lang}" dir="{t('rtl', 'ltr')}"><head><meta charset="utf-8">
+<title>{t('الزاوية ٣٦', 'Corner 36')} · {me}</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="{SITE}{out_path(lang, 'blog/articles.html')}">
+<meta http-equiv="refresh" content="0; url={z_target}">
+<script>location.replace("{z_target}")</script>
+</head><body><p><a href="{z_target}">{t('الزاوية ٣٦', 'Corner 36')}</a></p></body></html>
+""")
 
     # ---------- Privacy & Terms ----------
     for path, key, title, lead, sections in (
@@ -937,16 +919,44 @@ def build(lang):
 
     def render_block(kind, text):
         if kind == "img":
-            figs = []
+            figs, out = [], []
+            def flush():
+                if figs:
+                    out.append(figs[0] if len(figs) == 1 else f'<div class="post-gallery">{"".join(figs)}</div>')
+                    figs.clear()
             for line in text.split("\n"):
-                alt, src = IMG_RE.fullmatch(line).groups()
-                url = f"{art_root}assets/images/{src}"
+                yt = YT_RE.fullmatch(line)
+                m = MEDIA_RE.fullmatch(line)
+                if m and YT_RE.fullmatch(m.group(3)):
+                    yt = YT_RE.fullmatch(m.group(3))
+                if yt:
+                    flush()
+                    cap = f"<figcaption>{m.group(2)}</figcaption>" if m and m.group(2) else ""
+                    out.append(f'<figure class="post-figure post-video"><div class="yt"><iframe src="https://www.youtube-nocookie.com/embed/{yt.group(1)}" '
+                               f'title="{(m.group(2) if m else "") or t("فيديو", "Video")}" loading="lazy" allowfullscreen '
+                               f'allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"></iframe></div>{cap}</figure>')
+                    continue
+                bang, alt, src = m.groups()
+                url = f"{art_root}{media_path(src)}"
+                low = src.lower()
                 cap = f"<figcaption>{alt}</figcaption>" if alt else ""
-                figs.append(f'<figure class="post-figure"><a href="{url}" target="_blank" rel="noopener">'
-                            f'<img src="{url}" alt="{alt}" loading="lazy"></a>{cap}</figure>')
-            if len(figs) == 1:
-                return "        " + figs[0]
-            return f'        <div class="post-gallery">{"".join(figs)}</div>'
+                if bang and low.endswith(VIDEO_EXT):
+                    flush()
+                    out.append(f'<figure class="post-figure post-video"><video controls preload="metadata" src="{url}"></video>{cap}</figure>')
+                elif bang and low.endswith(SOUND_EXT):
+                    flush()
+                    out.append(f'<figure class="post-figure post-sound"><audio controls preload="none" src="{url}"></audio>{cap}</figure>')
+                elif bang:
+                    figs.append(f'<figure class="post-figure"><a href="{url}" target="_blank" rel="noopener">'
+                                f'<img src="{url}" alt="{alt}" loading="lazy"></a>{cap}</figure>')
+                else:
+                    flush()
+                    ext = src.rsplit(".", 1)[-1].upper()
+                    out.append(f'<a class="post-file" href="{url}" download target="_blank" rel="noopener">'
+                               f'<span class="post-file-icon" aria-hidden="true">📎</span><span class="post-file-name">{alt or src}</span>'
+                               f'<span class="post-file-ext">{ext} · {t("تحميل", "Download")}</span></a>')
+            flush()
+            return chr(10).join("        " + x for x in out)
         if kind == "h2":
             return f"        <h2>{text}</h2>"
         if kind == "quote":
@@ -964,7 +974,7 @@ def build(lang):
             os.remove(old)
 
     for a in ALL_ARTICLES:
-        group = ZAWIYA_ARTICLES if a["zawiya"] else ARTICLES
+        group = ARTICLES
         i = group.index(a)
         slug, tag, title, excerpt = a["slug"], a["tag"], a["title"], a["excerpt"]
         newer = group[i - 1] if i > 0 else None
@@ -979,7 +989,7 @@ def build(lang):
         body = f"""    <section class="page-hero article-hero">
       <div class="clouds" aria-hidden="true"><span class="cloud c1"></span><span class="cloud c2"></span></div>
       <div class="container narrow">
-        <nav class="crumbs" aria-label="{t("مسار التنقل", "Breadcrumb")}"><a href="../index.html">{t("سجل الرحلات", "Travel Log")}</a> / {f'<a href="../zawiya-36.html">{t("الزاوية ٣٦", "Corner 36")}</a>' if a["zawiya"] else f'<a href="../articles.html">{t("رحلات طويلة", "Long Journeys")}</a>'}</nav>
+        <nav class="crumbs" aria-label="{t("مسار التنقل", "Breadcrumb")}"><a href="../index.html">{t("سجل الرحلات", "Travel Log")}</a> / <a href="../articles.html">{t("رحلات طويلة", "Long Journeys")}</a></nav>
 {tags_html(tag, "        ")}
         <h1>{title}</h1>
         <ul class="post-meta">
@@ -994,7 +1004,7 @@ def build(lang):
     <article class="section" id="post" data-slug="{slug}" data-minutes="{a["minutes"]:.2f}">
       <div class="container narrow prose{" poem" if a["poem"] else ""}">
 {audio_player(lang, slug) or LISTEN_HTML(t)}
-{"" if a["poem"] or excerpt in lead_blocks else f'        <p class="excerpt">{excerpt}</p>{chr(10)}'}{render_body(a)}
+{"" if a["poem"] or not a["has_excerpt"] or excerpt in lead_blocks else f'        <p class="excerpt">{excerpt}</p>{chr(10)}'}{render_body(a)}
         <p class="signature">— {me}</p>
         <div class="engage">
           <button class="like-btn" type="button" aria-pressed="false"><span class="heart" aria-hidden="true">❤️</span> {t("جميل! لقد أعجبني!", "Lovely! I liked it!")} <b class="like-count">…</b></button>
@@ -1030,8 +1040,9 @@ def build(lang):
         # the other language's copy of this article, or its list of articles if not translated
         alt = None if lang == "en" or slug in _en_files else "blog/articles.html"
         plain = lambda x: re.sub(r"<[^>]+>", "", x).replace('"', "&quot;")
-        first_img = next((IMG_RE.fullmatch(x.split("\n")[0]).group(2) for k, x in a["blocks"] if k == "img"), None)
-        img_path = f"assets/images/{first_img}" if first_img else None
+        first_img = next((m.group(2) for k, x in a["blocks"] if k == "img" for m in map(IMG_RE.fullmatch, x.split("\n"))
+                          if m and m.group(2).lower().endswith((".jpg", ".jpeg", ".png", ".webp", ".gif")) and media_path(m.group(2))), None)
+        img_path = media_path(first_img) if first_img else None
         ld = {"@context": "https://schema.org", "@type": "Article", "headline": plain(title), "description": plain(excerpt),
               "inLanguage": lang, "datePublished": a["iso"], "author": {"@type": "Person", "name": me, "url": SITE},
               "image": SITE + (img_path or "assets/images/og-default.jpg"), "mainEntityOfPage": SITE + out_path(lang, f"blog/articles/{slug}.html")}

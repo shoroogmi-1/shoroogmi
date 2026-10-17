@@ -46,15 +46,20 @@ if (grid) {
     if (empty) empty.hidden = shown > 0;
   }
 
-  buttons.forEach((btn) =>
-    btn.addEventListener("click", () => {
-      buttons.forEach((b) => b.classList.remove("active"));
-      btn.classList.add("active");
-      tag = btn.dataset.filter;
-      apply();
-    })
-  );
+  const intros = document.querySelectorAll(".cat-intro");
+  function choose(btn) {
+    buttons.forEach((b) => b.classList.remove("active"));
+    btn.classList.add("active");
+    tag = btn.dataset.filter;
+    intros.forEach((el) => (el.hidden = el.dataset.for !== tag));
+    apply();
+  }
+  buttons.forEach((btn) => btn.addEventListener("click", () => choose(btn)));
   if (search) search.addEventListener("input", apply);
+  // رابط مثل articles.html#الزاوية ٣٦ يفتح الصفحة على ذلك التصنيف
+  const fromHash = decodeURIComponent(location.hash.slice(1));
+  const hashBtn = fromHash && [...buttons].find((b) => b.dataset.filter === fromHash);
+  if (hashBtn) choose(hashBtn);
 }
 
 // Reveal on scroll
