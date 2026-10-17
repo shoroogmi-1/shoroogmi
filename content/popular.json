@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-13",
+ "updated": "2026-10-17",
  "items": [
   {
    "slug": "nazariyyat-dharhum",
@@ -20,7 +20,13 @@
    "score": 4
   },
   {
-   "slug": "shuab-al-alaqa",
+   "slug": "al-khshou-dua",
+   "reads": 2,
+   "likes": 0,
+   "score": 2
+  },
+  {
+   "slug": "taml-in-ashor",
    "reads": 2,
    "likes": 0,
    "score": 2
@@ -50,6 +56,18 @@
    "score": 1
   },
   {
+   "slug": "fi-bidayat-alaqatik",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
+   "slug": "fid-dunya-hasana",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
    "slug": "hal-yunqis-adh-dhaka",
    "reads": 1,
    "likes": 0,
@@ -57,6 +75,12 @@
   },
   {
    "slug": "inhani-ayyatuha-al-jadawil",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
+   "slug": "la-tarbit-aqdaraka-bi-imanik",
    "reads": 1,
    "likes": 0,
    "score": 1
