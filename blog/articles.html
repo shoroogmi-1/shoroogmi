@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Amiri+Quran&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/styles.css?v=9ad17595">
+  <link rel="stylesheet" href="../assets/styles.css?v=af938ce7">
 </head>
 <body>
   <header class="site-header">
@@ -40,7 +40,6 @@
           <a href="../blog/index.html" class="active">سجل الرحلات <span class="caret" aria-hidden="true">▾</span></a>
           <div class="sub">
             <a href="../blog/articles.html" class="active">رحلات طويلة</a>
-            <a href="../blog/zawiya-36.html">الزاوية ٣٦</a>
           </div>
         </div>
         <a href="../books.html">أمتعة السفر</a>
@@ -58,7 +57,7 @@
       <div class="container">
         <nav class="crumbs" aria-label="مسار التنقل"><a href="index.html">سجل الرحلات</a> / <span>رحلات طويلة</span></nav>
         <h1>رحلات طويلة</h1>
-        <p class="lead">تأملات في القرآن والسنة، ومقالات نفسية واجتماعية وفكرية، وقصائد.</p>
+        <p class="lead">تأملات في القرآن والسنة، ومقالات نفسية واجتماعية وفكرية وإعلامية، والزاوية ٣٦، وقصائد.</p>
       </div>
     </section>
 
@@ -73,14 +72,27 @@
             <button class="filter" data-filter="مقالات فكرية">مقالات فكرية</button>
             <button class="filter" data-filter="مقالات تربوية">مقالات تربوية</button>
             <button class="filter" data-filter="مقالات إعلامية">مقالات إعلامية</button>
+            <button class="filter" data-filter="تقارير الإعلام الإيراني">تقارير الإعلام الإيراني</button>
             <button class="filter" data-filter="الذكاء الاصطناعي">الذكاء الاصطناعي</button>
             <button class="filter" data-filter="الشهرة والمشاهير">الشهرة والمشاهير</button>
             <button class="filter" data-filter="القيادة">القيادة</button>
+            <button class="filter" data-filter="الزاوية ٣٦">الزاوية ٣٦</button>
             <button class="filter" data-filter="قصائد">قصائد</button>
           </div>
           <input class="search" type="search" placeholder="ابحث في الرحلات…" aria-label="ابحث في الرحلات الطويلة">
         </div>
+        <div class="cat-intro" data-for="الزاوية ٣٦" hidden>
+          <img src="../assets/images/zawiya-36-logo.png" alt="شعار الزاوية ٣٦" width="64" height="64">
+          <p>مقالات حديثة نترجمها ونحوّرها بطريقتنا!
+          <span class="partner">بالتعاون مع <a href="https://creativeforum.sa/%d8%b7%d9%84%d8%a8-%d8%a7%d8%b3%d8%aa%d8%b4%d8%a7%d8%b1%d8%a9/" target="_blank" rel="noopener">نادي ملتقى المبدعين الثقافي</a></span></p>
+        </div>
         <div class="posts" data-filterable>
+          <article class="post-card" data-tag="تقارير الإعلام الإيراني">
+            <span class="tag">تقارير الإعلام الإيراني</span>
+            <h3><a class="stretched" href="articles/iranian-media.html">واقع الإعلام الإيراني: تحليل وتوصية</a></h3>
+            <p>وجاء انستغرام في المرتبة الأولى</p>
+            <p class="meta">١٧ أكتوبر ٢٠٢٦ · دقيقة قراءة</p>
+          </article>
           <article class="post-card" data-tag="مقالات تربوية">
             <span class="tag">مقالات تربوية</span>
             <h3><a class="stretched" href="articles/taml-in-ashor.html">تأملات في حياة ابن عاشور</a></h3>
@@ -128,6 +140,12 @@
             <h3><a class="stretched" href="articles/ma-yastahiqq-al-buka.html">ما يستحق البكاء وما لا يستحق: تأملات في بكائه صلى الله عليه وسلم</a></h3>
             <p>١- النهي عن البكاء على ما يستقبله من أمر: وهو ما سمّاه ابن القيم "بكاء الخوف" (زاد المعاد).</p>
             <p class="meta">٨ أكتوبر ٢٠٢٦ · ٥ دقائق قراءة</p>
+          </article>
+          <article class="post-card" data-tag="الزاوية ٣٦">
+            <span class="tag">الزاوية ٣٦</span>
+            <h3><a class="stretched" href="articles/hal-yunqis-adh-dhaka.html">هل يُنقص الذكاء الصناعي ذكاءنا الاجتماعي؟</a></h3>
+            <p>أهون مهارة هي التواصل، أهكذا تظن؟ ولكن اللقاء الصحفي المنشور على مجلة هارفارد بزنس ريڤيو بعنوان: كيف يغير الذكاء الصناعي التواصل: موازنة بين الكفاءة والفعالية.</p>
+            <p class="meta">٦ أكتوبر ٢٠٢٦ · ٥ دقائق قراءة</p>
           </article>
           <article class="post-card" data-tag="تأملات في القرآن والسنة">
             <span class="tag">تأملات في القرآن والسنة</span>
@@ -778,7 +796,6 @@
       <nav class="footer-links" aria-label="روابط التذييل">
         <a href="../sira.html">جواز سفر</a>
         <a href="../blog/articles.html">رحلات طويلة</a>
-        <a href="../blog/zawiya-36.html">الزاوية ٣٦</a>
         <a href="../books.html">أمتعة السفر</a>
         <a href="../testimonials.html">ما قاله المسافرون</a>
         <a href="../contact.html">برج المراقبة</a>
@@ -788,6 +805,6 @@
     </div>
   </footer>
 
-  <script src="../assets/script.js?v=39d8154d"></script>
+  <script src="../assets/script.js?v=7f5718ba"></script>
 </body>
 </html>
