@@ -1,0 +1,123 @@
+# لوحة تحكم الموقع (Pages CMS): ادخلي من https://app.pagescms.org بحساب GitHub
+# هذا الملف يعرّف خانات المقالات والكتب ومجلدات الصور والملفات. لإضافة تصنيف جديد أضيفيه هنا وفي build.py (CATEGORIES).
+media:
+  - name: media
+    label: صور وفيديو وملفات المقالات
+    input: assets/media
+    output: /assets/media
+    rename: safe
+  - name: books
+    label: أغلفة الكتب وملفاتها
+    input: assets/books
+    output: /assets/books
+    rename: safe
+
+content:
+  - name: articles
+    label: المقالات
+    type: collection
+    path: content/articles
+    format: yaml-frontmatter
+    filename:
+      template: "{year}-{month}-{day}-{hour}{minute}.md"
+      field: create
+    view:
+      primary: title
+      fields: [title, date, category]
+      sort: date
+      order: desc
+    fields:
+      - name: title
+        label: العنوان
+        type: string
+        required: true
+      - name: date
+        label: التاريخ
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: category
+        label: التصنيف (واحد أو أكثر)
+        type: select
+        required: true
+        options:
+          multiple: true
+          values:
+          - تأملات في القرآن والسنة
+          - شعب العلاقة مع القرآن
+          - مقالات نفسية واجتماعية
+          - مقالات فكرية
+          - مقالات تربوية
+          - مقالات إعلامية
+          - تقارير الإعلام الإيراني
+          - الذكاء الاصطناعي
+          - الشهرة والمشاهير
+          - القيادة
+          - الزاوية ٣٦
+          - قصائد
+      - name: quote
+        label: اقتباس (يظهر في بطاقة المقال وفي الصفحة الرئيسية)
+        type: text
+      - name: body
+        label: نص المقال
+        type: rich-text
+        options:
+          format: markdown
+          media: media
+
+  - name: books
+    label: الكتب (أمتعة السفر)
+    type: collection
+    path: content/books
+    format: yaml-frontmatter
+    filename:
+      template: "{year}-{month}-{day}-book.md"
+      field: create
+    view:
+      primary: title
+      fields: [title, year, order]
+      sort: order
+    fields:
+      - name: title
+        label: العنوان
+        type: string
+        required: true
+      - name: subtitle
+        label: العنوان الفرعي
+        type: string
+      - name: publisher
+        label: الناشر
+        type: string
+      - name: year
+        label: السنة
+        type: string
+      - name: store
+        label: رابط المتجر (اختياري)
+        type: string
+      - name: front
+        label: الغلاف الأمامي
+        type: image
+        required: true
+        options:
+          media: books
+      - name: back
+        label: الغلاف الخلفي
+        type: image
+        required: true
+        options:
+          media: books
+      - name: pdf
+        label: ملف الكتاب PDF للتحميل (اختياري)
+        type: file
+        options:
+          media: books
+      - name: order
+        label: الترتيب (١ يظهر أولًا)
+        type: number
+      - name: body
+        label: نبذة الكتاب
+        type: rich-text
+        options:
+          format: markdown
+          media: false
