@@ -187,6 +187,15 @@ function store(key, value) {
   }
 }
 
+// Book downloads: each click on «تحميل الكتاب PDF» adds one to that book's counter
+document.querySelectorAll("[data-count-of]").forEach((el) =>
+  counter("get", el.dataset.countOf).then((v) => (el.textContent = v === null ? "—" : arNum.format(v))));
+document.querySelectorAll(".book-dl").forEach((a) =>
+  a.addEventListener("click", () =>
+    counter("hit", a.dataset.count).then((v) => {
+      if (v !== null) document.querySelectorAll(`[data-count-of="${a.dataset.count}"]`).forEach((el) => (el.textContent = arNum.format(v)));
+    })));
+
 // Visitors: a browser counts once as a visitor, and once more as a returning reader
 // the first time it comes back on a later day.
 async function trackVisit() {

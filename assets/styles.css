@@ -760,3 +760,8 @@ mark.hl.has-note { box-shadow: inset 0 -3px 0 #e88aa8; }
 .cat-intro img { border-radius: 12px; flex: none; }
 .cat-intro p { margin: 0; }
 .cat-intro .partner { display: block; font-size: 0.9rem; color: var(--muted); }
+
+/* عدد تحميلات الكتاب بجانب زر PDF */
+.dl-count { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 999px; font-weight: 600;
+  background: var(--card, #fff); border: 2px solid var(--border, #d2eaf6); color: var(--ink); white-space: nowrap; }
+.dl-count b { color: var(--accent, #a86d00); }
