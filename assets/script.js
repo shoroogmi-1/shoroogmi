@@ -727,8 +727,12 @@ if (post) {
     });
   }
 
+  // على الجوال قائمة النسخ/اللصق في النظام تظهر عند النص المظلَّل؛ فنثبّت شريطنا أسفل الشاشة حتى لا تغطيه
+  const touch = window.matchMedia("(pointer: coarse)");
   function place(rect) {
     bar.hidden = false;
+    bar.classList.toggle("docked", touch.matches);
+    if (touch.matches) { bar.style.top = bar.style.left = ""; return; }
     const top = window.scrollY + rect.bottom + 10;
     const left = Math.min(Math.max(window.scrollX + rect.left + rect.width / 2 - bar.offsetWidth / 2, 8), window.innerWidth - bar.offsetWidth - 8);
     bar.style.top = `${top}px`;
