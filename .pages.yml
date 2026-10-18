@@ -44,18 +44,20 @@ content:
         options:
           multiple: true
           values:
-          - تأملات في القرآن والسنة
-          - شعب العلاقة مع القرآن
-          - مقالات نفسية واجتماعية
-          - مقالات فكرية
-          - مقالات تربوية
-          - مقالات إعلامية
-          - تقارير الإعلام الإيراني
-          - الذكاء الاصطناعي
-          - الشهرة والمشاهير
-          - القيادة
-          - الزاوية ٣٦
-          - قصائد
+          # CATEGORIES-START (تُحدَّث تلقائيًا من «سجل الرحلات: التصنيفات»)
+          - "تأملات في القرآن والسنة"
+          - "شعب العلاقة مع القرآن"
+          - "مقالات نفسية واجتماعية"
+          - "مقالات فكرية"
+          - "مقالات تربوية"
+          - "مقالات إعلامية"
+          - "تقارير الإعلام الإيراني"
+          - "الذكاء الاصطناعي"
+          - "الشهرة والمشاهير"
+          - "القيادة"
+          - "الزاوية ٣٦"
+          - "قصائد"
+          # CATEGORIES-END
       - name: quote
         label: اقتباس (يظهر في بطاقة المقال وفي الصفحة الرئيسية)
         type: text
@@ -121,3 +123,265 @@ content:
         options:
           format: markdown
           media: false
+
+  # ---------- نصوص صفحات الموقع (ملف واحد لكل تبويب) ----------
+  - name: home
+    label: مُشعشعة (الصفحة الرئيسية)
+    type: file
+    path: content/data/home.yml
+    format: yaml
+    fields:
+      - name: verse
+        label: بيت الشعر أعلى الصفحة
+        type: object
+        fields:
+          - name: ar
+            label: بالعربية
+            type: string
+          - name: en
+            label: بالإنجليزية (اختياري)
+            type: string
+      - name: lead
+        label: الترحيب تحت الاسم
+        type: object
+        fields:
+          - name: ar
+            label: بالعربية
+            type: text
+          - name: en
+            label: بالإنجليزية (اختياري)
+            type: text
+      - name: cta_title
+        label: عنوان «أي خدمة؟»
+        type: object
+        fields:
+          - name: ar
+            label: بالعربية
+            type: string
+          - name: en
+            label: بالإنجليزية (اختياري)
+            type: string
+      - name: cta_sub
+        label: تحت «أي خدمة؟»
+        type: object
+        fields:
+          - name: ar
+            label: بالعربية
+            type: string
+          - name: en
+            label: بالإنجليزية (اختياري)
+            type: string
+      - name: reviews_lead
+        label: وصف صفحة «ما قاله المسافرون»
+        type: object
+        fields:
+          - name: ar
+            label: بالعربية
+            type: string
+          - name: en
+            label: بالإنجليزية (اختياري)
+            type: string
+      - name: books_title
+        label: عنوان صفحة «أمتعة السفر»
+        type: object
+        fields:
+          - name: ar
+            label: بالعربية
+            type: string
+          - name: en
+            label: بالإنجليزية (اختياري)
+            type: string
+
+  - name: passport
+    label: جواز سفر
+    type: file
+    path: content/data/passport.yml
+    format: yaml
+    fields:
+      - name: title
+        label: العنوان
+        type: object
+        fields:
+          - name: ar
+            label: بالعربية
+            type: string
+          - name: en
+            label: بالإنجليزية (اختياري)
+            type: string
+      - name: lead
+        label: الوصف تحت العنوان
+        type: object
+        fields:
+          - name: ar
+            label: بالعربية
+            type: text
+          - name: en
+            label: بالإنجليزية (اختياري)
+            type: text
+      - name: stations
+        label: المحطات (بالترتيب، **كلمة** تظهر غامقة)
+        type: object
+        list: true
+        fields:
+          - name: icon
+            label: أيقونة المحطة (إيموجي)
+            type: string
+          - name: ar
+            label: النص بالعربية
+            type: text
+          - name: en
+            label: النص بالإنجليزية (اختياري)
+            type: text
+          - name: badge
+            label: إيموجي الشارة
+            type: string
+          - name: kind
+            label: نوع المحطة
+            type: select
+            options:
+              values: [عادية, البداية, جائزة, الختام]
+
+  - name: journeys
+    label: سجل الرحلات (التصنيفات)
+    type: file
+    path: content/data/journeys.yml
+    format: yaml
+    fields:
+      - name: categories
+        label: التصنيفات بالترتيب (بعد الحفظ تظهر في قائمة تصنيف المقال خلال دقائق)
+        type: object
+        list: true
+        fields:
+          - name: ar
+            label: الاسم بالعربية
+            type: string
+          - name: en
+            label: الاسم بالإنجليزية
+            type: string
+
+  - name: contact
+    label: برج المراقبة
+    type: file
+    path: content/data/contact.yml
+    format: yaml
+    fields:
+      - name: title
+        label: العنوان
+        type: object
+        fields:
+          - name: ar
+            label: بالعربية
+            type: string
+          - name: en
+            label: بالإنجليزية (اختياري)
+            type: string
+      - name: lead
+        label: الوصف تحت العنوان
+        type: object
+        fields:
+          - name: ar
+            label: بالعربية
+            type: text
+          - name: en
+            label: بالإنجليزية (اختياري)
+            type: text
+      - name: email
+        label: البريد الذي تصل إليه الرسائل والتقييمات
+        type: string
+      - name: topics
+        label: مواضيع الرسالة (القائمة في النموذج)
+        type: object
+        list: true
+        fields:
+          - name: ar
+            label: بالعربية
+            type: string
+          - name: en
+            label: بالإنجليزية (اختياري)
+            type: string
+      - name: contacts
+        label: ترددات البرج (حسابات التواصل)
+        type: object
+        list: true
+        fields:
+          - name: platform
+            label: المنصة (للشعار)
+            type: select
+            options:
+              values: [بريد, إكس, إنستغرام, واتساب, سبستاك, فيسبوك]
+          - name: name_ar
+            label: الاسم الظاهر بالعربية
+            type: string
+          - name: name_en
+            label: الاسم الظاهر بالإنجليزية
+            type: string
+          - name: shown_ar
+            label: النص (مثل @shoroogmi)
+            type: string
+          - name: shown_en
+            label: النص بالإنجليزية (اختياري)
+            type: string
+          - name: url
+            label: الرابط (فارغ = بلا رابط)
+            type: string
+
+  - name: legal
+    label: سياسة الخصوصية وشروط الاستخدام
+    type: file
+    path: content/data/legal.yml
+    format: yaml
+    fields:
+      - name: updated
+        label: تاريخ آخر تحديث
+        type: object
+        fields:
+          - name: ar
+            label: بالعربية
+            type: string
+          - name: en
+            label: بالإنجليزية (اختياري)
+            type: string
+      - name: privacy
+        label: أقسام سياسة الخصوصية
+        type: object
+        list: true
+        fields:
+          - name: title_ar
+            label: عنوان القسم بالعربية
+            type: string
+          - name: title_en
+            label: عنوان القسم بالإنجليزية
+            type: string
+          - name: paragraphs
+            label: الفقرات (**كلمة** غامقة، و[نص](رابط) رابط)
+            type: object
+            list: true
+            fields:
+              - name: ar
+                label: بالعربية
+                type: text
+              - name: en
+                label: بالإنجليزية (اختياري)
+                type: text
+      - name: terms
+        label: أقسام شروط الاستخدام
+        type: object
+        list: true
+        fields:
+          - name: title_ar
+            label: عنوان القسم بالعربية
+            type: string
+          - name: title_en
+            label: عنوان القسم بالإنجليزية
+            type: string
+          - name: paragraphs
+            label: الفقرات (**كلمة** غامقة، و[نص](رابط) رابط)
+            type: object
+            list: true
+            fields:
+              - name: ar
+                label: بالعربية
+                type: text
+              - name: en
+                label: بالإنجليزية (اختياري)
+                type: text

@@ -1,0 +1,19 @@
+# نصوص الصفحة الرئيسية وبعض العناوين.
+verse:
+  ar: كلُّ شمسٍ لم تكُنْها ظلامُ
+  en: Every sun that is not you is darkness
+lead:
+  ar: 'أيها القارئ: لنتفق! المقعد الأيمن مرة لي ومرة لك، وذلك طوال رحلتنا في سياحة العقول والأفكار والتجارب. طيب كابتن؟'
+  en: Dear reader, let's make a deal! The right seat is mine one time and yours the next, all through our journey touring minds, ideas and experiences. Okay, Captain?
+cta_title:
+  ar: أي خدمة؟
+  en: Anything I can do for you?
+cta_sub:
+  ar: خليني أسمعها! 🌸
+  en: Let me hear it! 🌸
+reviews_lead:
+  ar: كلمات من رافقونا في الرحلة.
+  en: Words from those who traveled with us.
+books_title:
+  ar: كتب ماتعة!
+  en: Delightful Books!

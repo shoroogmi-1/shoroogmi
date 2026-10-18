@@ -15,6 +15,8 @@ import os
 import re
 from urllib.parse import quote as url_quote, unquote
 
+import yaml  # يُثبَّت في GitHub Actions مع أداة الصوت
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 LANGS = ("ar", "en")
 
@@ -30,6 +32,32 @@ def out_path(lang, path):
 
 SITE = "https://shoroogmi.com/"
 SITEMAP = []  # (url, {lang: url}, lastmod) تُملأ أثناء البناء
+
+
+# ---------- نصوص الصفحات من content/data/*.yml (تُعدَّل من لوحة التحكم) ----------
+def data(name):
+    return yaml.safe_load(open(os.path.join(ROOT, "content", "data", f"{name}.yml"), encoding="utf-8")) or {}
+
+
+def rich(x):
+    """في ملفات البيانات: **كلمة** غامقة، و[نص](رابط) رابط."""
+    x = re.sub(r"&(?!#?\w+;)", "&amp;", str(x or ""))
+    x = re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", x)
+    return re.sub(r"\[([^\]]+)\]\(([^)\s]+)\)", lambda m: f'<a href="{m.group(2)}"'
+                  + ("" if m.group(2).startswith("mailto:") else ' target="_blank" rel="noopener"') + f">{m.group(1)}</a>", x)
+
+
+def tx(d, ar="ar", en="en"):
+    """زوج (عربي، إنجليزي) من حقلين؛ إن خلت الإنجليزية تُستعمل العربية."""
+    d = d or {}
+    return rich(d.get(ar)), rich(d.get(en) or d.get(ar))
+
+
+HOME = {k: tx(v) for k, v in data("home").items()}
+PASSPORT = data("passport")
+JOURNEYS = data("journeys")
+CONTACT = data("contact")
+LEGAL = data("legal")
 
 
 def share_btn(lang, path, title, extra_class=""):
@@ -250,25 +278,13 @@ OPTIONAL_FIELDS = {"الملخص": "excerpt", "Excerpt": "excerpt", "الوقت"
 EN_FIELDS = {"Title": "title"}
 
 # تصنيفات «رحلات طويلة» بالترتيب الذي تظهر به أزرار الفرز. «التصنيف» في كل مقال يجب أن يكون واحدًا منها.
-CATEGORIES = ["تأملات في القرآن والسنة", "شعب العلاقة مع القرآن", "مقالات نفسية واجتماعية", "مقالات فكرية", "مقالات تربوية",
-              "مقالات إعلامية", "تقارير الإعلام الإيراني", "الذكاء الاصطناعي", "الشهرة والمشاهير", "القيادة", "الزاوية ٣٦", "قصائد"]
+# تصنيفات «رحلات طويلة» من content/data/journeys.yml، بالترتيب الذي تظهر به أزرار الفرز
+CATEGORIES = [str(c["ar"]).strip() for c in JOURNEYS.get("categories", []) if c.get("ar")]
 # «الزاوية ٣٦» صارت تصنيفًا من تصنيفات رحلات طويلة (صفحتها القديمة تحوّل إليه)
 ZAWIYA_TAG = "الزاوية ٣٦"
 # اسم كل تصنيف في النسخة الإنجليزية
-CATEGORIES_EN = {
-    "تأملات في القرآن والسنة": "Reflections on the Quran & Sunnah",
-    "شعب العلاقة مع القرآن": "Branches of the Relationship with the Quran",
-    "مقالات نفسية واجتماعية": "Psychological & Social Essays",
-    "مقالات فكرية": "Intellectual Essays",
-    "مقالات تربوية": "Parenting & Education Essays",
-    "مقالات إعلامية": "Media Essays",
-    "تقارير الإعلام الإيراني": "Iranian Media Reports",
-    "الذكاء الاصطناعي": "Artificial Intelligence",
-    "الشهرة والمشاهير": "Fame & Celebrities",
-    "القيادة": "Leadership",
-    ZAWIYA_TAG: "Corner 36",
-    "قصائد": "Poems",
-}
+CATEGORIES_EN = {str(c["ar"]).strip(): str(c.get("en") or c["ar"]).strip() for c in JOURNEYS.get("categories", []) if c.get("ar")}
+CATEGORIES_EN.setdefault(ZAWIYA_TAG, "Corner 36")
 
 
 IMG_RE = re.compile(r"!\[([^\]]*)\]\(<?([^)\s>]+)>?(?:\s+\"[^\"]*\")?\)")
@@ -383,8 +399,9 @@ def load_article(path):
     # أكثر من تصنيف يُفصل بفاصلة: «تأملات في القرآن والسنة، مقالات نفسية واجتماعية»
     meta["tag"] = tuple(t.strip() for t in re.split(r"[،,]", meta["tag"]) if t.strip())
     for t in meta["tag"]:
-        if t not in CATEGORIES:
-            raise SystemExit(f"{path}: التصنيف «{t}» غير معروف. التصنيفات المتاحة: {'، '.join(CATEGORIES)}")
+        if t not in CATEGORIES:  # تصنيف غير موجود في القائمة: يُنشر المقال ويظهر التصنيف عليه، بلا زر فرز
+            print(f"تنبيه: {path}: التصنيف «{t}» ليس في content/data/journeys.yml")
+            CATEGORIES_EN.setdefault(t, t)
     if meta.get("time") and not re.fullmatch(r"\d{1,2}:\d{2}", meta["time"]):
         raise SystemExit(f"{path}: اكتبي الوقت بهذا الشكل 21:30")
     slug = os.path.splitext(os.path.basename(path))[0]
@@ -440,20 +457,10 @@ def tags_html(tags, indent):
     return f'{indent}<div class="tags">{spans}</div>' if len(tags) > 1 else indent + spans
 
 
-# محطات جواز سفر بالترتيب: (أيقونة، النص — يقبل <b> للتأكيد، إيموجي الشارة، نوع خاص اختياري)
-STATIONS = [
-    ("🐪", ("<b>١٩٩٩</b> - السعودية", "<b>1999</b> - Saudi Arabia"), "👶", "start"),
-    ("🎓", ("<b>بكالوريوس علاقات عامة، إعلام واتصال</b> - جامعة أم القرى، مكة المكرمة، ٢٠٢٠.",
-           "<b>Bachelor's in Public Relations, Media and Communication</b> - Umm Al-Qura University, Makkah, 2020."), "🎉", ""),
-    ("✍️", ("<b>كاتبة إعلانات وسيناريو</b> لما يزيد عن عشرين جهة.",
-           "<b>Advertising copywriter and scriptwriter</b> for more than twenty organizations."), "📢🎬", ""),
-    ("🧳", ("<b>ماجستير إعلام سياحي</b>، جامعة الملك خالد، أبها، ٢٠٢٤.",
-           "<b>Master's in Tourism Media</b>, King Khalid University, Abha, 2024."), "🎓✈️", ""),
-    ("🏆", ("<b>جائزة أدب العزلة</b>، هيئة الأدب والنشر والترجمة، ٢٠٢٠.",
-           "<b>Literature of Solitude Award</b>, Literature, Publishing and Translation Commission, 2020."), "🥇", "award"),
-    ("🔬", ("نشرت <b>ستة بحوث علمية</b>.", "I published <b>six research papers</b>."), "📜📜📜", ""),
-    ("📖", ("<b>حفظ القرآن</b> ٢٠٢٦.", "<b>Memorized the Quran</b>, 2026."), "✨", "final"),
-]
+# محطات جواز سفر بالترتيب من content/data/passport.yml: (أيقونة، النص، إيموجي الشارة، نوع خاص)
+_KINDS = {"البداية": "start", "جائزة": "award", "الختام": "final"}
+STATIONS = [(st.get("icon", ""), tx(st), st.get("badge", "") or "", _KINDS.get(st.get("kind"), ""))
+            for st in PASSPORT.get("stations", [])]
 
 # كتبي: (العنوان، العنوان الفرعي، الناشر، السنة، الرابط، صورة الغلاف الأمامي، صورة الغلاف الخلفي، فقرات الوصف)
 # الصور في assets/books/
@@ -491,7 +498,7 @@ def load_books():
 
 BOOKS = load_books()
 
-EMAIL = "shoroogmi1@gmail.com"
+EMAIL = CONTACT.get("email") or "shoroogmi1@gmail.com"
 # شعارات التطبيقات (من مكتبة Simple Icons، رخصة CC0)
 BRAND_ICONS = {
     "gmail": "M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z",
@@ -503,76 +510,16 @@ BRAND_ICONS = {
 }
 
 
-CONTACTS = [
-    # (الشعار من BRAND_ICONS، المنصة، النص الظاهر، الرابط أو None، ملاحظة اختيارية)
-    ("gmail", ("البريد", "Email"), EMAIL, f"mailto:{EMAIL}"),
-    ("x", ("إكس", "X"), "@shoroogmi", "https://x.com/shoroogmi"),
-    ("instagram", ("انستغرام", "Instagram"), "@shoroogmi", "https://www.instagram.com/shoroogmi"),
-    ("whatsapp", ("واتساب", "WhatsApp"), "shoroogmi", None),
-    ("whatsapp", ("قناة واتساب", "WhatsApp Channel"), ("تابع القناة", "Follow the channel"), "https://whatsapp.com/channel/0029Vb6mYujKmCPUKLgBbW23"),
-    ("substack", ("سبستاك", "Substack"), "@shoroogmi", "https://substack.com/@shoroogmi"),
-    ("facebook", ("فيسبوك", "Facebook"), ("صفحتي على فيسبوك", "My Facebook page"), "https://www.facebook.com/share/1HsZnfQwpn/?mibextid=wwXIfr"),
-]
+_PLATFORMS = {"بريد": "gmail", "إكس": "x", "إنستغرام": "instagram", "واتساب": "whatsapp", "سبستاك": "substack", "فيسبوك": "facebook"}
+# (الشعار من BRAND_ICONS، المنصة، النص الظاهر، الرابط أو None)
+CONTACTS = [(_PLATFORMS.get(c.get("platform"), "gmail"), tx(c, "name_ar", "name_en"), tx(c, "shown_ar", "shown_en"), c.get("url") or None)
+            for c in CONTACT.get("contacts", [])]
 
-
-LEGAL_UPDATED = ("١٢ أكتوبر ٢٠٢٦", "October 12, 2026")
-
+LEGAL_UPDATED = tx(LEGAL.get("updated"))
 # الصفحات القانونية: (عنوان القسم، [فقرات]) بالعربية ثم بالإنجليزية
-PRIVACY = [
-    (("مقدمة", "Introduction"),
-     [("موقع شخصي لا يتطلب حسابًا، ولا يبيع بياناتك ولا يشاركها.",
-       "A personal website. It needs no account, and it never sells or shares your data.")]),
-    (("ما الذي نجمعه؟", "What we collect"),
-     [("<b>عدّاد القراءة والزيارات والإعجابات:</b> أرقام فقط، لا يحفظ اسمك ولا بريدك.",
-       "<b>Read, visit and like counters:</b> numbers only. They never keep your name or email."),
-      ("<b>التعليقات على المقالات:</b> الاسم الذي تكتبه ونص تعليقك، وتظهر للقرّاء.",
-       "<b>Comments on articles:</b> the name you type and your comment, shown to readers."),
-      ("<b>رسائل برج المراقبة:</b> تصل إلى بريد الكاتبة، ولا تُنشر.",
-       "<b>Control Tower messages:</b> they reach the writer's inbox and are never published."),
-      ("<b>التقييم:</b> يصل إلى بريد الكاتبة، وقد يظهر في الصفحة الرئيسية بالاسم الذي كتبته.",
-       "<b>Ratings:</b> they reach the writer's inbox, and may appear on the home page with the name you gave.")]),
-    (("ما يُحفظ في جهازك", "What stays on your device"),
-     [("تفضيلاتك فقط: الوضع الليلي، وما أعجبك وما أكملت قراءته، وتظليلاتك وملاحظاتك على المقالات (لا يراها أحد غيرك). لا ملفات ارتباط (Cookies)، ولا تتبّع إعلاني.",
-       "Only your preferences: dark mode, what you liked or finished reading, and your highlights and notes on articles (nobody else sees them). No cookies, no ad tracking.")]),
-    (("لماذا نجمعها؟", "Why"),
-     [("للرد عليك، وعرض التعليقات، ومعرفة عدد القرّاء. لا إعلانات، ولا بيع.",
-       "To reply to you, show comments, and know how many people read. No ads, no selling.")]),
-    (("حقوقك", "Your rights"),
-     [(f'اطلب حذف تعليقك أو رسالتك متى شئت: <a href="mailto:{EMAIL}">{EMAIL}</a>.',
-       f'Ask for your comment or message to be deleted at any time: <a href="mailto:{EMAIL}">{EMAIL}</a>.')]),
-    (("التعديلات", "Changes"),
-     [("قد تُحدَّث هذه السياسة، وتاريخ آخر تحديث في أعلى الصفحة.",
-       "This policy may be updated; the date of the latest update is at the top of the page.")]),
-]
-
-TERMS = [
-    (("قبول الشروط", "Acceptance"),
-     [("باستخدامك موقع shoroogmi.com فأنت توافق على هذه الشروط. إن لم توافق عليها فنرجو ألا تستخدم الموقع.",
-       "By using shoroogmi.com you agree to these terms. If you do not agree, please do not use the site.")]),
-    (("حقوق المحتوى ومشاركته", "Sharing the content"),
-     [("<b>المقالات والنصوص الدينية</b> (مثل «تأملات في القرآن والسنة» و«شعب العلاقة مع القرآن»): يمكن اقتباسها ونشرها دون ذكر اسم الكاتبة، ودون إذن مسبق.",
-       "<b>Religious articles and texts</b> (such as “Reflections on the Quran &amp; Sunnah” and “Branches of the Relationship with the Quran”): you may quote and publish them without the writer's name and without prior permission."),
-      ("<b>المقالات الإعلامية، ومقالات الذكاء الاصطناعي، والموضوعات الثقافية:</b> يمكن مشاركتها ونسخها كاملة، بشرط ذكر اسم الكاتبة (شروق المحمادي) أو الإشارة إلى الموقع (shoroogmi.com).",
-       "<b>Media articles, artificial-intelligence articles and cultural topics:</b> you may share and copy them in full, provided you credit the writer (Shoroog Almehmadi) or mention the website (shoroogmi.com).")]),
-    (("ما ليس ملكًا للكاتبة", "Content owned by others"),
-     [("حقوق أغلفة الكتب والأعمال المقتبس منها محفوظة لأصحابها، وتُعرض للتعريف فقط. والترجمات الإنجليزية لمعاني الآيات مأخوذة من ترجمة Saheeh International (المنشورة على Quran.com)، وترجمات الأحاديث من الترجمات المنشورة على Sunnah.com.",
-       "Book covers and quoted works belong to their owners and are shown for reference only. The English renderings of Quranic verses are from the Saheeh International translation (as published on Quran.com), and hadith translations are those published on Sunnah.com.")]),
-    (("التعليقات والرسائل", "Comments and messages"),
-     [("أنت مسؤول عمّا تكتبه. يُمنع نشر الإساءة أو الشتم أو التحريض أو الإعلانات أو ما يخالف الأنظمة. وللكاتبة حذف أي تعليق دون إشعار.",
-       "You are responsible for what you write. Abuse, insults, incitement, advertising and anything unlawful are not allowed, and the writer may remove any comment without notice.")]),
-    (("التسجيلات الصوتية والترجمة", "Audio and translation"),
-     [("التسجيلات الصوتية بصوت آلي مولَّد، وقد يقع فيها خطأ في النطق، والمرجع هو النص المكتوب. والنص العربي هو الأصل إذا اختلف عن الترجمة الإنجليزية.",
-       "The audio recordings use a computer-generated voice and may mispronounce a word; the written text is the reference. Where the English translation differs from the Arabic, the Arabic original prevails.")]),
-    (("إخلاء المسؤولية", "Disclaimer"),
-     [("محتوى الموقع تأملات وآراء شخصية للكاتبة، ولا يُعدّ فتوى شرعية، ولا استشارة نفسية أو طبية أو قانونية متخصصة.",
-       "The content of this site is the writer's personal reflection and opinion. It is not a religious ruling (fatwa), nor specialist psychological, medical or legal advice.")]),
-    (("الروابط الخارجية", "External links"),
-     [("قد يحتوي الموقع على روابط لمواقع أخرى، ولا تتحمل الكاتبة مسؤولية محتواها أو سياساتها.",
-       "The site may link to other websites; the writer is not responsible for their content or policies.")]),
-    (("تعديل الشروط", "Changes to these terms"),
-     [(f'قد تُعدَّل هذه الشروط من حين لآخر، ويظهر تاريخ آخر تحديث في أعلى الصفحة. للتواصل: <a href="mailto:{EMAIL}">{EMAIL}</a>.',
-       f'These terms may change from time to time; the date of the latest update appears at the top of the page. Contact: <a href="mailto:{EMAIL}">{EMAIL}</a>.')]),
-]
+_sections = lambda key: [(tx(sec, "title_ar", "title_en"), [tx(p) for p in sec.get("paragraphs", [])]) for sec in LEGAL.get(key, [])]
+PRIVACY = _sections("privacy")
+TERMS = _sections("terms")
 
 
 def build(lang):
@@ -673,11 +620,10 @@ def build(lang):
       </div>
       <div class="container hero-inner">
         <figure class="verse">
-          <blockquote><span>{t("كلُّ شمسٍ لم تكُنْها ظلامُ", "Every sun that is not you is darkness")}</span></blockquote>
+          <blockquote><span>{L(HOME["verse"])}</span></blockquote>
         </figure>
         <h1>{me}</h1>
-        <p class="lead">{t("أيها القارئ: لنتفق! المقعد الأيمن مرة لي ومرة لك، وذلك طوال رحلتنا في سياحة العقول والأفكار والتجارب. طيب كابتن؟",
-                           "Dear reader, let's make a deal! The right seat is mine one time and yours the next, all through our journey touring minds, ideas and experiences. Okay, Captain?")}</p>
+        <p class="lead">{L(HOME["lead"])}</p>
         <div class="hero-actions">
           <a href="blog/index.html" class="btn btn-primary">{t("سجل الرحلات", "Travel Log")}</a>
           <a href="sira.html" class="btn btn-ghost">{t("جواز سفر", "Passport")}</a>
@@ -708,8 +654,8 @@ def build(lang):
 {rate_section}
     <section class="section cta">
       <div class="container cta-inner">
-        <h2>{t("أي خدمة؟", "Anything I can do for you?")}</h2>
-        <p>{t("خليني أسمعها! 🌸", "Let me hear it! 🌸")}</p>
+        <h2>{L(HOME["cta_title"])}</h2>
+        <p>{L(HOME["cta_sub"])}</p>
         <a href="contact.html" class="btn btn-primary">{t("برج المراقبة", "Control Tower")}</a>
       </div>
     </section>
@@ -728,7 +674,7 @@ def build(lang):
 
     # ---------- What travelers said (page) ----------
     reviews = page_head(me, t("ما قاله المسافرون", "What Travelers Said"),
-                        t("كلمات من رافقونا في الرحلة.", "Words from those who traveled with us.")) + testimonials_html(limit=200) + rate_section
+                        L(HOME["reviews_lead"])) + testimonials_html(limit=200) + rate_section
     page(lang, "testimonials.html", "testimonials", f"{t('ما قاله المسافرون', 'What Travelers Said')} · {me}", reviews,
          t("تقييمات قرّاء موقع شروق المحمادي.", "Reviews from readers of Shoroog Almehmadi's website."))
 
@@ -743,9 +689,7 @@ def build(lang):
             </article>
           </li>"""
 
-    sira = page_head(t("جواز سفر", "Passport"), t("هبوط وصعود", "Landings and Takeoffs"),
-                     t("مرتفعات شديدة، وهبوط قوي، تمالك قلبك حتى لا يسقط.",
-                       "Steep climbs and hard drops: hold on to your heart so it doesn't fall."),
+    sira = page_head(t("جواز سفر", "Passport"), L(tx(PASSPORT.get("title"))), L(tx(PASSPORT.get("lead"))),
                      extra=f'        <p class="hero-share">{share_btn(lang, "sira.html", t("جواز سفر — شروق المحمادي", "Passport — Shoroog Almehmadi"))}</p>\n') + f"""
     <section class="section quest">
       <div class="container">
@@ -911,7 +855,7 @@ def build(lang):
             </div>
           </article>"""
 
-    books = page_head(t("أمتعة السفر", "Luggage"), t("كتب ماتعة!", "Delightful Books!"), "") + f"""
+    books = page_head(t("أمتعة السفر", "Luggage"), L(HOME["books_title"]), "") + f"""
     <section class="section">
       <div class="container">
         <div class="books mine-list">
@@ -936,10 +880,8 @@ def build(lang):
             value += f'<small>{L(note)}</small>'
         return f"""            <li><span class="ci ci-{icon}" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="{BRAND_ICONS[icon]}"/></svg></span><div><strong>{L(label)}</strong>{value}</div></li>"""
 
-    topics = [("سؤال", "Question"), ("اقتراح", "Suggestion"), ("تعاون", "Collaboration"), ("تعليق على رحلة", "Comment on a journey")]
-    contact = page_head(t("برج المراقبة", "Control Tower"), t("تعيسًا أو سعيدًا كلِّم برج المراقبة", "Unhappy or happy, call the Control Tower"),
-                        t("أي سؤال، وأي اقتراح، وحتى تعاون؛ موجودة وبرد لك -ما دمتُ حيًا-.",
-                          "Any question, any suggestion, even a collaboration: I'm here and I'll get back to you, as long as I live.")) + f"""
+    topics = [tx(x) for x in CONTACT.get("topics", [])]
+    contact = page_head(t("برج المراقبة", "Control Tower"), L(tx(CONTACT.get("title"))), L(tx(CONTACT.get("lead")))) + f"""
     <section class="section">
       <div class="container contact">
         <form class="contact-form" data-email="{EMAIL}" novalidate>
@@ -1126,4 +1068,13 @@ with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as f:
     f.write("</urlset>\n")
 with open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8") as f:
     f.write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n")
+# قائمة التصنيفات في لوحة التحكم (.pages.yml) تتبع content/data/journeys.yml
+_cms = os.path.join(ROOT, ".pages.yml")
+if os.path.exists(_cms):
+    _txt = open(_cms, encoding="utf-8").read()
+    _new = re.sub(r"(# CATEGORIES-START[^\n]*\n)(.*?)(\s*# CATEGORIES-END)",
+                  lambda m: m.group(1) + "".join(f"          - {json.dumps(c, ensure_ascii=False)}\n" for c in CATEGORIES).rstrip("\n") + m.group(3),
+                  _txt, flags=re.S)
+    if _new != _txt:
+        open(_cms, "w", encoding="utf-8").write(_new)
 print(f"تم: {n_ar} مقالات بالعربية، و{n_en} بالإنجليزية")

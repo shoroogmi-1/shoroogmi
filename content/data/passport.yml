@@ -1,0 +1,43 @@
+# صفحة «جواز سفر». النص: **كلمة** تظهر غامقة.
+title:
+  ar: هبوط وصعود
+  en: Landings and Takeoffs
+lead:
+  ar: مرتفعات شديدة، وهبوط قوي، تمالك قلبك حتى لا يسقط.
+  en: 'Steep climbs and hard drops: hold on to your heart so it doesn''t fall.'
+stations:
+- icon: 🐪
+  ar: '**١٩٩٩** - السعودية'
+  en: '**1999** - Saudi Arabia'
+  badge: 👶
+  kind: البداية
+- icon: 🎓
+  ar: '**بكالوريوس علاقات عامة، إعلام واتصال** - جامعة أم القرى، مكة المكرمة، ٢٠٢٠.'
+  en: '**Bachelor''s in Public Relations, Media and Communication** - Umm Al-Qura University, Makkah, 2020.'
+  badge: 🎉
+  kind: عادية
+- icon: ✍️
+  ar: '**كاتبة إعلانات وسيناريو** لما يزيد عن عشرين جهة.'
+  en: '**Advertising copywriter and scriptwriter** for more than twenty organizations.'
+  badge: 📢🎬
+  kind: عادية
+- icon: 🧳
+  ar: '**ماجستير إعلام سياحي**، جامعة الملك خالد، أبها، ٢٠٢٤.'
+  en: '**Master''s in Tourism Media**, King Khalid University, Abha, 2024.'
+  badge: 🎓✈️
+  kind: عادية
+- icon: 🏆
+  ar: '**جائزة أدب العزلة**، هيئة الأدب والنشر والترجمة، ٢٠٢٠.'
+  en: '**Literature of Solitude Award**, Literature, Publishing and Translation Commission, 2020.'
+  badge: 🥇
+  kind: جائزة
+- icon: 🔬
+  ar: نشرت **ستة بحوث علمية**.
+  en: I published **six research papers**.
+  badge: 📜📜📜
+  kind: عادية
+- icon: 📖
+  ar: '**حفظ القرآن** ٢٠٢٦.'
+  en: '**Memorized the Quran**, 2026.'
+  badge: ✨
+  kind: الختام
