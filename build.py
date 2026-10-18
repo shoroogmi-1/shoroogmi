@@ -170,7 +170,6 @@ def audio_player(lang, slug):
     if lang != "ar" or not os.path.exists(os.path.join(AUDIO_DIR, f"{slug}.mp3")):
         return ""
     return f"""        <div class="audio-player">
-          <p class="audio-label">🎧 استمع للمقال بصوت حامد</p>
           <audio controls preload="none" src="../../assets/audio/{slug}.mp3?v={AUDIO_V.get(slug, "")}"></audio>
           <button class="audio-rate" type="button">السرعة ١×</button>
         </div>"""
