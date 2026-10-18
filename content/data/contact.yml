@@ -1,0 +1,60 @@
+# صفحة «برج المراقبة».
+title:
+  ar: تعيسًا أو سعيدًا كلِّم برج المراقبة
+  en: Unhappy or happy, call the Control Tower
+lead:
+  ar: أي سؤال، وأي اقتراح، وحتى تعاون؛ موجودة وبرد لك -ما دمتُ حيًا-.
+  en: 'Any question, any suggestion, even a collaboration: I''m here and I''ll get back to you, as long as I live.'
+email: shoroogmi1@gmail.com
+topics:
+- ar: سؤال
+  en: Question
+- ar: اقتراح
+  en: Suggestion
+- ar: تعاون
+  en: Collaboration
+- ar: تعليق على رحلة
+  en: Comment on a journey
+contacts:
+- platform: بريد
+  name_ar: البريد
+  name_en: Email
+  shown_ar: shoroogmi1@gmail.com
+  shown_en: shoroogmi1@gmail.com
+  url: mailto:shoroogmi1@gmail.com
+- platform: إكس
+  name_ar: إكس
+  name_en: X
+  shown_ar: '@shoroogmi'
+  shown_en: '@shoroogmi'
+  url: https://x.com/shoroogmi
+- platform: إنستغرام
+  name_ar: انستغرام
+  name_en: Instagram
+  shown_ar: '@shoroogmi'
+  shown_en: '@shoroogmi'
+  url: https://www.instagram.com/shoroogmi
+- platform: واتساب
+  name_ar: واتساب
+  name_en: WhatsApp
+  shown_ar: shoroogmi
+  shown_en: shoroogmi
+  url: ''
+- platform: واتساب
+  name_ar: قناة واتساب
+  name_en: WhatsApp Channel
+  shown_ar: تابع القناة
+  shown_en: Follow the channel
+  url: https://whatsapp.com/channel/0029Vb6mYujKmCPUKLgBbW23
+- platform: سبستاك
+  name_ar: سبستاك
+  name_en: Substack
+  shown_ar: '@shoroogmi'
+  shown_en: '@shoroogmi'
+  url: https://substack.com/@shoroogmi
+- platform: فيسبوك
+  name_ar: فيسبوك
+  name_en: Facebook
+  shown_ar: صفحتي على فيسبوك
+  shown_en: My Facebook page
+  url: https://www.facebook.com/share/1HsZnfQwpn/?mibextid=wwXIfr

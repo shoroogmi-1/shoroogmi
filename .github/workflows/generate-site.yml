@@ -50,7 +50,7 @@ jobs:
         run: |
           git pull --rebase --autostash origin main
           python3 build.py
-          git add '*.html' 'blog/articles/*.html' 'en/blog/articles/*.html' assets/search-ar.json assets/search-en.json sitemap.xml robots.txt content/popular.json
+          git add '*.html' 'blog/articles/*.html' 'en/blog/articles/*.html' assets/search-ar.json assets/search-en.json sitemap.xml robots.txt content/popular.json .pages.yml
           if git diff --cached --quiet; then
             echo "No generated HTML changes."
           else
@@ -75,7 +75,7 @@ jobs:
         run: |
           git pull --rebase --autostash origin main
           python3 build.py
-          git add '*.html' 'blog/articles/*.html' 'en/blog/articles/*.html' assets/search-ar.json assets/search-en.json sitemap.xml robots.txt
+          git add '*.html' 'blog/articles/*.html' 'en/blog/articles/*.html' assets/search-ar.json assets/search-en.json sitemap.xml robots.txt .pages.yml
           if git diff --cached --quiet; then
             echo "No generated HTML changes."
           else
