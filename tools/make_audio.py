@@ -21,21 +21,31 @@ OUT = os.path.join(ROOT, "assets", "audio")
 MANIFEST = os.path.join(OUT, "manifest.json")
 VOICE = "ar-SA-HamedNeural"
 # سطر وسائط: ![وصف](ملف) أو [وصف](ملف.pdf) أو رابط يوتيوب وحده
-MEDIA_LINE = re.compile(r"!\[[^\]]*\]\([^)\s]+\)|\[[^\]]*\]\([^)\s:]+\.\w+\)|\[[^\]]*\]\(https?://\S*(?:youtube\.com|youtu\.be)\S*\)|https?://\S*(?:youtube\.com|youtu\.be)/\S+")
+_T = r'(?:\s+"[^"]*")?\)'  # عنوان اختياري يكتبه المحرّر بعد الرابط
+MEDIA_LINE = re.compile(r"<?(?:!\[[^\]]*\]\(<?[^)\s>]+>?" + _T + r"|\[[^\]]*\]\(<?[^)\s:>]+\.\w+>?" + _T
+                        + r"|\[[^\]]*\]\(https?://\S*(?:youtube\.com|youtu\.be)\S*?" + _T + r"|https?://\S*(?:youtube\.com|youtu\.be)/[^\s>]+)>?")
 
 
 def article_text(path):
     """العنوان ثم فقرات المقال كما تُقرأ، بلا علامات التنسيق."""
-    text = open(path, encoding="utf-8").read().replace("\r\n", "\n")
-    head, _, body = text.strip().partition("\n\n")
-    title = re.search(r"^العنوان:\s*(.*)$", head, re.M).group(1).strip()
+    text = open(path, encoding="utf-8").read().replace("\r\n", "\n").lstrip("\ufeff")
+    if text.startswith("---\n"):  # ترويسة لوحة التحكم (Pages CMS)
+        import yaml
+        _, head, body = text.split("---\n", 2)
+        title = str((yaml.safe_load(head) or {}).get("title", "")).strip()
+    else:
+        head, _, body = text.strip().partition("\n\n")
+        title = re.search(r"^العنوان:\s*(.*)$", head, re.M).group(1).strip()
     blocks = []
     for para in re.split(r"\n\s*\n", body.strip()):
-        lines = [line.strip() for line in para.splitlines() if line.strip()]
+        lines = [line.strip().removesuffix("\\").rstrip() for line in para.splitlines() if line.strip()]
         if lines and all(MEDIA_LINE.fullmatch(line) for line in lines):
             continue  # فقرة صور أو فيديو أو ملفات أو روابط يوتيوب لا تُقرأ
         para = " ".join(lines)
-        para = re.sub(r"^(## |> )", "", para)
+        para = re.sub(r"^(#{1,6} |> ?)", "", para)
+        para = re.sub(r"\[([^\]]+)\]\((?:https?://)?[^)\s]+\)", r"\1", para)  # من الرابط يُقرأ نصّه فقط
+        para = re.sub(r"(?<!\*)\*([^*\s][^*]*?)(?<!\s)\*(?!\*)", r"\1", para)
+        para = re.sub(r"\*\*|\\(?=[\\`*_{}\[\]()#+\-.!>~|])", "", para)  # علامات المحرّر لا تُقرأ
         para = re.sub(r"<[^>]+>", "", para)  # روابط HTML داخل الفقرات
         if para:
             blocks.append(para)

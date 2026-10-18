@@ -13,7 +13,7 @@ import json
 import glob
 import os
 import re
-from urllib.parse import quote as url_quote
+from urllib.parse import quote as url_quote, unquote
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 LANGS = ("ar", "en")
@@ -271,9 +271,9 @@ CATEGORIES_EN = {
 }
 
 
-IMG_RE = re.compile(r"!\[([^\]]*)\]\(([^)\s]+)\)")
+IMG_RE = re.compile(r"!\[([^\]]*)\]\(<?([^)\s>]+)>?(?:\s+\"[^\"]*\")?\)")
 # سطر وسائط في المقال: صورة أو فيديو أو صوت ![وصف](ملف) — ملف للتحميل [وصف](ملف) — أو رابط يوتيوب وحده
-MEDIA_RE = re.compile(r"(!?)\[([^\]]*)\]\(([^)\s]+)\)")
+MEDIA_RE = re.compile(r"(!?)\[([^\]]*)\]\(<?([^)\s>]+)>?(?:\s+\"[^\"]*\")?\)")
 YT_RE = re.compile(r"https?://(?:www\.|m\.)?(?:youtube\.com/(?:watch\?v=|shorts/|embed/)|youtu\.be/)([\w-]{11})\S*")
 VIDEO_EXT = (".mp4", ".webm", ".mov", ".m4v")
 SOUND_EXT = (".mp3", ".m4a", ".wav", ".ogg")
@@ -281,8 +281,18 @@ SOUND_EXT = (".mp3", ".m4a", ".wav", ".ogg")
 MEDIA_DIRS = ("assets/media", "assets/images")
 
 
+def media_name(src, dirs=MEDIA_DIRS):
+    """اسم الملف داخل مجلد الوسائط: لوحة التحكم تكتب /assets/media/x.jpg، والكتابة اليدوية x.jpg."""
+    src = unquote(src).lstrip("/")
+    for d in dirs:
+        if src.startswith(d + "/"):
+            return src[len(d) + 1:]
+    return src
+
+
 def media_path(src):
     """مسار ملف الوسائط داخل الموقع، أو None إن لم يوجد."""
+    src = media_name(src)
     for d in MEDIA_DIRS:
         if os.path.exists(os.path.join(ROOT, d, src)):
             return f"{d}/{src}"
@@ -290,6 +300,7 @@ def media_path(src):
 
 
 def is_media_line(line):
+    line = line.strip("<>")
     m = MEDIA_RE.fullmatch(line)
     if m:
         if YT_RE.fullmatch(m.group(3)):
@@ -298,37 +309,72 @@ def is_media_line(line):
     return bool(YT_RE.fullmatch(line))
 
 
+# مفاتيح ترويسة لوحة التحكم (Pages CMS) بالإنجليزية ← أسماء الحقول الداخلية
+FM_KEYS = {"title": "title", "date": "date", "category": "tag", "excerpt": "excerpt", "quote": "quote", "time": "time",
+           "kind": "kind", "subtitle": "sub", "publisher": "pub", "year": "year", "store": "url", "front": "front",
+           "back": "back", "pdf": "pdf", "order": "order"}
+
+
+def inline_md(x):
+    """ما يكتبه محرّر لوحة التحكم داخل الفقرة: **غامق** و*مائل* و[رابط](https://…)، وإزالة رموز الهروب \\."""
+    x = re.sub(r"\\([\\`*_{}\[\]()#+\-.!>~|])", r"\1", x)
+    x = re.sub(r"\*\*([^*]+?)\*\*", r"<strong>\1</strong>", x)
+    x = re.sub(r"(?<!\*)\*([^*\s][^*]*?)(?<!\s)\*(?!\*)", r"<em>\1</em>", x)
+    x = re.sub(r"\[([^\]]+)\]\((https?://[^)\s]+)\)", r'<a href="\2" target="_blank" rel="noopener">\1</a>', x)
+    x = re.sub(r"(?<![\"'=])<(https?://[^>\s]+)>", r'<a href="\1" target="_blank" rel="noopener">\1</a>', x)
+    return x
+
+
 def read_md(path, fields):
-    """ترويسة (مفتاح: قيمة) ثم سطر فارغ ثم النص.
+    """ترويسة ثم سطر فارغ ثم النص. الترويسة إما «مفتاح: قيمة» بالعربية (الكتابة اليدوية)،
+    أو بين سطرين --- بالإنجليزية (ما تكتبه لوحة التحكم).
     في النص: سطر يبدأ بـ ## عنوان فرعي، وسطر يبدأ بـ > اقتباس، والباقي فقرات."""
-    text = open(path, encoding="utf-8").read().replace("\r\n", "\n")
-    head, _, body = text.strip().partition("\n\n")
+    text = open(path, encoding="utf-8").read().replace("\r\n", "\n").lstrip("\ufeff")
     meta = {}
-    for line in head.splitlines():
-        key, _, value = line.partition(":")
-        key = key.strip()
-        meta[fields.get(key) or OPTIONAL_FIELDS.get(key, key)] = value.strip()
+    if text.startswith("---\n"):
+        import yaml  # يُثبَّت في GitHub Actions مع أداة الصوت
+        _, head, body = text.split("---\n", 2) if text.count("---\n") >= 2 else ("", text[4:], "")
+        for key, value in (yaml.safe_load(head) or {}).items():
+            if isinstance(value, list):
+                value = "، ".join(str(v) for v in value)
+            elif key == "time" and isinstance(value, int):  # YAML يقرأ 21:30 غير المقتبسة رقمًا (دقائق)
+                value = f"{value // 60}:{value % 60:02d}"
+            meta[FM_KEYS.get(key, key)] = "" if value is None else str(value).strip()
+        body = body.strip("\n")
+    else:
+        head, _, body = text.strip().partition("\n\n")
+        for line in head.splitlines():
+            key, _, value = line.partition(":")
+            key = key.strip()
+            meta[fields.get(key) or OPTIONAL_FIELDS.get(key, key)] = value.strip()
     for label, key in fields.items():
         if not meta.get(key):
             raise SystemExit(f"{path}: الحقل «{label}» مفقود في الترويسة")
     blocks = []
     for para in re.split(r"\n\s*\n", body.strip()):
         lines = [line.strip() for line in para.splitlines() if line.strip()]
+        lines = [line[:-1].rstrip() if line.endswith("\\") else line for line in lines]  # سطر جديد من المحرّر
         # فقرة كل أسطرها وسائط: صور/فيديو/صوت/ملفات (في assets/media أو assets/images) أو روابط يوتيوب
         if lines and all(is_media_line(line) for line in lines):
             for line in lines:
-                m = MEDIA_RE.fullmatch(line)
+                m = MEDIA_RE.fullmatch(line.strip("<>"))
                 if m and "://" not in m.group(3) and not media_path(m.group(3)):
                     raise SystemExit(f"{path}: الملف {m.group(3)} غير موجود في assets/media ولا assets/images")
-            blocks.append(("img", "\n".join(lines)))
+            blocks.append(("img", "\n".join(line.strip("<>") for line in lines)))
+            continue
+        # قائمة نقطية أو مرقّمة من المحرّر (سطران فأكثر)
+        if len(lines) > 1 and all(re.match(r"([-*+]|\d+[.)])\s", line) for line in lines):
+            tag = "ol" if lines[0][0].isdigit() else "ul"
+            items = "".join(f"<li>{inline_md(re.sub(r'^([-*+]|\d+[.)])\s+', '', line))}</li>" for line in lines)
+            blocks.append(("list", f"<{tag}>{items}</{tag}>"))
             continue
         para = " ".join(lines)
-        if para.startswith("## "):
-            blocks.append(("h2", para[3:]))
-        elif para.startswith("> "):
-            blocks.append(("quote", para[2:]))
+        if re.match(r"#{1,6} ", para):
+            blocks.append(("h2", inline_md(para.lstrip("#").strip())))
+        elif para.startswith(">"):
+            blocks.append(("quote", inline_md(re.sub(r"^>\s?", "", re.sub(r" >\s?", " ", para)))))
         elif para:
-            blocks.append(("p", para))
+            blocks.append(("p", inline_md(para)))
     return meta, blocks
 
 
@@ -425,6 +471,9 @@ def load_books():
         if os.path.exists(en_path):
             en, en_blocks = read_md(en_path, {"Title": "title"})
             en = {k.lower(): v for k, v in en.items()}
+        m["front"], m["back"] = media_name(m["front"], ("assets/books",)), media_name(m["back"], ("assets/books",))
+        if m.get("pdf") and "://" not in m["pdf"]:
+            m["pdf"] = media_name(m["pdf"], ("assets/books",))
         for img in (m["front"], m["back"]):
             if not os.path.exists(os.path.join(ROOT, "assets", "books", img)):
                 raise SystemExit(f"{path}: صورة الغلاف {img} غير موجودة في assets/books")
@@ -950,10 +999,10 @@ def build(lang):
                 url = f"{art_root}{media_path(src)}"
                 low = src.lower()
                 cap = f"<figcaption>{alt}</figcaption>" if alt else ""
-                if bang and low.endswith(VIDEO_EXT):
+                if low.endswith(VIDEO_EXT):
                     flush()
                     out.append(f'<figure class="post-figure post-video"><video controls preload="metadata" src="{url}"></video>{cap}</figure>')
-                elif bang and low.endswith(SOUND_EXT):
+                elif low.endswith(SOUND_EXT):
                     flush()
                     out.append(f'<figure class="post-figure post-sound"><audio controls preload="none" src="{url}"></audio>{cap}</figure>')
                 elif bang:
@@ -969,6 +1018,8 @@ def build(lang):
             return chr(10).join("        " + x for x in out)
         if kind == "h2":
             return f"        <h2>{text}</h2>"
+        if kind == "list":
+            return f"        {text}"
         if kind == "quote":
             return f"        <blockquote><p>{text}</p></blockquote>"
         return f"        <p>{text}</p>"
