@@ -415,7 +415,8 @@ def load_books():
     """الكتب من content/books/*.md (وترجمتها في content/en/books/ بالاسم نفسه)، مرتبة بحقل «الترتيب»."""
     out = []
     ar_fields = {"العنوان": "title", "العنوان الفرعي": "sub", "الناشر": "pub", "السنة": "year", "رابط المتجر": "url",
-                 "الغلاف الأمامي": "front", "الغلاف الخلفي": "back", "الترتيب": "order"}
+                 "الغلاف الأمامي": "front", "الغلاف الخلفي": "back", "الترتيب": "order",
+                 "رابط التحميل": "pdf"}
     for path in sorted(glob.glob(os.path.join(ROOT, "content", "books", "*.md"))):
         m, blocks = read_md(path, {k: v for k, v in ar_fields.items() if k in ("العنوان", "الغلاف الأمامي", "الغلاف الخلفي")})
         m = {ar_fields.get(k, k): v for k, v in m.items()}
@@ -427,11 +428,15 @@ def load_books():
         for img in (m["front"], m["back"]):
             if not os.path.exists(os.path.join(ROOT, "assets", "books", img)):
                 raise SystemExit(f"{path}: صورة الغلاف {img} غير موجودة في assets/books")
+        # «رابط التحميل»: ملف في assets/books (مثل كتاب.pdf) أو رابط كامل
+        pdf = m.get("pdf") or None
+        if pdf and "://" not in pdf and not os.path.exists(os.path.join(ROOT, "assets", "books", pdf)):
+            raise SystemExit(f"{path}: ملف الكتاب {pdf} غير موجود في assets/books")
         pair = lambda a, e: (a, e or a)
         desc = [pair(x, en_blocks[i][1] if i < len(en_blocks) else "") for i, (_, x) in enumerate(blocks)]
         out.append((int(m.get("order") or 99), (pair(m["title"], en.get("title")), pair(m.get("sub", ""), en.get("subtitle")),
                     pair(m.get("pub", ""), en.get("publisher")), pair(m.get("year", ""), en.get("year")),
-                    m.get("url") or None, m["front"], m["back"], desc)))
+                    m.get("url") or None, m["front"], m["back"], desc, pdf)))
     return [b for _, b in sorted(out, key=lambda x: x[0])]
 
 
@@ -827,11 +832,15 @@ def build(lang):
     # ---------- Books ----------
     a_root = "../" * out_path(lang, "books.html").count("/")
 
-    def book_card(title, sub, pub, year, url, front, back, desc):
+    def book_card(title, sub, pub, year, url, front, back, desc, pdf=None):
         title = L(title)
         book_id = "book-" + os.path.splitext(front)[0].replace("-front", "")
         link = (f'\n              <a class="btn btn-primary book-link" href="{url}" target="_blank" rel="noopener">🛒 {t("زيارة المتجر", "Visit the store")}</a>'
                 if url else "")
+        if pdf:
+            href = pdf if "://" in pdf else f"{a_root}assets/books/{pdf}"
+            link += (f'\n              <a class="btn btn-primary book-link" href="{href}" download target="_blank" rel="noopener">'
+                     f'📥 {t("تحميل الكتاب PDF", "Download the book (PDF)")}</a>')
         covers = "".join(
             f'\n              <a href="{a_root}assets/books/{img}" target="_blank" rel="noopener"><img src="{a_root}assets/books/{img}" alt="{alt} {title}" width="900" height="1253" loading="lazy"></a>'
             for img, alt in ((front, t("الغلاف الأمامي لكتاب", "Front cover of")), (back, t("الغلاف الخلفي لكتاب", "Back cover of"))))
