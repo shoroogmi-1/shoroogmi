@@ -839,8 +839,10 @@ def build(lang):
                 if url else "")
         if pdf:
             href = pdf if "://" in pdf else f"{a_root}assets/books/{pdf}"
-            link += (f'\n              <a class="btn btn-primary book-link" href="{href}" download target="_blank" rel="noopener">'
-                     f'📥 {t("تحميل الكتاب PDF", "Download the book (PDF)")}</a>')
+            key = "dl-" + book_id
+            link += (f'\n              <a class="btn btn-primary book-link book-dl" data-count="{key}" href="{href}" download target="_blank" rel="noopener">'
+                     f'📥 {t("تحميل الكتاب PDF", "Download the book (PDF)")}</a>'
+                     f'\n              <span class="dl-count" title="{t("عدد التحميلات", "Downloads")}">⬇️ <b data-count-of="{key}">…</b> {t("تحميل", "downloads")}</span>')
         covers = "".join(
             f'\n              <a href="{a_root}assets/books/{img}" target="_blank" rel="noopener"><img src="{a_root}assets/books/{img}" alt="{alt} {title}" width="900" height="1253" loading="lazy"></a>'
             for img, alt in ((front, t("الغلاف الأمامي لكتاب", "Front cover of")), (back, t("الغلاف الخلفي لكتاب", "Back cover of"))))
