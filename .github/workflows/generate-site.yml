@@ -42,8 +42,23 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      # Record new or edited articles in Hamed's voice, ten at a time, saving after each batch
-      # إن تعذّر التسجيل مؤقتًا لا يتوقف بناء الموقع، ويُعاد التسجيل في التشغيل التالي
+      - name: Update readers' picks
+        continue-on-error: true
+        run: python3 tools/popular.py
+      # ١) ننشر الصفحات فورًا (المقال يظهر خلال دقيقة تقريبًا) — بأحدث محتوى ولو حُفظ مقال آخر أثناء الانتظار
+      - name: Publish pages now
+        run: |
+          git pull --rebase --autostash origin main
+          python3 build.py
+          git add '*.html' 'blog/articles/*.html' 'en/blog/articles/*.html' assets/search-ar.json assets/search-en.json sitemap.xml robots.txt content/popular.json
+          if git diff --cached --quiet; then
+            echo "No generated HTML changes."
+          else
+            git commit -m "Generate HTML pages from article content"
+            git pull --rebase --autostash origin main && git push origin HEAD:main
+          fi
+      # ٢) ثم نسجّل بصوت حامد (يأخذ دقائق)، عشرة مقالات في كل دفعة
+      # إن تعذّر التسجيل مؤقتًا لا يتوقف شيء، ويُعاد التسجيل في التشغيل التالي
       - name: Record article audio
         continue-on-error: true
         run: |
@@ -53,28 +68,26 @@ jobs:
             git add assets/audio
             git diff --cached --quiet && break
             git commit -m "Record article audio"
-            git pull --rebase origin main && git push origin HEAD:main
+            git pull --rebase --autostash origin main && git push origin HEAD:main
           done
-      - name: Update readers' picks
-        continue-on-error: true
-        run: python3 tools/popular.py
-      - name: Generate HTML
-        run: python3 build.py
-      - name: Commit generated HTML
+      # ٣) نعيد بناء الصفحات ليظهر مشغّل الصوت في المقالات التي سُجّلت
+      - name: Add audio players to pages
         run: |
-          git add '*.html' 'blog/articles/*.html' 'en/blog/articles/*.html' assets/search-ar.json assets/search-en.json sitemap.xml robots.txt content/popular.json
+          git pull --rebase --autostash origin main
+          python3 build.py
+          git add '*.html' 'blog/articles/*.html' 'en/blog/articles/*.html' assets/search-ar.json assets/search-en.json sitemap.xml robots.txt
           if git diff --cached --quiet; then
             echo "No generated HTML changes."
           else
-            git commit -m "Generate HTML pages from article content"
-            git pull --rebase origin main && git push origin main
+            git commit -m "Add audio players to article pages"
+            git pull --rebase --autostash origin main && git push origin HEAD:main
           fi
       # إرسال المقالات الجديدة أو المعدّلة فورًا إلى Bing وغيره (IndexNow)، بعد أن صارت صفحاتها منشورة
       - name: Notify search engines
         if: github.event_name == 'push'
         continue-on-error: true
         run: |
-          sleep 90
+          sleep 60
           BEFORE="${{ github.event.before }}"
           if git cat-file -e "$BEFORE" 2>/dev/null; then
             CHANGED=$(git diff --name-only "$BEFORE" "${{ github.sha }}" -- content/)
