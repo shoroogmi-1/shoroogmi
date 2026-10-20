@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-19",
+ "updated": "2026-10-20",
  "items": [
   {
    "slug": "nazariyyat-dharhum",
@@ -18,6 +18,12 @@
    "reads": 2,
    "likes": 1,
    "score": 4
+  },
+  {
+   "slug": "shuab-al-alaqa",
+   "reads": 2,
+   "likes": 0,
+   "score": 2
   },
   {
    "slug": "taml-in-ashor",
