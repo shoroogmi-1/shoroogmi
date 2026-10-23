@@ -134,7 +134,26 @@ def main():
     json.dump(log, open(LOG, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
 
+def test():
+    """تجربة آمنة: تتحقق من السرّين، وترسل آخر مقال إلى بريد الكاتبة وحدها، وتطبع عدد المشتركين فقط."""
+    password, token = os.environ.get("GMAIL_APP_PASSWORD", "").replace(" ", ""), os.environ.get("NEWSLETTER_TOKEN", "").strip()
+    print("GMAIL_APP_PASSWORD:", "موجود" if password else "غير موجود ❌")
+    print("NEWSLETTER_TOKEN:", "موجود" if token else "غير موجود ❌")
+    print("عدد المشتركين:", len(recipients(token)), "✅ الرمز صحيح")
+    paths = sorted(glob.glob(os.path.join(ROOT, "content", "articles", "*.md")), key=lambda f: article_meta(f)["date"])
+    slug = os.path.basename(paths[-1])[:-3]
+    art = article_meta(paths[-1])
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=60) as smtp:
+        smtp.login(SENDER, password)
+        smtp.send_message(message(art, f"{SITE}blog/articles/{slug}.html",
+                                  {"email": SENDER, "unsub_token": "00000000-0000-0000-0000-000000000000"}))
+    print(f"✅ جيميل يعمل: أُرسلت رسالة تجربة «{art['title']}» إلى {SENDER}")
+
+
 if __name__ == "__main__":
+    if "--test" in sys.argv:
+        test()
+        sys.exit()
     try:
         main()
     except Exception as e:  # noqa: BLE001 — لا يوقف الموقع؛ يُعاد في التشغيل القادم
