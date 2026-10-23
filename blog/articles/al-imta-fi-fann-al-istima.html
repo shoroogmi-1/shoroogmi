@@ -26,7 +26,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=Amiri+Quran&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../assets/styles.css?v=21f55056">
+  <link rel="stylesheet" href="../../assets/styles.css?v=7a2b08e2">
 </head>
 <body>
   <header class="site-header">
@@ -135,11 +135,16 @@
     </article>
     <section class="section newsletter">
       <div class="container narrow">
-        <div class="newsletter-box">
+        <form class="newsletter-box" data-email="shoroogmi1@gmail.com" novalidate>
           <h2 class="section-title">القائمة البريدية ✉️</h2>
-          <p>اشترك ليصلك كل جديد إلى بريدك.</p>
-          <iframe src="https://shoroogmi.substack.com/embed" title="الاشتراك في القائمة البريدية" loading="lazy" frameborder="0" scrolling="no"></iframe>
-        </div>
+          <p>اكتب بريدك ليصلك كل جديد.</p>
+          <div class="nl-row">
+            <input type="email" name="email" required autocomplete="email" dir="ltr" placeholder="name@example.com" aria-label="بريدك الإلكتروني">
+            <button type="submit" class="btn btn-primary">اشترك</button>
+          </div>
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <p class="form-status" role="status"></p>
+        </form>
       </div>
     </section>
 
@@ -180,6 +185,6 @@
     </div>
   </footer>
 
-  <script src="../../assets/script.js?v=e2ac2b46"></script>
+  <script src="../../assets/script.js?v=d7ceb219"></script>
 </body>
 </html>
