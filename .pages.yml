@@ -61,6 +61,10 @@ content:
       - name: quote
         label: اقتباس (يظهر في بطاقة المقال وفي الصفحة الرئيسية)
         type: text
+      - name: notify
+        label: أرسله إلى المشتركين في القائمة البريدية عند النشر
+        type: boolean
+        default: true
       - name: body
         label: نص المقال
         type: rich-text

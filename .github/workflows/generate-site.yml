@@ -82,6 +82,20 @@ jobs:
             git commit -m "Add audio players to article pages"
             git pull --rebase --autostash origin main && git push origin HEAD:main
           fi
+      # ٤) إرسال المقال الجديد إلى القائمة البريدية (بعد أن صارت صفحته منشورة)
+      - name: Email new articles to subscribers
+        continue-on-error: true
+        env:
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          NEWSLETTER_TOKEN: ${{ secrets.NEWSLETTER_TOKEN }}
+        run: |
+          sleep 45
+          python3 tools/newsletter.py || true
+          git add content/newsletter-sent.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Newsletter: record sent articles"
+            git pull --rebase --autostash origin main && git push origin HEAD:main
+          fi
       # إرسال المقالات الجديدة أو المعدّلة فورًا إلى Bing وغيره (IndexNow)، بعد أن صارت صفحاتها منشورة
       - name: Notify search engines
         if: github.event_name == 'push'

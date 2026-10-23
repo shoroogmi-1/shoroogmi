@@ -573,6 +573,25 @@ if (form) {
 const RATINGS_API = `${COMMENTS_URL}/rest/v1/ratings`;
 const sbHeaders = { apikey: COMMENTS_KEY, Authorization: `Bearer ${COMMENTS_KEY}`, "Content-Type": "application/json" };
 
+// صفحة إلغاء الاشتراك: الرابط في آخر كل رسالة فيه رمز خاص بالمشترك
+const unsubBox = document.querySelector(".unsub-box");
+if (unsubBox) {
+  const statusEl = unsubBox.querySelector(".unsub-status");
+  const tok = new URLSearchParams(location.search).get("t") || "";
+  if (!/^[0-9a-f-]{36}$/i.test(tok)) {
+    statusEl.textContent = tr("الرابط غير مكتمل. افتح رابط «إلغاء الاشتراك» من الرسالة نفسها.", "This link is incomplete. Open the “Unsubscribe” link from the email itself.");
+  } else {
+    fetch(`${COMMENTS_URL}/rest/v1/rpc/unsubscribe`, { method: "POST", headers: sbHeaders, body: JSON.stringify({ p_token: tok }) })
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((done) => {
+        statusEl.textContent = done
+          ? tr("تم إلغاء اشتراكك، ولن تصلك رسائل بعد اليوم. سعدنا برفقتك 🌸", "You've been unsubscribed and won't get more emails. It was lovely having you 🌸")
+          : tr("هذا البريد غير مشترك (ربما أُلغي اشتراكه من قبل).", "This email isn't subscribed (maybe it was already removed).");
+      })
+      .catch(() => { statusEl.textContent = tr("تعذّر الإلغاء الآن، حاول مرة أخرى بعد قليل.", "Couldn't unsubscribe right now. Please try again shortly."); });
+  }
+}
+
 // القائمة البريدية للموقع: البريد يُحفظ في جدول subscribers، ويصل إشعار به إلى بريد الكاتبة
 document.querySelectorAll(".newsletter-box").forEach((box) => box.addEventListener("submit", async (e) => {
   e.preventDefault();
