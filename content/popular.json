@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-22",
+ "updated": "2026-10-23",
  "items": [
   {
    "slug": "nazariyyat-dharhum",
@@ -20,13 +20,13 @@
    "score": 4
   },
   {
-   "slug": "shuab-al-alaqa",
-   "reads": 2,
+   "slug": "taml-in-ashor",
+   "reads": 3,
    "likes": 0,
-   "score": 2
+   "score": 3
   },
   {
-   "slug": "taml-in-ashor",
+   "slug": "shuab-al-alaqa",
    "reads": 2,
    "likes": 0,
    "score": 2
@@ -93,6 +93,12 @@
   },
   {
    "slug": "maana-al-quran-rahma",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
+   "slug": "sana-barqih",
    "reads": 1,
    "likes": 0,
    "score": 1
