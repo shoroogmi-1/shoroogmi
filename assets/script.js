@@ -572,6 +572,48 @@ if (form) {
 // public read positive ones: 4–5 stars with a comment) and also emailed to the writer through FormSubmit.
 const RATINGS_API = `${COMMENTS_URL}/rest/v1/ratings`;
 const sbHeaders = { apikey: COMMENTS_KEY, Authorization: `Bearer ${COMMENTS_KEY}`, "Content-Type": "application/json" };
+
+// القائمة البريدية للموقع: البريد يُحفظ في جدول subscribers، ويصل إشعار به إلى بريد الكاتبة
+document.querySelectorAll(".newsletter-box").forEach((box) => box.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const statusEl = box.querySelector(".form-status");
+  const btn = box.querySelector("button[type=submit]");
+  const email = box.email.value.trim();
+  statusEl.className = "form-status";
+  if (box._honey.value) return;
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+    statusEl.textContent = tr("اكتب بريدًا صحيحًا، مثل name@example.com", "Please enter a valid email, like name@example.com");
+    statusEl.classList.add("error");
+    return;
+  }
+  btn.disabled = true;
+  const saved = fetch(`${COMMENTS_URL}/rest/v1/subscribers`, {
+    method: "POST",
+    headers: { ...sbHeaders, Prefer: "return=minimal" },
+    body: JSON.stringify({ email, lang: EN ? "en" : "ar" }),
+  }).then((r) => (r.ok ? "new" : r.status === 409 ? "already" : false)).catch(() => false);
+  const mailed = fetch(`https://formsubmit.co/ajax/${box.dataset.email}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ _subject: tr("مشترك جديد في القائمة البريدية", "New mailing-list subscriber"), _template: "box", _captcha: "false",
+      email, page: EN ? "English" : "العربية" }),
+  }).then(async (r) => { const out = await r.json().catch(() => ({})); return r.ok && out.success !== false && out.success !== "false"; })
+    .catch(() => false);
+  const [s, m] = await Promise.all([saved, mailed]);
+  if (s === "already") {
+    statusEl.textContent = tr("أنت مشترك بالفعل 🌸", "You're already subscribed 🌸");
+    statusEl.classList.add("success");
+    box.reset();
+  } else if (s || m) {
+    statusEl.textContent = tr("تم اشتراكك ✈️ سيصلك كل جديد.", "You're subscribed ✈️ Every new post will reach you.");
+    statusEl.classList.add("success");
+    box.reset();
+  } else {
+    statusEl.textContent = tr("تعذّر الاشتراك الآن، حاول مرة أخرى بعد قليل.", "Couldn't subscribe right now. Please try again shortly.");
+    statusEl.classList.add("error");
+  }
+  btn.disabled = false;
+}));
 const rateBox = document.querySelector(".rate-box");
 if (rateBox) {
   const statusEl = rateBox.querySelector(".form-status");
