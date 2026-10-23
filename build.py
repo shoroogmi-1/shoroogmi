@@ -815,6 +815,20 @@ def build(lang):
 """
         page(lang, path, key, f"{title} · {me}", legal, title)
 
+    # ---------- إلغاء الاشتراك في القائمة البريدية (الرابط في آخر كل رسالة) ----------
+    unsub = page_head(me, t("إلغاء الاشتراك", "Unsubscribe"), "") + f"""
+    <section class="section">
+      <div class="container narrow">
+        <div class="newsletter-box unsub-box">
+          <p class="unsub-status" role="status">{t("جارٍ إلغاء اشتراكك…", "Unsubscribing…")}</p>
+          <p><a class="btn btn-ghost" href="index.html">{t("الصفحة الرئيسية", "Home")}</a></p>
+        </div>
+      </div>
+    </section>
+"""
+    page(lang, "unsubscribe.html", "unsubscribe", f"{t('إلغاء الاشتراك', 'Unsubscribe')} · {me}", unsub, t("إلغاء الاشتراك", "Unsubscribe"))
+    SITEMAP.pop()  # لا تُفهرس في محركات البحث
+
     # ---------- Search ----------
     # فهرس البحث: العنوان والملخص ونص المقال كاملًا، يُحمَّل عند أول بحث فقط
     strip = lambda x: re.sub(r"\s+", " ", html_lib.unescape(re.sub(r"<[^>]+>", " ", x))).strip()
