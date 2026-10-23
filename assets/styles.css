@@ -767,3 +767,10 @@ mark.hl.has-note { box-shadow: inset 0 -3px 0 #e88aa8; }
 .dl-count { display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; border-radius: 999px; font-weight: 600;
   background: var(--card, #fff); border: 2px solid var(--border, #d2eaf6); color: var(--ink); white-space: nowrap; }
 .dl-count b { color: var(--accent, #a86d00); }
+
+/* القائمة البريدية (نموذج سبستاك) */
+.newsletter-box { text-align: center; padding: 26px 20px 10px; border-radius: 22px; background: var(--card, #fff);
+  border: 2px solid var(--border, #d2eaf6); border-bottom-width: 4px; }
+.newsletter-box .section-title { margin-bottom: 6px; }
+.newsletter-box p { color: var(--muted); margin: 0 0 8px; }
+.newsletter-box iframe { display: block; width: 100%; max-width: 480px; height: 150px; margin: 0 auto; border: 0; background: transparent; }

@@ -17,3 +17,10 @@ reviews_lead:
 books_title:
   ar: كتب ماتعة!
   en: Delightful Books!
+newsletter_title:
+  ar: القائمة البريدية ✉️
+  en: Mailing List ✉️
+newsletter_sub:
+  ar: اشترك ليصلك كل جديد إلى بريدك.
+  en: Subscribe to get every new post in your inbox.
+newsletter_url: https://shoroogmi.substack.com

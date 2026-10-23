@@ -53,7 +53,9 @@ def tx(d, ar="ar", en="en"):
     return rich(d.get(ar)), rich(d.get(en) or d.get(ar))
 
 
-HOME = {k: tx(v) for k, v in data("home").items()}
+_home = data("home")
+NEWSLETTER_URL = str(_home.pop("newsletter_url", "") or "").rstrip("/")
+HOME = {k: tx(v) for k, v in _home.items()}
 PASSPORT = data("passport")
 JOURNEYS = data("journeys")
 CONTACT = data("contact")
@@ -579,6 +581,21 @@ def build(lang):
 """
 
     # ---------- «ما قاله المسافرون» و«قيّمنا» ----------
+    def newsletter_html(narrow=False):
+        """نموذج الاشتراك في القائمة البريدية (سبستاك): القرّاء يشتركون، والرسائل تُرسل من سبستاك."""
+        if not NEWSLETTER_URL:
+            return ""
+        return f"""    <section class="section newsletter">
+      <div class="container{" narrow" if narrow else ""}">
+        <div class="newsletter-box">
+          <h2 class="section-title">{L(HOME.get("newsletter_title", ("القائمة البريدية", "Mailing List")))}</h2>
+          <p>{L(HOME.get("newsletter_sub", ("", "")))}</p>
+          <iframe src="{NEWSLETTER_URL}/embed" title="{t("الاشتراك في القائمة البريدية", "Subscribe to the mailing list")}" loading="lazy" frameborder="0" scrolling="no"></iframe>
+        </div>
+      </div>
+    </section>
+"""
+
     def testimonials_html(limit, home=False):
         """التقييمات الإيجابية تُحمَّل من قاعدة البيانات؛ في الرئيسية شريط يُمرَّر أفقيًا ورابط للصفحة الكاملة."""
         more = (f'<a class="more" href="testimonials.html">{t("كل ما قاله المسافرون", "All reviews")} {fwd}</a>' if home else "")
@@ -650,6 +667,7 @@ def build(lang):
 {latest("blog/", "blog/articles.html", hook=True) if ARTICLES else ""}
 {readers_picks("blog/")}
 
+{newsletter_html()}
 {testimonials_html(limit=12, home=True)}
 {rate_section}
     <section class="section cta">
@@ -1028,7 +1046,7 @@ def build(lang):
         <nav class="post-nav" aria-label="{t("تنقل بين الرحلات", "Journey navigation")}">{nav}</nav>
       </div>
     </article>
-"""
+{newsletter_html(narrow=True)}"""
         if related:
             body += f"""
     <section class="section alt">

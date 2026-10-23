@@ -192,6 +192,30 @@ content:
             label: بالإنجليزية (اختياري)
             type: string
 
+      - name: newsletter_title
+        label: عنوان القائمة البريدية
+        type: object
+        fields:
+          - name: ar
+            label: بالعربية
+            type: string
+          - name: en
+            label: بالإنجليزية (اختياري)
+            type: string
+      - name: newsletter_sub
+        label: وصف القائمة البريدية
+        type: object
+        fields:
+          - name: ar
+            label: بالعربية
+            type: string
+          - name: en
+            label: بالإنجليزية (اختياري)
+            type: string
+      - name: newsletter_url
+        label: رابط نشرتك في سبستاك (فارغ = إخفاء القائمة البريدية)
+        type: string
+
   - name: passport
     label: جواز سفر
     type: file
