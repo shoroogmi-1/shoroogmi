@@ -53,9 +53,7 @@ def tx(d, ar="ar", en="en"):
     return rich(d.get(ar)), rich(d.get(en) or d.get(ar))
 
 
-_home = data("home")
-NEWSLETTER_URL = str(_home.pop("newsletter_url", "") or "").rstrip("/")
-HOME = {k: tx(v) for k, v in _home.items()}
+HOME = {k: tx(v) for k, v in data("home").items() if isinstance(v, dict)}
 PASSPORT = data("passport")
 JOURNEYS = data("journeys")
 CONTACT = data("contact")
@@ -582,16 +580,19 @@ def build(lang):
 
     # ---------- «ما قاله المسافرون» و«قيّمنا» ----------
     def newsletter_html(narrow=False):
-        """نموذج الاشتراك في القائمة البريدية (سبستاك): القرّاء يشتركون، والرسائل تُرسل من سبستاك."""
-        if not NEWSLETTER_URL:
-            return ""
+        """نموذج الاشتراك في القائمة البريدية للموقع: البريد يُحفظ في جدول subscribers (Supabase) ويصل إشعار به إلى البريد."""
         return f"""    <section class="section newsletter">
       <div class="container{" narrow" if narrow else ""}">
-        <div class="newsletter-box">
-          <h2 class="section-title">{L(HOME.get("newsletter_title", ("القائمة البريدية", "Mailing List")))}</h2>
+        <form class="newsletter-box" data-email="{EMAIL}" novalidate>
+          <h2 class="section-title">{L(HOME.get("newsletter_title", ("القائمة البريدية ✉️", "Mailing List ✉️")))}</h2>
           <p>{L(HOME.get("newsletter_sub", ("", "")))}</p>
-          <iframe src="{NEWSLETTER_URL}/embed" title="{t("الاشتراك في القائمة البريدية", "Subscribe to the mailing list")}" loading="lazy" frameborder="0" scrolling="no"></iframe>
-        </div>
+          <div class="nl-row">
+            <input type="email" name="email" required autocomplete="email" dir="ltr" placeholder="name@example.com" aria-label="{t("بريدك الإلكتروني", "Your email")}">
+            <button type="submit" class="btn btn-primary">{t("اشترك", "Subscribe")}</button>
+          </div>
+          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <p class="form-status" role="status"></p>
+        </form>
       </div>
     </section>
 """

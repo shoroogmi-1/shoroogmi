@@ -212,9 +212,6 @@ content:
           - name: en
             label: بالإنجليزية (اختياري)
             type: string
-      - name: newsletter_url
-        label: رابط نشرتك في سبستاك (فارغ = إخفاء القائمة البريدية)
-        type: string
 
   - name: passport
     label: جواز سفر
