@@ -43,9 +43,16 @@ def article_meta(path):
             k, _, v = line.partition(":")
             if k.strip() in keys:
                 m[keys[k.strip()]] = v.strip()
+    img = str(m.get("image") or "").strip()
+    if not img:  # وإلا أول صورة في نص المقال
+        mm = re.search(r"!\[[^\]]*\]\(<?([^)\s>]+\.(?:jpe?g|png|webp|gif))", body, re.I)
+        img = mm.group(1) if mm else ""
+    if img and "://" not in img:
+        img = img.lstrip("/")
+        img = SITE + (img if img.startswith("assets/") else f"assets/media/{img}")
     first = next((p.strip() for p in re.split(r"\n\s*\n", body) if p.strip() and not p.lstrip().startswith(("!", "#", ">", "["))), "")
     return {"title": str(m.get("title", "")).strip(), "date": str(m.get("date", "")),
-            "quote": str(m.get("quote") or m.get("excerpt") or first[:220]).strip(), "notify": m.get("notify", True) is not False}
+            "quote": str(m.get("quote") or m.get("excerpt") or first[:220]).strip(), "image": img, "notify": m.get("notify", True) is not False}
 
 
 def page_is_live(url):
@@ -70,6 +77,7 @@ def message(art, url, rcpt):
     body_html = f"""<!doctype html><html lang="ar" dir="rtl"><body style="margin:0;background:#f5fbfe;font-family:Tahoma,Arial,sans-serif;color:#16324f">
 <div style="max-width:560px;margin:0 auto;padding:28px 18px;text-align:right">
   <p style="margin:0 0 6px;color:#a86d00;font-weight:bold">☀️ رحلة جديدة من شروق المحمادي</p>
+  {f'<a href="{url}"><img src="{html.escape(art["image"])}" alt="" width="560" style="display:block;width:100%;max-width:560px;height:auto;border-radius:14px;margin:0 0 16px"></a>' if art.get("image") else ""}
   <h1 style="margin:0 0 14px;font-size:24px;line-height:1.6">{title}</h1>
   <blockquote style="margin:0 0 22px;padding:12px 16px;border-right:4px solid #fbc93d;background:#fff;border-radius:10px;font-size:17px;line-height:1.9">«{quote}»</blockquote>
   <p><a href="{url}" style="display:inline-block;background:#fbc93d;color:#16324f;font-weight:bold;text-decoration:none;padding:12px 26px;border-radius:999px">اقرأ المقال ←</a></p>

@@ -337,7 +337,7 @@ def is_media_line(line):
 # مفاتيح ترويسة لوحة التحكم (Pages CMS) بالإنجليزية ← أسماء الحقول الداخلية
 FM_KEYS = {"title": "title", "date": "date", "category": "tag", "excerpt": "excerpt", "quote": "quote", "time": "time",
            "kind": "kind", "subtitle": "sub", "publisher": "pub", "year": "year", "store": "url", "front": "front",
-           "back": "back", "pdf": "pdf", "order": "order"}
+           "back": "back", "pdf": "pdf", "order": "order", "image": "image"}
 
 
 def inline_md(x):
@@ -451,8 +451,13 @@ def articles_for(lang):
             first = next((x for k, x in blocks if k == "p"), "")
             excerpt = m.get("excerpt") or m.get("quote") or first
             quote = m.get("quote") or excerpt
+        # صورة المقال: حقل «صورة المقال» في لوحة التحكم، وإلا أول صورة في نص المقال
+        first = next((mm.group(2) for k, x in blocks if k == "img" for mm in map(IMG_RE.fullmatch, x.split("\n"))
+                      if mm and mm.group(2).lower().endswith((".jpg", ".jpeg", ".png", ".webp", ".gif")) and media_path(mm.group(2))), None)
+        cover = media_path(m["image"]) if m.get("image") and media_path(m["image"]) else (media_path(first) if first else None)
         out.append({
-            "slug": slug, "tag": tags, "title": title, "excerpt": excerpt,
+            "slug": slug, "tag": tags, "title": title, "excerpt": excerpt, "cover": cover,
+            "cover_in_body": bool(cover and first and media_path(first) == cover),
             "has_excerpt": bool(m.get("excerpt")) if lang == "ar" else bool(excerpt and en.get("excerpt")), "quote": quote, "blocks": blocks, "poem": poem,
             "date": fmt_date(lang, m["date"]), "iso": m["date"], "read": read_time(lang, blocks),
             "time": fmt_time(lang, m["time"]) if m.get("time") else "",
@@ -546,7 +551,8 @@ def build(lang):
     def article_card(a, p="", hook=False):
         """p is the path prefix from the current page to the blog folder.
         hook: show the article's chosen quote (اقتباس) instead of the excerpt, used on the home page."""
-        return f"""          <article class="post-card" data-tag="{'|'.join(a["tag"])}">
+        thumb = (f'\n            <img class="card-cover" src="/{a["cover"]}" alt="" loading="lazy">' if a["cover"] else "")
+        return f"""          <article class="post-card{" has-cover" if a["cover"] else ""}" data-tag="{'|'.join(a["tag"])}">{thumb}
 {tags_html(a["tag"], "            ")}
             <h3><a class="stretched" href="{p}articles/{a["slug"]}.html">{a["title"]}</a></h3>
             <p>{q1 + a["quote"] + q2 if hook else a["excerpt"]}</p>
@@ -989,6 +995,8 @@ def build(lang):
             return f"        <blockquote><p>{text}</p></blockquote>"
         return f"        <p>{text}</p>"
 
+    plain_alt = lambda x: re.sub(r"<[^>]+>", "", x).replace('"', "&quot;")
+
     def render_body(a):
         if not a["poem"]:
             return chr(10).join(render_block(k, x) for k, x in a["blocks"])
@@ -1029,7 +1037,7 @@ def build(lang):
 
     <article class="section" id="post" data-slug="{slug}" data-minutes="{a["minutes"]:.2f}">
       <div class="container narrow prose{" poem" if a["poem"] else ""}">
-{audio_player(lang, slug) or LISTEN_HTML(t)}
+{f'        <figure class="post-figure post-cover"><img src="{art_root}{a["cover"]}" alt="{plain_alt(title)}"></figure>{chr(10)}' if a["cover"] and not a["cover_in_body"] else ""}{audio_player(lang, slug) or LISTEN_HTML(t)}
 {"" if a["poem"] or not a["has_excerpt"] or excerpt in lead_blocks else f'        <p class="excerpt">{excerpt}</p>{chr(10)}'}{render_body(a)}
         <p class="signature">— {me}</p>
         <div class="engage">
@@ -1066,9 +1074,7 @@ def build(lang):
         # the other language's copy of this article, or its list of articles if not translated
         alt = None if lang == "en" or slug in _en_files else "blog/articles.html"
         plain = lambda x: re.sub(r"<[^>]+>", "", x).replace('"', "&quot;")
-        first_img = next((m.group(2) for k, x in a["blocks"] if k == "img" for m in map(IMG_RE.fullmatch, x.split("\n"))
-                          if m and m.group(2).lower().endswith((".jpg", ".jpeg", ".png", ".webp", ".gif")) and media_path(m.group(2))), None)
-        img_path = media_path(first_img) if first_img else None
+        img_path = a["cover"]
         ld = {"@context": "https://schema.org", "@type": "Article", "headline": plain(title), "description": plain(excerpt),
               "inLanguage": lang, "datePublished": a["iso"], "author": {"@type": "Person", "name": me, "url": SITE},
               "image": SITE + (img_path or "assets/images/og-default.jpg"), "mainEntityOfPage": SITE + out_path(lang, f"blog/articles/{slug}.html")}
