@@ -784,3 +784,8 @@ mark.hl.has-note { box-shadow: inset 0 -3px 0 #e88aa8; }
 .newsletter-box.footer-nl { background: transparent; border: 0; padding: 0; margin: 4px auto 18px; max-width: 480px; }
 .footer-nl .nl-label { margin: 0 0 8px; font-weight: 700; }
 .footer-nl .form-status { margin-top: 6px; }
+
+/* صورة المقال في البطاقات وأعلى المقال */
+.post-card .card-cover { display: block; width: calc(100% + 2 * var(--card-pad, 24px)); max-width: none; aspect-ratio: 16 / 9; object-fit: cover;
+  margin: calc(-1 * var(--card-pad, 24px)) calc(-1 * var(--card-pad, 24px)) 14px; border-radius: inherit; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.post-cover { margin-top: 0; }

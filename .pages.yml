@@ -61,6 +61,11 @@ content:
       - name: quote
         label: اقتباس (يظهر في بطاقة المقال وفي الصفحة الرئيسية)
         type: text
+      - name: image
+        label: صورة المقال (تظهر عند مشاركة الرابط، وفي بطاقة المقال، وأعلى المقال، وفي البريد) — اختيارية
+        type: image
+        options:
+          media: media
       - name: notify
         label: أرسله إلى المشتركين في القائمة البريدية عند النشر
         type: boolean
