@@ -588,24 +588,6 @@ def build(lang):
 """
 
     # ---------- «ما قاله المسافرون» و«قيّمنا» ----------
-    def newsletter_html(narrow=False):
-        """نموذج الاشتراك في القائمة البريدية للموقع: البريد يُحفظ في جدول subscribers (Supabase) ويصل إشعار به إلى البريد."""
-        return f"""    <section class="section newsletter">
-      <div class="container{" narrow" if narrow else ""}">
-        <form class="newsletter-box" data-email="{EMAIL}" novalidate>
-          <h2 class="section-title">{L(HOME.get("newsletter_title", ("القائمة البريدية ✉️", "Mailing List ✉️")))}</h2>
-          <p>{L(HOME.get("newsletter_sub", ("", "")))}</p>
-          <div class="nl-row">
-            <input type="email" name="email" required autocomplete="email" dir="ltr" placeholder="name@example.com" aria-label="{t("بريدك الإلكتروني", "Your email")}">
-            <button type="submit" class="btn btn-primary">{t("اشترك", "Subscribe")}</button>
-          </div>
-          <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <p class="form-status" role="status"></p>
-        </form>
-      </div>
-    </section>
-"""
-
     def testimonials_html(limit, home=False):
         """التقييمات الإيجابية تُحمَّل من قاعدة البيانات؛ في الرئيسية شريط يُمرَّر أفقيًا ورابط للصفحة الكاملة."""
         more = (f'<a class="more" href="testimonials.html">{t("كل ما قاله المسافرون", "All reviews")} {fwd}</a>' if home else "")
@@ -677,7 +659,6 @@ def build(lang):
 {latest("blog/", "blog/articles.html", hook=True) if ARTICLES else ""}
 {readers_picks("blog/")}
 
-{newsletter_html()}
 {testimonials_html(limit=12, home=True)}
 {rate_section}
     <section class="section cta">
@@ -1070,7 +1051,7 @@ def build(lang):
         <nav class="post-nav" aria-label="{t("تنقل بين الرحلات", "Journey navigation")}">{nav}</nav>
       </div>
     </article>
-{newsletter_html(narrow=True)}"""
+"""
         if related:
             body += f"""
     <section class="section alt">
