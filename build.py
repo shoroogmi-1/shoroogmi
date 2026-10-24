@@ -774,7 +774,8 @@ def build(lang):
         </div>
         <div class="cat-intro" data-for="{t(ZAWIYA_TAG, CATEGORIES_EN[ZAWIYA_TAG])}" hidden>
           <img src="{"../" * out_path(lang, "blog/articles.html").count("/")}{ZAWIYA_LOGO}" alt="{t("شعار الزاوية ٣٦", "Corner 36 logo")}" width="64" height="64">
-          <p>{t("مقالات حديثة نترجمها ونحوّرها بطريقتنا!", "Recent articles we translate and reshape our own way!")}</p>
+          <p>{t("مقالات حديثة نترجمها ونحوّرها بطريقتنا!", "Recent articles we translate and reshape our own way!")}
+          <span class="partner">{t("بالتعاون مع", "In collaboration with")} <a href="{CREATIVE_FORUM}" target="_blank" rel="noopener">{t("نادي ملتقى المبدعين الثقافي", "the Creative Forum Cultural Club")}</a></span></p>
         </div>
         <div class="posts" data-filterable>
 {chr(10).join(article_card(a) for a in ARTICLES)}
