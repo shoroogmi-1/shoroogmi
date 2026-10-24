@@ -154,6 +154,15 @@ def page(lang, path, key, title, body, desc, alt=None, icon=None, image=None, og
   <footer class="site-footer">
     <div class="container footer-inner">
       <p class="footer-name">{t("شروق المحمادي", "Shoroog Almehmadi")}</p>
+      <form class="newsletter-box footer-nl" data-email="{EMAIL}" novalidate>
+        <p class="nl-label">✉️ {t("القائمة البريدية: يصلك كل جديد إلى بريدك", "Mailing list: get every new post in your inbox")}</p>
+        <div class="nl-row">
+          <input type="email" name="email" required autocomplete="email" dir="ltr" placeholder="name@example.com" aria-label="{t("بريدك الإلكتروني", "Your email")}">
+          <button type="submit" class="btn btn-primary">{t("اشترك", "Subscribe")}</button>
+        </div>
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="form-status" role="status"></p>
+      </form>
       <nav class="footer-links" aria-label="{t("روابط التذييل", "Footer links")}">
         <a href="{h}sira.html">{t("جواز سفر", "Passport")}</a>
         <a href="{h}blog/articles.html">{t("رحلات طويلة", "Long Journeys")}</a>
