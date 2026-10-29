@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-28",
+ "updated": "2026-10-29",
  "items": [
   {
    "slug": "nazariyyat-dharhum",
@@ -104,12 +104,6 @@
    "score": 1
   },
   {
-   "slug": "inhani-ayyatuha-al-jadawil",
-   "reads": 1,
-   "likes": 0,
-   "score": 1
-  },
-  {
    "slug": "la-tarbit-aqdaraka-bi-imanik",
    "reads": 1,
    "likes": 0,
@@ -117,6 +111,12 @@
   },
   {
    "slug": "maana-al-quran-rahma",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
+   "slug": "sana-barqih",
    "reads": 1,
    "likes": 0,
    "score": 1
