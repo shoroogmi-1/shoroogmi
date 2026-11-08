@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07",
+ "updated": "2026-11-08",
  "items": [
   {
    "slug": "nazariyyat-dharhum",
@@ -87,6 +87,12 @@
   },
   {
    "slug": "hal-yunqis-adh-dhaka",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
+   "slug": "inhani-ayyatuha-al-jadawil",
    "reads": 1,
    "likes": 0,
    "score": 1
