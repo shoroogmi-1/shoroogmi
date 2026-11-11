@@ -1,11 +1,17 @@
 {
- "updated": "2026-11-10",
+ "updated": "2026-11-11",
  "items": [
   {
    "slug": "nazariyyat-dharhum",
    "reads": 3,
    "likes": 3,
    "score": 9
+  },
+  {
+   "slug": "al-faris-al-qawwal",
+   "reads": 4,
+   "likes": 2,
+   "score": 8
   },
   {
    "slug": "2026-10-24-0947",
@@ -63,12 +69,6 @@
   },
   {
    "slug": "al-ijtima-bad-al-iftiraq",
-   "reads": 1,
-   "likes": 0,
-   "score": 1
-  },
-  {
-   "slug": "ansini-ma-amdayt",
    "reads": 1,
    "likes": 0,
    "score": 1
