@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "items": [
   {
    "slug": "nazariyyat-dharhum",
@@ -21,9 +21,9 @@
   },
   {
    "slug": "al-makana-as-samawiyya",
-   "reads": 2,
+   "reads": 3,
    "likes": 1,
-   "score": 4
+   "score": 5
   },
   {
    "slug": "taml-in-ashor",
@@ -87,12 +87,6 @@
   },
   {
    "slug": "hal-yunqis-adh-dhaka",
-   "reads": 1,
-   "likes": 0,
-   "score": 1
-  },
-  {
-   "slug": "inhani-ayyatuha-al-jadawil",
    "reads": 1,
    "likes": 0,
    "score": 1
