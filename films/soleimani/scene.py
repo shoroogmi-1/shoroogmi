@@ -25,6 +25,7 @@ ROOT = os.path.abspath(os.path.join(HERE, "..", ".."))
 sys.path.insert(0, ROOT)
 from engine import cutout as K  # noqa: E402
 from engine import sfx  # noqa: E402
+from engine import vehicles as V  # noqa: E402
 
 W, H, FPS = 1080, 1920, 60   # 60 إطارًا/ث لحركة أنعم
 DUR = 15.4
@@ -262,7 +263,7 @@ def plate_D():
 
 # ======================================================================= الشخصية (اللقطة B)
 GAIT_B = "confident"
-CAR_X = 2380.0
+CAR_X = 2250.0   # طرف الأفالون الخلفي (عالمي)
 
 
 def gait_B():
@@ -431,9 +432,10 @@ def shot_B(t):
     xn = int(cam)
     img = over(img, near[:, xn:xn + W])
     img = add_glow(img, 840 - (cam % W) * 0.0, 1560, 520, (1.0, 0.88, 0.62), 0.22)
-    car = svg_png(wrap(suv(CAR_X - cam, 1600, 1.15, 0, tail=True, head=False)))
+    PPM_B = 570.0                               # رجل 1.72م ≈ 980 بكسل → 570 بكسل/متر (نفس مقياس السيارة)
+    car = svg_png(wrap(V.avalon(CAR_X - cam, 1600, PPM_B, 0, lights=True)))
     img = over(img, car)
-    img = add_glow(img, CAR_X - cam - 288, 1440, 70, (1.0, 0.1, 0.08), 0.8)
+    img = add_glow(img, CAR_X - cam + 0.17 * PPM_B, 1600 - 0.9 * PPM_B, 90, (1.0, 0.1, 0.08), 0.7)
     ch = svg_png(wrap(char_B(f, cam)))
     a = ch[..., 3]
     G = 1590.0
@@ -456,7 +458,7 @@ def shot_C1(t):
     img = _G["C1"][..., :3].copy()
     u = (t - CUTS[1]) / (CUTS[2] - CUTS[1])
     x = 1300 - 1700 * (0.15 * u + 0.85 * ease(u))
-    dr = svg_png(wrap(reaper(x, 1050 + 60 * u, 1.25, -4)))
+    dr = svg_png(wrap(V.reaper_planform(x, 1050 + 60 * u, 34.0, 184)))   # امتداد 20م ≈ 680 بكسل
     img = over(img, dr)
     img = push(img, CUTS[1], CUTS[2], t, 1.05, 1.15, 0.5, 0.5)
     return img
@@ -469,10 +471,12 @@ def shot_C2(t):
     cv2.rectangle(img, (0, 820), (W, 1100), 0.30, -1)
     for x in range(-200, W + 200, 160):
         cv2.rectangle(img, (int(x - u * 120), 955), (int(x - u * 120 + 80), 965), 0.42, -1)
-    cars = [(300 + u * 260, 900), (620 + u * 260, 1020)]
-    for cx, cy in cars:
-        cv2.rectangle(img, (int(cx - 110), int(cy - 45)), (int(cx + 110), int(cy + 45)), 0.55, -1)
-        cv2.rectangle(img, (int(cx + 40), int(cy - 35)), (int(cx + 100), int(cy + 35)), 0.95, -1)   # المحرك ساخن
+    cars = [(330 + u * 260, 960, 5.125, 1.92), (640 + u * 260, 960, 4.975, 1.85)]   # ستاريكس ثم أفالون (أبعاد حقيقية × 44)
+    for cx, cy, L, Wd in cars:
+        hl, hw = L * 22, Wd * 22
+        cv2.rectangle(img, (int(cx - hl), int(cy - hw)), (int(cx + hl), int(cy + hw)), 0.55, -1)
+        cv2.rectangle(img, (int(cx + hl * 0.45), int(cy - hw * 0.8)), (int(cx + hl * 0.95), int(cy + hw * 0.8)), 0.95, -1)   # المحرك ساخن
+    cars = [(c[0], c[1]) for c in cars]
     img = cv2.GaussianBlur(img, (0, 0), 3)
     noise = np.random.default_rng(int(t * FPS)).standard_normal((H // 3, W // 3)).astype(np.float32)
     img = img + cv2.resize(noise, (W, H)) * 0.035
@@ -494,24 +498,37 @@ def shot_C2(t):
     return out
 
 
+PPM_D = 110.0       # مقياس اللقطة الواسعة: الأفالون 4.975م ≈ 547 بكسل
+
+
+def convoy_D(t):
+    """مواضع الموكب (الطرف الخلفي لكل مركبة): ستاريكس خلف، أفالون أمام — تسير بسرعة ثابتة."""
+    dx = (t - CUTS[3]) * 260
+    av = 260 + dx
+    st = av - 5.169 * PPM_D - 1.6 * PPM_D
+    return av, st, dx
+
+
+def impact_point():
+    av, _, _ = convoy_D(IMPACT)
+    return (av + 2.5 * PPM_D, 1640 - 0.8 * PPM_D)
+
+
 def shot_D(t):
     img = _G["D"][..., :3].copy()
-    u = (t - CUTS[3])
-    dx = u * 260
-    for k, cx in enumerate((240, 760)):
-        x = cx + dx - 300
-        car = svg_png(wrap(suv(x, 1640, 0.8, u * 5.6, tail=True, head=True)))
-        img = add_glow(img, x + 230, 1540, 120, (1.0, 0.95, 0.75), 0.35)   # أضواء أمامية
-        img = over(img, car)
+    av, st, dx = convoy_D(t)
+    wheel = dx / (0.34 * PPM_D)
+    for x_rear, fn, length in ((st, V.starex, 5.125), (av, V.avalon, 4.975)):
+        img = add_glow(img, x_rear + length * PPM_D + 90, 1560, 120, (1.0, 0.95, 0.75), 0.35)   # أضواء أمامية
+        img = over(img, svg_png(wrap(fn(x_rear, 1640, PPM_D, wheel))))
     impact_t = IMPACT
-    tgt = (760 + (impact_t - CUTS[3]) * 260 - 300, 1540)
+    tgt = impact_point()
     if t < impact_t:
         p = clamp((t - (CUTS[3] + 0.15)) / (impact_t - CUTS[3] - 0.15))
         if p > 0:
             sx, sy = tgt[0] + 330, tgt[1] - 1450
             mx, my = sx + (tgt[0] - sx) * p ** 1.6, sy + (tgt[1] - sy) * p ** 1.6
             trail = np.zeros((H, W), np.float32)
-            tx0, ty0 = sx + (mx - sx) * 0.0, sy + (my - sy) * 0.0
             cv2.line(trail, (int(sx), int(sy)), (int(mx), int(my)), 1.0, 16, cv2.LINE_AA)
             trail = cv2.GaussianBlur(trail, (0, 0), 10)[..., None]
             img = img * (1 - trail * 0.5) + trail * np.array([0.62, 0.6, 0.6], np.float32) * 0.5   # دخان رمادي
@@ -567,7 +584,7 @@ def explosion(img, e, c):
 def shot_E(t):
     e = t - IMPACT
     img = _G["D"][..., :3].copy() * 0.75
-    img = explosion(img, 0.9 + (t - CUTS[4]) * 0.6, (760 + (IMPACT - CUTS[3]) * 260 - 300, 1540))
+    img = explosion(img, 0.9 + (t - CUTS[4]) * 0.6, impact_point())
     for k in range(3):   # ألسنة لهب ترتعش
         fl = 0.7 + 0.3 * math.sin(t * 17 + k * 2)
         img = add_glow(img, 700 + k * 60, 1530, 140, (1.0, 0.5, 0.12), 0.5 * fl)
