@@ -6,3 +6,4 @@ films/*/*_t*.png
 films/demo/park.jpg
 films/anime_test/boy.png
 !films/soleimani_mckee/model.mp4
+!films/soleimani_mckee/model_no_voice.mp4

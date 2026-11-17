@@ -793,7 +793,7 @@ def audio(out):
     put(sfx.sub_drop(), HIT3, 0.7)
     put(sfx.fire(dur=4.0), HIT3 + 0.2, 0.35)
     put(sfx.impact(), CUTS[5] + 0.3, 0.35)
-    for t0, k in NARR:
+    for t0, k in ([] if os.environ.get("NO_VOICE") else NARR):   # NO_VOICE=1 ← أصوات الموشن والنص فقط
         sr2, v = wavfile.read(os.path.join(HERE, f"n{k}.wav"))
         v = v.astype(np.float32) / 32768
         if v.ndim == 1:
