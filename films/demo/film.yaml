@@ -1,0 +1,88 @@
+# فلم تجريبي يستعرض قدرات الاستوديو — عدّلي أي سطر واطلبي "حرّك" فيُعاد الإخراج
+title: عرض الاستوديو
+format: landscape        # landscape | vertical | square
+fps: 24
+look: teal_orange        # teal_orange | warm_epic | cold_night | bleach | noir | vintage | none
+letterbox: 2.39          # أشرطة السينما (احذفيه لإلغائها)
+grain: 0.03
+bloom: 0.35
+vignette: 0.35
+voice: man
+music:
+  sound: pad
+  args: {chord: [D, F, A]}
+  volume: 0.3
+  layers:
+    - {sound: drone, volume: 0.25, args: {note: D}}
+
+shots:
+  # 1) مدينة الغروب — دفع للأمام + جمر + عنوان ذهبي مع تصاعد ثم ضربة
+  - set: city_sunset
+    duration: 7
+    camera: {move: dolly_in, amount: 1.1}
+    particles: [dust, {kind: embers, density: 0.6}]
+    look: warm_epic
+    text:
+      - {content: "أرضية الفلم السينمائي", style: epic, at: 3.4, anim: zoom}
+    sfx:
+      - {name: riser, ends_at: 3.4, volume: 0.6}
+      - {name: boom, at: 3.4, volume: 0.9}
+    hits: []
+    say: {text: "هُنَا تَبْدَأُ الْحِكَايَةُ.", voice: man, at: 0.8}
+    transition: whip
+
+  # 2) صورتك تتحول لمشهد ثلاثي الأبعاد: فصل الشخص تلقائيًا + كاميرا تدور + غبار في الضوء + أصوات هادئة
+  - photo: park.jpg
+    subject: [0.37, 0.11, 0.61, 0.97]     # مربع تقريبي حول الشخص (نسب الصورة)
+    depth: 1.0
+    duration: 7
+    camera: {move: orbit_left, amount: 0.7, ease: smooth}
+    particles: [{kind: dust, density: 1.4}]
+    rays_from: [0.9, 0.04]
+    rays: 0.5
+    look: warm_epic
+    ambience: [{name: park, volume: 0.35}]
+    sfx:
+      - {name: steps_soft, at: 0.3, volume: 0.45, args: {dur: 6.2, pace: 1.8}}
+      - {name: cloth, at: 2.2, volume: 0.35}
+      - {name: bag, at: 4.6, volume: 0.25}
+    text:
+      - {content: "صورتك تصير مشهدًا ثلاثي الأبعاد", style: lower_third, pos: lower, at: 1.2}
+    transition: fade
+
+  # 3) جبال ليلية — رافعة لأعلى + نجوم + صوت امرأة
+  - set: night_mountains
+    duration: 6.5
+    camera: {move: crane_up, amount: 1.0}
+    look: cold_night
+    say: {text: "وَفِي اللَّيْلِ، تَهْدَأُ الْجِبَالُ، وَيَبْقَى الضَّوْءُ.", voice: woman, at: 0.8}
+    sfx: [{name: shimmer, at: 0.4, volume: 0.35}]
+    transition: flash
+
+  # 4) عاصفة — مطر + برق مع رعد واهتزاز + صوت طفل
+  - set: storm_plain
+    duration: 6
+    camera: {move: push_tilt, amount: 0.8}
+    shake: 0.4
+    look: cold_night
+    lightning: [1.6, 4.4]
+    say: {text: "وَحِينَ يَأْتِي الْمَطَرُ... نَرْكُضُ!", voice: child, at: 2.2}
+    transition: dip_black
+
+  # 5) الختام — عنوان إنجليزي ثلاثي الأبعاد يدور في الفراغ + نفخة نحاسية
+  - set: void
+    duration: 6
+    camera: {move: dolly_in, amount: 0.6}
+    aperture: 1.5
+    focus: 1100
+    layers:
+      - text: "CINEMA STUDIO"
+        style: en_title
+        z: 1100
+        y: -40
+        anim: {from: {yaw: -35, opacity: 0}, to: {yaw: 0, opacity: 1}, end: 3.0, ease: out}
+    text:
+      - {content: "أعطيني الأمر… وأحرّكه", style: subtitle, pos: lower, at: 2.4}
+    sfx:
+      - {name: braam, at: 0.6, volume: 0.8}
+      - {name: sub_drop, at: 0.6, volume: 0.6}

@@ -1,0 +1,6 @@
+.cache/
+__pycache__/
+*.pyc
+films/*/*.mp4
+films/*/*_t*.png
+films/demo/park.jpg
