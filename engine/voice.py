@@ -23,6 +23,10 @@ MODEL = os.path.join(HOME, "vits-piper-ar_JO-kareem-medium")
 
 # formant = إزاحة الرنين، pitch = الطبقة الكلية النهائية، speed = سرعة الكلام
 VOICES = {
+    # مذيع أخبار (أسلوب العربية/الجزيرة): نطق أوضح بضوضاء توليد أقل، إيقاع مرن، وقفات تنفّس، ومعالجة صوت إذاعية
+    "anchor": dict(label="مذيع أخبار (كريم)", formant=1.0, pitch=0.98, speed=0.84, noise=0.5, noise_w=1.0, silence=0.35,
+                   fx="equalizer=f=140:t=q:w=1:g=2.5,equalizer=f=380:t=q:w=1.2:g=-2.5,equalizer=f=3200:t=q:w=1:g=3,"
+                      "equalizer=f=9000:t=q:w=1:g=2,deesser=i=0.4,aecho=0.85:0.25:28:0.12"),
     "man": dict(label="رجل (كريم)", formant=1.0, pitch=1.0, speed=0.95),
     "deep": dict(label="راوٍ عميق", formant=0.94, pitch=0.9, speed=1.05, fx="aecho=0.8:0.6:40:0.15"),
     "woman": dict(label="امرأة", formant=1.17, pitch=1.59, speed=0.95),
@@ -63,6 +67,8 @@ def say(text, out_wav, voice="man", cache=True):
     raw = out_wav + ".raw.wav"
     subprocess.run([BIN, f"--vits-model={MODEL}/ar_JO-kareem-medium.onnx", f"--vits-tokens={MODEL}/tokens.txt",
                     f"--vits-data-dir={MODEL}/espeak-ng-data", f"--vits-length-scale={v['speed']}",
+                    f"--vits-noise-scale={v.get('noise', 0.667)}", f"--vits-noise-scale-w={v.get('noise_w', 0.8)}",
+                    f"--tts-silence-scale={v.get('silence', 0.2)}",
                     f"--output-filename={raw}", text], check=True, capture_output=True)
     fr, pt = v["formant"], v["pitch"]
     chain = []
@@ -72,7 +78,7 @@ def say(text, out_wav, voice="man", cache=True):
             chain += [f"rubberband=pitch={pt / fr:.4f}:formant=preserved:pitchq=quality"]
     if v.get("fx"):
         chain.append(v["fx"])
-    chain += ["highpass=f=70", "acompressor=threshold=-20dB:ratio=3:attack=5:release=80", "loudnorm=I=-16:TP=-1.5"]
+    chain += ["highpass=f=75", "acompressor=threshold=-20dB:ratio=3:attack=5:release=80:makeup=2", "loudnorm=I=-16:TP=-1.5"]
     subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", raw, "-af", ",".join(chain), "-ar", "48000", "-ac", "2", out_wav], check=True)
     os.remove(raw)
     if cache:

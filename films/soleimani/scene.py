@@ -27,14 +27,15 @@ from engine import cutout as K  # noqa: E402
 from engine import sfx  # noqa: E402
 
 W, H, FPS = 1080, 1920, 30
-DUR = 12.9
+DUR = 15.4
+IMPACT = 12.55
 CACHE = os.path.join(ROOT, ".cache", "soleimani")
 os.makedirs(CACHE, exist_ok=True)
 LINE = "#2b1c17"
-CUTS = [3.6, 6.9, 8.1, 9.3, 10.4]
-NARR = [(0.25, 0), (3.8, 1), (7.0, 2), (9.35, 3), (10.45, 4)]
-SUBS = [(0.25, 3.7, "بغداد، الثالث من يناير ٢٠٢٠"), (3.8, 6.85, "موكب قاسم سليماني يغادر المطار"),
-        (7.0, 9.25, "في السماء… مسيّرة أمريكية"), (9.35, 10.1, "صاروخ!")]
+CUTS = [4.75, 8.85, 10.0, 11.4, 12.7]
+NARR = [(0.3, 0), (4.9, 1), (9.0, 2), (11.45, 3), (12.95, 4)]
+SUBS = [(0.3, 4.6, "بغداد، فجر الثالث من يناير ٢٠٢٠"), (4.9, 8.8, "موكب قاسم سليماني يغادر مطار بغداد"),
+        (9.0, 11.4, "وفي السماء… مسيّرة أمريكية"), (11.45, 12.5, "ثمّ… صاروخ!")]
 
 
 def clamp(x, a=0.0, b=1.0):
@@ -254,12 +255,12 @@ def plate_D():
 def gait_B():
     walk = K.GAITS["walk"]
     dt = 1 / FPS
-    hip_x, phase = -200.0, 0.25
+    hip_x, phase = -260.0, 0.25
     out, steps = [], []
     prev = [True, True]
     for i in range(int((CUTS[1] - CUTS[0]) * FPS) + 2):
         t = CUTS[0] + i * dt
-        amp = 1.0 if t < 5.0 else 1 - ease((t - 5.0) / 0.85)
+        amp = 1.0 if t < 6.4 else 1 - ease((t - 6.4) / 0.9)
         S = walk["S"] * amp * 0.9
         v = S / (walk["stance"] * walk["T"])
         hip_x += v * dt
@@ -285,10 +286,10 @@ def char_B(f):
     a_f = 18 * amp * sw - 3 * (1 - amp)
     _, wn = K.fk2(K.SHOULDER, a_n, 12 + 10 * amp * max(0, -sw), K.UA, K.FA)
     _, wf = K.fk2(K.SHOULDER, a_f, 10 + 10 * amp * max(0, sw), K.UA, K.FA)
-    blink = math.sin(math.pi * (t - 4.9) / 0.14) if 4.9 <= t < 5.04 else 0.0
+    blink = math.sin(math.pi * (t - 6.1) / 0.14) if 6.1 <= t < 6.24 else 0.0
     pose = K.Pose(hip=(f["hip_x"], 1590 - K.ANK - 432 + f["bob"]), lean=2.0 * amp + 1, breath=math.sin(t * 1.7),
                   head_tilt=-2 - 1.5 * math.sin(4 * math.pi * p) * amp, feet=f["feet"],
-                  arm_near=("ik", wn, 1, "torso"), arm_far=("ik", wf, 1, "torso"), blink=blink, brow=-0.6)
+                  arm_near=("ik", wn, -1, "torso"), arm_far=("ik", wf, -1, "torso"), blink=blink, brow=-0.6)
     return K.draw_character(pose, "general")
 
 
@@ -376,7 +377,14 @@ def _init():
     _G["D"] = cached_plate("D", plate_D)
     _G["gait"], _ = gait_B()
     sub_f = font("Cairo-Variable.ttf", 62)
-    _G["subs"] = [(a, b, text_rgba(s, sub_f)) for a, b, s in SUBS]
+    subs = []
+    for a, b, s in SUBS:
+        rg = text_rgba(s, sub_f)
+        if rg.shape[1] > W * 0.92:   # السطر الطويل يُصغَّر ليبقى داخل الإطار مع هامش آمن
+            k = W * 0.92 / rg.shape[1]
+            rg = cv2.resize(rg, (int(rg.shape[1] * k), int(rg.shape[0] * k)), interpolation=cv2.INTER_AREA)
+        subs.append((a, b, rg))
+    _G["subs"] = subs
     _G["tagA"] = tag_rgba("٣ يناير ٢٠٢٠", "قرابة الواحدة فجرًا")
     _G["tagB"] = tag_rgba("قاسم سليماني", "قائد فيلق القدس")
     _G["end1"] = text_rgba("مقتل قاسم سليماني", font("ReemKufi.ttf", 120, False), fill=(255, 236, 214), stroke=9)
@@ -423,8 +431,8 @@ def shot_B(t):
     img = img * (1 - s) + np.array([0.05, 0.06, 0.12], np.float32) * s
     img = over(img, ch)
     img = push(img, CUTS[0], CUTS[1], t, 1.0, 1.08, 0.45, 0.6)
-    k = back_out((t - 4.1) / 0.28)
-    if t > 4.1:
+    k = back_out((t - 5.3) / 0.28)
+    if t > 5.3:
         img = place(img, _G["tagB"], 640, 470, k, -3)
     return img
 
@@ -480,10 +488,10 @@ def shot_D(t):
         car = svg_png(wrap(suv(x, 1640, 0.8, -u * 9, tail=True, head=True)))
         img = add_glow(img, x + 230, 1540, 120, (1.0, 0.95, 0.75), 0.35)   # أضواء أمامية
         img = over(img, car)
-    impact_t = 10.15
+    impact_t = IMPACT
     tgt = (760 + (impact_t - CUTS[3]) * 260 - 300, 1540)
     if t < impact_t:
-        p = clamp((t - 9.45) / (impact_t - 9.45))
+        p = clamp((t - (CUTS[3] + 0.15)) / (impact_t - CUTS[3] - 0.15))
         if p > 0:
             sx, sy = tgt[0] + 330, tgt[1] - 1450
             mx, my = sx + (tgt[0] - sx) * p ** 1.6, sy + (tgt[1] - sy) * p ** 1.6
@@ -542,18 +550,18 @@ def explosion(img, e, c):
 
 
 def shot_E(t):
-    e = t - 10.15
+    e = t - IMPACT
     img = _G["D"][..., :3].copy() * 0.75
-    img = explosion(img, 0.9 + (t - CUTS[4]) * 0.6, (760 + 0.85 * 260 - 300, 1540))
+    img = explosion(img, 0.9 + (t - CUTS[4]) * 0.6, (760 + (IMPACT - CUTS[3]) * 260 - 300, 1540))
     for k in range(3):   # ألسنة لهب ترتعش
         fl = 0.7 + 0.3 * math.sin(t * 17 + k * 2)
         img = add_glow(img, 700 + k * 60, 1530, 140, (1.0, 0.5, 0.12), 0.5 * fl)
     img = push(img, CUTS[4], DUR, t, 1.12, 1.0, 0.55, 0.75)
-    k = back_out((t - 10.6) / 0.3)
-    if t > 10.6:
+    k = back_out((t - 13.0) / 0.3)
+    if t > 13.0:
         img = place(img, _G["end1"], W / 2, 620, k, 0)
-    k2 = back_out((t - 11.0) / 0.3)
-    if t > 11.0:
+    k2 = back_out((t - 13.4) / 0.3)
+    if t > 13.4:
         img = place(img, _G["end2"], W / 2, 800, k2, -2)
     return img
 
@@ -628,20 +636,20 @@ def audio(out):
             track[s:e] = 1
 
     put(sfx.drone(dur=DUR + 1, note="D"), 0, 0.30)
-    put(sfx.wind(dur=10.2), 0, 0.18)
+    put(sfx.wind(dur=12.5), 0, 0.18)
     _, steps = gait_B()
     for k, st in enumerate(steps):
         put(sfx.step(0.8, "stone", False, seed=k), st, 0.30)
-    put(buzz(1.3), 6.85, 0.45)
+    put(buzz(1.4), 8.75, 0.45)
     for k in range(5):
-        put(beep(1700 + 200 * (k % 2)), 8.3 + k * 0.18, 0.12)
-    put(sfx.glitch(0.3), 8.08, 0.15)
-    put(sfx.whoosh(0.9, -1), 9.3, 0.55)
-    put(sfx.riser(0.8), 9.35, 0.35)
-    put(sfx.boom(), 10.15, 1.0)
-    put(sfx.sub_drop(), 10.15, 0.7)
-    put(sfx.fire(dur=3.0), 10.35, 0.35)
-    put(sfx.impact(), 10.6, 0.35)
+        put(beep(1700 + 200 * (k % 2)), 10.3 + k * 0.2, 0.12)
+    put(sfx.glitch(0.3), 9.98, 0.15)
+    put(sfx.whoosh(0.9, -1), 11.55, 0.5)
+    put(sfx.riser(1.0), IMPACT - 1.0, 0.35)
+    put(sfx.boom(), IMPACT, 1.0)
+    put(sfx.sub_drop(), IMPACT, 0.7)
+    put(sfx.fire(dur=3.0), IMPACT + 0.2, 0.35)
+    put(sfx.impact(), 13.0, 0.35)
     for t0, k in NARR:
         sr2, v = wavfile.read(os.path.join(HERE, f"n{k}.wav"))
         v = v.astype(np.float32) / 32768
@@ -649,7 +657,7 @@ def audio(out):
             v = np.stack([v, v], 1)
         if sr2 != SR:
             v = cv2.resize(v, (2, int(len(v) * SR / sr2)), interpolation=cv2.INTER_LINEAR)
-        put(v, t0, 1.25, voice)
+        put(v, t0, 1.3, voice)
     from scipy.ndimage import gaussian_filter1d
     duck = np.clip(gaussian_filter1d(voice, SR * 0.15) * 1.3, 0, 1)
     music = mix.copy()

@@ -174,7 +174,7 @@ def draw_character(pose, pal="reem"):
         far = (k == 0)
         hp = (hip[0] + (5 if far else -3), hip[1] + 6)
         ankle = (fx, fy - ANK)
-        knee = ik2(hp, ankle, LT, LS, bend=-1)
+        knee = ik2(hp, ankle, LT, LS, bend=1)        # الركبة للأمام دائمًا (تشريح الإنسان)
         base, dark = (c["jeans_d"], c.get("far_d", "#2f4666")) if far else (c["jeans"], c["jeans_d"])
         s.append(limb_chain([hp, knee, ankle], [66, 52], base, dark, lw=5.5 if far else 6.5, rim=None if far else c.get("leg_rim", "#8fb0d8")))
         # الكم السفلي للجينز (ثنية)
