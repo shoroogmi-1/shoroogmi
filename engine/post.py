@@ -24,8 +24,9 @@ def grade(img, look="teal_orange", bloom=0.35, grain=0.035, vignette=0.35, lette
         small = cv2.resize(hi, (W // 4, H // 4), interpolation=cv2.INTER_AREA)
         b = cv2.GaussianBlur(small, (0, 0), 8) + cv2.GaussianBlur(small, (0, 0), 24)
         x = x + cv2.resize(b, (W, H)) * bloom
-    # تحميص ناعم للإضاءات (filmic)
-    x = x / (1 + x * 0.35) * 1.35
+    natural = look == "none"   # للصور المرسومة الجاهزة: نحافظ على ألوانها الأصلية
+    if not natural:
+        x = x / (1 + x * 0.35) * 1.35  # تحميص ناعم للإضاءات (filmic)
     lk = LOOKS.get(look, LOOKS["none"])
     lum = x.mean(2, keepdims=True)
     if lk.get("sat", 1) != 1:
@@ -36,7 +37,8 @@ def grade(img, look="teal_orange", bloom=0.35, grain=0.035, vignette=0.35, lette
     c = lk.get("contrast", 1)
     x = (x - 0.5) * c + 0.5 + lk.get("lift", 0)
     x = np.clip(x, 0, 1)
-    x = x * x * (3 - 2 * x) * 0.35 + x * 0.65  # منحنى S
+    if not natural:
+        x = x * x * (3 - 2 * x) * 0.35 + x * 0.65  # منحنى S
     if aberration > 0:
         s = aberration
         M1 = np.float32([[1 + s, 0, -W * s / 2], [0, 1 + s, -H * s / 2]])

@@ -1,0 +1,32 @@
+# تجربة: صورة أنمي مرسومة تتحول لمشهد حي (عصابة ترفرف، شعر يتمايل، تنفّس، عمق، جمر، أصوات)
+format: landscape
+fps: 24
+look: none
+letterbox: null
+grain: 0.012
+bloom: 0.08
+vignette: 0.25
+fade_in: 1.0
+music:
+  sound: pad
+  args: {chord: [D, F, A], octave: 0.5}
+  volume: 0.22
+shots:
+  - photo: boy.png
+    subject: [0.06, 0.0, 0.80, 1.0]
+    depth: 0.8
+    overscan: 1.04
+    duration: 9
+    camera: {from: {z: 0, x: 25}, to: {z: 110, x: -25}, ease: smooth}
+    breathe: 1.2
+    sway:
+      - {box: [0.07, 0.36, 0.33, 0.82], pivot: right, amp: 16, freq: 0.9, dir: [0.5, 1.0], wave: 3.0}   # أطراف العصابة
+      - {box: [0.16, 0.0, 0.78, 0.34], pivot: bottom, amp: 3, freq: 0.5, dir: [1.0, 0.2]}              # الشعر
+    particles: [{kind: embers, density: 0.5}, {kind: dust, density: 1.0}]
+    rays_from: [0.75, 0.05]
+    rays: 0.35
+    ambience: [{name: wind, volume: 0.35}, {name: crowd, volume: 0.18}]
+    sfx:
+      - {name: breath, at: 2.0, volume: 0.25}
+      - {name: cloth, at: 4.5, volume: 0.2}
+      - {name: shimmer, at: 6.2, volume: 0.15}

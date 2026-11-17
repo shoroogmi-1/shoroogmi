@@ -61,6 +61,36 @@ def auto_cutout(rgb_img, box):
     return bg_img.astype(np.float32), subj.astype(np.float32)
 
 
+def sway_field(h, w, regions, t, breathe=0.0):
+    """حقل إزاحة لتحريك أجزاء من صورة مرسومة: أطراف قماش، شعر، تنفّس.
+    regions: [{box:[x0,y0,x1,y1] بنسب الصورة, pivot: left|right|top|bottom, amp: بكسلات, freq: هرتز, dir: [dx,dy]}]"""
+    ys, xs = np.mgrid[0:h, 0:w].astype(np.float32)
+    fx, fy = xs / w, ys / h
+    dx = np.zeros((h, w), np.float32)
+    dy = np.zeros((h, w), np.float32)
+    for r in regions:
+        x0, y0, x1, y1 = r["box"]
+        fe = r.get("feather", 0.06)
+        inside = (np.clip((fx - x0) / fe, 0, 1) * np.clip((x1 - fx) / fe, 0, 1) *
+                  np.clip((fy - y0) / fe, 0, 1) * np.clip((y1 - fy) / fe, 0, 1))
+        pv = r.get("pivot", "right")
+        d = {"right": (x1 - fx) / (x1 - x0), "left": (fx - x0) / (x1 - x0),
+             "bottom": (y1 - fy) / (y1 - y0), "top": (fy - y0) / (y1 - y0)}[pv]
+        d = np.clip(d, 0, 1)
+        wgt = inside * d ** 1.6
+        f = r.get("freq", 0.7)
+        ph = 2 * np.pi * f * t - d * r.get("wave", 2.4)          # موجة تسري من نقطة التثبيت للطرف
+        amp = r.get("amp", 10) * w / 1000
+        gust = 0.75 + 0.25 * np.sin(2 * np.pi * t / 5.3)
+        ddx, ddy = r.get("dir", [0.4, 1.0])
+        dx += wgt * amp * gust * np.sin(ph) * ddx
+        dy += wgt * amp * gust * np.sin(ph + 0.6) * ddy
+    if breathe:
+        k = np.sin(2 * np.pi * t / 3.8) * breathe * h / 1000
+        dy += np.clip((fy - 0.55) / 0.45, 0, 1) * k * 4       # الصدر والكتفان يرتفعان وينخفضان
+    return xs - dx, ys - dy
+
+
 class Shot:
     def __init__(self, spec, film, idx):
         self.s = spec
@@ -86,6 +116,8 @@ class Shot:
                 bg, sb = img, _load_rgba(subj, film.base)
             else:
                 bg, sb = img, None
+            self.sway = spec.get("sway", [])
+            self.breathe = spec.get("breathe", 0.0)
             depth = spec.get("depth", 1.0)  # قوة الإحساس ثلاثي الأبعاد
             zb, zs = 2600, 2600 / (1 + 1.4 * depth)
             self.layers.append(dict(name="photo_bg", img=bg, z=zb, scale=cover))
@@ -185,7 +217,12 @@ class Shot:
             elif mo == "float":
                 props["y"] += 10 * math.sin(t * 2 * math.pi / 5)
                 props["yaw"] += 3 * math.sin(t * 2 * math.pi / 7)
-            canvas = world.render_layer(canvas, L["img"], props, cam, fog)
+            img = L["img"]
+            if L["name"] in ("photo_bg", "subject") and (getattr(self, "sway", None) or getattr(self, "breathe", 0)):
+                key = (L["name"], img.shape)
+                mx, my = sway_field(img.shape[0], img.shape[1], self.sway, t, self.breathe)
+                img = cv2.remap(img, mx, my, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE)
+            canvas = world.render_layer(canvas, img, props, cam, fog)
         for P in self.particles:
             canvas = P.render(canvas, cam, t)
         rays = self.s.get("rays", self.env.get("rays", 0))
