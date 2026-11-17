@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16",
+ "updated": "2026-11-17",
  "items": [
   {
    "slug": "nazariyyat-dharhum",
@@ -11,6 +11,12 @@
    "slug": "al-faris-al-qawwal",
    "reads": 4,
    "likes": 2,
+   "score": 8
+  },
+  {
+   "slug": "2026-10-24-0947",
+   "reads": 2,
+   "likes": 3,
    "score": 8
   },
   {
