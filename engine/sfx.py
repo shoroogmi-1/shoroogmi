@@ -472,6 +472,18 @@ def park(dur=12.0):
     return normalize(x, 0.35)
 
 
+def step(intensity=1.0, surface="stone", run=False, seed=None):
+    """خطوة واحدة (لمزامنتها مع لحظة ملامسة القدم للأرض)."""
+    r = np.random.default_rng(seed)
+    tt = _t(0.25)
+    cut = {"stone": (250, 4500), "grass": (700, 6500), "wood": (150, 2500)}[surface]
+    heel = _bp(r.standard_normal(len(tt)).astype(np.float32), *cut) * np.exp(-tt / (0.012 if run else 0.018))
+    toe = np.roll(_bp(r.standard_normal(len(tt)).astype(np.float32), cut[0] * 1.6, cut[1]) * np.exp(-tt / 0.025) * 0.45, int((0.04 if run else 0.075) * SR))
+    thump = np.sin(2 * np.pi * 70 * tt) * np.exp(-tt / 0.03) * (0.6 if run else 0.25)
+    x = (heel + toe + thump) * intensity * r.uniform(0.85, 1.0)
+    return reverb(stereo(x * 0.5), 0.4, 0.1)
+
+
 LIBRARY.update({
     "steps_soft": (steps_soft, "مشي هادئ طبيعي (حجر/عشب/خشب)"),
     "run_steps": (run_steps, "جري"),
