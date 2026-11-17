@@ -137,6 +137,7 @@ class Pose:
         self.hair_swing = 0.0          # إزاحة طرف الشعر (للخلف موجب)
         self.hair_bounce = 0.0
         self.prop = None               # ("apple", bites)
+        self.twist = 0.0               # دوران معاكس للكتفين والوركين (+ = الكتف القريب للأمام)
         self.scale = 1.0
         self.__dict__.update(kw)
 
@@ -148,7 +149,7 @@ def _torso_to_world(p, pose):
 
 def _arm_points(pose, which):
     spec = pose.arm_near if which == "near" else pose.arm_far
-    sh_off = (6, 0) if which == "far" else (0, 0)
+    sh_off = (6 - pose.twist, 0) if which == "far" else (pose.twist, 0)
     sh = _torso_to_world((SHOULDER[0] + sh_off[0], SHOULDER[1]), pose)
     if spec[0] == "fk":
         a1, a2 = spec[1] + pose.lean, spec[2]
@@ -172,7 +173,7 @@ def draw_character(pose, pal="reem"):
     # --- الساقان
     for k, (fx, fy, fa) in enumerate(reversed(pose.feet)):
         far = (k == 0)
-        hp = (hip[0] + (5 if far else -3), hip[1] + 6)
+        hp = (hip[0] + (5 + pose.twist * 0.6 if far else -3 - pose.twist * 0.6), hip[1] + 6)
         ankle = (fx, fy - ANK)
         knee = ik2(hp, ankle, LT, LS, bend=1)        # الركبة للأمام دائمًا (تشريح الإنسان)
         base, dark = (c["jeans_d"], c.get("far_d", "#2f4666")) if far else (c["jeans"], c["jeans_d"])
@@ -327,18 +328,88 @@ GAITS = {
 
 
 def foot_rel(phase, g, amp):
-    """موضع القدم بالنسبة للورك ضمن دورة المشي. يرجع (x, رفع, زاوية, في_ارتكاز)."""
+    """موضع القدم بالنسبة للورك ضمن دورة المشي. يرجع (x, رفع, زاوية, في_ارتكاز).
+    تدحرج القدم البشري: الكعب يلمس أولًا (المقدمة مرفوعة) ← القدم تنبسط ← الكعب يرتفع والقدم تدور على الأصابع ← دفعة."""
     p = phase % 1.0
     S = g["S"] * amp
     st = g["stance"]
     if p < st:
         u = p / st
         x = S / 2 - S * u
-        heel = clamp((u - 0.7) / 0.3) * 22 * amp        # رفع الكعب آخر الارتكاز
-        return x, 0.0, -heel, True
+        if u < 0.14:                                         # تلامس الكعب: مقدمة القدم مرفوعة ثم تنبسط
+            ang = -16 * amp * (1 - ease(u / 0.14))
+            lift = 0.0
+        elif u > 0.68:                                       # رفع الكعب: الدوران حول الأصابع
+            k = ease((u - 0.68) / 0.32)
+            ang = 30 * amp * k
+            lift = math.sin(math.radians(ang)) * 70
+        else:
+            ang, lift = 0.0, 0.0
+        return x, lift, ang, True
     u = (p - st) / (1 - st)
     e = ease_io(u)
     x = -S / 2 + S * e
-    lift = g["lift"] * amp * math.sin(math.pi * u) ** 1.2
-    ang = lerp(-28, 8, ease(u)) * amp                     # القدم تتدلى ثم ترتفع مقدمتها قبل الهبوط
+    lift = g["lift"] * amp * math.sin(math.pi * u) ** 1.2 + math.sin(math.radians(30 * amp)) * 70 * (1 - ease(u / 0.3))
+    ang = (30 - 46 * ease(u)) * amp                          # بعد الدفع الأصابع للأسفل، ثم ترتفع المقدمة استعدادًا للكعب
     return x, lift, ang, False
+
+
+# ====================================================================== من كتاب Animation: The Mechanics of Motion
+# المشية "سقوط مُتحكَّم فيه": وضعيتان مفتاحيتان — الخطوة/التلامس (الجسم في أخفض نقطة) والعبور (أعلى نقطة، ساق مستقيمة).
+# الذراع عكس الساق (دوران معاكس للكتفين والوركين). الجري فيه "مرحلة تعليق" بلا قدم على الأرض، وفي العبور ينخفض الجسم
+# (الساق تمتص الصدمة) عكس المشي. الشخصية تظهر في مشيتها: الواثق، الحزين، الكبير بالسن، المتسلل...
+GAITS.update({
+    "confident": dict(T=0.95, stance=0.6, S=340.0, lift=50.0, bob=10.0, lean=5.0, arm=26.0, elbow=16.0, head=-3.0),
+    "happy": dict(T=0.88, stance=0.58, S=320.0, lift=62.0, bob=18.0, lean=-1.0, arm=30.0, elbow=20.0, head=-5.0, double=True),
+    "sad": dict(T=1.5, stance=0.66, S=170.0, lift=12.0, bob=3.0, lean=9.0, arm=5.0, elbow=6.0, head=14.0),
+    "old": dict(T=1.6, stance=0.7, S=150.0, lift=10.0, bob=2.0, lean=13.0, arm=4.0, elbow=28.0, head=8.0),
+    "sneak": dict(T=1.8, stance=0.55, S=360.0, lift=75.0, bob=6.0, lean=16.0, arm=14.0, elbow=70.0, head=4.0),
+    "jog": dict(T=0.8, stance=0.45, S=240.0, lift=80.0, bob=14.0, lean=4.0, arm=18.0, elbow=95.0, head=0.0),
+})
+GAITS["run"]["lean"] = 7.0      # الجري السريع منتصب نسبيًا (لا ينحني كثيرًا إلا عند الانطلاق)
+
+ARM_LAG = 0.045    # حركة متداخلة: الذراعان تتأخران قليلًا عن الساقين (المحرّك الأساسي هو الورك)
+HEAD_LAG = 0.07    # الرأس يتأخر أكثر (حركة ثالثية بعد الجذع)
+
+
+def gait_pose(name, phase, amp=1.0):
+    """يرجع كل قنوات الحركة لمشية ما عند طور معيّن، مع التداخل والتأخير."""
+    g = GAITS[name]
+    p = phase % 1.0
+    is_run = g["stance"] < 0.5
+    feet = [foot_rel(p + off, g, amp) for off in (0.0, 0.5)]
+    if is_run:   # أخفض نقطة منتصف الارتكاز (امتصاص الصدمة)، أعلى نقطة في التعليق
+        bob = g["bob"] * amp * (0.5 + 0.5 * math.cos(4 * math.pi * (p - g["stance"] / 2)))
+    else:        # أخفض نقطة عند التلامس، أعلى نقطة عند العبور
+        bob = g["bob"] * amp * (0.5 + 0.5 * math.cos(4 * math.pi * p))
+        if g.get("double"):   # ارتداد مزدوج (مشية سعيدة/كرتونية): ضغطة إضافية قبل التلامس
+            bob += g["bob"] * 0.35 * amp * max(0.0, math.sin(4 * math.pi * p - 0.6)) ** 2
+    pa = p - ARM_LAG
+    sw = math.cos(2 * math.pi * pa)
+    arm_near = (-g["arm"] * amp * sw, g["elbow"] + (10 * amp * max(0.0, -sw) if not is_run else 0))
+    arm_far = (g["arm"] * amp * sw, g["elbow"] + (10 * amp * max(0.0, sw) if not is_run else 0))
+    head = g.get("head", 0.0) * amp - 1.5 * amp * math.sin(4 * math.pi * (p - HEAD_LAG))
+    twist = 9.0 * amp * math.cos(2 * math.pi * (p - ARM_LAG)) * (-1)       # الكتف القريب يتقدم مع ذراعه
+    lean = g["lean"] * amp + 1.6 * amp * math.cos(4 * math.pi * (p - 0.03))  # ميل خفيف للأمام عند كل تلامس (سقوط مُتحكَّم فيه)
+    return dict(feet=feet, bob=bob, lean=lean, twist=twist, arm_near=arm_near, arm_far=arm_far, head=head,
+                hair_bounce=6 * amp * math.sin(4 * math.pi * (p - HEAD_LAG * 2) + 0.8))
+
+
+def lipsync_track(wav_path, fps, early_frames=2, levels=(0.08, 0.3)):
+    """مزامنة الشفاه من ملف الصوت: شكل الفم يسبق الصوت بإطارين (مبكرًا لا متأخرًا أبدًا)،
+    وبثلاثة أشكال فقط (مغلق/نصف/مفتوح) — الإفراط في تحريك الفم يبدو مصطنعًا."""
+    import numpy as np
+    from scipy.io import wavfile
+    sr, x = wavfile.read(wav_path)
+    x = x.astype(np.float32)
+    if x.ndim > 1:
+        x = x.mean(1)
+    x /= (np.abs(x).max() + 1e-6)
+    hop = int(sr / fps)
+    env = np.array([np.sqrt((x[i:i + hop] ** 2).mean()) for i in range(0, len(x), hop)])
+    env /= env.max() + 1e-6
+    shapes = np.where(env > levels[1], 1.0, np.where(env > levels[0], 0.5, 0.0))
+    for i in range(1, len(shapes) - 1):           # لا شكل يظهر أقل من إطارين (وإلا يضيع على المشاهد)
+        if shapes[i] != shapes[i - 1] and shapes[i] != shapes[i + 1]:
+            shapes[i] = shapes[i - 1]
+    return np.concatenate([shapes[early_frames:], np.zeros(early_frames)])

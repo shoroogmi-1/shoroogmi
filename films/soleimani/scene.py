@@ -26,7 +26,7 @@ sys.path.insert(0, ROOT)
 from engine import cutout as K  # noqa: E402
 from engine import sfx  # noqa: E402
 
-W, H, FPS = 1080, 1920, 30
+W, H, FPS = 1080, 1920, 60   # 60 إطارًا/ث لحركة أنعم
 DUR = 15.4
 IMPACT = 12.55
 CACHE = os.path.join(ROOT, ".cache", "soleimani")
@@ -208,18 +208,27 @@ def plate_A():
     return b
 
 
-def plate_B():
+def plate_B_far():
     r = np.random.default_rng(2)
     b = night_sky(horizon=1100)
     b += stars(r, 90, 700)
     b += f'<g opacity="0.55">{city(r, 1100, 30, "#262946", "#e8b46a", 0.6)}</g>'
-    b += terminal(1260, "#2a2f4c")
+    return b
+
+
+def plate_B_near():
+    b = terminal(1260, "#2a2f4c")
     b += f'<rect x="0" y="1260" width="{W}" height="{H - 1260}" fill="#1b1e30"/>'
     b += f'<rect x="0" y="1560" width="{W}" height="{H - 1560}" fill="#232740"/>'
-    for i in range(8):      # علامات أرضية بمنظور
+    for i in range(8):      # علامات أرضية
         b += f'<rect x="{-60 + i * 170}" y="1700" width="110" height="14" fill="#d8c86a" opacity="0.55" transform="skewX(-25)"/>'
     b += (f'<rect x="900" y="980" width="16" height="290" fill="#11131e"/><path d="M860,960 L960,960 L940,990 L880,990 Z" fill="#2a2f45" stroke="{LINE}" stroke-width="3"/>')
     return b
+
+
+def tile3(im):
+    """يمدّ اللوحة أفقيًا بثلاث نسخ متناظرة (بلا فواصل ظاهرة) للتحريك الأفقي."""
+    return np.concatenate([im, im[:, ::-1], im], 1)
 
 
 def plate_C1():
@@ -252,43 +261,45 @@ def plate_D():
 
 
 # ======================================================================= الشخصية (اللقطة B)
+GAIT_B = "confident"
+CAR_X = 2380.0
+
+
 def gait_B():
-    walk = K.GAITS["walk"]
-    dt = 1 / FPS
-    hip_x, phase = -260.0, 0.25
+    """مشية واثقة متواصلة (بلا توقف ينزلق فيه القدمان)، بتدحرج القدم ودوران الجذع والتداخل."""
+    g = K.GAITS[GAIT_B]
+    v = g["S"] / (g["stance"] * g["T"]) * 0.92
     out, steps = [], []
     prev = [True, True]
     for i in range(int((CUTS[1] - CUTS[0]) * FPS) + 2):
-        t = CUTS[0] + i * dt
-        amp = 1.0 if t < 6.4 else 1 - ease((t - 6.4) / 0.9)
-        S = walk["S"] * amp * 0.9
-        v = S / (walk["stance"] * walk["T"])
-        hip_x += v * dt
-        phase += dt / walk["T"]
+        t = CUTS[0] + i * (1 / FPS)
+        lt = t - CUTS[0]
+        phase = 0.2 + lt / g["T"]
+        hip_x = -120.0 + v * lt
+        gp = K.gait_pose(GAIT_B, phase, 1.0)
         feet = []
-        g = dict(walk, S=walk["S"] * 0.9)
-        for k, off in enumerate((0.0, 0.5)):
-            fx, lift, fa, st = K.foot_rel(phase + off, g, amp)
-            feet.append((hip_x + fx + (16, -14)[k] * (1 - amp), 1590 - lift, fa))
-            if st and not prev[k] and amp > 0.2:
+        for k, (fx, lift, fa, st) in enumerate(gp["feet"]):
+            feet.append((hip_x + fx, 1590 - lift, fa))
+            if st and not prev[k]:
                 steps.append(t)
             prev[k] = st
-        p = phase % 1
-        bob = walk["bob"] * amp * (0.5 + 0.5 * math.cos(4 * math.pi * p))
-        out.append(dict(t=t, hip_x=hip_x, feet=feet, bob=bob, p=p, amp=amp))
+        out.append(dict(t=t, hip_x=hip_x, feet=feet, gp=gp))
     return out, steps
 
 
-def char_B(f):
-    t, p, amp = f["t"], f["p"], f["amp"]
-    sw = math.cos(2 * math.pi * p)
-    a_n = -18 * amp * sw + 4 * (1 - amp)
-    a_f = 18 * amp * sw - 3 * (1 - amp)
-    _, wn = K.fk2(K.SHOULDER, a_n, 12 + 10 * amp * max(0, -sw), K.UA, K.FA)
-    _, wf = K.fk2(K.SHOULDER, a_f, 10 + 10 * amp * max(0, sw), K.UA, K.FA)
+def cam_B(f):
+    return clamp(f["hip_x"] - 0.36 * W, 0, 2 * W)
+
+
+def char_B(f, cam):
+    t, gp = f["t"], f["gp"]
+    an, af = gp["arm_near"], gp["arm_far"]
+    _, wn = K.fk2(K.SHOULDER, an[0], an[1], K.UA, K.FA)
+    _, wf = K.fk2(K.SHOULDER, af[0], af[1], K.UA, K.FA)
     blink = math.sin(math.pi * (t - 6.1) / 0.14) if 6.1 <= t < 6.24 else 0.0
-    pose = K.Pose(hip=(f["hip_x"], 1590 - K.ANK - 432 + f["bob"]), lean=2.0 * amp + 1, breath=math.sin(t * 1.7),
-                  head_tilt=-2 - 1.5 * math.sin(4 * math.pi * p) * amp, feet=f["feet"],
+    feet = [(x - cam, y, a) for (x, y, a) in f["feet"]]
+    pose = K.Pose(hip=(f["hip_x"] - cam, 1590 - K.ANK - 432 + gp["bob"]), lean=gp["lean"], twist=gp["twist"],
+                  breath=math.sin(t * 1.7), head_tilt=gp["head"] - 1, feet=feet,
                   arm_near=("ik", wn, -1, "torso"), arm_far=("ik", wf, -1, "torso"), blink=blink, brow=-0.6)
     return K.draw_character(pose, "general")
 
@@ -372,7 +383,8 @@ _G = {}
 
 def _init():
     _G["A"] = cached_plate("A", plate_A)
-    _G["B"] = cached_plate("B", plate_B)
+    _G["Bfar"] = tile3(cached_plate("Bfar", plate_B_far))
+    _G["Bnear"] = tile3(cached_plate("Bnear", plate_B_near))
     _G["C1"] = cached_plate("C1", plate_C1)
     _G["D"] = cached_plate("D", plate_D)
     _G["gait"], _ = gait_B()
@@ -410,27 +422,30 @@ def shot_A(t):
 
 
 def shot_B(t):
-    img = _G["B"][..., :3].copy()
-    # بقعة ضوء كاشف أرضية (مصدر الضوء أعلى اليمين)
-    img = add_glow(img, 840, 1560, 520, (1.0, 0.88, 0.62), 0.22)
-    car = svg_png(wrap(suv(1110, 1600, 1.15, 0, tail=True, head=False)))
-    img = over(img, car)
-    img = add_glow(img, 822, 1440, 70, (1.0, 0.1, 0.08), 0.8)        # ضوء خلفي أحمر للسيارة
     i = min(len(_G["gait"]) - 1, int((t - CUTS[0]) * FPS))
     f = _G["gait"][i]
-    ch = svg_png(wrap(char_B(f)))
-    # ظل ساقط: حاد قرب القدم وناعم بعيدًا (من كتاب الرسم)، ولونه بارد
+    cam = cam_B(f)
+    far, near = _G["Bfar"], _G["Bnear"]
+    xf = int(cam * 0.3)
+    img = far[:, xf:xf + W, :3].copy()                    # البعيد يتحرك أبطأ (عمق/منظور)
+    xn = int(cam)
+    img = over(img, near[:, xn:xn + W])
+    img = add_glow(img, 840 - (cam % W) * 0.0, 1560, 520, (1.0, 0.88, 0.62), 0.22)
+    car = svg_png(wrap(suv(CAR_X - cam, 1600, 1.15, 0, tail=True, head=False)))
+    img = over(img, car)
+    img = add_glow(img, CAR_X - cam - 288, 1440, 70, (1.0, 0.1, 0.08), 0.8)
+    ch = svg_png(wrap(char_B(f, cam)))
     a = ch[..., 3]
     G = 1590.0
     M = np.float32([[1, -0.55, 0.55 * G], [0, -0.28, G * 1.28]])
     sh = cv2.warpAffine(a, M, (W, H))
     yy = np.arange(H, dtype=np.float32)[:, None]
     mix = np.clip((yy - G) / 120, 0, 1)
-    s = (cv2.GaussianBlur(sh, (0, 0), 2) * (1 - mix) + cv2.GaussianBlur(sh, (0, 0), 12) * mix) * (1 - 0.5 * mix)
-    s = np.clip(s * 0.5, 0, 0.5)[..., None]
-    img = img * (1 - s) + np.array([0.05, 0.06, 0.12], np.float32) * s
+    s_ = (cv2.GaussianBlur(sh, (0, 0), 2) * (1 - mix) + cv2.GaussianBlur(sh, (0, 0), 12) * mix) * (1 - 0.5 * mix)
+    s_ = np.clip(s_ * 0.5, 0, 0.5)[..., None]
+    img = img * (1 - s_) + np.array([0.05, 0.06, 0.12], np.float32) * s_
     img = over(img, ch)
-    img = push(img, CUTS[0], CUTS[1], t, 1.0, 1.08, 0.45, 0.6)
+    img = push(img, CUTS[0], CUTS[1], t, 1.0, 1.06, 0.45, 0.6)
     k = back_out((t - 5.3) / 0.28)
     if t > 5.3:
         img = place(img, _G["tagB"], 640, 470, k, -3)
@@ -440,7 +455,7 @@ def shot_B(t):
 def shot_C1(t):
     img = _G["C1"][..., :3].copy()
     u = (t - CUTS[1]) / (CUTS[2] - CUTS[1])
-    x = 1300 - 1700 * u
+    x = 1300 - 1700 * (0.15 * u + 0.85 * ease(u))
     dr = svg_png(wrap(reaper(x, 1050 + 60 * u, 1.25, -4)))
     img = over(img, dr)
     img = push(img, CUTS[1], CUTS[2], t, 1.05, 1.15, 0.5, 0.5)
@@ -485,7 +500,7 @@ def shot_D(t):
     dx = u * 260
     for k, cx in enumerate((240, 760)):
         x = cx + dx - 300
-        car = svg_png(wrap(suv(x, 1640, 0.8, -u * 9, tail=True, head=True)))
+        car = svg_png(wrap(suv(x, 1640, 0.8, u * 5.6, tail=True, head=True)))
         img = add_glow(img, x + 230, 1540, 120, (1.0, 0.95, 0.75), 0.35)   # أضواء أمامية
         img = over(img, car)
     impact_t = IMPACT
