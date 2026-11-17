@@ -1,0 +1,31 @@
+# خطة فيلم جديد — املأها ثم: python3 studio.py plan films/<slug>/story.yaml
+# المرجع المملوء: films/soleimani_mckee/story.yaml
+title: ""
+mode: idea                 # idea = كلود يكتب السيناريو بنفسه (بالكتابين) | script = سيناريو جاهز منها يُنفَّذ كما هو
+level: soleimani           # الحد الأدنى للجودة
+genre: ""
+real_events: true          # true = وقائع حقيقية: مصادر إلزامية، ولا تحريف للوقائع
+
+controlling_idea: {value: "", cause: "", sentence: ""}      # قيمة + سبب في جملة واحدة (مكّي)
+central_value: {name: "", start: "+", end: "-"}             # تنقلب ولا ترجع
+central_character: {name: "", first_on_screen_s: 0.5, empathy: [early]}   # skill/funny/early/resolve/nice/adversity
+goal: {object: "", tickable: true, deadline: ""}           # مادي، محدد، قابل للشطب، بمهلة
+inciting_incident: {shot: A, t: 1.0, on_screen: true, what: ""}
+obligatory_scene: {shot: "", what: ""}
+climax: {shot: "", irreversible: true}
+plants:                                                    # كل حل في النهاية مزروع مسبقًا
+  - {plant: A, payoff: "", what: ""}
+
+shots:                                                     # كل لقطة تقلب قيمة وفيها فجوة وفعل مرئي
+  - id: A
+    t0: 0.0
+    t1: 5.0
+    intensity: 2                                           # تتصاعد حتى الذروة (أعلى رقم)
+    action: true
+    value: {name: "", start: "+", end: "-"}
+    gap: {expected: "", got: ""}
+    narration: ""                                          # ≤ 2.4 كلمة/ث (صوت المذيع)
+
+sources: []                                                # روابط الوقائع
+visual_refs: []                                            # صور/أبعاد حقيقية بُحث عنها قبل الرسم
+render: {W: 1080, H: 1920, fps: 60, voice: anchor}

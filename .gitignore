@@ -5,3 +5,4 @@ films/*/*.mp4
 films/*/*_t*.png
 films/demo/park.jpg
 films/anime_test/boy.png
+!films/soleimani_mckee/model.mp4

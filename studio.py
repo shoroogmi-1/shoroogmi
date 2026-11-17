@@ -9,6 +9,12 @@
   python3 studio.py voices "نَصٌّ مَشْكُولٌ"                 # تجربة كل الأصوات
   python3 studio.py sets                                   # صور معاينة للعوالم الجاهزة
   python3 studio.py fonts                                  # لوحة معاينة الخطوط
+
+  ── أوامر أي فيلم جديد بمستوى سليماني (إلزامية) ──
+  python3 studio.py new   <slug> [--title "..."]           # ينشئ films/<slug>/ من نموذج سليماني (scene.py + story.yaml)
+  python3 studio.py plan  films/<slug>/story.yaml          # يفحص الخطة بقواعد الكتابين وقاعدة محاكاة الواقع
+  python3 studio.py qa    films/<slug>/<out>.mp4 [story]   # يفحص الإخراج: الدقة، 60 إطارًا، الصوت، العلوّ، المدة
+  python3 studio.py model                                  # يعرض فيلم النموذج ومكانه
 """
 import os
 import sys
@@ -20,6 +26,8 @@ from scipy.io import wavfile
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ROOT)
 from engine import film, sfx, painter  # noqa: E402
+
+MODEL = "soleimani_mckee"   # فيلم النموذج: الحد الأدنى للمستوى
 
 
 def main():
@@ -104,6 +112,30 @@ def main():
         out = np.clip(np.concatenate(rows, 0), 0, 1)
         cv2.imwrite(os.path.join(ROOT, "previews", "fonts.jpg"), (out[..., ::-1] * 255).astype(np.uint8), [cv2.IMWRITE_JPEG_QUALITY, 88])
         print("previews/fonts.jpg")
+    elif a.cmd == "new":
+        import shutil
+        slug = a.args[0]
+        src, dst = os.path.join(ROOT, "films", MODEL), os.path.join(ROOT, "films", slug)
+        os.makedirs(dst, exist_ok=False)
+        code = open(os.path.join(src, "scene.py"), encoding="utf-8").read()
+        code = code.replace('"soleimani_mckee"', f'"{slug}"').replace("soleimani_mckee.mp4", f"{slug}.mp4")
+        open(os.path.join(dst, "scene.py"), "w", encoding="utf-8").write(code)
+        shutil.copy(os.path.join(ROOT, "templates", "story.yaml"), os.path.join(dst, "story.yaml"))
+        print(f"تم إنشاء films/{slug}/ من النموذج.\nالخطوات الإلزامية:\n"
+              f"  1) املأ films/{slug}/story.yaml (أو انسخ سيناريوها الجاهز في narration إن كان mode: script)\n"
+              f"  2) python3 studio.py plan films/{slug}/story.yaml  ← حتى لا يبقى خطأ\n"
+              f"  3) ابحث عن مراجع حقيقية وأبعاد، ثم عدّل اللقطات في scene.py (اللوحات، الشخصيات، المركبات)\n"
+              f"  4) python3 films/{slug}/scene.py x t1 t2 t3 t4  ← لوحة فحص وانظر إليها\n"
+              f"  5) python3 films/{slug}/scene.py  ← إخراج كامل\n"
+              f"  6) python3 studio.py qa .cache/{slug}/{slug}.mp4 films/{slug}/story.yaml")
+    elif a.cmd == "plan":
+        from engine import story
+        sys.exit(story.check_plan(a.args[0]))
+    elif a.cmd == "qa":
+        from engine import story
+        sys.exit(story.check_video(a.args[0], a.args[1] if len(a.args) > 1 else None))
+    elif a.cmd == "model":
+        print(f"النموذج: films/{MODEL}/  (scene.py، story.yaml، model.mp4)\nالمرجع البصري: films/{MODEL}/model.mp4")
     else:
         print(__doc__)
 

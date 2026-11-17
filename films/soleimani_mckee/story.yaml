@@ -1,0 +1,103 @@
+# خطة فيلم سليماني — النموذج المرجعي (الحد الأدنى لمستوى أي فيلم قادم)
+# تُفحص بـ: python3 studio.py plan films/soleimani_mckee/story.yaml
+title: مقتل قاسم سليماني
+mode: idea                 # idea = كلود يكتب السيناريو بنفسه | script = سيناريو جاهز منها يُنفَّذ كما هو
+level: soleimani
+genre: دراما وثائقية (Docu-Drama) — ذروة حركة
+real_events: true
+
+controlling_idea:
+  value: "الأمان ينقلب إلى موت"
+  cause: "لأن تخفّيه لم يحجب رصد وصوله"
+  sentence: "تحرّك متخفّيًا فظنّ نفسه آمنًا، لكن وصوله كان مرصودًا فقُتل بعد دقائق من هبوطه."
+
+central_value: {name: "أمان/خطر ← حياة/موت", start: "+", end: "-"}
+
+central_character:
+  name: قاسم سليماني
+  first_on_screen_s: 0.3      # أثره (طائرته) من أول لقطة، وشخصه في B
+  empathy: [early, adversity]
+
+goal: {object: "يخرج من المطار بموكبه سالمًا", tickable: true, deadline: "دقائق بعد الهبوط"}
+
+inciting_incident: {shot: A, t: 2.4, on_screen: true, what: "ظل المسيّرة يعبر القمر لحظة هبوط طائرته"}
+obligatory_scene: {shot: D2, what: "المواجهة مع المسيّرة"}
+climax: {shot: D2, irreversible: true}
+
+plants:
+  - {plant: A, payoff: C1, what: "ظل المسيّرة أمام القمر وطنينها الخافت"}
+  - {plant: A, payoff: E, what: "لحظة الهبوط ← «بعد دقائق من هبوطه»"}
+  - {plant: B, payoff: C1, what: "«خارج قائمة الركّاب» (تخفٍّ) ← «لكنّ وصوله كان مرصودًا»"}
+
+shots:
+  - id: A
+    t0: 0.0
+    t1: 5.3
+    intensity: 2
+    action: true
+    value: {name: "تخفٍّ/انكشاف", start: "+", end: "-"}
+    gap: {expected: "هبوط هادئ لرحلة مدنية", got: "ظل مسيّرة يعبر القمر"}
+    narration: "بغداد، فجر الثالث من يناير ٢٠٢٠."
+  - id: B
+    t0: 5.3
+    t1: 11.6
+    intensity: 3
+    action: true
+    value: {name: "أمان", start: "-", end: "+"}
+    gap: {expected: "مشهد عادي", got: "بطاقة «خارج قائمة الركّاب» تكشف تخفّيه"}
+    narration: "يصل قاسم سليماني على رحلة مدنية، واسمه خارج قائمة الركّاب."
+    narration_overflow: 0.2
+  - id: C1
+    t0: 11.6
+    t1: 13.3
+    intensity: 5
+    action: true
+    value: {name: "أمان/خطر", start: "+", end: "-"}
+    gap: {expected: "سماء فارغة", got: "مسيّرة MQ-9 فوقه"}
+    narration: "لكنّ وصوله كان مرصودًا،"
+  - id: C2
+    t0: 13.3
+    t1: 16.4
+    intensity: 6
+    action: true
+    value: {name: "نجاة/هلاك", start: "-", end: "--"}
+    gap: {expected: "الموكب يغادر المطار", got: "المنظار يثبّت الهدف"}
+    narration: "والمسيّرة تنتظر خروجه."
+  - id: D1
+    t0: 16.4
+    t1: 18.4
+    intensity: 8
+    action: true
+    value: {name: "حياة/موت", start: "--", end: "-"}
+    gap: {expected: "طريق مفتوح", got: "الصاروخ الأول يصيب الستاريكس"}
+    narration: "صاروخ أول…"
+  - id: D2
+    t0: 18.4
+    t1: 21.0
+    intensity: 10
+    action: true
+    value: {name: "حياة/موت", start: "+", end: "-"}       # الأفالون تسرع ويخطئها الثاني (أمل) ثم يصيبها الثالث
+    gap: {expected: "الإسراع ينجيها بعد إخفاق الثاني", got: "الثالث يصيبها"}
+    narration: "ثمّ ثانٍ… ثمّ ثالث."
+  - id: E
+    t0: 21.0
+    t1: 25.8
+    intensity: 7
+    action: true
+    value: {name: "حياة/موت", start: "-", end: "--"}
+    gap: {expected: "نجاة أحد", got: "مقتل سليماني"}
+    narration: "قُتل قاسم سليماني بعد دقائق من هبوطه."
+
+sources:
+  - https://english.alarabiya.net/features/2020/01/26/Qassem-Soleimani-s-final-journey-How-it-happened-minute-by-minute
+  - https://www.middleeasteye.net/news/tracked-targeted-killed-qassem-soleimanis-final-hours
+  - https://www.aljazeera.com/news/2020/1/10/informants-in-iraq-syria-helped-us-kill-irans-soleimani-report
+  - https://www.nbcnews.com/news/mideast/airport-informants-overhead-drones-how-u-s-killed-soleimani-n1113726
+
+visual_refs:
+  - "Toyota Avalon (4.976×1.435م، قاعدة عجلات 2.87م) — engine/vehicles.py"
+  - "Hyundai Starex (5.15م، قاعدة عجلات 3.2م) — engine/vehicles.py"
+  - "MQ-9 Reaper (طول 11م، امتداد 20م، ذيل V، مروحة دافعة)"
+  - "Airbus A320 (طول 37.6م)"
+
+render: {W: 1080, H: 1920, fps: 60, voice: anchor}
