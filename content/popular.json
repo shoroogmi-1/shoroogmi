@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19",
+ "updated": "2026-11-20",
  "items": [
   {
    "slug": "nazariyyat-dharhum",
@@ -68,7 +68,19 @@
    "score": 1
   },
   {
+   "slug": "al-ijtima-bad-al-iftiraq",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
    "slug": "ansini-ma-amdayt",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
+   "slug": "fi-bidayat-alaqatik",
    "reads": 1,
    "likes": 0,
    "score": 1
@@ -80,19 +92,13 @@
    "score": 1
   },
   {
-   "slug": "hal-yunqis-adh-dhaka",
+   "slug": "la-tarbit-aqdaraka-bi-imanik",
    "reads": 1,
    "likes": 0,
    "score": 1
   },
   {
-   "slug": "inhani-ayyatuha-al-jadawil",
-   "reads": 1,
-   "likes": 0,
-   "score": 1
-  },
-  {
-   "slug": "sana-barqih",
+   "slug": "maana-al-quran-rahma",
    "reads": 1,
    "likes": 0,
    "score": 1
