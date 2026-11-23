@@ -504,19 +504,24 @@ if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
     }).catch(() => {});
   }
 
-  function replyForm(top, li) {
+  // target = the comment or reply being answered; top = the thread's first comment (replies stay one level deep)
+  function replyForm(target, top, li) {
     let f = li.querySelector(".reply-form");
-    if (f) { f.remove(); return; }
+    const same = f && f.dataset.target === String(target.id);
+    if (f) f.remove();
+    if (same) return;
     f = document.createElement("form");
     f.className = "comment-form reply-form";
     f.noValidate = true;
+    f.dataset.target = target.id;
     const asAuthor = !!authorToken;
     f.innerHTML = `${asAuthor ? "" : `<input name="name" type="text" maxlength="40" autocomplete="nickname">`}
       <textarea name="body" rows="2" maxlength="1000"></textarea>
       <button type="submit" class="btn btn-primary"></button>
       <p class="comment-status" role="status"></p>`;
     if (!asAuthor) f.name.placeholder = tr("اسمك", "Your name");
-    f.body.placeholder = asAuthor ? "ردّك يا شروق…" : tr(`ردّك على ${top.name}…`, `Your reply to ${top.name}…`);
+    f.body.placeholder = asAuthor ? "ردّك يا شروق…" : tr(`ردّك على ${target.name}…`, `Your reply to ${target.name}…`);
+    if (target !== top) f.body.value = `@${target.name} `;
     f.querySelector("button").textContent = tr("أرسل الرد", "Post reply");
     const st = f.querySelector(".comment-status");
     f.addEventListener("submit", async (e) => {
@@ -548,7 +553,7 @@ if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
           if (!r.ok) throw new Error();
           [saved] = await r.json();
           store("sm-last-comment", String(Date.now()));
-          notifyWriter(saved, top);
+          notifyWriter(saved, target);
         }
         f.remove();
         addComment(saved);
@@ -558,8 +563,10 @@ if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
         btn.disabled = false;
       }
     });
-    li.querySelector(".replies").before(f);
-    f.querySelector("textarea").focus();
+    li.append(f);
+    const ta = f.querySelector("textarea");
+    ta.focus();
+    ta.setSelectionRange(ta.value.length, ta.value.length);
   }
 
   function addComment(c) {
@@ -579,13 +586,21 @@ if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
     const parent = c.parent_id && byId.get(c.parent_id);
     if (parent) {
       parent.li.querySelector(".replies").appendChild(li);
+      if (threads && c.id) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "reply-btn";
+        btn.textContent = tr("↩ ردّ", "↩ Reply");
+        btn.addEventListener("click", () => replyForm(c, parent.c, parent.li));
+        li.append(btn);
+      }
     } else {
       if (threads && c.id) {
         const btn = document.createElement("button");
         btn.type = "button";
         btn.className = "reply-btn";
         btn.textContent = tr("↩ ردّ", "↩ Reply");
-        btn.addEventListener("click", () => replyForm(c, li));
+        btn.addEventListener("click", () => replyForm(c, c, li));
         const replies = document.createElement("ol");
         replies.className = "replies";
         li.append(btn, replies);
