@@ -196,14 +196,26 @@ document.querySelectorAll(".book-dl").forEach((a) =>
       if (v !== null) document.querySelectorAll(`[data-count-of="${a.dataset.count}"]`).forEach((el) => (el.textContent = arNum.format(v)));
     })));
 
-// Visitors: a browser counts once as a visitor, and once more as a returning reader
-// the first time it comes back on a later day.
-async function trackVisit() {
-  const today = new Date().toISOString().slice(0, 10);
-  let canStore = false;
-  try { localStorage.setItem("sm-test", "1"); canStore = true; } catch (e) {}
-  if (!canStore) return {};
-  const first = store("sm-first-visit");
+// Supabase (comments, ratings, mailing list, visitor stats)
+const COMMENTS_URL = "https://fownwnktsvpzfyyndgtt.supabase.co";
+const COMMENTS_KEY = "sb_publishable_xfQjqLqa091AzMM30SRp6g_llc9fjPx"; // public key, safe to publish
+const sbHeaders = { apikey: COMMENTS_KEY, Authorization: `Bearer ${COMMENTS_KEY}`, "Content-Type": "application/json" };
+const sbRpc = (fn, args) => fetch(`${COMMENTS_URL}/rest/v1/rpc/${fn}`, { method: "POST", headers: sbHeaders, body: JSON.stringify(args) });
+
+// Visitors: each browser gets a random id and logs one row per day it visits (Supabase, supabase/visits.sql).
+// «زوار الموقع» = every browser; «قرّاء دائمون» = browsers seen on two different days or more.
+// Until visits.sql has been run in Supabase, the old Abacus counters are used as before.
+function visitorId() {
+  let id = store("sm-vid");
+  if (!id) {
+    id = crypto.randomUUID ? crypto.randomUUID()
+      : "10000000-1000-4000-8000-100000000000".replace(/[018]/g, (c) => (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16));
+    store("sm-vid", id);
+  }
+  return id;
+}
+
+async function trackVisitOld(today, first) {
   if (!first) {
     store("sm-first-visit", today);
     return { visitors: await counter("hit", "site-visitors") };
@@ -215,10 +227,35 @@ async function trackVisit() {
   return {};
 }
 
-trackVisit().then(async (fresh) => {
+async function trackVisit() {
+  const today = new Date().toISOString().slice(0, 10);
+  let canStore = false;
+  try { localStorage.setItem("sm-test", "1"); canStore = true; } catch (e) {}
+  if (!canStore) return false;
+  const first = store("sm-first-visit");
+  if (store("sm-logged") === today) return true;
+  const ok = await sbRpc("log_visit", { p_id: visitorId(), p_first: first || today, p_legacy_returning: !!store("sm-returning") })
+    .then((r) => r.ok).catch(() => false);
+  if (ok) {
+    if (!first) store("sm-first-visit", today);
+    store("sm-logged", today);
+    return true;
+  }
+  return trackVisitOld(today, first);
+}
+
+trackVisit().then(async (res) => {
   if (!document.querySelector("[data-stat]")) return;
-  const visitors = fresh.visitors ?? (await counter("get", "site-visitors"));
-  const returning = fresh.returning ?? (await counter("get", "site-returning"));
+  const stats = await sbRpc("site_stats", {}).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const row = Array.isArray(stats) ? stats[0] : stats;
+  if (row && row.visitors != null) {
+    showCount('[data-stat="visitors"]', Number(row.visitors));
+    showCount('[data-stat="returning"]', Number(row.regulars));
+    return;
+  }
+  const fresh = res && typeof res === "object" ? res : {};
+  const [visitors, returning] = await Promise.all([
+    fresh.visitors ?? counter("get", "site-visitors"), fresh.returning ?? counter("get", "site-returning")]);
   showCount('[data-stat="visitors"]', visitors);
   showCount('[data-stat="returning"]', returning);
 });
@@ -446,10 +483,6 @@ if (listen && "speechSynthesis" in window) {
 // Comments: stored in Supabase. The section stays hidden until both values are filled in.
 // Every comment can get replies (one level deep). The writer's replies show her name only (no badge): her device is
 // recognised by a secret link (?author=…) opened once, and the database accepts badge replies only with that secret.
-const COMMENTS_URL = "https://fownwnktsvpzfyyndgtt.supabase.co";
-const COMMENTS_KEY = "sb_publishable_xfQjqLqa091AzMM30SRp6g_llc9fjPx"; // public key, safe to publish
-const sbHeaders = { apikey: COMMENTS_KEY, Authorization: `Bearer ${COMMENTS_KEY}`, "Content-Type": "application/json" };
-const sbRpc = (fn, args) => fetch(`${COMMENTS_URL}/rest/v1/rpc/${fn}`, { method: "POST", headers: sbHeaders, body: JSON.stringify(args) });
 
 // The writer opens https://shoroogmi.com/?author=TOKEN once on her phone/iPad: the token is checked and remembered
 const authorParam = new URLSearchParams(location.search).get("author");
