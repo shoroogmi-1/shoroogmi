@@ -3,9 +3,15 @@
  "items": [
   {
    "slug": "nazariyyat-dharhum",
-   "reads": 3,
+   "reads": 4,
    "likes": 3,
-   "score": 9
+   "score": 10
+  },
+  {
+   "slug": "al-faris-al-qawwal",
+   "reads": 4,
+   "likes": 2,
+   "score": 8
   },
   {
    "slug": "2026-10-24-0947",
