@@ -690,7 +690,7 @@ if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
       const [saved] = await res.json();
       const c = saved || { name, body, created_at: new Date().toISOString() };
       addComment(c);
-      if (!authorToken) notifyWriter(c, null);
+      notifyWriter(c, null);
       store("sm-last-comment", String(Date.now()));
       cForm.reset();
       cStatus.textContent = tr("وصل تعليقك إلى البرج ✈️", "Your comment reached the tower ✈️");
