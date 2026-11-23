@@ -1,0 +1,8 @@
+name: Read old visitor counters (one-off)
+on: workflow_dispatch
+jobs:
+  read:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          for k in site-visitors site-returning; do echo "$k: $(curl -s https://abacus.jasoncameron.dev/get/shoroogmi/$k)"; done
