@@ -663,6 +663,56 @@ if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
   });
 }
 
+// «ما قاله المسافرون»: every article comment in one place, newest first, each with its replies and a link to it
+const allComments = document.querySelector(".all-comments");
+if (allComments) {
+  const titles = JSON.parse(allComments.dataset.titles || "{}");
+  const base = allComments.dataset.base || "blog/articles/";
+  const fallback = allComments.dataset.fallback || base; // an article not translated yet: open the Arabic one
+  const emptyEl = document.querySelector(".ac-empty");
+  const countEl = document.querySelector(".ac-count");
+  const when = new Intl.DateTimeFormat(EN ? "en-US" : "ar-EG", { day: "numeric", month: "long", year: "numeric" });
+  const q = `${COMMENTS_URL}/rest/v1/comments?order=created_at.desc&limit=1000&select=`;
+  const el = (tag, cls, text) => { const x = document.createElement(tag); if (cls) x.className = cls; if (text != null) x.textContent = text; return x; };
+  function card(c) {
+    const li = el("li", c.is_author ? "by-author" : "");
+    const head = el("p", "ac-head");
+    head.append(el("b", "", c.name));
+    if (c.is_author) head.append(" ", el("span", "author-badge", tr("✍️ الكاتبة", "✍️ Author")));
+    const time = el("time", "", when.format(new Date(c.created_at)));
+    time.dateTime = c.created_at;
+    head.append(" · ", time);
+    li.append(head, el("p", "ac-body", c.body));
+    return li;
+  }
+  fetch(q + "id,slug,name,body,created_at,parent_id,is_author", { headers: sbHeaders })
+    .then((r) => (r.ok ? r.json() : Promise.reject()))
+    .catch(() => fetch(q + "id,slug,name,body,created_at", { headers: sbHeaders }).then((r) => (r.ok ? r.json() : Promise.reject())))
+    .then((rows) => {
+      const tops = rows.filter((c) => !c.parent_id);
+      const replies = rows.filter((c) => c.parent_id).reverse(); // oldest reply first under each comment
+      tops.forEach((c) => {
+        const li = card(c);
+        const link = el("a", "ac-article", `📍 ${titles[c.slug] || c.slug}`);
+        link.href = `${titles[c.slug] ? base : fallback}${encodeURIComponent(c.slug)}.html#c-${c.id}`;
+        li.prepend(link);
+        const ol = el("ol", "replies");
+        replies.filter((r) => r.parent_id === c.id).forEach((r) => ol.append(card(r)));
+        li.append(ol);
+        const go = el("a", "ac-reply", tr("↩ ردّ في المقال", "↩ Reply on the article"));
+        go.href = link.href;
+        li.append(go);
+        allComments.append(li);
+      });
+      if (tops.length) {
+        emptyEl.hidden = true;
+        countEl.hidden = false;
+        countEl.textContent = tr(`${arNum.format(tops.length)} تعليق و${arNum.format(rows.length - tops.length)} ردّ`, `${tops.length} comments, ${rows.length - tops.length} replies`);
+      }
+    })
+    .catch(() => { emptyEl.textContent = tr("تعذّر تحميل التعليقات الآن.", "Comments couldn't be loaded right now."); });
+}
+
 // Contact form: sends the message straight to the writer's inbox through FormSubmit (no email app needed)
 const form = document.querySelector(".contact-form");
 if (form) {

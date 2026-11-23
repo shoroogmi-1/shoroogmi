@@ -688,8 +688,21 @@ def build(lang):
                                   "query-input": "required name=search_term_string"}}]})
 
     # ---------- What travelers said (page) ----------
+    # كل تعليقات المقالات (مع الردود) في مكان واحد، تُحمَّل من قاعدة البيانات
+    comment_titles = {a["slug"]: re.sub(r"<[^>]+>", "", a["title"]) for a in ALL_ARTICLES}
+    all_comments = f"""    <section class="section all-comments-section">
+      <div class="container narrow">
+        <div class="section-head">
+          <h2 class="section-title">💬 {t("تعليقات المسافرين على الرحلات", "Travelers' Comments on the Journeys")}</h2>
+          <p class="ac-count" hidden></p>
+        </div>
+        <ol class="all-comments" data-titles="{html_lib.escape(json.dumps(comment_titles, ensure_ascii=False))}" data-base="blog/articles/" data-fallback="{"blog/articles/" if lang == "ar" else "../blog/articles/"}"></ol>
+        <p class="ac-empty">{t("لا تعليقات بعد… اقرأ رحلة واترك أثرك ✈️", "No comments yet… read a journey and leave your mark ✈️")}</p>
+      </div>
+    </section>
+"""
     reviews = page_head(me, t("ما قاله المسافرون", "What Travelers Said"),
-                        L(HOME["reviews_lead"])) + testimonials_html(limit=200) + rate_section
+                        L(HOME["reviews_lead"])) + testimonials_html(limit=200) + all_comments + rate_section
     page(lang, "testimonials.html", "testimonials", f"{t('ما قاله المسافرون', 'What Travelers Said')} · {me}", reviews,
          t("تقييمات قرّاء موقع شروق المحمادي.", "Reviews from readers of Shoroog Almehmadi's website."))
 
