@@ -1,9 +1,0 @@
-name: One-off check (latest comments)
-on: workflow_dispatch
-jobs:
-  c:
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          K=sb_publishable_xfQjqLqa091AzMM30SRp6g_llc9fjPx
-          echo "COMMENTS: $(curl -s "https://fownwnktsvpzfyyndgtt.supabase.co/rest/v1/comments?order=created_at.desc&limit=8&select=id,slug,name,body,created_at" -H "apikey: $K" -H "Authorization: Bearer $K")"
