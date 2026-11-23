@@ -1,4 +1,4 @@
-name: Read old visitor counters (one-off)
+name: One-off checks (old counters + comment email test)
 on: workflow_dispatch
 jobs:
   read:
@@ -6,3 +6,9 @@ jobs:
     steps:
       - run: |
           for k in site-visitors site-returning; do echo "$k: $(curl -s https://abacus.jasoncameron.dev/get/shoroogmi/$k)"; done
+      - run: |
+          curl -s -X POST https://formsubmit.co/ajax/shoroogmi1@gmail.com \
+            -H "Content-Type: application/json" -H "Accept: application/json" \
+            -H "Origin: https://shoroogmi.com" -H "Referer: https://shoroogmi.com/blog/articles/wa-ma-tilka-biyaminik.html" \
+            --data '{"_subject":"💬 تعليق جديد: (وما تلك بيمينك يا موسى) — تجربة","_template":"box","_captcha":"false","المقال":"(وما تلك بيمينك يا موسى)","الاسم":"تجربة من Claude","التعليق":"هذه رسالة تجريبية لاختبار إشعار التعليقات، لم يُنشر أي تعليق في الموقع.","رابط التعليق (للرد)":"https://shoroogmi.com/blog/articles/wa-ma-tilka-biyaminik.html#comments-title"}'
+          echo
