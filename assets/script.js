@@ -444,39 +444,179 @@ if (listen && "speechSynthesis" in window) {
 }
 
 // Comments: stored in Supabase. The section stays hidden until both values are filled in.
+// Every comment can get replies (one level deep). The writer's replies carry a «الكاتبة» badge: her device is
+// recognised by a secret link (?author=…) opened once, and the database accepts badge replies only with that secret.
 const COMMENTS_URL = "https://fownwnktsvpzfyyndgtt.supabase.co";
 const COMMENTS_KEY = "sb_publishable_xfQjqLqa091AzMM30SRp6g_llc9fjPx"; // public key, safe to publish
+const sbHeaders = { apikey: COMMENTS_KEY, Authorization: `Bearer ${COMMENTS_KEY}`, "Content-Type": "application/json" };
+const sbRpc = (fn, args) => fetch(`${COMMENTS_URL}/rest/v1/rpc/${fn}`, { method: "POST", headers: sbHeaders, body: JSON.stringify(args) });
+
+// The writer opens https://shoroogmi.com/?author=TOKEN once on her phone/iPad: the token is checked and remembered
+const authorParam = new URLSearchParams(location.search).get("author");
+const authorReady = (async () => {
+  if (authorParam) {
+    const url = new URL(location.href);
+    url.searchParams.delete("author");
+    history.replaceState(null, "", url);
+    const ok = await sbRpc("is_author_token", { p_token: authorParam }).then((r) => (r.ok ? r.json() : false)).catch(() => false);
+    if (ok) {
+      store("sm-author", authorParam);
+      alert("أهلًا شروق ✍️ تم تفعيل الرد على التعليقات من هذا الجهاز.");
+    } else {
+      alert("الرابط غير صحيح، لم يُفعَّل الرد.");
+    }
+  }
+  return store("sm-author") || "";
+})();
+
 const commentsBox = document.querySelector(".comments");
 if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
   const slug = post.dataset.slug;
   const api = `${COMMENTS_URL}/rest/v1/comments`;
-  const headers = { apikey: COMMENTS_KEY, Authorization: `Bearer ${COMMENTS_KEY}`, "Content-Type": "application/json" };
+  const headers = sbHeaders;
   const list = commentsBox.querySelector(".comment-list");
   const empty = commentsBox.querySelector(".no-comments");
   const cForm = commentsBox.querySelector(".comment-form");
   const cStatus = commentsBox.querySelector(".comment-status");
   const when = new Intl.DateTimeFormat(EN ? "en-US" : "ar-EG", { day: "numeric", month: "long", year: "numeric", hour: "numeric", minute: "2-digit" });
+  const byId = new Map();
+  let threads = false; // true once the database has the reply columns
+  let authorToken = "";
+
+  // An email to the writer for every new comment or reply (not for her own replies)
+  function notifyWriter(c, parent) {
+    const email = commentsBox.dataset.email;
+    if (!email) return;
+    const link = `${location.origin}${location.pathname}#c-${c.id || ""}`;
+    fetch(`https://formsubmit.co/ajax/${email}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        _subject: `${parent ? "💬 ردّ جديد" : "💬 تعليق جديد"}: ${commentsBox.dataset.title || slug}`,
+        _template: "box",
+        _captcha: "false",
+        "المقال": commentsBox.dataset.title || slug,
+        "الاسم": c.name,
+        "التعليق": c.body,
+        ...(parent ? { "ردًّا على": `${parent.name}: ${parent.body.slice(0, 200)}` } : {}),
+        "رابط التعليق (للرد)": link,
+      }),
+    }).catch(() => {});
+  }
+
+  function replyForm(top, li) {
+    let f = li.querySelector(".reply-form");
+    if (f) { f.remove(); return; }
+    f = document.createElement("form");
+    f.className = "comment-form reply-form";
+    f.noValidate = true;
+    const asAuthor = !!authorToken;
+    f.innerHTML = `${asAuthor ? "" : `<input name="name" type="text" maxlength="40" autocomplete="nickname">`}
+      <textarea name="body" rows="2" maxlength="1000"></textarea>
+      <button type="submit" class="btn btn-primary"></button>
+      <p class="comment-status" role="status"></p>`;
+    if (!asAuthor) f.name.placeholder = tr("اسمك", "Your name");
+    f.body.placeholder = asAuthor ? "ردّك يا شروق…" : tr(`ردّك على ${top.name}…`, `Your reply to ${top.name}…`);
+    f.querySelector("button").textContent = tr("أرسل الرد", "Post reply");
+    const st = f.querySelector(".comment-status");
+    f.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const body = f.body.value.trim();
+      const name = asAuthor ? "" : f.name.value.trim();
+      st.className = "comment-status";
+      if (!body || (!asAuthor && !name)) {
+        st.textContent = tr("اكتب اسمك وردّك.", "Write your name and reply.");
+        st.classList.add("error");
+        return;
+      }
+      if (!asAuthor && Date.now() - Number(store("sm-last-comment") || 0) < 30000) {
+        st.textContent = tr("تمهّل قليلًا قبل التعليق مرة أخرى ☕", "Take a moment before commenting again ☕");
+        st.classList.add("error");
+        return;
+      }
+      const btn = f.querySelector("button");
+      btn.disabled = true;
+      try {
+        let saved;
+        if (asAuthor) {
+          const r = await sbRpc("author_reply", { p_token: authorToken, p_parent: top.id, p_body: body, p_name: EN ? "Shorooq Almehmadi" : "شروق المحمادي" });
+          if (!r.ok) throw new Error();
+          saved = await r.json();
+        } else {
+          const r = await fetch(api, { method: "POST", headers: { ...headers, Prefer: "return=representation" },
+            body: JSON.stringify({ slug, name, body, parent_id: top.id }) });
+          if (!r.ok) throw new Error();
+          [saved] = await r.json();
+          store("sm-last-comment", String(Date.now()));
+          notifyWriter(saved, top);
+        }
+        f.remove();
+        addComment(saved);
+      } catch (err) {
+        st.textContent = tr("لم يُرسل الرد، حاول مرة أخرى.", "Your reply wasn't sent, please try again.");
+        st.classList.add("error");
+        btn.disabled = false;
+      }
+    });
+    li.querySelector(".replies").before(f);
+    f.querySelector("textarea").focus();
+  }
 
   function addComment(c) {
     const li = document.createElement("li");
+    if (c.id) { li.id = `c-${c.id}`; byId.set(c.id, { c, li }); }
+    if (c.is_author) li.classList.add("by-author");
     const head = document.createElement("p");
     const name = document.createElement("b");
     name.textContent = c.name;
+    head.append(name);
+    if (c.is_author) {
+      const badge = document.createElement("span");
+      badge.className = "author-badge";
+      badge.textContent = tr("✍️ الكاتبة", "✍️ Author");
+      head.append(" ", badge);
+    }
     const time = document.createElement("time");
     time.dateTime = c.created_at;
     time.textContent = when.format(new Date(c.created_at));
-    head.append(name, " · ", time);
+    head.append(" · ", time);
     const body = document.createElement("p");
     body.textContent = c.body;
     li.append(head, body);
-    list.appendChild(li);
+    const parent = c.parent_id && byId.get(c.parent_id);
+    if (parent) {
+      parent.li.querySelector(".replies").appendChild(li);
+    } else {
+      if (threads && c.id) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "reply-btn";
+        btn.textContent = tr("↩ ردّ", "↩ Reply");
+        btn.addEventListener("click", () => replyForm(c, li));
+        const replies = document.createElement("ol");
+        replies.className = "replies";
+        li.append(btn, replies);
+      }
+      list.appendChild(li);
+    }
     empty.hidden = true;
   }
 
   commentsBox.hidden = false;
-  fetch(`${api}?slug=eq.${encodeURIComponent(slug)}&select=name,body,created_at&order=created_at.asc`, { headers })
+  const q = `${api}?slug=eq.${encodeURIComponent(slug)}&order=created_at.asc&select=`;
+  fetch(q + "id,name,body,created_at,parent_id,is_author", { headers })
     .then((r) => (r.ok ? r.json() : Promise.reject()))
-    .then((rows) => { rows.forEach(addComment); empty.hidden = rows.length > 0; })
+    .then((rows) => { threads = true; return rows; })
+    // the reply columns aren't in the database yet: show plain comments as before
+    .catch(() => fetch(q + "id,name,body,created_at", { headers }).then((r) => (r.ok ? r.json() : Promise.reject())))
+    .then(async (rows) => {
+      authorToken = threads ? await authorReady : "";
+      rows.filter((c) => !c.parent_id).forEach(addComment);
+      rows.filter((c) => c.parent_id).forEach(addComment);
+      empty.hidden = rows.length > 0;
+      const target = location.hash.startsWith("#c-") && document.getElementById(location.hash.slice(1));
+      if (target) { target.classList.add("flash"); target.scrollIntoView({ block: "center" }); }
+    })
     .catch(() => { empty.hidden = false; empty.textContent = tr("تعذّر تحميل التعليقات الآن.", "Comments couldn't be loaded right now."); });
 
   cForm.addEventListener("submit", async (e) => {
@@ -507,7 +647,9 @@ if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
       });
       if (!res.ok) throw new Error();
       const [saved] = await res.json();
-      addComment(saved || { name, body, created_at: new Date().toISOString() });
+      const c = saved || { name, body, created_at: new Date().toISOString() };
+      addComment(c);
+      if (!authorToken) notifyWriter(c, null);
       store("sm-last-comment", String(Date.now()));
       cForm.reset();
       cStatus.textContent = tr("وصل تعليقك إلى البرج ✈️", "Your comment reached the tower ✈️");
@@ -571,7 +713,6 @@ if (form) {
 // Home page "Rate us": star rating + quick comment. Each rating is saved in Supabase (the database only lets the
 // public read positive ones: 4–5 stars with a comment) and also emailed to the writer through FormSubmit.
 const RATINGS_API = `${COMMENTS_URL}/rest/v1/ratings`;
-const sbHeaders = { apikey: COMMENTS_KEY, Authorization: `Bearer ${COMMENTS_KEY}`, "Content-Type": "application/json" };
 
 // صفحة إلغاء الاشتراك: الرابط في آخر كل رسالة فيه رمز خاص بالمشترك
 const unsubBox = document.querySelector(".unsub-box");

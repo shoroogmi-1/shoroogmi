@@ -1043,7 +1043,7 @@ def build(lang):
           <button class="like-btn" type="button" aria-pressed="false"><span class="heart" aria-hidden="true">❤️</span> {t("جميل! لقد أعجبني!", "Lovely! I liked it!")} <b class="like-count">…</b></button>
           {share_btn(lang, f"blog/articles/{slug}.html", title)}
         </div>
-        <section class="comments" hidden aria-labelledby="comments-title">
+        <section class="comments" hidden aria-labelledby="comments-title" data-email="{EMAIL}" data-title="{plain_alt(title)}">
           <h2 id="comments-title">💬 {t("تعليقات المسافرين", "Travelers' Comments")}</h2>
           <form class="comment-form" novalidate>
             <input name="name" type="text" maxlength="40" placeholder="{t("اسمك", "Your name")}" aria-label="{t("الاسم", "Name")}" autocomplete="nickname">

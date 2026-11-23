@@ -317,6 +317,14 @@ h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; line-height: 1.45;
 .comment-list li b { color: var(--accent-text); }
 .comment-list li p + p { white-space: pre-line; overflow-wrap: anywhere; }
 .comments .no-comments { color: var(--muted); margin: 14px 0 0; }
+.comment-list .replies { list-style: none; display: grid; gap: 10px; margin: 10px 0 0; padding-inline-start: 18px; border-inline-start: 3px solid var(--border); }
+.comment-list .replies:empty { display: none; }
+.comment-list li.by-author { border-color: var(--sun); background: color-mix(in srgb, var(--sun) 10%, var(--card)); }
+.comments .author-badge { display: inline-block; font-size: 0.78rem; font-weight: 700; padding: 1px 10px; border-radius: 999px; background: var(--sun); color: #1b2a41; }
+.comments .reply-btn { margin-top: 6px; padding: 2px 12px; border-radius: 999px; border: 1px solid var(--border); background: transparent; color: var(--muted); font: inherit; font-size: 0.88rem; cursor: pointer; }
+.comments .reply-btn:hover, .comments .reply-btn:focus-visible { color: var(--accent-text); border-color: var(--sun); }
+.comments .reply-form { margin-top: 10px; padding: 12px; }
+.comment-list li.flash { outline: 2px solid var(--sun); outline-offset: 2px; }
 
 /* Zawiya notes */
 .notes { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
