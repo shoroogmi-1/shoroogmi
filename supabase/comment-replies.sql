@@ -1,4 +1,4 @@
--- الردود على التعليقات + ردّ الكاتبة الموثّق بشارة «الكاتبة».
+-- الردود على التعليقات + ردّ الكاتبة الموثّق باسمها (بلا شارة ولا إطار).
 -- انسخي هذا كله والصقيه في SQL Editor في Supabase ثم اضغطي Run (مرة واحدة فقط، بعد comments.sql).
 -- في النتيجة يظهر «رمز الكاتبة»: افتحي به الرابط المكتوب في النتيجة مرة واحدة من جهازك، ولا ترسليه لأحد.
 
@@ -7,7 +7,7 @@ alter table public.comments add column if not exists parent_id bigint references
 alter table public.comments add column if not exists is_author boolean not null default false;
 create index if not exists comments_parent_idx on public.comments (parent_id);
 
--- الزائر يستطيع الرد على تعليق (يرسل رقمه)، لكنه لا يستطيع أبدًا وضع علامة «الكاتبة»
+-- الزائر يستطيع الرد على تعليق (يرسل رقمه)، لكنه لا يستطيع أبدًا وضع علامة ردّ الكاتبة
 grant insert (slug, name, body, parent_id) on public.comments to anon;
 
 -- ٢) رمز سري يثبت أن الرد من الكاتبة نفسها

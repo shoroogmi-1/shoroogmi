@@ -444,7 +444,7 @@ if (listen && "speechSynthesis" in window) {
 }
 
 // Comments: stored in Supabase. The section stays hidden until both values are filled in.
-// Every comment can get replies (one level deep). The writer's replies carry a «الكاتبة» badge: her device is
+// Every comment can get replies (one level deep). The writer's replies show her name only (no badge): her device is
 // recognised by a secret link (?author=…) opened once, and the database accepts badge replies only with that secret.
 const COMMENTS_URL = "https://fownwnktsvpzfyyndgtt.supabase.co";
 const COMMENTS_KEY = "sb_publishable_xfQjqLqa091AzMM30SRp6g_llc9fjPx"; // public key, safe to publish
@@ -539,7 +539,7 @@ if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
       try {
         let saved;
         if (asAuthor) {
-          const r = await sbRpc("author_reply", { p_token: authorToken, p_parent: top.id, p_body: body, p_name: EN ? "Shorooq Almehmadi" : "شروق المحمادي" });
+          const r = await sbRpc("author_reply", { p_token: authorToken, p_parent: top.id, p_body: body, p_name: "شروق المحمادي" });
           if (!r.ok) throw new Error();
           saved = await r.json();
         } else {
@@ -565,17 +565,10 @@ if (commentsBox && post && COMMENTS_URL && COMMENTS_KEY) {
   function addComment(c) {
     const li = document.createElement("li");
     if (c.id) { li.id = `c-${c.id}`; byId.set(c.id, { c, li }); }
-    if (c.is_author) li.classList.add("by-author");
     const head = document.createElement("p");
     const name = document.createElement("b");
     name.textContent = c.name;
     head.append(name);
-    if (c.is_author) {
-      const badge = document.createElement("span");
-      badge.className = "author-badge";
-      badge.textContent = tr("✍️ الكاتبة", "✍️ Author");
-      head.append(" ", badge);
-    }
     const time = document.createElement("time");
     time.dateTime = c.created_at;
     time.textContent = when.format(new Date(c.created_at));
@@ -675,10 +668,9 @@ if (allComments) {
   const q = `${COMMENTS_URL}/rest/v1/comments?order=created_at.desc&limit=1000&select=`;
   const el = (tag, cls, text) => { const x = document.createElement(tag); if (cls) x.className = cls; if (text != null) x.textContent = text; return x; };
   function card(c) {
-    const li = el("li", c.is_author ? "by-author" : "");
+    const li = el("li");
     const head = el("p", "ac-head");
     head.append(el("b", "", c.name));
-    if (c.is_author) head.append(" ", el("span", "author-badge", tr("✍️ الكاتبة", "✍️ Author")));
     const time = el("time", "", when.format(new Date(c.created_at)));
     time.dateTime = c.created_at;
     head.append(" · ", time);
