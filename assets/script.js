@@ -248,6 +248,12 @@ async function trackVisit() {
 // «زيارات الموقع» = the visitors counted before + every page/article opened since this counter started.
 const pageviews = counter("hit", "site-pageviews");
 const plusViews = async (n) => { const v = await pageviews; return n === null ? null : n + (v || 0); };
+// «قرّاء دائمون» also grows with every repeated opening: any page or article opened again by a browser
+// that has been on the site before (its first page ever is not counted) adds one (Abacus «site-repeat-views»).
+const seenBefore = store("sm-seen");
+store("sm-seen", "1");
+const repeatViews = seenBefore ? counter("hit", "site-repeat-views") : counter("get", "site-repeat-views");
+const plusRepeats = async (n) => { const v = await repeatViews; return n === null ? null : n + (v || 0); };
 
 trackVisit().then(async (res) => {
   if (!document.querySelector("[data-stat]")) return;
@@ -255,14 +261,14 @@ trackVisit().then(async (res) => {
   const row = Array.isArray(stats) ? stats[0] : stats;
   if (row && row.visitors != null) {
     showCount('[data-stat="visitors"]', await plusViews(Number(row.visitors)));
-    showCount('[data-stat="returning"]', Number(row.regulars));
+    showCount('[data-stat="returning"]', await plusRepeats(Number(row.regulars)));
     return;
   }
   const fresh = res && typeof res === "object" ? res : {};
   const [visitors, returning] = await Promise.all([
     fresh.visitors ?? counter("get", "site-visitors"), fresh.returning ?? counter("get", "site-returning")]);
   showCount('[data-stat="visitors"]', await plusViews(visitors));
-  showCount('[data-stat="returning"]', returning);
+  showCount('[data-stat="returning"]', await plusRepeats(returning));
 });
 
 // Article: completed reads and likes
