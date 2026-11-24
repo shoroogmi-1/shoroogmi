@@ -244,19 +244,24 @@ async function trackVisit() {
   return trackVisitOld(today, first);
 }
 
+// Site visits: every opening of any page or article adds one (Abacus «site-pageviews»).
+// «زيارات الموقع» = the visitors counted before + every page/article opened since this counter started.
+const pageviews = counter("hit", "site-pageviews");
+const plusViews = async (n) => { const v = await pageviews; return n === null ? null : n + (v || 0); };
+
 trackVisit().then(async (res) => {
   if (!document.querySelector("[data-stat]")) return;
   const stats = await sbRpc("site_stats", {}).then((r) => (r.ok ? r.json() : null)).catch(() => null);
   const row = Array.isArray(stats) ? stats[0] : stats;
   if (row && row.visitors != null) {
-    showCount('[data-stat="visitors"]', Number(row.visitors));
+    showCount('[data-stat="visitors"]', await plusViews(Number(row.visitors)));
     showCount('[data-stat="returning"]', Number(row.regulars));
     return;
   }
   const fresh = res && typeof res === "object" ? res : {};
   const [visitors, returning] = await Promise.all([
     fresh.visitors ?? counter("get", "site-visitors"), fresh.returning ?? counter("get", "site-returning")]);
-  showCount('[data-stat="visitors"]', visitors);
+  showCount('[data-stat="visitors"]', await plusViews(visitors));
   showCount('[data-stat="returning"]', returning);
 });
 

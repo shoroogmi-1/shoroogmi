@@ -644,7 +644,7 @@ def build(lang):
           <a href="sira.html" class="btn btn-ghost">{t("جواز سفر", "Passport")}</a>
         </div>
         <ul class="site-stats" aria-label="{t("إحصاءات الموقع", "Site stats")}">
-          <li>🧳 {t("زوار الموقع", "Site visitors")}: <b data-stat="visitors">…</b></li>
+          <li>🧳 {t("زيارات الموقع", "Site visits")}: <b data-stat="visitors">…</b></li>
           <li>🔁 {t("قرّاء دائمون", "Regular readers")}: <b data-stat="returning">…</b></li>
           <li><a href="blog/articles.html">✍️ {t("عدد المقالات", "Articles")}: <b>{num(len(ALL_ARTICLES))}</b></a></li>
         </ul>
