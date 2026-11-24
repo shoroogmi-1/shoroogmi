@@ -1,17 +1,11 @@
 {
- "updated": "2026-11-23",
+ "updated": "2026-11-24",
  "items": [
   {
    "slug": "nazariyyat-dharhum",
    "reads": 4,
    "likes": 3,
    "score": 10
-  },
-  {
-   "slug": "al-faris-al-qawwal",
-   "reads": 4,
-   "likes": 2,
-   "score": 8
   },
   {
    "slug": "2026-10-24-0947",
@@ -62,7 +56,19 @@
    "score": 1
   },
   {
+   "slug": "2026-10-24-0015",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
    "slug": "akhtar-ash-shuhra",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
+   "slug": "al-hawiyya",
    "reads": 1,
    "likes": 0,
    "score": 1
@@ -98,6 +104,12 @@
    "score": 1
   },
   {
+   "slug": "la-takun-al-waiz",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
    "slug": "la-tarbit-aqdaraka-bi-imanik",
    "reads": 1,
    "likes": 0,
@@ -105,12 +117,6 @@
   },
   {
    "slug": "maana-al-quran-rahma",
-   "reads": 1,
-   "likes": 0,
-   "score": 1
-  },
-  {
-   "slug": "sana-barqih",
    "reads": 1,
    "likes": 0,
    "score": 1
