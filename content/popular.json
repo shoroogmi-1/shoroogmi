@@ -1,6 +1,12 @@
 {
- "updated": "2026-11-24",
+ "updated": "2026-11-25",
  "items": [
+  {
+   "slug": "nazariyyat-dharhum",
+   "reads": 4,
+   "likes": 3,
+   "score": 10
+  },
   {
    "slug": "al-faris-al-qawwal",
    "reads": 4,
@@ -30,6 +36,12 @@
    "reads": 4,
    "likes": 0,
    "score": 4
+  },
+  {
+   "slug": "tajarubi-maa-sinaat-al-anime",
+   "reads": 3,
+   "likes": 0,
+   "score": 3
   },
   {
    "slug": "taml-in-ashor",
@@ -62,6 +74,12 @@
    "score": 1
   },
   {
+   "slug": "akhtar-ash-shuhra",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
    "slug": "al-hawiyya",
    "reads": 1,
    "likes": 0,
@@ -80,6 +98,18 @@
    "score": 1
   },
   {
+   "slug": "fi-bidayat-alaqatik",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
+   "slug": "fid-dunya-hasana",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
    "slug": "hal-yunqis-adh-dhaka",
    "reads": 1,
    "likes": 0,
@@ -87,24 +117,6 @@
   },
   {
    "slug": "la-takun-al-waiz",
-   "reads": 1,
-   "likes": 0,
-   "score": 1
-  },
-  {
-   "slug": "la-tarbit-aqdaraka-bi-imanik",
-   "reads": 1,
-   "likes": 0,
-   "score": 1
-  },
-  {
-   "slug": "maana-al-quran-rahma",
-   "reads": 1,
-   "likes": 0,
-   "score": 1
-  },
-  {
-   "slug": "sana-barqih",
    "reads": 1,
    "likes": 0,
    "score": 1
