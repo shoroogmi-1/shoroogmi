@@ -1,17 +1,11 @@
 {
- "updated": "2026-11-25",
+ "updated": "2026-11-26",
  "items": [
   {
    "slug": "nazariyyat-dharhum",
    "reads": 4,
    "likes": 3,
    "score": 10
-  },
-  {
-   "slug": "al-faris-al-qawwal",
-   "reads": 4,
-   "likes": 2,
-   "score": 8
   },
   {
    "slug": "2026-10-24-0947",
@@ -117,6 +111,12 @@
   },
   {
    "slug": "la-takun-al-waiz",
+   "reads": 1,
+   "likes": 0,
+   "score": 1
+  },
+  {
+   "slug": "la-tarbit-aqdaraka-bi-imanik",
    "reads": 1,
    "likes": 0,
    "score": 1
